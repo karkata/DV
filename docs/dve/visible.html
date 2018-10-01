@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <title></title>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" href="../../../css/style.css"/>           
+    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
+    <script src="../../../js/dv.core.js"></script>
+    <script src="../../../js/dv.shape.js"></script>
+</head>
+<body>
+    <section>
+        <nav class="nav-structure">
+            <ul>
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="index.html">References</a></li>
+                <li>visible</li>
+            </ul>
+        </nav>
+    </section>
+    <section>
+        <h1>DVE.prototype.visible()</h1>
+        <section>
+            <h2>문법</h2>
+            <pre class="prettyprint">var ret = dve.visible(torf);</pre>
+            </section><section><h2>파라미터</h2>
+            <table class="parameters">
+                <thead>
+                    <tr>
+                        <th>이름</th>
+                        <th>형식</th>
+                        <th>설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>torf</th>
+                        <td>'visible'|'hidden'</td>
+                        <td>
+                            <ul>
+                                <li>'visible': 요소가 화면에 렌더링됩니다.</li>
+                                <li>'hidden': 요소가 화면에 렌더링되지 않습니다. 그러나 요소의 크기만큼 화면을 공간을 차지합니다.</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            </section><section><h2>반환</h2>
+            <p>DVE 객체를 반환합니다.</p>
+        </section>
+        <section>
+            <h2>설명</h2>
+            <p>visible 메소드는 화면에 렌더링이 되는 요소에 visibility CSS 속성을 인라인으로 적용할 때 사용합니다.</p>
+            <pre class="prettyprint">
+var svg = new DV().svg(400, 100).into("DV-01");
+svg.rect(10, 10, 200, 20).fill("red");
+svg.rect(10, 40, 200, 20).fill("green").visible("hidden");
+svg.rect(10, 70, 200, 20).fill("blue");
+</pre>
+            <div id="dv-01"></div>
+            <script>
+                var svg = DV.svg().size(400,100).into("dv-01");
+                DV.rect().dim(10, 10, 200, 20).fill("red").into(svg);
+                DV.rect().dim(10, 40, 200, 20).fill("green").visible(false).into(svg);
+                DV.rect().dim(10, 70, 200, 20).fill("blue").into(svg);
+            </script>
+        </section>
+        <section>
+            <h2>참고</h2>
+            <ul>
+                <li><a href="attr.html">attr</a></li>
+                <li><a href="fill.html">fill</a></li>
+                <li><a href="into.html">into</a></li>
+                <li><a href="rect.html">rect</a></li>
+                <li><a href="svg.html">svg</a></li>
+            </ul>
+        </section>
+    </section>
+    <footer>
+    </footer>
+</body>
+</html>

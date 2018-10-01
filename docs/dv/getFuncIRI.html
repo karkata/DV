@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <title></title>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" href="../../../css/style.css"/>           
+    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
+    <script src="../../../js/DV.js"></script>
+    <script></script>
+</head>
+<body>
+    <section>
+        <nav class="nav-structure">
+            <ul>
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="index.html">References</a></li>
+                <li>getFuncIRI</li>
+            </ul>
+        </nav>
+    </section>
+    <section>
+        <h1>DV.prototype.getFuncIRI()</h1>
+        <section>
+            <h2>문법</h2>
+            <pre class="prettyprint">var ret = DV.getFuncIRI(value);</pre>
+            </section><section><h2>파라미터</h2>
+            <table class="parameters">
+                <thead>
+                    <tr>
+                        <th>이름</th>
+                        <th>형식</th>
+                        <th>설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>value</td>
+                        <td>String|DVE</td>
+                        <td>
+                            <p>객체의 ID 문자열이거나 객체 그 자체입니다.</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            </section><section><h2>반환</h2>
+            <p>객체의 FuncIRI 값을 반환합니다. FuncIRI 값은 'url(#ID)' 형식의 문자열을 나타냅니다.</p>
+        </section>
+        <section>
+            <h2>설명</h2>
+            <p>getFuncIRI은 주어진 객체의 ID를 FuncIRI 형식에 맞도록 변경하여 반환하거나 파라미터가 객체인 경우에는 그 객체의 ID 값을 가지고 FuncIRI 값을 만들어 반환합니다.</p>
+            <pre class="prettyprint">
+&lt;svg width="300px" height="150px"&gt;
+    &lt;defs&gt;
+        &lt;linearGradient id="S01GD01"&gt;
+            &lt;stop offset="10%" stop-color="#5d4037"/&gt;
+            &lt;stop offset="90%" stop-color="#d7ccc8"/&gt;
+        &lt;/linearGradient&gt;
+    &lt;/defs&gt;
+    &lt;rect x="0" y="25" width="100" height="100" fill="url(#S01GD01)"/&gt;
+&lt;/svg&gt;
+</pre>    
+            <div>
+                <svg width="300px" height="150px">
+                    <defs>
+                        <linearGradient id="S01GD01">
+                            <stop offset="10%" stop-color="#5d4037"/>
+                            <stop offset="90%" stop-color="#d7ccc8"/>
+                        </linearGradient>
+                    </defs>
+                    <rect x="0" y="25" width="100" height="100" fill="url(#S01GD01)"/>
+                </svg>
+            </div>
+            <pre class="prettyprint">
+var svg = DV.svg().size(300,150).into("svg-01");
+var def = DV.defs().into(svg);
+var grad1 = DV.gradl().id("D01GD01").into(def);
+DV.stop().oco(0.1,"#5d4037").into(grad1);
+DV.stop().oco(0.9,"#d7ccc8").into(grad1);
+DV.rect().dim(0,25,100,100).fill(DV.getFuncIRI(grad1)).into(svg);
+            <div id="svg-01"></div>
+            <script>
+                var svg = DV.svg().size(300,150).into("svg-01");
+                var def = DV.defs().into(svg);
+                var grad1 = DV.gradl().id("D01GD01").into(def);
+                DV.stop().oco(0.1,"#5d4037").into(grad1);
+                DV.stop().oco(0.9,"#d7ccc8").into(grad1);
+                DV.rect().dim(0,25,100,100).fill(DV.getFuncIRI(grad1)).into(svg);
+            </script>
+        </section>
+        <section>
+            <h2>참고</h2>
+            <ul>
+                <li><a href="../properties/dim.html">dim</a></li>
+                <li><a href="../properties/fill.html">fill</a></li>
+                <li><a href="../properties/id.html">id</a></li>
+                <li><a href="../properties/into.html">into</a></li>
+                <li><a href="../properties/oco.html">oco</a></li>
+                <li><a href="../properties/size.html">size</a></li>
+                <li><a href="defs.html">defs</a></li>
+                <li><a href="gradl.html">gradl</a></li>
+                <li><a href="gradr.html">gradr</a></li>
+                <li><a href="rect.html">rect</a></li>
+                <li><a href="stop.html">stop</a></li>
+                <li><a href="svg.html">svg</a></li>
+            </ul>
+        </section>
+    </section>
+    <footer>
+    </footer>
+</body>
+</html>

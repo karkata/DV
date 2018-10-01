@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <title></title>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" href="../../../css/style.css"/>           
+    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
+    <script src="../../../js/dv.core.js"></script>
+    <script src="../../../js/dv.shape.js"></script>
+</head>
+<body>
+    <section>
+        <nav class="nav-structure">
+            <ul>
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="index.html">References</a></li>
+                <li>attr</li>
+            </ul>
+        </nav>
+    </section>
+    <section>
+        <h1>DVE.prototype.attr()</h1>
+        <section>
+            <h2>문법</h2>
+            <pre class="prettyprint">var ret = dve.attr(name, value[, appending]);</pre>   
+            </section><section><h2>파라미터</h2>
+            <table class="parameters">
+                <thead>
+                    <tr>
+                        <th>이름</th>
+                        <th>형식</th>
+                        <th>설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>name</td>
+                        <td>String</td>
+                        <td><p>속성의 이름입니다.</p></td>
+                    </tr>
+                    <tr>
+                        <td>value</td>
+                        <td>Boolean|null|undefined|Number|String|Object</td>
+                        <td><p>속성의 값입니다.</p></td>
+                    </tr>
+                    <tr>
+                        <td>appending</td>
+                        <td>Boolean</td>
+                        <td><p>속성에 값을 설정할 때, 기존 속성 값 뒤에 추가하려면 true, 덮어쓰려면 false 입니다.</p></th>
+                    </tr>
+                </tbody>
+            </table>
+            </section><section><h2>반환</h2>
+            <p>attr 메소드의 파라미터가 이름만 주어진다면, 해당 이름으로 지정된 속성의 값이 반환됩니다.</p>
+            <p>이와 달리 값 파라미터가 주어진다면, DVE 객체가 반환됩니다.</p>
+        </section>
+        <section>
+            <h2>설명</h2>
+            <p>'attr' 메소드는 요소가 갖는 속성값을 반환하거나, 속성값을 설정할 때 사용합니다.</p>
+            <p>name 파라미터만  주어지면 현재 대상 속성값이 반환되고, value 파라미터까지 주어진다면 대상 속성값을 주어진 value로 설정합니다.</p>
+            <p>속성값이 반환될 때와 달리, 속성값을 설정할 때에는 속성을 가지고 있는 요소의 dv 래퍼 객체가 반환됩니다.</p>
+            <pre class="prettyprint">
+var svg = new dv().svg(400, 70).into("dv-01");
+var rect1 = svg.rect(10, 10, 200, 20).into(svg).attr("fill", "blue");
+// rect1의 fill 속성값을 두 번째 사각형의 fill 속성값으로 설정합니다.
+svg.rect(10, 40, 200, 20).fill(rect1.attr("fill")).into(svg);
+</pre>
+            <div id="dv-01"></div>
+            <script>
+                var svg = DV.svg().size(400,70).into("dv-01");
+                var rect1 = DV.rect().dim(10,10,200,20).into(svg).attr("fill","blue");
+                DV.rect().dim(10,40,200,20).fill(rect1.attr("fill")).into(svg);
+            </script>
+        </section>
+        <section>
+            <h2>참고</h2>
+            <ul>
+                <li><a href="../dv/rect.html">rect</a></li>
+                <li><a href="../dv/svg.html">svg</a></li>
+                <li><a href="dim.html">dim</a></li>
+                <li><a href="fill.html">fill</a></li>
+                <li><a href="into.html">into</a></li>
+                <li><a href="size.html">size</a></li>
+            </ul>
+        </section>
+    </section>
+    <footer>
+    </footer>
+</body>
+</html>

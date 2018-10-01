@@ -1,0 +1,209 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <title></title>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" href="../../../css/style.css"/>           
+    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
+    <script src="../../../js/dv.core.js"></script>
+    <script src="../../../js/dv.shape.js"></script>
+</head>
+<body>
+    <section>
+        <nav class="nav-structure">
+            <ul>
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="index.html">References</a></li>
+                <li>arc</li>
+            </ul>
+        </nav>
+    </section>
+    <section>
+        <h1>DVE.prototype.arc()</h1>
+        <section>
+            <h2>문법</h2>
+            <pre class="prettyprint">var ret = dve.arc(rx, ry, xar, laf, swf, x, y[, rel]);</pre>
+            </section><section><h2>파라미터</h2>
+            <table class="parameters">
+                <thead>
+                    <tr>
+                        <th>이름</th>
+                        <th>형식</th>
+                        <th>설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>rx, ry</td>
+                        <td>&lt;length&gt;</td>
+                        <td>
+                            <p>타원의 호 모양을 결정짓는 x 축 반지름, y 축 반지름의 크기입니다.</p>
+                            <p>그려질 호는 반지름 rx, ry의 크기를 갖는 타원의 일부분입니다.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>xar</td>
+                        <td>&lt;degree&gt;</td>
+                        <td>
+                            <p>rx, ry의 타원을 원점(0, 0)에 놓여 있다고 할 때,  x 축에서 양의 방향으로 주어진 각의 크기만큼 타원을 회전시킵니다.</p>
+                            <p>타원이 회전하면 그려질 호도 회전을 하게 됩니다.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>laf</td>
+                        <td>{0|1}</td>
+                        <td><p>large-arc-flag를 의미하며, 0이면 작은 호를 1이면 큰 호를 그립니다.</p></td>
+                    </tr>
+                    <tr>
+                        <td>swf</td>
+                        <td>{0|1}</td>
+                        <td><p>sweep-flag는 1인 경우 시작점에서 끝점으로 호를 이루는 점들 중에서 양의 각 방향의 점을 그립니다.    0인 경우는 음의 각 방향의 점들을 그리게됩니다.</p></td>
+                    </tr>
+                    <tr>
+                        <td>x, y</td>
+                        <td>&lt;coordinate&gt;</td>
+                        <td><p>그려질 호의 끝점을 나타냅니다.</p></td>
+                    </tr>
+                    <tr>
+                        <td>rel</td>
+                        <td>Boolean</td>
+                        <td><p>옵션. rel(relative) 값이 true이면, 주어진 위치는 현재 위치의 상대 위치로 인식합니다.</p></td>
+                    </tr>
+                </tbody>
+            </table>
+            </section><section><h2>반환</h2>
+            <p>DVE 객체를 반환합니다.</p>
+        </section>
+        <section>
+            <h2>설명</h2>
+            <p>'arc' 메소드는 SVG path 요소의 'elliptical arc' 커맨드를 나타냅니다.</p>
+            <p>Elliptical arc는 주어진 두 끝점을 거치는 호를 그립니다.</p>
+            <p>XML로 호를 그릴 때는 A명령어를 사용합니다.</p>
+            <p>현재 위치를 시작점으로하고 A(a는 상대) 명령어의 마지막 점의 위치를 끝점으로 인식합니다.</p>
+            <p>명령어는 다음의 파라미터를 갖습니다.</p>
+            <p>(rx,ry x-axis-rotation large-arc-flag sweep-flag x,y)</p>
+            <p>rx,ry x-axis-rotation은 호가 그려질 원의 모양을 결정합니다.</p>
+            <p>large-arc-flag는 큰 호를 그릴지 작은 호를 그릴지 결정합니다.</p>
+            <p>sweep-flag는 1인 경우 시작점에서 끝점으로 호를 이루는 점들 중에서 양의 각 방향의 점을 그립니다. 0인 경우는 음의 각 방향의 점들을 그리게됩니다. 일반적으로 양의 각이란 시계 반대 방향으로 측정하는 각의 크기를 말하며, SVG 좌표계에서는 y 축이 아래를 향하기 때문에 일반 평면 좌표계와 달리 위, 아래가 뒤집힌 반대가 됩니다. 그러므로 양의 각은 시계 방향으로, 음의 각은 시계 반대 방향으로 이해하면 됩니다.</p>
+            <p><img src="http://www.w3.org/TR/SVG11/images/paths/arcs02.png" alt="elliptical arc"/></p>
+            <pre class="prettyprint">
+&lt;svg width="18cm" height="4.5cm" viewBox="0 0 1800 450"&gt;
+  &lt;path fill="none" stroke="red" stroke-width="5" d="M250,300 a100,100 0 1,0 100,-100"/&gt;
+  &lt;path fill="none" stroke="green" stroke-width="5" d="M250,300 a100,100 0 0,0 100,-100"/&gt;
+  &lt;path fill="none" stroke="orange" stroke-width="5" d="M250,300 a100,100 0 0,1 100,-100"/&gt;
+  &lt;path fill="none" stroke="blue" stroke-width="5" d="M250,300 a100,100 0 1,1 100,-100"/&gt;
+  
+  &lt;path fill="none" stroke="red" stroke-width="5" d="M1050,300 a125,75 45 1,0 100,-100"/&gt;
+  &lt;path fill="none" stroke="green" stroke-width="5" d="M1050,300 a125,75 45 0,0 100,-100"/&gt;
+  &lt;path fill="none" stroke="orange" stroke-width="5" d="M1050,300 a125,75 45 0,1 100,-100"/&gt;
+  &lt;path fill="none" stroke="blue" stroke-width="5" d="M1050,300 a125,75 45 1,1 100,-100"/&gt;
+&lt;/svg&gt;
+</pre>
+            <div>
+                <svg width="18cm" height="4.5cm" viewBox="0 0 1800 450">
+                    <path fill="none" stroke="red" stroke-width="5" d="M250,300 a100,100 0 1,0 100,-100"/>
+                    <path fill="none" stroke="green" stroke-width="5" d="M250,300 a100,100 0 0,0 100,-100"/>
+                    <path fill="none" stroke="orange" stroke-width="5" d="M250,300 a100,100 0 0,1 100,-100"/>
+                    <path fill="none" stroke="blue" stroke-width="5" d="M250,300 a100,100 0 1,1 100,-100"/>
+
+                    <circle cx="250" cy="300" r="10" fill="red"/>
+                    <circle cx="350" cy="200" r="10" fill="purple"/>
+
+                    <text x="500" y="150" style="font-size:30">red: a100,100 0 1,0 100,-100</text>
+                    <text x="500" y="200" style="font-size:30">green: a100,100 0 0,0 100,-100</text>
+                    <text x="500" y="250" style="font-size:30">orange: a100,100 0 0,1 100,-100</text>
+                    <text x="500" y="300" style="font-size:30">blue: a100,100 0 1,1 100,-100</text>
+
+                    <path fill="none" stroke="red" stroke-width="5" d="M1050,300 a125,75 45 1,0 100,-100"/>
+                    <path fill="none" stroke="green" stroke-width="5" d="M1050,300 a125,75 45 0,0 100,-100"/>
+                    <path fill="none" stroke="orange" stroke-width="5" d="M1050,300 a125,75 45 0,1 100,-100"/>
+                    <path fill="none" stroke="blue" stroke-width="5" d="M1050,300 a125,75 45 1,1 100,-100"/>
+
+                    <circle cx="1050" cy="300" r="10" fill="red"/>
+                    <circle cx="1150" cy="200" r="10" fill="purple"/>
+                    
+                    <text x="1300" y="150" style="font-size:30">red: a125,75 45 1,0 100,-100</text>
+                    <text x="1300" y="200" style="font-size:30">green: a125,75 45 0,0 100,-100</text>
+                    <text x="1300" y="250" style="font-size:30">orange: a125,75 45 0 0,1 100,-100</text>
+                    <text x="1300" y="300" style="font-size:30">blue: a125,75 45 1,1 100,-100</text>
+
+                </svg>
+            </div>
+            <pre class="prettyprint">
+var svg = DV.svg().size("18cm","4.5cm").viewbox(0,0,1800,450).into("dv-01");
+
+DV.path().fill("none").stroke("red",5).mto(250,300).arc(100,100,0,1,0,100,-100,true).into(svg).into(svg);
+DV.path().fill("none").stroke("green",5).mto(250,300).arc(100,100,0,0,0,100,-100,true).into(svg);
+DV.path().fill("none").stroke("orange",5).mto(250,300).arc(100,100,0,0,1,100,-100,true).into(svg);
+DV.path().fill("none").stroke("blue",5).mto(250,300).arc(100,100,0,1,1,100,-100,true).into(svg);
+
+DV.path().fill("none").stroke("red",5).mto(1050,300).arc(125,75,45,1,0,100,-100,true).into(svg);
+DV.path().fill("none").stroke("green",5).mto(1050,300).arc(125,75,45,0,0,100,-100,true).into(svg);
+DV.path().fill("none").stroke("orange",5).mto(1050,300).arc(125,75,45,0,1,100,-100,true).into(svg);
+DV.path().fill("none").stroke("blue",5).mto(1050,300).arc(125,75,45,1,1,100,-100,true).into(svg);
+</pre>
+            <div id="dv-01"></div>
+            <script>
+                var svg = DV.svg().size("18cm","4.5cm").viewbox(0,0,1800,450).into("dv-01");
+                DV.path().fill("none").stroke("red",5).mto(250,300).arc(100,100,0,1,0,100,-100,true).into(svg).into(svg);
+                DV.path().fill("none").stroke("green",5).mto(250,300).arc(100,100,0,0,0,100,-100,true).into(svg);
+                DV.path().fill("none").stroke("orange",5).mto(250,300).arc(100,100,0,0,1,100,-100,true).into(svg);
+                DV.path().fill("none").stroke("blue",5).mto(250,300).arc(100,100,0,1,1,100,-100,true).into(svg);
+
+                DV.circle().center(250,300).radius(10).fill("red").into(svg);
+                DV.circle().center(350,200).radius(10).fill("purple").into(svg);
+
+                DV.text().txt("red: a100,100 0 1,0 100,-100").points(500,150).css("font-size",30).into(svg);
+                DV.text().txt("green: a100,100 0 0,0 100,-100").points(500,200).css("font-size",30).into(svg);
+                DV.text().txt("orange: a100,100 0 0,1 100,-100").points(500,250).css("font-size",30).into(svg);
+                DV.text().txt("blue: a100,100 0 1,1 100,-100").points(500,300).css("font-size",30).into(svg);
+
+                DV.path().fill("none").stroke("red",5).mto(1050,300).arc(125,75,45,1,0,100,-100,true).into(svg);
+                DV.path().fill("none").stroke("green",5).mto(1050,300).arc(125,75,45,0,0,100,-100,true).into(svg);
+                DV.path().fill("none").stroke("orange",5).mto(1050,300).arc(125,75,45,0,1,100,-100,true).into(svg);
+                DV.path().fill("none").stroke("blue",5).mto(1050,300).arc(125,75,45,1,1,100,-100,true).into(svg);
+
+                DV.circle().center(1050,300).radius(10).fill("red").into(svg);
+                DV.circle().center(1150,200).radius(10).fill("purple").into(svg);
+
+                DV.text().txt("red: a125,75 45 1,0 100,-100").points(1300,150).css("font-size",30).into(svg);
+                DV.text().txt("green: a125,75 45 0,0 100,-100").points(1300,200).css("font-size",30).into(svg);
+                DV.text().txt("orange: a125,75 45 0,1 100,-100").points(1300,250).css("font-size",30).into(svg);
+                DV.text().txt("blue: a125,75 45 1,1 100,-100").points(1300,300).css("font-size",30).into(svg);
+            </script>
+        </section>
+        <section>
+            <h2>참고</h2>
+            <ul>
+                <li><a href="../dv/circle.html">circle</a></li>
+                <li><a href="../dv/path.html">path</a></li>
+                <li><a href="../dv/svg.html">svg</a></li>
+                <li><a href="../dv/text.html">text</a></li>
+                <li><a href="arcf.html">arcf</a></li>
+                <li><a href="center.html">center</a></li>
+                <li><a href="csto.html">csto</a></li>
+                <li><a href="cto.html">cto</a></li>
+                <li><a href="fill.html">fill</a></li>
+                <li><a href="hto.html">hto</a></li>
+                <li><a href="into.html">into</a></li>
+                <li><a href="lto.html">lto</a></li>
+                <li><a href="mto.html">mto</a></li>
+                <li><a href="points.html">points</a></li>
+                <li><a href="pz.html">pz</a></li>
+                <li><a href="qsto.html">qsto</a></li>
+                <li><a href="qto.html">qto</a></li>
+                <li><a href="radius.html">radius</a></li>
+                <li><a href="size.html">size</a></li>
+                <li><a href="stroke.html">stroke</a></li>
+                <li><a href="txt.html">txt</a></li>
+                <li><a href="viewbox.html">viewbox</a></li>
+                <li><a href="vto.html">vto</a></li>
+            </ul>
+        </section>
+    </section>
+    <footer>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,133 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <title></title>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" href="../../../css/style.css"/>           
+    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
+    <script src="../../../js/dv.core.js"></script>
+    <script src="../../../js/dv.shape.js"></script>
+</head>
+<body>
+    <section>
+        <nav class="nav-structure">
+            <ul>
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="index.html">References</a></li>
+                <li>strokeDash</li>
+            </ul>
+        </nav>
+    </section>
+    <section>
+        <h1>DVE.prototype.strokeDash()</h1>
+        <section>
+            <h2>문법</h2>
+            <pre class="prettyprint">var ret = dve.strokeDash(array[, offset])</pre>
+            </section><section><h2>파라미터</h2>
+            <table class="parameters">
+                <thead>
+                    <tr>
+                        <th>이름</th>
+                        <th>형식</th>
+                        <th>설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>array</td>
+                        <td>&lt;dasharray&gt;</td>
+                        <td>
+                            <p>테두리에 간격 패턴을 사용합니다.</p>
+                            <p>5,3,2 처럼 콤마 또는 공백 문자로 간격을 설정합니다. 만일 홀수개 값이 주어진다면, 값이 반복됩니다.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>offset</td>
+                        <td>&lt;percentage&gt;|&lt;length&gt;</td>
+                        <td>
+                            <p>간격 패턴이 시작되는 위치를 설정합니다.</p>
+                            <p>퍼센티지 또는 길이 값을 사용할 수 있습니다.</p>
+                        </td>
+                    </tr>
+                <tbody>
+            </table>
+            </section><section><h2>반환</h2>
+            <p>DVE 객체를 반환합니다.</p>
+        </section>
+        <section>
+            <h2>설명</h2>
+            <p>strokeDash 메소드는 SVG 요소 stroke-dasharray, stroke-dashoffset 속성을 설정합니다.</p>
+            <pre class="prettyprint">
+&lt;svg width="200" height="150"&gt;
+  &lt;path d="M10,30 l100,0" fill="none" stroke="#212121" stroke-width="13" stroke-dasharray="10 5 5 5"/&gt;
+  &lt;path d="M10,30 l100,0" fill="none" stroke="#448AFF" stroke-width="1"/&gt;
+  &lt;path d="M10,60 l100,0" fill="none" stroke="#212121" stroke-width="13" stroke-dasharray="10 5"/&gt;
+  &lt;path d="M10,60 l100,0" fill="none" stroke="#448AFF" stroke-width="1"/&gt;
+  &lt;path d="M10,90 l100,0" fill="none" stroke="#212121" stroke-width="13" stroke-dasharray="10 5 5 5" stroke-dashoffset="5"/&gt;
+  &lt;path d="M10,90 l100,0" fill="none" stroke="#448AFF" stroke-width="1"/&gt;
+  &lt;path d="M10,120 l100,0" fill="none" stroke="#212121" stroke-width="13" stroke-dasharray="10 5" stroke-dashoffset="5"/&gt;
+  &lt;path d="M10,120 l100,0" fill="none" stroke="#448AFF" stroke-width="1"/&gt;
+&lt;/svg&gt;
+</pre>
+            <div>
+                <svg width="200" height="150">
+                    <path d="M10,30 l100,0" fill="none" stroke="#212121" stroke-width="13" stroke-dasharray="10 5 5 5"/>
+                    <path d="M10,30 l100,0" fill="none" stroke="#448AFF" stroke-width="1"/>
+                    <path d="M10,60 l100,0" fill="none" stroke="#212121" stroke-width="13" stroke-dasharray="10 5"/>
+                    <path d="M10,60 l100,0" fill="none" stroke="#448AFF" stroke-width="1"/>
+                    <path d="M10,90 l100,0" fill="none" stroke="#212121" stroke-width="13" stroke-dasharray="10 5 5 5" stroke-dashoffset="5"/>
+                    <path d="M10,90 l100,0" fill="none" stroke="#448AFF" stroke-width="1"/>
+                    <path d="M10,120 l100,0" fill="none" stroke="#212121" stroke-width="13" stroke-dasharray="10 5" stroke-dashoffset="5"/>
+                    <path d="M10,120 l100,0" fill="none" stroke="#448AFF" stroke-width="1"/>
+                </svg>
+            </div>
+            <pre class="prettyprint">
+var svg = DV.svg().size(200,150).into("dv-01");
+DV.path().d("M10,30 l100,0").fill("none").stroke("#212121",13,undefined,undefined,"10 5 5 5").into(svg)
+DV.path().d("M10,30 l100,0").fill("none").stroke("#448aff",1).into(svg)
+
+DV.path().d("M10,60 l100,0").fill("none").stroke("#212121",13).attr("stroke-dasharray","10 5").into(svg)
+DV.path().d("M10,60 l100,0").fill("none").stroke("#448aff",1).into(svg)
+
+DV.path().d("M10,90 l100,0").fill("none").stroke("#212121",13,undefined,undefined,"10 5 5 5", 5).into(svg)
+DV.path().d("M10,90 l100,0").fill("none").stroke("#448aff",1).into(svg)
+
+DV.path().d("M10,120 l100,0").fill("none").stroke("#212121",13).strokeDash("10 5",5).into(svg)
+DV.path().d("M10,120 l100,0").fill("none").stroke("#448aff",1).into(svg)
+</pre>
+            <div id="dv-01"></div>
+            <script>
+                var svg = DV.svg().size(200,150).into("dv-01");
+                DV.path().d("M10,30 l100,0").fill("none").stroke("#212121",13,undefined,undefined,"10 5 5 5").into(svg)
+                DV.path().d("M10,30 l100,0").fill("none").stroke("#448aff",1).into(svg)
+
+                DV.path().d("M10,60 l100,0").fill("none").stroke("#212121",13).attr("stroke-dasharray","10 5").into(svg)
+                DV.path().d("M10,60 l100,0").fill("none").stroke("#448aff",1).into(svg)
+
+                DV.path().d("M10,90 l100,0").fill("none").stroke("#212121",13,undefined,undefined,"10 5 5 5", 5).into(svg)
+                DV.path().d("M10,90 l100,0").fill("none").stroke("#448aff",1).into(svg)
+
+                DV.path().d("M10,120 l100,0").fill("none").stroke("#212121",13).strokeDash("10 5",5).into(svg)
+                DV.path().d("M10,120 l100,0").fill("none").stroke("#448aff",1).into(svg)
+            </script>
+        </section>
+        <section>
+            <h2>참고</h2>
+            <ul>
+                <li><a href="../dv/path.html">path</a></li>
+                <li><a href="../dv/svg.html">svg</a></li>
+                <li><a href="attr.html">attr</a></li>
+                <li><a href="d.html">d</a></li>
+                <li><a href="fill.html">fill</a></li>
+                <li><a href="into.html">into</a></li>
+                <li><a href="size.html">size</a></li>
+                <li><a href="stroke.html">stroke</a></li>
+            </ul>
+        </section>
+    </section>
+    <footer>
+    </footer>
+</body>
+</html>

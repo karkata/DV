@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <title></title>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" href="../../../css/style.css"/>           
+    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
+    <script src="../../../js/dv.core.js"></script>
+    <script src="../../../js/dv.shape.js"></script>
+    <script src="../../../js/dv.animation.js"></script>
+</head>
+<body>
+    <section>
+        <nav class="nav-structure">
+            <ul>
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="index.html">References</a></li>
+                <li>keyTimes</li>
+            </ul>
+        </nav>
+    </section>
+    <section>
+        <h1>DVE.prototype.keyTimes()</h1>
+        <section>
+            <h2>문법</h2>
+            <pre class="prettyprint">var ret = dve.keyTimes(times);</pre>
+            </section><section><h2>파라미터</h2>
+            <table class="parameters">
+                <thead>
+                    <tr>
+                        <th>이름</th>
+                        <th>형식</th>
+                        <th>설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>times</td>
+                        <td>&lt;list&gt;</td>
+                        <td>
+                            <p>세미콜론으로 구분된 하나 또는 그 이상의 시간 값입니다.</p>
+                            <p>각각의 시간 값은 0과 1(포함하는) 사이의 부동 소수점 형식의 값이며, 애니메이션이 지속되는 시간(duration)내의 비례적인 위치를 나타냅니다.</p>
+                            <p>값은 SVG에서만 사용되는 특별한 형식을 제외하고, 표준적으로 SMIL 스펙을 따릅니다.</p> 
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            </section><section><h2>반환</h2>
+            <p>DVE 객체를 반환합니다.</p>
+        </section>
+        <section>
+            <h2>설명</h2>
+            <p>keyTimes 메소드는 animate, animateMotion 요소의 keyTimes 속성을 설정합니다.</p>
+            <p>values 속성을 사용한 애니메이션이 동작하려면, values에 기술된 각각의 값에 대응하는 keyTimes 시간 값이 제공되어야 합니다.</p>
+            <p>keyTimes 속성 값(리스트)은 연속적으로 시간을 나열할 때, 반드시 앞선 시간 값보다 같거나 커야 합니다.</p>
+            <p>속성 값(리스트)의 의미는 보간법마다 다르게 적용됩니다. linear, spline 애니메이션에서는, 첫 번째 값은 반드시 0이어야 하고, 마지막 값은 1이어야 하는데, 각각의 시간 값에 대응되는 애니메이션 값을 지정하고, 지정되지 않은 시간들 사이에는 보간법을 사용하여 애니메이션 값을 결정합니다. 만약 discrete 애니메이션이라면, 첫 번째 값은 0이어야 하고, 시간 사이를 보간하지 않은 상태로 처리됩니다.</p>
+            <p>paced 애니메이션인 경우에는 keyTimes 속성은 무시됩니다.</p>
+            <p>애니메이션이 수행되는 시간(duration)이 정의되지 않은 경우에는 keyTimes 속성은 완전히 무시됩니다.</p>
+            <p>페이징된 애니메이션 보간은 일부 값 유형에는 지정되지 않기 때문에, 제작자는 계산된 keyTimes와 함께 linear 애니메이션 보간을 사용하여 특정 보간 동작을 수행하도록하는 것이 좋습니다.</p>
+            <pre class="prettyprint">
+&lt;svg width="400" height="20"&gt;
+    &lt;rect x="50" y="0" width="10" height="10" fill="red"&gt;
+        &lt;!--
+            박스를 x 좌표 상에서 0부터 390까지 2초동안 이동시킵니다.
+            0.5초 동안 오른쪽으로 200, 0.5초 동안 다시 왼쪽으로 100, 남은 1초간 다시 오른쪽으로 290만큼 이동합니다.
+        --&gt; 
+        &lt;animate attributeName="x" attributeType="XML" values="0;200;100;390" keyTimes="0;0.25;0.5;1" dur="2s" fill="freeze"/&gt;
+    &lt;/rect&gt;
+&lt;/svg&gt;
+</pre>
+            <div>
+                <svg width="400" height="20">
+                    <rect x="50" y="0" width="10" height="10" fill="red">
+                       <animate attributeName="x" attributeType="XML" values="0;200;100;390" keyTimes="0;0.25;0.5;1" dur="2s" fill="freeze"/>
+                    </rect>
+                </svg>
+            </div>
+            <p>DV를 사용하여 동일한 효과를 보여줄 수 있습니다.</p>
+            <pre class="prettyprint">
+var svg = DV.svg().size(400,20).into("dv-01");
+DV.rect().dim(50,0,10,10).fill("red").append(
+    DV.animate().toWhat("x").keyValues([0,200,100,390]).time("0s","2s").keyTimes([0,0.25,0.5,1]).freeze()
+).into(svg);
+</pre>
+            <div id="dv-01"></div>
+            <script>
+                var svg = DV.svg().size(400,20).into("dv-01");
+                DV.rect().dim(50,0,10,10).fill("red").append(
+                    DV.animate().toWhat("x").keyValues([0,200,100,390]).time("0s","2s").keyTimes([0,0.25,0.5,1]).freeze()
+                ).into(svg);
+            </script>
+        </section>
+        <section>
+            <h2>참고</h2>
+            <ul>
+                <li><a href="../dv/animate.html">animate</a></li>
+                <li><a href="../dv/rect.html">rect</a></li>
+                <li><a href="../dv/svg.html">svg</a></li>
+                <li><a href="append.html">append</a></li>
+                <li><a href="dim.html">dim</a></li>
+                <li><a href="fill.html">fill</a></li>
+                <li><a href="freeze.html">freeze</a></li>
+                <li><a href="id.html">id</a></li>
+                <li><a href="into.html">into</a></li>
+                <li><a href="keyValues.html">keyValues</a></li>
+                <li><a href="size.html">size</a></li>
+                <li><a href="time.html">time</a></li>
+                <li><a href="toWhat.html">toWhat</a></li>
+            </ul>
+        </section>
+    </section>
+    <footer>
+    </footer>
+</body>
+</html>

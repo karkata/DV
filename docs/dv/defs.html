@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <title></title>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" href="../../../css/style.css"/>           
+    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
+    <script src="../../../js/dv.core.js"></script>
+    <script src="../../../js/dv.shape.js"></script>
+</head>
+<body>
+    <section>
+        <nav class="nav-structure">
+            <ul>
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="index.html">References</a></li>
+                <li>defs</li>
+            </ul>
+        </nav>
+    </section>
+    <section>
+        <h1>DV.prototype.defs()</h1>
+        <section>
+            <h2>문법</h2>
+            <pre class="prettyprint">var ret = DV.defs();</pre>
+            </section><section><h2>파라미터</h2>
+            </section><section><h2>반환</h2>
+            <p>dve 객체를 반환합니다.</p>
+        </section>
+        <section>
+            <h2>설명</h2>
+            <p>'defs' 메소드는 'defs' 요소를 생성합니다.</p>
+            <p>'defs'는 참조되어지는 요소들을 담는 컨테이너 요소입니다.</p>
+            <p>'defs' 하위에 정의된 요소들은 바로 렌더링되지 않으나, 소스 트리상에 실질적으로 존재하는 객체입니다. 그러므로 다른 요소들에 의해 참조가 가능한 것입니다.</p>
+            <pre class="prettyprint">
+&lt;svg width="200px" height="100px"&gt;
+  &lt;defs&gt;
+    &lt;linearGradient id="S01LG01"&gt;
+      &lt;stop offset="20%" stop-color="#39F"/&gt;
+      &lt;stop offset="90%" stop-color="#F3F"/&gt;
+    &lt;/linearGradient&gt;
+  &lt;/defs&gt;
+  &lt;rect x="50" y="25" width="100" height="50" fill="url(#S01LG01)"/&gt;
+&lt;/svg&gt;
+</pre>    
+            <div>
+                <svg width="200px" height="100px">
+                    <defs>
+                        <linearGradient id="S01LG01">
+                            <stop offset="20%" stop-color="#39F"/>
+                            <stop offset="90%" stop-color="#F3F"/>
+                        </linearGradient>
+                    </defs>
+                    <rect x="50" y="25" width="100" height="50" fill="url(#S01LG01)"/>
+                </svg>
+            </div>
+            <pre class="prettyprint">
+var svg = DV.svg().size(200,100).into("dv-01");
+var defs = DV.defs().into(svg);
+var grd = DV.gradl().id("D01LG01").into(defs);
+DV.stop().stopOCO("20%","#39F").into(grd);
+DV.stop().stopOCO("90%","#F3F").into(grd);
+DV.rect().dim(50,25,100,50).fill(grd).into(svg);
+</pre>
+            <div id="dv-01"></div>
+            <script>
+                var svg = DV.svg().size(200,100).into("dv-01");
+                var defs = DV.defs().into(svg);
+                var grd = DV.gradl().id("D01LG01").into(defs);
+                DV.stop().oco("20%","#39F").into(grd);
+                DV.stop().oco("90%","#F3F").into(grd);
+                DV.rect().dim(50,25,100,50).fill(grd).into(svg);
+            </script>
+        </section>
+        <section>
+            <h2>참고</h2>
+            <ul>
+                <li><a href="../dve/dim.html">dim</a></li>
+                <li><a href="../dve/fill.html">fill</a></li>
+                <li><a href="../dve/id.html">id</a></li>
+                <li><a href="../dve/into.html">into</a></li>
+                <li><a href="../dve/oco.html">oco</a></li>
+                <li><a href="../dve/size.html">size</a></li>
+                <li><a href="getFuncIRI.html">getFuncIRI</a></li>
+                <li><a href="gradl.html">gradl</a></li>
+                <li><a href="rect.html">rect</a></li>
+                <li><a href="stop.html">stop</a></li>
+                <li><a href="svg.html">svg</a></li>
+            </ul>
+        </section>
+    </section>
+    <footer>
+    </footer>
+</body>
+</html>

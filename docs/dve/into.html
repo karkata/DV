@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <title></title>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" href="../../../css/style.css"/>           
+    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
+    <script src="../../../js/dv.core.js"></script>
+    <script src="../../../js/dv.shape.js"></script>
+</head>
+<body>
+    <section>
+        <nav class="nav-structure">
+            <ul>
+                <li><a href="../../index.html">Home</a></li>
+                <li><a href="index.html">References</a></li>
+                <li>into</li>
+            </ul>
+        </nav>
+    </section>
+    <section>
+        <h1>DVE.prototype.into()</h1>
+        <section>
+            <h2>문법</h2>
+            <pre class="prettyprint">var ret = dve.into(container);</pre>
+            </section><section><h2>파라미터</h2>
+            <table class="parameters">
+                <thead>
+                    <tr>
+                        <th>이름</th>
+                        <th>형식</th>
+                        <th>설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>container</td>
+                        <td>String|DOM object|DVE</td>
+                        <td><p>현재 DVE 객체의 부모가 될 객체입니다.</p></td>
+                    </tr>
+            </table>
+            </section><section><h2>반환</h2>
+            <p>DVE 객체를 반환합니다.</p>
+        </section>
+        <section>
+            <h2>설명</h2>
+            <p>'into' 메소드는 SVG 요소를 감싼 현재 객체를 파라미터로 주어진 객체의 자식 객체로 등록합니다.</p>
+            <p>DVE 객체를 자식 또는 부모 객체로 등록하면 SVG 요소들도 동일하게 부모, 자식 구조를 빌딩합니다.
+            <section>
+            <pre class="prettyprint">
+var svg = DV.svg().size(400,100).into("dv-01");
+// svg 요소 하위에 rect 요소가 생성됩니다.
+var r = DV.rect().dim(10,10,100,30).fill("#7c4dff").into(svg);
+var g = DV.g().into(svg);
+// rect 요소를 svg 요소에서 제거한 후, g 요소 하위로 이동시킵니다.
+r.into(g);
+</pre>
+        </section>
+        <section>
+            <h2>참고</h2>
+            <ul>
+                <li><a href="../dv/g.html">g</a></li>
+                <li><a href="../dv/rect.html">rect</a></li>
+                <li><a href="../dv/svg.html">svg</a></li>
+                <li><a href="dim.html">dim</a></li>
+                <li><a href="fill.html">fill</a></li>
+                <li><a href="size.html">size</a></li>
+            </ul>
+        </section>
+    </section>
+    <footer>
+    </footer>
+</body>
+</html>

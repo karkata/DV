@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <title></title>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" href="../../../css/style.css"/>           
+    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
+    <script src="../../../js/dv.core.js"></script>
+    <script src="../../../js/dv.shape.js"></script>
+</head>
+<body>
+    <section>
+        <nav class="nav-structure">
+            <ul>
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="index.html">References</a></li>
+                <li>unbind</li>
+            </ul>
+        </nav>
+    </section>
+    <section>
+        <h1>DVE.prototype.unbind()</h1>
+        <section>
+            <h2>문법</h2>
+            <pre class="prettyprint">var ret = dve.unbind(type, listener);</pre>
+            </section><section><h2>파라미터</h2>
+            <table class="parameters">
+                <thead>
+                    <tr>
+                        <th>이름</th>
+                        <th>형식</th>
+                        <th>설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>type</td>
+                        <td>String</td>
+                        <td>삭제하려는 이벤트 형식을 나타내는 문자열</td>
+                    </tr>
+                    <tr>
+                        <td>listener</td>
+                        <td>Function|EventListening Object</td>
+                        <td>이벤트가 발생할 때 알림을 받을 객체로써, EventListener 인터페이스를 수행하는 객체이거나, JavaScript function이어야 합니다.</td>
+                    </tr>
+                </tbody>
+            </table>
+            </section><section><h2>반환</h2>
+            <p>DVE 객체를 반환합니다.</p>
+        </section>
+        <section>
+            <h2>설명</h2>
+            <p>unbind 메소드는 요소가 특정 이벤트가 발생할 때 불려질 리스너를 삭제하고자할 때 사용됩니다.</p>
+            <pre class="prettyprint">
+var svg = new DV().svg(400, 100).into("DV-01");
+svg.text("Click the below box", 10, 20);
+var shape = svg.rect(10, 50, 200, 20).fill("red");
+shape.bind("click", function (evt) {
+    alert("I am clicked! Only once!");
+    shape.unbind("click", arguments.callee);
+    // 다음의 방법도 사용이 가능합니다.
+    // evt.target.removeEventListener(evt.type, arguments.callee);
+});
+</pre>
+            <div id="dv-01"></div>
+            <script>
+                var svg = DV.svg().size(400,100).into("dv-01");
+                DV.text().txt("Click the below box").xys(10,20).into(svg);
+                var shape = DV.rect().dim(10,50,200,20).fill("red").into(svg);
+                shape.bind("click", function () {
+                    alert("I am clicked! Only once!");
+                    shape.unbind("click", arguments.callee);
+                });
+            </script>
+        </section>
+        <section>
+            <h2>참고</h2>
+            <ul>
+                <li><a href="../dv/rect.html">rect</a></li>
+                <li><a href="../dv/svg.html">svg</a></li>
+                <li><a href="../dv/text.html">text</a></li>
+                <li><a href="bind.html">bind</a></li>
+                <li><a href="dim.html">dim</a></li>
+                <li><a href="fill.html">fill</a></li>
+                <li><a href="into.html">into</a></li>
+                <li><a href="size.html">size</a></li>
+                <li><a href="txt.html">txt</a></li>
+                <li><a href="xys.html">xys</a></li>
+            </ul>
+        </section>
+    </section>
+    <footer>
+    </footer>
+</body>
+</html>

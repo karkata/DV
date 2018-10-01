@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <title></title>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" href="../../../css/style.css"/>           
+    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
+    <script src="../../../js/DV.js"></script>
+    <script></script>
+</head>
+<body>
+    <section>
+        <nav class="nav-structure">
+            <ul>
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="index.html">References</a></li>
+                <li>d</li>
+            </ul>
+        </nav>
+    </section>
+    <section>
+        <h1>DVE.prototype.d()</h1>
+        <section>
+            <h2>문법</h2>
+            <pre class="prettyprint">var ret = dve.d(value[, append]);</pre>
+            </section><section><h2>파라미터</h2>
+            <table class="parameters">
+                <thead>
+                    <tr>
+                        <th>이름</th>
+                        <th>형식</th>
+                        <th>설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>d</td>
+                        <td>String</td>
+                        <td>
+                            <p>패스를 표현하는 좌표 데이터입니다.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>append</td>
+                        <td>Boolean</td>
+                        <td>
+                            <p>value 좌표값을 기존 좌표 데이터 이후에 기록할지 여부를 설정합니다.</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            </section><section><h2>반환</h2>
+            <p>DVE 객체를 반환합니다.</p>
+        </section>
+        <section>
+            <h2>설명</h2>
+            <p>'d' 메소드는 SVG 'path' 요소의 'd' 속성을 설정합니다.</p>
+            <pre class="prettyprint">
+&lt;svg width="5cm" height="4cm" viewBox="0 0 500 400"&gt;
+  &lt;path fill="none" stroke="blue" stroke-width="5" d="M100,100 L400,100 L400,300 L100,300 v-100 h100 v-50 h-100 z"/&gt;
+&lt;/svg&gt;
+</pre>    
+            <div>
+                <svg width="5cm" height="4cm" viewBox="0 0 500 400">
+                    <path fill="none" stroke="blue" stroke-width="5" d="M100,100 L400,100 L400,300 L100,300 v-100 h100 v-50 h-100 z"/>
+                </svg>
+            </div>
+            <pre class="prettyprint">
+var svg = DV.svg().size("5cm","4cm").viewbox(0,0,500,400).into("dv-01");
+DV.path().d("M100,100 L400,100 L400,300 L100,300 v-100 h100 v-50 h-100 z").fill("none").stroke("blue", 5).into(svg);
+</pre>
+            <div id="dv-01"></div>
+            <script>
+                var svg = DV.svg().size("5cm","4cm").viewbox(0,0,500,400).into("dv-01");
+                DV.path().d("M100,100 L400,100 L400,300 L100,300 v-100 h100 v-50 h-100 z").fill("none").stroke("blue", 5).into(svg);
+            </script>
+            <p>'d' 메소드를 사용하여 패스를 그릴 수도 있지만, 다른 메소드를 함께 사용하여 패스를 그리를 것을 권장합니다.</p>
+            <p>패스를 그리는 메소드들: 'mto, lto, vto, hto, cto, csto, qto, qsto, arc,arcf, pz</p>
+        </section>
+        <section>
+            <h2>참고</h2>
+            <ul>
+                <li><a href="../elements/path.html">path</a></li>
+                <li><a href="../elements/svg.html">svg</a></li>
+                <li><a href="arc.html">arc</a></li>
+                <li><a href="arcf.html">arcf</a></li>
+                <li><a href="csto.html">csto</a></li>
+                <li><a href="cto.html">cto</a></li>
+                <li><a href="fill.html">fill</a></li>
+                <li><a href="hto.html">hto</a></li>
+                <li><a href="into.html">into</a></li>
+                <li><a href="lto.html">lto</a></li>
+                <li><a href="mto.html">mto</a></li>
+                <li><a href="pz.html">pz</a></li>
+                <li><a href="qsto.html">qsto</a></li>
+                <li><a href="qto.html">qto</a></li>
+                <li><a href="size.html">size</a></li>
+                <li><a href="stroke.html">stroke</a></li>
+                <li><a href="viewbox.html">viewbox</a></li>
+                <li><a href="vto.html">vto</a></li>
+            </ul>
+        </section>
+    </section>
+    <footer>
+    </footer>
+</body>
+</html>

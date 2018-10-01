@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <title></title>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" href="../../../css/style.css"/>           
+    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
+    <script src="../../../js/dv.core.js"></script>
+    <script src="../../../js/dv.shape.js"></script>
+</head>
+<body>
+    <section>
+        <nav class="nav-structure">
+            <ul>
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="index.html">References</a></li>
+                <li>link</li>
+            </ul>
+        </nav>
+    </section>
+    <section>
+        <h1>DV.prototype.link()</h1>
+        <section>
+            <h2>문법</h2>
+            <pre class="prettyprint">var ret = DV.link(props);</pre>
+            </section><section><h2>파라미터</h2>
+            <p>'props' 파라미터는 'a' 요소를 생성하는데 필요한 속성을 갖는 객체입니다.</p>
+            <table class="parameters">
+                <thead>
+                    <tr>
+                        <th>이름</th>
+                        <th>형식</th>
+                        <th>설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>href</td>
+                        <td>&lt;IRI&gt;</td>
+                        <td><p>참조되는 대상의 위치를 나타내는 &lt;IRI&gt; 형식의 값</p></td>
+                    </tr>
+                    <tr>
+                        <td>target</td>
+                        <td>string</td>
+                        <td><p>연결 링크가 보여질 대상을 나타내는 문자열</p></td>
+                    </tr>
+                </tbody>
+            </table>
+            </section><section><h2>반환</h2>
+            <p>dve 객체를 반환합니다.</p>
+        </section>
+        <section>
+            <h2>설명</h2>
+            <p>'link' 메소드는 'a' 요소를 생성합니다.</p>
+            <p>'a'는 하이퍼링크를 제공하는 SVG anchor 요소입니다.</p>
+            <pre class="prettyprint">
+&lt;svg width="200px" height="100px"&gt;
+    &lt;a xlink:href="https://www.w3.org/TR/SVG11"&gt;
+        &lt;rect x="15" y="35" width="170" height="30" rx="15" fill="red"/&gt;
+        &lt;text text-anchor="middle" x="100" y="55" fill="blue"&gt;SVG 1.1&lt;/text&gt;
+    &lt;/a&gt;
+&lt;/svg&gt;
+</pre>    
+            <div>
+                <svg width="200px" height="100px">
+                    <a xlink:href="https://www.w3.org/TR/SVG11">
+                        <rect x="15" y="35" width="170" height="30" rx="15" fill="red"/>
+                        <text text-anchor="middle" x="100" y="55" fill="white">SVG 1.1</text>
+                    </a>
+                </svg>
+            </div>
+            <pre class="prettyprint">
+var svg = DV.svg().size(200,100).into("svg-01");
+var a = DV.link().xhref("https://www.w3.org/TR/SVG11").into(svg);
+var r = DV.rect().dim(15,35,170,30).round(15).fill("red").into(a);
+DV.text().xys(100,55).text("SVG 1.1").tanchor("middle").fill("white").into(a);
+</pre>
+            <div id="svg-01"></div>
+            <script>
+                var svg = DV.svg().size(200,100).into("svg-01");
+                var a = DV.link().xhref("https://www.w3.org/TR/SVG11").into(svg);
+                var r = DV.rect().dim(15,35,170,30).round(15).fill("red").into(a);
+                DV.text().xys(100,55).txt("SVG 1.1").tanchor("middle").fill("white").into(a);
+            </script>
+        </section>
+        <section>
+            <h2>참고</h2>
+            <ul>
+                <li><a href="../properites/into.html">into</a></li>
+                <li><a href="../dve/attr.html">attr</a></li>
+                <li><a href="../dve/dim.html">dim</a></li>
+                <li><a href="../dve/fill.html">fill</a></li>
+                <li><a href="../dve/round.html">round</a></li>
+                <li><a href="../dve/size.html">size</a></li>
+                <li><a href="../dve/tanchor.html">tanchor</a></li>
+                <li><a href="../dve/txt.html">txt</a></li>
+                <li><a href="../dve/xhref.html">xhref</a></li>
+                <li><a href="../dve/xys.html">xys</a></li>
+                <li><a href="rect.html">rect</a></li>
+                <li><a href="svg.html">svg</a></li>
+                <li><a href="text.html">text</a></li>
+            </ul>
+        </section>
+    </section>
+    <footer>
+    </footer>
+</body>
+</html>

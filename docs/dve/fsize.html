@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <title></title>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" href="../../../css/style.css"/>           
+    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
+    <script src="../../../js/dv.core.js"></script>
+    <script src="../../../js/dv.shape.js"></script>
+</head>
+<body>
+    <section>
+        <nav class="nav-structure">
+            <ul>
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="index.html">References</a></li>
+                <li>fsize</li>
+            </ul>
+        </nav>
+    </section>
+    <section>
+        <h1>DVE.prototype.fsize()</h1>
+        <section>
+            <h2>문법</h2>
+            <pre class="prettyprint">var ret = dve.fsize(size)</pre>
+            </section><section><h2>파라미터</h2>
+            <table class="parameters">
+                <thead>
+                    <tr>
+                        <th>이름</th>
+                        <th>형식</th>
+                        <th>설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>size</td>
+                        <td>&lt;absolute-size&gt;|&lt;relative-size&gt;</td>
+                        <td>
+                            <p>폰트의 크기입니다.</p>
+                        </td>
+                    </tr>
+                <tbody>
+            </table>
+            </section><section><h2>반환</h2>
+            <p>DVE 객체를 반환합니다.</p>
+        </section>
+        <section>
+            <h2>설명</h2>
+            <p>fsize 메소드는 렌더링이 되는 text, tspan 요소에서 텍스트 크기를 정합니다.</p>
+            <pre class="prettyprint">
+&lt;svg width="400" height="200"&gt;
+    &lt;text x="20" y="50" font-size="0.65em"&gt;This property refers to thesize fo the font from baseline.&lt;/text&gt;
+    &lt;text x="20" y="100" font-size="2em"&gt;This property referes to the size of the font from baseline.&lt;/text&gt;
+&lt;/svg&gt;
+</pre>    
+            <div>
+                <svg width="400" height="200">
+                    <text x="20" y="50" font-size="0.65em">This property refers to thesize fo the font from baseline.</text>
+                    <text x="20" y="100" font-size="2em">This property referes to the size of the font from baseline.</text>
+                </svg>
+            </div>
+            <pre class="prettyprint">
+var svg = DV.svg().size(400,200).into("dv-01");
+DV.text().txt("This property refers to thesize fo the font from baseline.").xys(20,50).fsize("0.65em").into(svg);
+DV.text().txt("This property refers to thesize fo the font from baseline.").xys(20,100).fsize("2em").into(svg);
+</pre>
+            <div id="dv-01"></div>
+            <script>
+                var svg = DV.svg().size(400,200).into("dv-01");
+                DV.text().txt("This property refers to thesize fo the font from baseline.").xys(20,50).fsize("0.65em").into(svg);
+                DV.text().txt("This property refers to thesize fo the font from baseline.").xys(20,100).fsize("2em").into(svg);
+            </script>
+            <p class="notice">결과적으로 두 문장의 폰트 크기 차이가 없음을 알 수 있습니다. 그러나 폰트의 크기가 차이가 없는 이유는 이 페이지의 CSS에서 * 지시자로 13px로 잡혀 있기 때문인데, font-size 속성이 인라인 속성이므로 우선 순위가 높을 줄 알았으나, 크롬에서는 그렇지 않은 것 같습니다. 이런 경우에는 css 메소드를 사용하여 인라인 CSS를 사용합니다.</p>
+            <pre class="prettyprint">
+var svg = DV.svg().size(400,200).into("dv-02");
+DV.text().txt("This property refers to thesize fo the font from baseline.").xys(20,50).css("font-size","0.65em").into(svg);
+DV.text().txt("This property refers to thesize fo the font from baseline.").xys(20,100).css("font-size","2em").into(svg);
+</pre>
+            <div id="dv-02"></div>
+            <script>
+                var svg = DV.svg().size(400,200).into("dv-02");
+                DV.text().txt("This property refers to thesize fo the font from baseline.").xys(20,50).css("font-size","0.65em").into(svg);
+                DV.text().txt("This property refers to thesize fo the font from baseline.").xys(20,100).css("font-size","2em").into(svg);
+            </script>
+
+        </section>
+        <section>
+            <h2>참고</h2>
+            <ul>
+                <li><a href="../dv/svg.html">svg</a></li>
+                <li><a href="../dv/text.html">text</a></li>
+                <li><a href="css.html">css</a></li>
+                <li><a href="into.html">into</a></li>
+                <li><a href="size.html">size</a></li>
+                <li><a href="txt.html">txt</a></li>
+                <li><a href="xys.html">xys</a></li>
+            </ul>
+        </section>
+    </section>
+    <footer>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <title></title>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" href="../../../css/style.css"/>           
+    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
+    <script src="../../../js/dv.core.js"></script>
+    <script src="../../../js/dv.shape.js"></script>
+    <script src="../../../js/dv.animation.js"></script>
+</head>
+<body>
+    <section>
+        <nav class="nav-structure">
+            <ul>
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="index.html">References</a></li>
+                <li>animate</li>
+            </ul>
+        </nav>
+    </section>
+    <section>
+        <h1>DV.prototype.animate()</h1>
+        <section>
+            <h2>문법</h2>
+            <pre class="prettyprint">var ret = DV.animate(props);</pre>
+            </section><section><h2>파라미터</h2>
+            </section><section><h2>반환</h2>
+            <p>DVE 객체를 반환합니다.</p>
+        </section>
+        <section>
+            <h2>설명</h2>
+            <p>animate 메소드는 animate 요소를 생성합니다.</p>
+            <p>animate 요소는 어떤 속성을 시간의 흐름에 따라 변화시키는 애니메이션하고자 할 때 사용합니다.</p>
+            <p>예를 들어, 상자(rect)의 불투명도(opacity)를 시간에 따라 변환시킬 수 있습니다.</p>
+            <pre class="prettyprint">
+&lt;svg width="200" height="100"&gt;
+    &lt;rect x="75" y="25" width="50" height="50" fill="red"&gt;
+        &lt;animate attributeName="opacity" attributeType="CSS" from="1" to="0" begin="0s" dur="3s" fill="freeze"/&gt;
+    &lt;/rect&gt;
+&lt;/svg&gt;
+</pre>
+            <div>
+                <svg width="200" height="100">
+                    <rect x="75" y="25" width="50" height="50" fill="red">
+                        <animate attributeName="opacity" attributeType="CSS" from="1" to="0" begin="0s" dur="3s" fill="freeze"/>
+                    </rect>
+                </svg>
+            </div>
+            <p>DV를 사용하여 동일한 애니메이션을 수행할 수 있습니다.</p>
+            <pre class="prettyprint">
+var svg = DV.svg().size(200,100).into("dv-01");
+var rect = DV.rect().dim(75,25,50,50).fill("red").into(svg);
+DV.animate().toWhat("opacity").fromToBy(1,0).time("0s","3s").freeze().into(rect);
+</pre>
+            <div id="dv-01"></div>
+            <script>
+                var svg = DV.svg().size(200,100).into("dv-01");
+                var rect = DV.rect().dim(75,25,50,50).fill("red").into(svg);
+                DV.animate().toWhat("opacity").fromToBy(1,0).time("0s","3s").freeze().into(rect);
+            </script>
+            <p>'href' 속성을 사용하면 애니메이션의 대상이 되는 요소를 참조 형식으로 설정할 수 있습니다.</p>
+            <pre class="prettyprint">
+&lt;svg width="200" height="100"&gt;
+    &lt;rect x="75" y="25" width="50" height="50" fill="red" id="S02R1"/&gt;
+    &lt;animate xlink:href="#S02R1" attributeName="opacity" attributeType="CSS" from="1" to="0" begin="0s" dur="3s" fill="freeze"/&gt;
+&lt;/svg&gt;
+</pre>
+            <div>
+                <svg width="200" height="100">
+                    <rect x="75" y="25" width="50" height="50" fill="red" id="S02R01"/>
+                    <animate xlink:href="#S02R01" attributeName="opacity" attributeType="CSS" from="1" to="0" begin="0s" dur="3s" fill="freeze"/>
+                </svg>
+            </div>
+            <p>DV를 사용하면 다음과 같습니다.</p>
+            <pre class="prettyprint">
+var svg = DV.svg().size(200,100).into("dv-02");
+DV.rect().dim(75,25,50,50).fill("red").id("D02R01").into(svg);
+DV.animate().toWhat("opacity").xhref("#D02R01").fromToBy(1,0).time("0s","3s").freeze().into(svg);
+</pre>
+            <div id="dv-02"></div>
+            <script>
+                var svg = DV.svg().size(200,100).into("dv-02");
+                DV.rect().dim(75,25,50,50).fill("red").id("D02R01").into(svg);
+                DV.animate().toWhat("opacity").xhref("#D02R01").fromToBy(1,0).time("0s","3s").freeze().into(svg);
+            </script>
+        </section>
+        <section>
+            <h2>참고</h2>
+            <ul>
+                <li><a href="../dve/dim.html">dim</a></li>
+                <li><a href="../dve/fill.html">fill</a></li>
+                <li><a href="../dve/freeze.html">freeze</a></li>
+                <li><a href="../dve/fromToBy.html">fromToBy</a></li>
+                <li><a href="../dve/id.html">id</a></li>
+                <li><a href="../dve/into.html">into</a></li>
+                <li><a href="../dve/size.html">size</a></li>
+                <li><a href="../dve/time.html">time</a></li>
+                <li><a href="../dve/toWhat.html">toWhat</a></li>
+                <li><a href="../dve/xhref.html">xhref</a></li>
+                <li><a href="rect.html">rect</a></li>
+                <li><a href="svg.html">svg</a></li>
+            </ul>
+        </section>
+    </section>
+    <footer>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <title></title>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" href="../../../css/style.css"/>           
+    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
+    <script src="../../../js/dv.core.js"></script>
+    <script src="../../../js/dv.shape.js"></script>
+</head>
+<body>
+    <section>
+        <nav class="nav-structure">
+            <ul>
+                <li><a href="../../index.html">Home</a></li>
+                <li><a href="index.html">References</a></li>
+                <li>desc</li>
+            </ul>
+        </nav>
+    </section>
+    <section>
+        <h1>DV.prototype.desc()</h1>
+        <section>
+            <h2>문법</h2>
+            <pre class="prettyprint">var ret = DV.desc();</pre>
+            </section><section><h2>파라미터</h2>
+            </section><section><h2>반환</h2>
+            <p>dve 객체를 반환합니다.</p>
+        </section>
+        <section>
+            <h2>설명</h2>
+            <p>'desc' 메소드는 'desc' 요소를 생성합니다.</p>
+            <p>'desc' 요소는 설명을 하기 위한 용도로 사용되며, 화면에 렌더링되지 않습니다.</p>
+            <pre class="prettyprint">
+&lt;svg width="200px" height="100px"&gt;
+    &lt;g style="cursor:pointer"&gt;
+        &lt;desc&gt;Nothing will happen.&lt;/desc&gt;
+        &lt;rect x="15" y="15" width="170" height="30" rx="15" fill="red"/&gt;
+        &lt;text x="100" y="35" text-anchor="middle" fill="white"&gt;Click me!&lt;/text&gt;
+    &lt;/g&gt;
+&lt;/svg&gt;
+</pre>    
+            <div>
+                <svg width="200px" height="100px">
+                    <g style="cursor:pointer">
+                        <desc>Nothing will happen.</desc>
+                        <rect x="15" y="15" width="170" height="30" rx="15" fill="red"/>
+                        <text x="100" y="35" text-anchor="middle" fill="white">No action</text>
+                    </g>
+                </svg>
+            </div>
+            <pre class="prettyprint">
+var svg = DV.svg().size(200,100).into("dv-01");
+var g = DV.g().css("cursor", "pointer").into(svg);
+DV.desc().txt("Nothing will happen.").into(g);
+DV.rect().dim(15,15,170,30).round(15).fill("red").into(g);
+DV.text().txt("No action").xys(100,35).fill("white").attr("text-anchor", "middle").into(g);
+</pre>
+            <div id="dv-01"></div>
+            <script>
+                var svg = DV.svg().size(200,100).into("dv-01");
+                var g = DV.g().css("cursor", "pointer").into(svg);
+                DV.desc().txt("Nothing will happen.").into(g);
+                DV.rect().dim(15,15,170,30).round(15).fill("red").into(g);
+                DV.text().txt("No action").xys(100,35).fill("white").attr("text-anchor", "middle").into(g);
+            </script>
+        </section>
+        <section>
+            <h2>참고</h2>
+            <ul>
+                <li><a href="../dve/attr.html">attr</a></li>
+                <li><a href="../dve/css.html">css</a></li>
+                <li><a href="../dve/dim.html">dim<a/></li>
+                <li><a href="../dve/fill.html">fill</a></li>
+                <li><a href="../dve/into.html">into</a></li>
+                <li><a href="../dve/round.html">round</a></li>
+                <li><a href="../dve/size.html">size</a></li>
+                <li><a href="../dve/txt.html">txt</a></li>
+                <li><a href="../dve/xys.html">xys</a></li>
+                <li><a href="g.html">g</a></li>
+                <li><a href="rect.html">rect</a></li>
+                <li><a href="svg.html">svg</a></li>
+                <li><a href="text.html">text</a></li>
+            </ul>
+        </section>
+    </section>
+    <footer>
+    </footer>
+</body>
+</html>

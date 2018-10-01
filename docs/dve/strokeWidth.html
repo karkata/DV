@@ -1,0 +1,120 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <title></title>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" href="../../../css/style.css"/>           
+    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
+    <script src="../../../js/dv.core.js"></script>
+    <script src="../../../js/dv.shape.js"></script>
+</head>
+<body>
+    <section>
+        <nav class="nav-structure">
+            <ul>
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="index.html">References</a></li>
+                <li>strokeWidth</li>
+            </ul>
+        </nav>
+    </section>
+    <section>
+        <h1>DVE.prototype.strokeWidth()</h1>
+        <section>
+            <h2>문법</h2>
+            <pre class="prettyprint">var ret = dve.strokeWidth(width)</pre>
+            </section><section><h2>파라미터</h2>
+            <table class="parameters">
+                <thead>
+                    <tr>
+                        <th>이름</th>
+                        <th>형식</th>
+                        <th>설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>width</td>
+                        <td>&lt;length&gt;</td>
+                        <td>
+                            <p>테두리의 크기를 나타냅니다. 퍼센티지 형식 및 길이(2, 2px, 2cm, ...)를 나타내는 형식을 사용할 수 있습니다.</p>
+                            <p>퍼센티지 형식을 사용하는 경우, 현재 viewport에 대한 퍼센티지만큼 표현합니다.</p>
+                            <p>0이면 렌더링을 하지 않으며, 음수인 경우 오류가 발생합니다.</p>
+                        </td>
+                    </tr>
+                <tbody>
+            </table>
+            </section><section><h2>반환</h2>
+            <p>DVE 객체를 반환합니다.</p>
+        </section>
+        <section>
+            <h2>설명</h2>
+            <p>strokeWidth 메소드는 SVG 요소의 stroke-width 속성을 설정합니다.</p>
+            <p>width 파라미터는 테두리의 크기를 설정합니다. stroke 메소드를 사용할 때, width를 명시하지 않았다면 1로 설정됩니다.</p>
+            <p>storkeWidth 메소드를 사용하기 보다는 stroke 메소드의  width 파라미터를 더 자주 사용하게 됩니다.</p>
+            <pre class="prettyprint">
+&lt;svg width="350" height="220"&gt;
+  &lt;path d="M60,60 l50,-20 l50,20 l50,-20 l50,20 l50,-20" fill="none" stroke="#212121" stroke-width="23"/&gt;
+  &lt;path d="M60,60 l50,-20 l50,20 l50,-20 l50,20 l50,-20" fill="none" stroke="#448AFF" stroke-width="3"/&gt;
+  &lt;path d="M60,120 l50,-20 l50,20 l50,-20 l50,20 l50,-20" fill="none" stroke="#212121" stroke-width="23"/&gt;
+  &lt;path d="M60,120 l50,-20 l50,20 l50,-20 l50,20 l50,-20" fill="none" stroke="#448AFF" stroke-width="3"/&gt;
+  &lt;path d="M60,180 l50,-20 l50,20 l50,-20 l50,20 l50,-20" fill="none" stroke="#212121" stroke-width="23"/&gt;
+  &lt;path d="M60,180 l50,-20 l50,20 l50,-20 l50,20 l50,-20" fill="none" stroke="#448AFF" stroke-width="3"/&gt;
+&lt;/svg&gt;
+</pre>
+            <div>
+                <svg width="350" height="220">
+                    <path d="M60,60 l50,-20 l50,20 l50,-20 l50,20 l50,-20" fill="none" stroke="#212121" stroke-width="23"/>
+                    <path d="M60,60 l50,-20 l50,20 l50,-20 l50,20 l50,-20" fill="none" stroke="#448AFF" stroke-width="3"/>
+                    <path d="M60,120 l50,-20 l50,20 l50,-20 l50,20 l50,-20" fill="none" stroke="#212121" stroke-width="23"/>
+                    <path d="M60,120 l50,-20 l50,20 l50,-20 l50,20 l50,-20" fill="none" stroke="#448AFF" stroke-width="3"/>
+                    <path d="M60,180 l50,-20 l50,20 l50,-20 l50,20 l50,-20" fill="none" stroke="#212121" stroke-width="23"/>
+                    <path d="M60,180 l50,-20 l50,20 l50,-20 l50,20 l50,-20" fill="none" stroke="#448AFF" stroke-width="3"/>
+                </svg>
+            </div>
+            <pre class="prettyprint">
+var svg = DV.svg().size(350,220).into("dv-01");
+
+DV.path().d("M60,60 l50,-20 l50,20 l50,-20 l50,20 l50,-20").fill("none").stroke("#212121",23).into(svg);
+DV.path().d("M60,60 l50,-20 l50,20 l50,-20 l50,20 l50,-20").fill("none").stroke("#448AFF",3).into(svg);
+
+DV.path().d("M60,120 l50,-20 l50,20 l50,-20 l50,20 l50,-20").fill("none").stroke("#212121").attr("stroke-width",23).into(svg);
+DV.path().d("M60,120 l50,-20 l50,20 l50,-20 l50,20 l50,-20").fill("none").stroke("#448AFF").attr("stroke-width",3).into(svg);
+
+DV.path().d("M60,180 l50,-20 l50,20 l50,-20 l50,20 l50,-20").fill("none").stroke("#212121").strokeWidth(23).into(svg);
+DV.path().d("M60,180 l50,-20 l50,20 l50,-20 l50,20 l50,-20").fill("none").stroke("#448AFF").strokeWidth(3).into(svg);
+</pre>
+            <div id="dv-01"></div>
+            <script>
+                var svg = DV.svg().size(350,220).into("dv-01");
+
+                DV.path().d("M60,60 l50,-20 l50,20 l50,-20 l50,20 l50,-20").fill("none").stroke("#212121",23).into(svg);
+                DV.path().d("M60,60 l50,-20 l50,20 l50,-20 l50,20 l50,-20").fill("none").stroke("#448AFF",3).into(svg);
+
+                DV.path().d("M60,120 l50,-20 l50,20 l50,-20 l50,20 l50,-20").fill("none").stroke("#212121").attr("stroke-width",23).into(svg);
+                DV.path().d("M60,120 l50,-20 l50,20 l50,-20 l50,20 l50,-20").fill("none").stroke("#448AFF").attr("stroke-width",3).into(svg);
+
+                DV.path().d("M60,180 l50,-20 l50,20 l50,-20 l50,20 l50,-20").fill("none").stroke("#212121").strokeWidth(23).into(svg);
+                DV.path().d("M60,180 l50,-20 l50,20 l50,-20 l50,20 l50,-20").fill("none").stroke("#448AFF").strokeWidth(3).into(svg);
+            </script>
+        </section>
+        <section>
+            <h2>참고</h2>
+            <ul>
+                <li><a href="../dv/path.html">path</a></li>
+                <li><a href="../dv/svg.html">svg</a></li>
+                <li><a href="attr.html">attr</a></li>
+                <li><a href="d.html">d</a></li>
+                <li><a href="fill.html">fill</a></li>
+                <li><a href="into.html">into</a></li>
+                <li><a href="size.html:">size</a></li>
+                <li><a href="stroke.html">stroke</a></li>
+            </ul>
+        </section>
+    </section>
+    <footer>
+    </footer>
+</body>
+</html>

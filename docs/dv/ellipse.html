@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <title></title>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" href="../../../css/style.css"/>           
+    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
+    <script src="../../../js/dv.core.js"></script>
+    <script src="../../../js/dv.shape.js"></script>
+</head>
+<body>
+    <section>
+        <nav class="nav-structure">
+            <ul>
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="index.html">References</a></li>
+                <li>ellipse</li>
+            </ul>
+        </nav>
+    </section>
+    <section>
+        <h1>DV.prototype.ellipse()</h1>
+        <section>
+            <h2>문법</h2>
+            <pre class="prettyprint">var ret = DV.ellipse(props);</pre>
+            </section><section><h2>파라미터</h2>
+            <p>'props' 파라미터는 'ellipse' 요소를 생성하는데 필요한 속성을 갖는 객체입니다.</p>           
+            <table class="parameters">
+                <thead>
+                    <tr>
+                        <th>이름</th>
+                        <th>형식</th>
+                        <th>설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>cx, cy</th>
+                        <td>&lt;coordinate&gt;</td>
+                        <td>
+                            <p>원의 중점을 나타내는 위치입니다.</p>
+                            <p>설정을 하지 않으면 (0, 0) 위치를 가리킵니다.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>rx, ry</td>
+                        <td>&lt;coordinate&gt;</td>
+                        <td>
+                            <p>타원의 두 반지름을 나타냅니다.</p>
+                            <p>rx는 x 축 방향의 반지름, ry는 y 축 방향의 반지름을 나타냅니다.</p>
+                            <p>0이면 렌더링을 하지 않으며, 음수값이 설정되면 오류가 발생합니다.</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            </section><section><h2>반환</h2>
+            <p>dve 객체를 반환합니다.</p>
+        </section>
+        <section>
+            <h2>설명</h2>
+            <p>'ellipse' 메소드는 'ellipse' 엘리먼트를 생성합니다.</p>
+            <pre class="prettyprint">
+&lt;svg width="250px" height="150px"&gt;
+  &lt;ellipse cx="125" cy="75" rx="100" ry="50" stroke="blue" stroke-width="10" fill="red"/&gt;
+&lt;/svg&gt;
+</pre>    
+            <div>
+                <svg width="250px" height="150px">
+                    <ellipse cx="125" cy="75" rx="100" ry="50" stroke="blue" stroke-width="10" fill="red"/>
+                </svg>
+            </div>
+            <pre class="prettyprint">
+var svg = DV.svg().size(250,150).into("dv-01");
+DV.ellipse().center(125,75).round(100,50).fill("red").stroke("blue", 10).into(svg);
+</pre>
+            <div id="dv-01"></div>
+            <script>
+                var svg = DV.svg().size(250,150).into("dv-01");
+                DV.ellipse().center(125,75).round(100,50).fill("red").stroke("blue", 10).into(svg);
+            </script>
+        </section>
+        <section>
+            <h2>참고</h2>
+            <ul>
+                <li><a href="../dve/center.html">center</a></li>
+                <li><a href="../dve/fill.html">fill</a></li>
+                <li><a href="../dve/into.html">into</a></li>
+                <li><a href="../dve/round.html">round</a></li>
+                <li><a href="../dve/size.html">size</a></li>
+                <li><a href="../dve/stroke.html">stroke</a></li>
+                <li><a href="svg.html">svg</a></li>
+            </ul>
+        </section>
+    </section>
+    <footer>
+    </footer>
+</body>
+</html>

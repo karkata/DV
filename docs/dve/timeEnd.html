@@ -1,0 +1,187 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <title></title>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" href="../../../css/style.css"/>           
+    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
+    <script src="../../../js/dv.core.js"></script>
+    <script src="../../../js/dv.shape.js"></script>
+    <script src="../../../js/dv.animation.js"></script>
+</head>
+<body>
+    <section>
+        <nav class="nav-structure">
+            <ul>
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="index.html">References</a></li>
+                <li>timeEnd</li>
+            </ul>
+        </nav>
+    </section>
+    <section>
+        <h1>DVE.prototype.timeEnd()</h1>
+        <section>
+            <h2>문법</h2>
+            <pre class="prettyprint">var ret = dve.timeEnd(value);</pre>
+            </section><section><h2>파라미터</h2>
+            <table class="parameters">
+                <thead>
+                    <tr>
+                        <th>이름</th>
+                        <th>형식</th>
+                        <th>설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>value</td>
+                        <td>string, &lt;end-value-list&gt;</td>
+                        <td>
+                            <p>애니메이션이 동작하는 지속 시간을 제한할 수 있는 최종 값을 정의합니다.</p>
+                            <p>end 값은 세미콜론(;) 문자를 구분자로 사용하는 목록입니다.</p>
+                            <p>end 값은 &lt;offset-value&gt;, &lt;syncbase-value&gt;, &lt;event-value&gt;, &lt;repeat-value&gt;, &lt;accessKey-value&gt; &lt;wallclock-sync-value&gt;로 나타낼 수 있습니다.</p>
+                            <ul>
+                                <li>offset-value: +시간값, -시간값 같은 형식으로 나타냅니다. SMIL Animation의 경우 요소 시작은 암시적으로 동기베이스의 오프셋으로 시작됩니다. SVG에서 동기베이스는 도큐먼트가 시작(로드)될 때를 의미합니다.</li>
+                                <li>syncbase-value: 동기베이스와 그 동기베이스로부터의 선택적인 오프셋을 나타냅니다. 요소의 시작은 다른 애니메이션의 시작 또는 끝을 기준으로 정의됩니다. 동기베이스는 참조된 애니메이션 요소의 시작 또는 끝과 동기화할지 여부를 식별하기 위해서 다른 애니메이션의 ID와 그 다음에 begin 또는 end로 구성됩니다.</li>
+                                <li>event-value: 이벤트와 요소의 시작을 결정짓는 선택적 오프셋을 나타냅니다. 애니메이션의 시작을 이벤트가 발생하는 시간으로 설정합니다.</li>
+                                <li>repeat-value: 규정된 반복적 이벤틀를 나타냅니다. 애니메이션의 시작은 반복 이벤트가 지정된 반복 값으로 발생하는 시간을 기준으로 정의합니다</li>
+                                <li>accessKey-value: 애니메이션의 사작요소를 결정 짓는 accessKey를 나타냅니다. 애니메이션 시작은 사용자가 입력키(accessKey)를 입력한 시간을 기준으로 정의됩니다.</li>
+                                <li>wallclock-sync-value: 애니메이션 시작을 실제 시간으로 나타냅니다.</li>
+                                <li>indefinite: 애니메이션의 시작을 "beginElement()" 메소드를 호출 또는 대상을 가리키는 하이퍼링크에 의해 결정됩니다.</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            </section><section><h2>반환</h2>
+            <p>DW(DV Wrapper) 객체</p>
+        </section>
+        <section>
+            <h2>설명</h2>
+            <p>timeEnd 메소드는 animate, set, animateMotion, animateTransform 요소의 end 속성을 설정합니다.</p>
+            <p>SVG 애니메이션은 begin, dur, end 속성을 사용하여 애니메이션의 동작하는 시간을 설정할 수 있습니다.</p>
+            <pre class="prettyprint">
+&lt;svg width="400" height="200"&gt;
+    &lt;rect x="50" y="0" width="10" height="10" fill="red"&gt;
+        &lt;!-- 상자가 좌에서 우로 5초 내로 이동하며, 이 애니메이션을 5회 반복하지만, 총 시간이 10초가 흐르면 애니메이션은 정지합니다. --&gt;
+        &lt;animate attributeName="x" attributeType="XML" from="50" to="390" begin="0s" dur="5s" end="10s" fill="freeze" id="S01R01" repeatCount="5"/&gt;
+    &lt;/rect&gt;
+    &lt;rect x="50" y="30" width="10" height="10" fill="red"&gt;
+        &lt;!-- 상자가 좌에서 우로 5초 내로 이동해야 하지만, 2초가 지나면 중지됩니다. --&gt;
+        &lt;animate attributeName="x" attributeType="XML" from="50" to="390" begin="0s" dur="5s" end="+2s" fill="freeze" id="S01R02"/&gt;
+    &lt;/rect&gt;
+    &lt;rect x="50" y="60" width="10" height="10" fill="red"&gt;
+        &lt;!-- 두 번째 상자가 정지된 후 1초가 지나면 상자의 애니메이션도 중지됩니다. --&gt;
+        &lt;animate attributeName="x" attributeType="XML" from="50" to="390" begin="0s" dur="5s" end="S01R02.end+1s" fill="freeze"/&gt;
+    &lt;/rect&gt;
+    &lt;rect x="50" y="90" width="10" height="10" fill="red"&gt;
+        &lt;!-- 첫 번째 상자의 애니메이션이 시작된 후 2초가 지나면 상자의 애니메이션도 중지됩니다 --&gt;
+        &lt;animate attributeName="x" attributeType="XML" from="50" to="390" begin="0" dur="5s" end="S01R01.beginEvent+2s" fill="freeze"/&gt;
+    &lt;/rect&gt;
+    &lt;rect x="50" y="120" width="10" height="10" fill="red"&gt;
+        &lt;!-- 첫 번째 상자의 애니메이션 다음 반복을 수행하기 전에 상자의 애니메이션도 중지됩니다. --&gt;
+        &lt;animate attributeName="x" attributeType="XML" from="50" to="390" begin="0" dur="10s" end="S01R01.repeat(1)" fill="freeze"/&gt;
+    &lt;/rect&gt;
+    &lt;rect x="50" y="150" width="10" height="10" fill="red"&gt;
+        &lt;!-- 's' 문자키를 누르면 애니메이션이 중지됩니다. --&gt;
+        &lt;animate attributeName="x" attributeType="XML" from="50" to="390" begin="0" dur="5s" end="accessKey(s)" fill="freeze"/&gt;
+    &lt;/rect&gt;
+&lt;/svg&gt;
+</pre>
+            <div>
+                <svg width="400" height="200">
+                    <rect x="50" y="0" width="10" height="10" fill="red">
+                        <animate attributeName="x" attributeType="XML" from="50" to="390" begin="0s" dur="5s" end="10s" fill="freeze" id="S01R01" repeatCount="5"/>
+                    </rect>
+                    <rect x="50" y="30" width="10" height="10" fill="red">
+                        <animate attributeName="x" attributeType="XML" from="50" to="390" begin="0s" dur="5s" end="+2s" fill="freeze" id="S01R02"/>
+                    </rect>
+                    <rect x="50" y="60" width="10" height="10" fill="red">
+                        <animate attributeName="x" attributeType="XML" from="50" to="390" begin="0s" dur="5s" end="S01R02.end+1s" fill="freeze"/>
+                    </rect>
+                    <rect x="50" y="90" width="10" height="10" fill="red">
+                        <animate attributeName="x" attributeType="XML" from="50" to="390" begin="0" dur="5s" end="S01R01.beginEvent+2s" fill="freeze"/>
+                    </rect>
+                    <rect x="50" y="120" width="10" height="10" fill="red">
+                        <animate attributeName="x" attributeType="XML" from="50" to="390" begin="0" dur="10s" end="S01R01.repeat(1)" fill="freeze"/>
+                    </rect>
+                    <rect x="50" y="150" width="10" height="10" fill="red">
+                        <animate attributeName="x" attributeType="XML" from="50" to="390" begin="0" dur="5s" end="accessKey(s)" fill="freeze"/>
+                    </rect>
+                </svg>
+            </div>
+            <p class="notice">accessKey를 사용하는 경우 크롬에서는 동작하지 않습니다.</p>
+            <p>DV를 사용하여 동일한 효과를 보여줄 수 있습니다.</p>
+            <pre class="prettyprint">
+var svg = DV.svg().size(400,200).into("dv-01");
+DV.rect().dim(50,0,10,10).fill("red").append(
+    DV.animate().toWhat("x").fromToBy(50, 390).timeBegin("0s").timeDur("5s").timeEnd("10s").repeatCount(5).freeze().id("D01R01")
+).into(svg);
+DV.rect().dim(50,30,10,10).fill("red").append(
+    DV.animate().toWhat("x").fromToBy(50, 390).timeBegin("0s").timeDur("5s").timeEnd("+2s").freeze().id("D01R02")
+).into(svg);
+DV.rect().dim(50,60,10,10).fill("red").append(
+    DV.animate().toWhat("x").fromToBy(50, 390).timeBegin("0s").timeDur("5s").timeEnd("D01R02.end+1s").freeze()
+).into(svg);
+DV.rect().dim(50,90,10,10).fill("red").append(
+    DV.animate().toWhat("x").fromToBy(50, 390).timeBegin("0s").timeDur("5s").timeEnd("D01R01.beginEvent+2s").freeze()
+).into(svg);
+DV.rect().dim(50,120,10,10).fill("red").append(
+    DV.animate().toWhat("x").fromToBy(50, 390).timeBegin("0s").timeDur("10s").timeEnd("D01R01.repeat(1)").freeze()
+).into(svg);
+DV.rect().dim(50,150,10,10).fill("red").append(
+    DV.animate().toWhat("x").fromToBy(50, 390).timeBegin("0s").timeDur("5s").timeEnd("accessKey(s)").freeze()
+).into(svg);
+</pre>
+            <div id="dv-01"></div>
+            <script>
+                var svg = DV.svg().size(400,200).into("dv-01");
+                DV.rect().dim(50,0,10,10).fill("red").append(
+                    DV.animate().toWhat("x").fromToBy(50, 390).timeBegin("0s").timeDur("5s").timeEnd("10s").repeatCount(5).freeze().id("D01R01")
+                ).into(svg);
+                DV.rect().dim(50,30,10,10).fill("red").append(
+                    DV.animate().toWhat("x").fromToBy(50, 390).timeBegin("0s").timeDur("5s").timeEnd("+2s").freeze().id("D01R02")
+                ).into(svg);
+                DV.rect().dim(50,60,10,10).fill("red").append(
+                    DV.animate().toWhat("x").fromToBy(50, 390).timeBegin("0s").timeDur("5s").timeEnd("D01R02.end+1s").freeze()
+                ).into(svg);
+                DV.rect().dim(50,90,10,10).fill("red").append(
+                    DV.animate().toWhat("x").fromToBy(50, 390).timeBegin("0s").timeDur("5s").timeEnd("D01R01.beginEvent+2s").freeze()
+                ).into(svg);
+                DV.rect().dim(50,120,10,10).fill("red").append(
+                    DV.animate().toWhat("x").fromToBy(50, 390).timeBegin("0s").timeDur("10s").timeEnd("D01R01.repeat(1)").freeze()
+                ).into(svg);
+                DV.rect().dim(50,150,10,10).fill("red").append(
+                    DV.animate().toWhat("x").fromToBy(50, 390).timeBegin("0s").timeDur("5s").timeEnd("accessKey(s)").freeze()
+                ).into(svg);
+            </script>
+        </section>
+        <section>
+            <h2>참고</h2>
+            <ul>
+                <li><a href="../dv/animate.html">animate</a></li>
+                <li><a href="../dv/rect.html">rect</a></li>
+                <li><a href="../dv/svg.html">svg</a></li>
+                <li><a href="append.html">append</a></li>
+                <li><a href="dim.html">dim</a></li>
+                <li><a href="fill.html">fill</a></li>
+                <li><a href="freeze.html">freeze</a></li>
+                <li><a href="fromToBy.html">fromToBy</a></li>
+                <li><a href="id.html">id</a></li>
+                <li><a href="into.html">into</a></li>
+                <li><a href="repeatCount.html">repeatCount</a></li>
+                <li><a href="size.html">size</a></li>
+                <li><a href="time.html">time</a></li>
+                <li><a href="timeBegin.html">timeBegin</a></li>
+                <li><a href="timeDur.html">timeDur</a></li>
+                <li><a href="toWhat.html">toWhat</a></li>
+            </ul>
+        </section>
+    </section>
+    <footer>
+    </footer>
+</body>
+</html>

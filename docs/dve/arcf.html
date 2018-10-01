@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <title></title>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" href="../../../css/style.css"/>           
+    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
+    <script src="../../../js/dv.core.js"></script>
+    <script src="../../../js/dv.shape.js"></script>
+</head>
+<body>
+    <section>
+        <nav class="nav-structure">
+            <ul>
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="index.html">References</a></li>
+                <li>arcf</li>
+            </ul>
+        </nav>
+    </section>
+    <section>
+        <h1>DVE.prototype.arcf()</h1>
+        <section>
+            <h2>문법</h2>
+            <pre class="prettyprint">var ret = dve.arcf(rx[, ry[, xar]]);</pre>
+            </section><section><h2>파라미터</h2>
+            <table class="parameters">
+                <thead>
+                    <tr>
+                        <th>이름</th>
+                        <th>형식</th>
+                        <th>설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>rx, ry</td>
+                        <td>&lt;coordinate&gt;</td>
+                        <td>
+                            <p>타원의 모양을 결정짓는 x 축 반지름, y 축 반지름의 크기입니다.</p>
+                            <p>ry가 생략되면 ry는 rx와 같은 값으로 대체됩니다.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>xar</td>
+                        <td>&lt;degree&gt;</td>
+                        <td>
+                            <p>rx, ry의 타원을 원점(0, 0)에 놓여 있다고 할 때,  x 축에서 양의 방향으로 주어진 각의 크기만큼 타원을 회전시킵니다.</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            </section><section><h2>반환</h2>
+            <p>DVE 객체를 반환합니다.</p>
+        </section>
+        <section>
+            <h2>설명</h2>
+            <p>'arcf' 메소드는 SVG path 요소의 'elliptical arc' 커맨드를 나타냅니다.</p>
+            <p>'arcf' 메소드가 'arc' 메소드와 다른 점은 현재 위치를 기준으로 하여 아래로, 호가 아닌 완전한 타원을 그립니다.</p>
+            <section>
+            <pre class="prettyprint">
+&lt;svg width="6.5cm" height="3cm" viewBox="0 0 650, 300"&gt;
+  &lt;path d="M250,50 a100,100 0 1 0 0,200 a100,100 0 1 0 0,-200" fill="none" stroke="red" stroke-width="5"/&gt;
+  &lt;path d="M500,50 a100,100 0 1 0 0,200 a100,100 0 1 0 0,-200" fill="none" stroke="green" stroke-width="5"/&gt;
+&lt;/svg&gt;
+</pre>
+            <div>
+                <svg width="6.5cm" height="3cm" viewBox="0 0 650, 300">
+                    <path d="M250,50 a100,100 0 1 0 0,200 a100,100 0 1 0 0,-200" fill="none" stroke="red" stroke-width="5"/>
+                    <path d="M500,50 a100,100 0 1 0 0,200 a100,100 0 1 0 0,-200" fill="none" stroke="green" stroke-width="5"/>
+                </svg>
+            </div>
+            <pre class="prettyprint">
+var svg = DV.svg().size("6.5cm","3cm").viewbox(0,0,650,300).into("dv-01");
+DV.path().fill("none").stroke("red",5).mto(250,50).arc(100,100,0,1,0,0,200,true).arc(100,100,0,1,0,0,-200,true).into(svg);
+DV.path().fill("none").stroke("green",5).mto(500,50).arcf(100,100,0).into(svg);
+</pre>
+            <div id="dv-01"></div>
+            <script>
+                var svg = DV.svg().size("6.5cm","3cm").viewbox(0,0,650,300).into("dv-01");
+                DV.path().fill("none").stroke("red",5).mto(250,50).arc(100,100,0,1,0,0,200,true).arc(100,100,0,1,0,0,-200,true).into(svg);
+                DV.path().fill("none").stroke("green",5).mto(500,50).arcf(100,100,0).into(svg);
+            </script>
+        </section>
+        <section>
+            <h2>참고</h2>
+            <ul>
+                <li><a href="../dv/path.html">path</a></li>
+                <li><a href="../dv/svg.html">svg</a></li>
+                <li><a href="arc.html">arc</a></li>
+                <li><a href="csto.html">csto</a></li>
+                <li><a href="cto.html">cto</a></li>
+                <li><a href="fill.html">fill</a></li>
+                <li><a href="hto.html">hto</a></li>
+                <li><a href="into.html">into</a></li>
+                <li><a href="lto.html">lto</a></li>
+                <li><a href="mto.html">mto</a></li>
+                <li><a href="pz.html">pz</a></li>
+                <li><a href="qsto.html">qsto</a></li>
+                <li><a href="qto.html">qto</a></li>
+                <li><a href="size.html">size</a></li>
+                <li><a href="stroke.html">stroke</a></li>
+                <li><a href="viewbox.html">viewbox</a></li>
+                <li><a href="vto.html">vto</a></li>
+            </ul>
+        </section>
+    </section>
+    <footer>
+    </footer>
+</body>
+</html>

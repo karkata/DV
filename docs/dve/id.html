@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <title></title>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" href="../../../css/style.css"/>           
+    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
+    <script src="../../../js/dv.core.js"></script>
+    <script src="../../../js/dv.shape.js"></script>
+</head>
+<body>
+    <section>
+        <nav class="nav-structure">
+            <ul>
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="index.html">References</a></li>
+                <li>id</li>
+            </ul>
+        </nav>
+    </section>
+    <section>
+        <h1>DVE.prototype.id()</h1>
+        <section>
+            <h2>문법</h2>
+            <pre class="prettyprint">var ret = dve.id(id);</pre>
+            </section><section><h2>파라미터</h2>
+            <table class="parameters">
+                <thead>
+                    <tr>
+                        <th>이름</th>
+                        <th>형식</th>
+                        <th>설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>id</td>
+                        <td>string</td>
+                        <td><p>요소의 고유 이름입니다.</p></td>
+                    </tr>
+            </table>
+            </section><section><h2>반환</h2>
+            <p>DVE 객체를 반환합니다.</p>
+        </section>
+        <section>
+            <h2>설명</h2>
+            <p>'id' 메소드는 요소가 갖는 고유 이름을 설정할 때 사용합니다.</p>
+            <p>파라미터가 주어지면 현재 요소가 반환되고, 만일 주어지지 않는다면 요소에 설정된 고유 이름을 반환합니다.</p>
+            <pre class="prettyprint">
+var svg = new dv().svg(400, 50).into("dv-01");
+var rect = svg.rect(10, 10, 200, 20).fill("blue").id("rect1");
+alert(rect.id());
+</pre>
+            <div id="dv-01"></div>
+            <script>
+                var svg = DV.svg().size(300,50).into("dv-01");
+                var rect = DV.rect().dim(10,10,200,20).fill("blue").id("rect1").into(svg);
+                alert(rect.id());
+            </script>
+        </section>
+        <section>
+            <h2>참고</h2>
+            <ul>
+                <li><a href="../dv/rect.html">rect</a></li>
+                <li><a href="../dv/svg.html">svg</a></li>
+                <li><a href="dim.html">dim</a></li>
+                <li><a href="fill.html">fill</a></li>
+                <li><a href="into.html">into</a></li>
+                <li><a href="size.html">size</a></li>
+            </ul>
+        </section>
+    </section>
+    <footer>
+    </footer>
+</body>
+</html>

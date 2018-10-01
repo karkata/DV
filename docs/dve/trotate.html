@@ -1,0 +1,115 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <title></title>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" href="../../../css/style.css"/>           
+    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
+    <script src="../../../js/dv.core.js"></script>
+    <script src="../../../js/dv.shape.js"></script>
+    <script src="../../../js/dv.animation.js"></script>
+</head>
+<body>
+    <section>
+        <nav class="nav-structure">
+            <ul>
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="index.html">References</a></li>
+                <li>trotate</li>
+            </ul>
+        </nav>
+    </section>
+    <section>
+        <h1>DVE.prototype.trotate()</h1>
+        <section>
+            <h2>문법</h2>
+            <pre class="prettyprint">var ret = dve.trotate(angles)</pre>
+            </section><section><h2>파라미터</h2>
+            <table class="parameters">
+                <thead>
+                    <tr>
+                        <th>이름</th>
+                        <th>형식</th>
+                        <th>설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>angles</td>
+                        <td>&lt;list of angle&gt;</td>
+                        <td>
+                            <p>텍스트 모든 문자가 개별적으로 회전을 합니다.</p>
+                            <p>angles는 하나의 값(각도)을 갖거나, 콤마 혹은 빈 문자로 구성된 리스트로 나타낼 수 있습니다.</p>
+                        </td>
+                    </tr>
+                <tbody>
+            </table>
+            </section><section><h2>반환</h2>
+            <p>DVE 객체를 반환합니다.</p>
+        </section>
+        <section>
+            <h2>설명</h2>
+            <p>'trotate' 메소드는 렌더링이 되는 'text, tspan' 요소가 렌더링 하는 텍스트를 회전합니다.</p>
+            <p>리스트 형식을 사용하면 개별 문자의 회전 각도를 지정할 수 있습니다.</p>
+            <pre class="prettyprint">
+&lt;svg width="700" height="100"&gt;
+  &lt;line x1="0" y1="50" x2="100%" y2="50" stroke="#03A9F4" stroke-width="1"/&gt;
+  &lt;text x="0" y="48" font-size="0.65em" fill="#03A9F4"&gt;base-line&lt;/text&gt;
+  &lt;text x="50" y="50" font-size="2em" letter-spacing="10" rotate="90 45 90 25"&gt;ABC&lt;tspan dy="20" rotate="45 90"&gt;1234567890&lt;/tspan&gt; xyz&lt;/text&gt;
+&lt;/svg&gt;
+</pre>
+            <div>
+                <svg width="700" height="100">
+                    <line x1="0" y1="50" x2="100%" y2="50" stroke="#03A9F4" stroke-width="1"/>
+                    <text x="0" y="48" font-size="0.65em" fill="#03A9F4">base-line</text>
+                    <text x="50" y="50" font-size="2em" letter-spacing="10" rotate="90 45 90 25">ABC<tspan dy="20" rotate="45 90">1234567890</tspan> xyz</text>
+                </svg>
+            </div>
+           <pre class="prettyprint">
+var svg = DV.svg().size(700,100).into("dv-01");
+DV.line().point1(0,50).point2("100%",50).stroke("#03A9F4",1).into(svg);
+DV.text().txt("base-line").xys(0,48).fsize("0.65em").fill("#03A9F4").into(svg);
+var t = DV.text().txt("ABC ").xys(50,50).fsize("2em").attr("letter-spacing",10).trotate([90,45,90,25]).into(svg);
+DV.tspan().txt("1234567890").dxys(0,20).trotate([45,90]).into(t);
+t.txt(" xyz",true);
+</pre>
+            <div id="dv-01"></div>
+            <script>
+                var svg = DV.svg().size(700,100).into("dv-01");
+                DV.line().point1(0,50).point2("100%",50).stroke("#03A9F4",1).into(svg);
+                DV.text().txt("base-line").xys(0,48).fsize("0.65em").fill("#03A9F4").into(svg);
+                var t = DV.text().txt("ABC ").xys(50,50).fsize("2em").attr("letter-spacing",10).trotate([90,45,90,25]).into(svg);
+                DV.tspan().txt("1234567890").dxys(0,20).trotate([45,90]).into(t);
+                t.txt(" xyz",true);
+            </script>
+            <p>다음은 text, tspan 엘리먼터의 rotate 속성값에 따라 문자의 회전이 어떻게 영향 받지에 대한 그림 설명입니다.</p>
+            <p><img src="https://www.w3.org/TR/SVG11/images/text/tspan05-diagram.png" alt="rotation description"/></p>
+            <p><img src="https://www.w3.org/TR/SVG11/images/text/tspan05.png" alt="rotated characters"/></p>
+        </section>
+        <section>
+            <h2>참고</h2>
+            <ul>
+                <li><a href="../dv/line.html">line</a></li>
+                <li><a href="../dv/svg.html">svg</a></li>
+                <li><a href="../dv/text.html">text</a></li>
+                <li><a href="../dv/tspan.html">tspan</a></li>
+                <li><a href="attr.html">attr</a></li>
+                <li><a href="dxys.html">dxys</a></li>
+                <li><a href="fill.html">fill</a></li>
+                <li><a href="fsize.html">fsize</a></li>
+                <li><a href="into.html">into</a></li>
+                <li><a href="point1.html">point1</a></li>
+                <li><a href="point2.html">point2</a></li>
+                <li><a href="size.html">size</a></li>
+                <li><a href="stroke.html">stroke</a></li>
+                <li><a href="txt.html">txt</a></li>
+                <li><a href="xys.html">xys</a></li>
+            </ul>
+        </section>
+    </section>
+    <footer>
+    </footer>
+</body>
+</html>

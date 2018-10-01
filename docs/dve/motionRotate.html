@@ -1,0 +1,177 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <title></title>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" href="../../../css/style.css"/>           
+    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
+    <script src="../../../js/dv.core.js"></script>
+    <script src="../../../js/dv.shape.js"></script>
+    <script src="../../../js/dv.animation.js"></script>
+</head>
+<body>
+    <section>
+        <nav class="nav-structure">
+            <ul>
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="index.html">References</a></li>
+                <li>motionRotate</li>
+            </ul>
+        </nav>
+    </section>
+    <section>
+        <h1>DVE.prototype.motionRotate()</h1>
+        <section>
+            <h2>문법</h2>
+            <pre class="prettyprint">var ret = dve.motionRotate(value);</pre>
+            </section><section><h2>파라미터</h2>
+            <table class="parameters">
+                <thead>
+                    <tr>
+                        <th>이름</th>
+                        <th>형식</th>
+                        <th>설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>value</td>
+                        <td>&lt;number&gt;|'auto'|'auto-reverse'</td>
+                        <td>
+                            <ul>
+                                <li>&lt;number&gt;: 사용자 좌표계의 원점을 기준으로 주어진 각도(degree)만큼 회전시킵니다.</li>
+                                <li>auto: 대상이 이동할 경로의 방향의 각도만큼 시간이 지남에 따라 회전합니다.</li>
+                                <li>auto-reverse: 대상이 이동할 경로의 방향의 각도에 180도를 더한 만큼 시간이 지남에 따라 회전합니다.</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            </section><section><h2>반환</h2>
+            <p>DVE 객체를 반환합니다.</p>
+        </section>
+        <section>
+            <h2>설명</h2>
+            <p>motionRotate 메소드는 animateMotion 요소의 rotate 속성을 설정할 때 사용합니다.</p>
+            <p>rotate 속성은 사용자 좌표계의 원점에 대한 회전 변환을 적용하기 위해 애니메이션 대상의 이동 경로와 연산을 할 때 사용됩니다.</p>
+            <p>이 회전 변환은 path 속성을 통한 경로 계산을 다 마친 후, 추가로 계산됩니다.</p>
+            <pre class="prettyprint">
+&lt;svg width="500" height="200"&gt;
+    &lt;g&gt;
+        &lt;path d="M50,50 c50,-25 50,-25 100,0 s50,25 100,0 s50,-25 100,0 s50,25 100,0" stroke-width="1.5" stroke="gray" fill="none"/&gt;
+        &lt;path d="M-5,5 L0,-5 L5,5 z" fill="red"&gt;
+            &lt;animateMotion path="M50,50 c50,-25 50,-25 100,0 s50,25 100,0 s50,-25 100,0 s50,25 100,0" begin="0s" dur="5s" rotate="auto" fill="freeze"/&gt;
+        &lt;/path&gt;
+    &lt;/g&gt;
+    &lt;g transform="translate(0,50)"&gt;
+        &lt;path d="M50,50 c50,-25 50,-25 100,0 s50,25 100,0 s50,-25 100,0 s50,25 100,0" stroke-width="1.5" stroke="gray" fill="none"/&gt;
+        &lt;path d="M-5,5 L0,-5 L5,5 z" fill="red"&gt;
+            &lt;animateMotion path="M50,50 c50,-25 50,-25 100,0 s50,25 100,0 s50,-25 100,0 s50,25 100,0" begin="0s" dur="5s" rotate="auto-reverse" fill="freeze"/&gt;
+        &lt;/path&gt;
+    &lt;/g&gt;
+    &lt;g transform="translate(0,100)"&gt;
+        &lt;path d="M50,50 c50,-25 50,-25 100,0 s50,25 100,0 s50,-25 100,0 s50,25 100,0" stroke-width="1.5" stroke="gray" fill="none"/&gt;
+        &lt;path d="M-5,5 L0,-5 L5,5 z" fill="red"&gt;
+            &lt;animateMotion path="M50,50 c50,-25 50,-25 100,0 s50,25 100,0 s50,-25 100,0 s50,25 100,0" begin="0s" dur="5s" rotate="45" fill="freeze"/&gt;
+        &lt;/path&gt;
+    &lt;/g&gt;
+&lt;/svg&gt;
+</pre>
+            <div>
+                <svg width="500" height="200">
+                    <g>
+                        <path d="M50,50 c50,-25 50,-25 100,0 s50,25 100,0 s50,-25 100,0 s50,25 100,0" stroke-width="1.5" stroke="gray" fill="none"/>
+                        <path d="M-5,5 L0,-5 L5,5 z" fill="red">
+                            <animateMotion path="M50,50 c50,-25 50,-25 100,0 s50,25 100,0 s50,-25 100,0 s50,25 100,0" begin="0s" dur="5s" rotate="auto" fill="freeze"/>
+                        </path>
+                    </g>
+                    <g transform="translate(0,50)">
+                        <path d="M50,50 c50,-25 50,-25 100,0 s50,25 100,0 s50,-25 100,0 s50,25 100,0" stroke-width="1.5" stroke="gray" fill="none"/>
+                        <path d="M-5,5 L0,-5 L5,5 z" fill="red">
+                            <animateMotion path="M50,50 c50,-25 50,-25 100,0 s50,25 100,0 s50,-25 100,0 s50,25 100,0" begin="0s" dur="5s" rotate="auto-reverse" fill="freeze"/>
+                        </path>
+                    </g>
+                    <g transform="translate(0,100)">
+                        <path d="M50,50 c50,-25 50,-25 100,0 s50,25 100,0 s50,-25 100,0 s50,25 100,0" stroke-width="1.5" stroke="gray" fill="none"/>
+                        <path d="M-5,5 L0,-5 L5,5 z" fill="red">
+                            <animateMotion path="M50,50 c50,-25 50,-25 100,0 s50,25 100,0 s50,-25 100,0 s50,25 100,0" begin="0s" dur="5s" rotate="45" fill="freeze"/>
+                        </path>
+                    </g>
+                </svg>
+            </div>
+            <p class="notice">크롬 브라우저에서는 auto, auto-reverse만 사용 가능합니다.</p>
+            <pre class="prettyprint">
+var d = "M50,50 c50,-25 50,-25 100,0 s50,25 100,0 s50,-25 100,0 s50,25 100,0";
+var svg = DV.svg().size(500,200).into("dv-01");
+
+var g = DV.g().into(svg);
+DV.path().d(d).nofill().stroke("gray",1.5).into(g);
+DV.path({"d":"M-5,5 L0,-5 L5,5 z"}).fill("red").append(
+    DV.animateMotion().motionPath(d).time("0s","5s").motionRotate("auto").freeze()
+).into(g);
+
+g = DV.g().translate(0,50).into(svg);
+DV.path().d(d).nofill().stroke("gray",1.5).into(g);
+DV.path({"d": "M-5,5 L0,-5 L5,5 z"}).fill("red").append(
+    DV.animateMotion().motionPath(d).time("0s","5s").motionRotate("auto-reverse").freeze()
+).into(g);
+
+g = DV.g().translate(0,100).into(svg);
+DV.path().d(d).nofill().stroke("gray",1.5).into(g);
+DV.path({"d": "M-5,5 L0,-5 L5,5 z"}).fill("red").append(
+    DV.animateMotion().motionPath(d).time("0s","5s").motionRotate(45).freeze()
+).into(g);
+</pre>
+            <div id="dv-01"></div>
+            <script>
+                var d = "M50,50 c50,-25 50,-25 100,0 s50,25 100,0 s50,-25 100,0 s50,25 100,0";
+                var svg = DV.svg().size(500,200).into("dv-01");
+
+                var g = DV.g().into(svg);
+                DV.path().d(d).nofill().stroke("gray",1.5).into(g);
+                DV.path({"d":"M-5,5 L0,-5 L5,5 z"}).fill("red").append(
+                    DV.animateMotion().motionPath(d).time("0s","5s").motionRotate("auto").freeze()
+                ).into(g);
+                
+                g = DV.g().translate(0,50).into(svg);
+                DV.path().d(d).nofill().stroke("gray",1.5).into(g);
+                DV.path({"d": "M-5,5 L0,-5 L5,5 z"}).fill("red").append(
+                    DV.animateMotion().motionPath(d).time("0s","5s").motionRotate("auto-reverse").freeze()
+                ).into(g);
+                
+                g = DV.g().translate(0,100).into(svg);
+                DV.path().d(d).nofill().stroke("gray",1.5).into(g);
+                DV.path({"d": "M-5,5 L0,-5 L5,5 z"}).fill("red").append(
+                    DV.animateMotion().motionPath(d).time("0s","5s").motionRotate(45).freeze()
+                ).into(g);
+            </script>
+        </section>
+        <section>
+            <h2>참고</h2>
+            <ul>
+                <li><a href="../dv/animateMotion.html">animateMotion</a></li>
+                <li><a href="../dv/g.html">g</a></li>
+                <li><a href="../dv/path.html">path</a></li>
+                <li><a href="../dv/svg.html">svg</a></li>
+                <li><a href="append.html">append</a></li>
+                <li><a href="d.html">d</a></li>
+                <li><a href="dim.html">dim</a></li>
+                <li><a href="fill.html">fill</a></li>
+                <li><a href="freeze.html">freeze</a></li>
+                <li><a href="id.html">id</a></li>
+                <li><a href="into.html">into</a></li>
+                <li><a href="motionPath.html">motionPath</a></li>
+                <li><a href="nofill.html">nofill</a></li>
+                <li><a href="size.html">size</a></li>
+                <li><a href="stroke.html">stroke</a></li>
+                <li><a href="time.html">time</a></li>
+                <li><a href="translate.html">translate</a></li>
+            </ul>
+        </section>
+    </section>
+    <footer>
+    </footer>
+</body>
+</html>

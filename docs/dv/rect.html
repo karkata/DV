@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <title></title>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" href="../../../css/style.css"/>           
+    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
+    <script src="../../../js/dv.core.js"></script>
+    <script src="../../../js/dv.shape.js"></script>
+</head>
+<body>
+    <section>
+        <nav class="nav-structure">
+            <ul>
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../../references.html">References</a></li>
+                <li>rect</li>
+            </ul>
+        </nav>
+    </section>
+    <section>
+        <h1>DV.prototype.rect()</h1>
+        <section>
+            <h2>문법</h2>
+            <pre class="prettyprint">var ret = DV.rect([props]);</pre>
+            </section><section><h2>파라미터</h2>
+            <p>'props' 파라미터는'rect' 요소를 생성하는데 필요한 속성을 갖는 객체입니다.</p>
+            <table class="parameters">
+                <thead>
+                    <tr>
+                        <th>이름</th>
+                        <th>형식</th>
+                        <th>설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>x, y</td>
+                        <td>&lt;coordinate&gt;</td>
+                        <td><p>렌더링할 엘리먼트가 놓일 사각형의 영역입니다. 기본값은 0입니다.</p></td>
+                    </tr>
+                    <tr>
+                        <td>width, height</td>
+                        <td>&lt;length&gt;</td>
+                        <td><p>width, height는 엘리먼트의 크기이며, 0이면 렌더링을 하지 않고, 음수값이 설정되면 오류가 발생합니다.</p></td>
+                    </tr>
+                    <tr>
+                        <td>rx, ry</td>
+                        <td>&lt;length&gt;</td>
+                        <td><p>사각형의 각 코너 끝을 타원형으로 만들기 위한 x축, y축 반지름 값입니다. 음수값이 설정되면 오류가 발생합니다.</p></td>
+                    </tr>
+                </tbody>
+            </table>
+            </section><section><h2>반환</h2>
+            <p>dve 객체를 반환합니다.</p>
+        </section>
+        <section>
+            <h2>설명</h2>
+            <p>'rect' 메소드는 'rect' 엘리먼트를 생성합니다.</p>
+            <p>'rect' 엘리먼트를 사용하여 사각형 모양을 그릴 수 있습니다.</p>
+            <pre class="prettyprint">
+&lt;svg width="400px" height="150px"&gt;
+    &lt;rect x="25" y="25" width="50" height="50"/&gt;
+    &lt;rect x="100" y="25" width="50" height="50" fill="red"/&gt;
+    &lt;rect x="175" y="25" width="50" height="50" fill="red" stroke="purple" stroke-width="3"/&gt;i
+    &lt;rect x="250" y="25" width="50" height="50" fill="red" stroke="purple" stroke-width="3" rx="5" ry="5"/&gt;
+&lt;/svg&gt;
+</pre>    
+            <div>
+                <svg width="400px" height="150px">
+                    <rect x="25" y="25" width="50" height="50"/>
+                    <rect x="100" y="25" width="50" height="50" fill="red"/>
+                    <rect x="175" y="25" width="50" height="50" fill="red" stroke="purple" stroke-width="3"/>i
+                    <rect x="250" y="25" width="50" height="50" fill="red" stroke="purple" stroke-width="3" rx="5" ry="5"/>
+                </svg>
+            </div>
+            <pre class="prettyprint">
+var svg = DV.svg().size(400,150).into("dorothy-01");
+DV.rect().dim(25,25,50,50).into(svg);
+DV.rect().dim(100,25,50,50).fill("red").into(svg);
+DV.rect().dim(175,25,50,50).fill("red").stroke("purple",3).into(svg);
+DV.rect().dim(250,25,50,50).round(5,5).fill("red").stroke("purple",3).into(svg);
+</pre>
+            <div id="dorothy-01"></div>
+            <script>
+                var svg = DV.svg().size(400,150).into("dorothy-01");
+                DV.rect().dim(25,25,50,50).into(svg);
+                DV.rect().dim(100,25,50,50).fill("red").into(svg);
+                DV.rect().dim(175,25,50,50).fill("red").stroke("purple",3).into(svg);
+                DV.rect().dim(250,25,50,50).round(5,5).fill("red").stroke("purple",3).into(svg);
+            </script>
+        </section>
+        <section>
+            <h2>참고</h2>
+            <ul>
+                <li><a href="../dve/dim.html">dim</a></li>
+                <li><a href="../dve/fill.html">fill</a></li>
+                <li><a href="../dve/into.html">into</a></li>
+                <li><a href="../dve/round.html">round</a></li>
+                <li><a href="../dve/size.html">size</a></li>
+                <li><a href="../dve/stroke.html">stroke</a></li>
+                <li><a href="svg.html">svg</a></li>
+            </ul>
+        </section>
+    </section>
+    <footer>
+    </footer>
+</body>
+</html>

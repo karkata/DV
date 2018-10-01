@@ -1,0 +1,182 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <title></title>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" href="../../../css/style.css"/>           
+    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
+    <script src="../../../js/dv.core.js"></script>
+    <script src="../../../js/dv.shape.js"></script>
+</head>
+<body>
+    <section>
+        <nav class="nav-structure">
+            <ul>
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="index.html">References</a></li>
+                <li>marker</li>
+            </ul>
+        </nav>
+    </section>
+    <section>
+        <h1>DV.prototype.marker()</h1>
+        <section>
+            <h2>문법</h2>
+            <pre class="prettyprint">var ret = DV.marker(props);</pre>
+            </section><section><h2>파라미터</h2>
+            <p>'props' 파라미터의 속성은 다음과 같습니다.</p>
+            <table class="parameters">
+                <thead>
+                    <tr>
+                        <th>이름</th>
+                        <th>형식</th>
+                        <th>설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>refX, refY</td>
+                        <td>&lt;coordinate&gt;</td>
+                        <td>
+                            <p>마커가 테두리 위의 점에 올려질 위치로써, viewBox의 좌표계를 기준으로 합니다.</p>
+                            <p>만일 테두리 위의 점의 가운데에 마커가 오도록 하려면, width(markerWidth), height(markerHeight)의 반에 해당하는 값으로 설정해야 합니다.</p>
+                            <p>기본값은 0입니다.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>markerWidth, markerHeight</td>
+                        <td>&lt;length&gt;</td>
+                        <td>
+                            <p>markerWidth, markerHeight는 마커의 크기입니다. 기본값은 3입니다.</p>
+                            <p>preserveAscpectRatio 속성에 따라 viewBox의 가로/세로 비율로 표현되기 때문에 반드시 markerWidth, markerHeight 크기로 보이지 않을 수 있습니다.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>orient</td>
+                        <td>"auto"|&lt;angle&gt;</td>
+                        <td>
+                            <p>auto 또는 회전 각도를 설정합니다. orient 속성은 그려지는 마커를 회전시킬 때 사용됩니다.</p>
+                            <p>auto이면 테두리의 방향(접선)의 동일한 위치가 됩니다.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>markerUnits</td>
+                        <td>"strokeWidth"|"userSpaceOnUse"</td>
+                        <td>
+                            <p>'strokeWidth'이면 마커는 테두리의 두께에 따라 스케일링이 발생합니다.</p>
+                            <p>'useSpaceOnUse'이면 테두리의 두께와 상관없이 markerWidth, markerHeight 만큼 마커가 그려집니다.</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            </section><section><h2>반환</h2>
+            <p>dve 객체를 반환합니다.</p>
+        </section>
+        <section>
+            <h2>설명</h2>
+            <p>'marker' 메소드는 'marker' 요소를 생성합니다.</p>
+            <p>마커는 'path', 'line', 'polyline', 'polygon' 요소가 갖는 점(또는 점 마다)에 붙는 모양을 의미합니다.</p>
+            <p>일반적으로 양 끝에서 화살표 머리를 만들거나 점마다 동일한 모양의 붙혀야 하는 경우 사용됩니다.</p>
+            <p>사용될 모양은 'marker' 요소로 만들고, 각 요소가 갖는 'marker-start, marker-mid, marker-end' 속성을 사용하여 요소에 모양을 지정하게 됩니다.</p>
+            <p>'marker' 요소 내부에 그려지는 요소는 'marker' 요소의 'viewBox' 영역 내에 그려진다고 보면 됩니다.</p>
+            <p>'markerWidth, markerHeight'는 마커의 크기(viewBox가 그려질)를 말하며, 마커를 사용하는 테두리의 두께가 1인 경우를 기준으로 scaling됩니다.</p>
+            <p>만일 scaling 없이 사용하려면 'markerUnits' 속성을 'strokeWidth'가 아닌 'useSpaceOnUse'를 사용하여 스케일링없이 선언된 그대로 그려지게 할 수 있습니다.</p>
+            <p>'refX, refY'는 마커가 테두리위의 점에 올려질 위치로써, 'viewBox'의 좌측/상단은 0, 0입니다.</p>
+            <p>'orient' 속성은 그려지는 마커의 회전각을 설정할 때 사용합니다.</p>
+            <pre class="prettyprint">
+&lt;svg width="300" height="100"&gt;
+    &lt;defs&gt;
+        &lt;marker id="start" refX="20" refY="5" markerWidth="10" markerHeight="10" viewBox="0 0 20 10" preserveAspectRatio="none"&gt;
+            &lt;ellipse cx="10" cy="5" rx="9" ry="4" fill="none" stroke="red" stroke-width="1"/&gt;
+        &lt;/marker&gt;
+        &lt;marker id="middle" refX="10" refY="10" markerWidth="10" markerHeight="10" viewBox="0 0 20 10" orient="90"&gt;
+            &lt;ellipse cx="10" cy="5" rx="9" ry="4" fill="none" stroke="Red" stroke-width="1"/&gt;
+        &lt;/marker&gt;
+        &lt;marker id="end" refX="0" refY="5" markerWidth="10" markerHeight="10" viewBox="0 0 10 10" orient="auto" &gt;
+            &lt;path d="M1,1 L9,5 L1,9 z" fill="none" stroke="red" stroke-width="1"/&gt;
+        &lt;/marker&gt;
+    &lt;/defs&gt;
+    &lt;path d="M50,25 L100,25 L150,50" fill="none" stroke="black" stroke-width="3"
+        marker-start="url(#start)" marker-mid="url(#middle)" marker-end="url(#end)"/&gt;
+&lt;/svg&gt;
+</pre>
+            <div>
+                <svg width="300" height="100">
+                    <defs>
+                        <marker id="start" refX="20" refY="5" markerWidth="10" markerHeight="10" viewBox="0 0 20 10" preserveAspectRatio="none">
+                            <ellipse cx="10" cy="5" rx="9" ry="4" fill="none" stroke="red" stroke-width="1"/>
+                        </marker>
+                        <marker id="middle" refX="10" refY="10" markerWidth="10" markerHeight="10" viewBox="0 0 20 10" orient="90">
+                            <ellipse cx="10" cy="5" rx="9" ry="4" fill="none" stroke="Red" stroke-width="1"/>
+                        </marker>
+                        <marker id="end" refX="0" refY="5" markerWidth="10" markerHeight="10" viewBox="0 0 10 10" orient="auto" >
+                            <path d="M1,1 L9,5 L1,9 z" fill="none" stroke="red" stroke-width="1"/>
+                        </marker>
+                    </defs>
+                    <path d="M50,25 L100,25 L150,50" fill="none" stroke="black" stroke-width="3" marker-start="url(#start)" marker-mid="url(#middle)" marker-end="url(#end)"/>
+                </svg>
+            </div>
+            <pre class="prettyprint">
+var svg = DV.svg().size(300,100).into("dv-01");
+DV.defs().appD01E01(
+    DV.marker().markerPoint(20,5).markerSize(10,10).viewbox(0,0,20,10).aspectRatio("none").id("D01S01").append(
+        DV.ellipse().center(10,5).round(9,4).fill("none").stroke("red", 1)
+    ),
+    DV.marker().markerPoint(10,10).markerSize(10,10).markerOrient(90).viewbox(0,0,20,10).id("D01M01").append(
+        DV.ellipse().center(10,5).round(9,4).fill("none").stroke("red", 1)
+    ),
+    DV.marker().markerDim(0,5,10,10,"auto").viewbox(0,0,10,10).id("D01E01").append(
+        DV.path().d("M1,1 L9,5 L1,9 z").fill("none").stroke("red", 1)
+    )
+).into(svg);
+DV.path().d("M50,25 L100,25 L150,50").fill("none").stroke("black", 3).mark("#D01S01","s").mark("#D01M01","m").mark("#D01E01","e").into(svg);
+</pre>
+            <div id="dv-01"></div>
+            <script>
+                var svg = DV.svg().size(300,100).into("dv-01");
+                DV.defs().append(
+                    DV.marker().markerPoint(20,5).markerSize(10,10).viewbox(0,0,20,10).aspectRatio("none").id("D01S01").append(
+                        DV.ellipse().center(10,5).round(9,4).fill("none").stroke("red", 1)
+                    ),
+                    DV.marker().markerPoint(10,10).markerSize(10,10).markerOrient(90).viewbox(0,0,20,10).id("D01M01").append(
+                        DV.ellipse().center(10,5).round(9,4).fill("none").stroke("red", 1)
+                    ),
+                    DV.marker().markerDim(0,5,10,10,"auto").viewbox(0,0,10,10).id("D01E01").append(
+                        DV.path().d("M1,1 L9,5 L1,9 z").fill("none").stroke("red", 1)
+                    )
+                ).into(svg);
+                DV.path().d("M50,25 L100,25 L150,50").fill("none").stroke("black", 3).mark("#D01S01","s").mark("#D01M01","m").mark("#D01E01","e").into(svg);
+            </script>
+        </section>
+        <section>
+            <h2>참고</h2>
+            <ul>
+                <li><a href="../properites/stroke.html">stroke</a></li>
+                <li><a href="../dve/append.html">append</a></li>
+                <li><a href="../dve/aspectRatio.html">aspectRatio</a></li>
+                <li><a href="../dve/center.html">center</a></li>
+                <li><a href="../dve/d.html">d</a></li>
+                <li><a href="../dve/fill.html">fill</a></li>
+                <li><a href="../dve/id.html">id</a></li>
+                <li><a href="../dve/into.html">into</a></li>
+                <li><a href="../dve/mark.html">mark</a></li>
+                <li><a href="../dve/markerDim.html">markerDim</a></li>
+                <li><a href="../dve/markerOrient.html">markerOrient</a></li>
+                <li><a href="../dve/markerPoint.html">markerPoint</a></li>
+                <li><a href="../dve/markerSize.html">markerSize</a></li>
+                <li><a href="../dve/round.html">round</a></li>
+                <li><a href="../dve/size.html">size</a></li>
+                <li><a href="../dve/viewbox.html">viewbox</a></li>
+                <li><a href="defs.html">defs</a></li>
+                <li><a href="ellipse.html">ellipse</a></li>
+                <li><a href="path.html">path</a></li>
+                <li><a href="svg.html">svg</a></li>
+            </ul>
+        </section>
+    </section>
+    <footer>
+    </footer>
+</body>
+</html>

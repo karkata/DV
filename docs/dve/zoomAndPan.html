@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <title></title>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" href="../../../css/style.css"/>           
+    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
+    <script src="../../../js/dv.core.js"></script>
+    <script src="../../../js/dv.shape.js"></script>
+</head>
+<body>
+    <section>
+        <nav class="nav-structure">
+            <ul>
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="index.html">References</a></li>
+                <li>zoomAndPan</li>
+            </ul>
+        </nav>
+    </section>
+    <section>
+        <h1>DVE.prototype.zoomAndPan()</h1>
+        <section>
+            <h2>문법</h2>
+            <pre class="prettyprint">var ret = dve.zoomAndPan(value);</pre>
+            </section><section><h2>파라미터</h2>
+            <table class="parameters">
+                <thead>
+                    <tr>
+                        <th>이름</th>
+                        <th>형식</th>
+                        <th>설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>value</td>
+                        <td>"disable"|"magnify"</td>
+                        <td>
+                            <p>disable: 주어진 문서 조각안에서 확대 및 패닝 기능을 사용할 수 없습니다.</p>
+                            <p>magnify: 기본값. 주어진 문서 조각안에서 확대 및 패닝 기능을 사용할 수 있습니다.</p>
+                        </td>
+                    </tr>
+                <tbody>
+            </table>
+            </section><section><h2>반환</h2>
+            <p>DVE 객체를 반환합니다.</p>
+        </section>
+        <section>
+            <h2>설명</h2>
+            <p>zoomAndPan 메소드는 최상위 svg 요소가 확대 및 패닝 기능을 갖도록 할지 설정할 때 사용합니다.</p>
+            <p>최상위(가장 바깥) svg 요소에만 사용되는 zoomAndPan 속성을 설정하는 메소드입니다.
+            문서 조각 내부에서는 그래픽 요소들을 확대, 축소하거나 이동하는 기능을 사용할 수 있는데, 최상위 svg 문서 조각에서 zoomAndPan 속성을 disable로 설정하면, 이러한 기능을 사용할 수 없게 됩니다. 기본값은 magnify이므로 기능을 비활성화할 목적이 아니라면 설정할 일이 없습니다.</p>
+            <p>만약 최상위 svg 요소가 아닌, 내부의 svg 요소에서 호출를 하는 경우에는 설정 값이 아무런 영향을 주지 못합니다.</p>
+        </section>
+        <section>
+            <h2>참고</h2>
+        </section>
+    </section>
+    <footer>
+    </footer>
+</body>
+</html>

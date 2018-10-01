@@ -1,0 +1,181 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <title></title>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" href="../../../css/style.css"/>           
+    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
+    <script src="../../../js/dv.core.js"></script>
+    <script src="../../../js/dv.shape.js"></script>
+</head>
+<body>
+    <section>
+        <nav class="nav-structure">
+            <ul>
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="index.html">References</a></li>
+                <li>matrix</li>
+            </ul>
+        </nav>
+    </section>
+    <section>
+        <h1>DVE.prototype.matrix()</h1>
+        <section>
+            <h2>문법</h2>
+            <pre class="prettyprint">var ret = dve.matrix(a, b, c, d, e, f);</pre>
+            </section><section><h2>파라미터</h2>
+            <table class="parameters">
+                <thead>
+                    <tr>
+                        <th>이름</th>
+                        <th>형식</th>
+                        <th>설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>a, b, c, d, e, f</td>
+                        <td>&lt;coordinate&gt;</td>
+                        <td>
+                            <p>행렬 변환을 위한 벡터 요소입니다.</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            </section><section><h2>반환</h2>
+            <p>DVE 객체를 반환합니다.</p>
+        </section>
+        <section>
+            <h2>설명</h2>
+            <p>matrix 함수는 SVG 요소의 좌표계를 행렬 변환할 때 사용합니다.</p>
+            <p>모든 좌표계 변환은 3 곱하기 3 행렬을 가지고 표현할 수 있습니다.</p>
+            <p>주어진 벡터[a, b, c, d, e, f]에 대한 행렬 변환식은 다음과 같습니다.</p>
+            <p>
+                <table class="matrix-3x3 btoi">
+                    <tr><td></td><td>X<span class="fsub">prev coord sys</span></td><td></td></tr>
+                    <tr><td></td><td>Y<span class="fsub">prev coord sys</span></td><td></td></tr>
+                    <tr><td></td><td>1</td><td></td></tr>
+                </table>
+                <span>=</span>
+                <table class="matrix-3x3 btoi">
+                    <tr><td></td><td>a</td><td>c</td><td>e</td><td></td></tr>
+                    <tr><td></td><td>b</td><td>d</td><td>f</td><td></td></tr>
+                    <tr><td></td><td>0</td><td>0</td><td>1</td><td></td></tr>
+                </table>
+                <span>*</span>
+                <table class="matrix-3x3 btoi">
+                    <tr><td></td><td>X<span class="fsub">current coord sys</span></td><td></td></tr>
+                    <tr><td></td><td>Y<span class="fsub">current coord sys</span></td><td></td></tr>
+                    <tr><td></td><td>1</td><td></td></tr>
+                </table>
+            </p>
+            <p>Translation = [1, 0, 0, 1, tx, ty]</p>
+            <table class="matrix-3x3">
+                <tr><td></td><td>1</td><td>0</td><td>tx</td><td></td></tr>
+                <tr><td></td><td>0</td><td>1</td><td>ty</td><td></td></tr>
+                <tr><td></td><td>0</td><td>0</td><td>1</td><td></td></tr>
+            </table>
+            <p>Rotation = [cos(a), sin(a), -sin(a), cos(a), 0, 0]</p>
+            <table class="matrix-3x3">
+                <tr><td></td><td>cos(a)</td><td>-sin(a)</td><td>0</td><td></td></tr>
+                <tr><td></td><td>sin(a)</td><td>cos(a)</td><td>0</td><td></td></tr>
+                <tr><td></td><td>0</td><td>0</td><td>1</td><td></td></tr>
+            </table>
+            <p>Scale = [sx, 0, 0, sy, 0, 0]</p>
+            <table class="matrix-3x3">
+                <tr><td></td><td>sx</td><td>0</td><td>0</td><td></td></tr>
+                <tr><td></td><td>0</td><td>sy</td><td>0</td><td></td></tr>
+                <tr><td></td><td>0</td><td>0</td><td>1</td><td></td></tr>
+            </table>
+            <p>Skew X = [1, 0, tan(a), 1, 0, 0]</p>
+            <table class="matrix-3x3">
+                <tr><td></td><td>1</td><td>tan(a)</td><td>0</td><td></td></tr>
+                <tr><td></td><td>0</td><td>1</td><td>0</td><td></td></tr>
+                <tr><td></td><td>0</td><td>0</td><td>1</td><td></td></tr>
+            </table>
+            <p>Skew Y = [1, tan(a), 0, 1, 0, 0]</p>
+            <table class="matrix-3x3">
+                <tr><td></td><td>1</td><td>0</td><td>0</td><td></td></tr>
+                <tr><td></td><td>tan(a)</td><td>1</td><td>0</td><td></td></tr>
+                <tr><td></td><td>0</td><td>0</td><td>1</td><td></td></tr>
+            </table>
+            <p>연속적인 transformation 처리는 개별 transformation을 따로 적용(행렬곱)한 것과 동일합니다.</p>
+            <pre class="prettyprint">
+&lt;svg width="400" height="150"&gt;
+    &lt;g&gt;
+        &lt;line x1="1" y1="1" x2="100" y2="1" stroke="gray" stroke-width="1"/&gt;
+        &lt;line x1="1" y1="1" x2="1" y2="50" stroke="gray" stroke-width="1"/&gt;
+        &lt;text x="10" y="25"&gt;Original coordinate system&lt;/text&gt;
+    &lt;/g&gt;
+    &lt;g transform="matrix(1, 0, 0, 1, 50, 100)"&gt;
+        &lt;line x1="1" y1="1" x2="100" y2="1" stroke="gray" stroke-width="1"/&gt;
+        &lt;line x1="1" y1="1" x2="1" y2="50" stroke="gray" stroke-width="1"/&gt;
+        &lt;text x="10" y="25"&gt;New coordinate system&lt;/text&gt;
+    &lt;/g&gt;
+&lt;/svg&gt;
+</pre>    
+            <div>
+                <svg width="400" height="150">
+                    <g>
+                        <line x1="1" y1="1" x2="100" y2="1" stroke="gray" stroke-width="1"/>
+                        <line x1="1" y1="1" x2="1" y2="50" stroke="gray" stroke-width="1"/>
+                        <text x="10" y="25">Original coordinate system</text>
+                    </g>
+                    <g transform="matrix(1, 0, 0, 1, 50, 100)">
+                        <line x1="1" y1="1" x2="100" y2="1" stroke="gray" stroke-width="1"/>
+                        <line x1="1" y1="1" x2="1" y2="50" stroke="gray" stroke-width="1"/>
+                        <text x="10" y="25">New coordinate system</text>
+                    </g>
+                </svg>
+            </div>
+            <pre class="prettyprint">
+var svg = DV.svg().size(400,150).into("DV-01");
+DV.g().into(svg).append(
+    DV.line().bound(1,1,100,1).stroke("gray",1),
+    DV.line().bound(1,1,1,50).stroke("gray",1),
+    DV.text().txt("Original coordinate system").xys(10,25)
+);
+DV.g().matrix(1,0,0,1,50,100).into(svg).append(
+    DV.line().bound(1,1,100,1).stroke("gray",1),
+    DV.line().bound(1,1,1,50).stroke("gray",1),
+    DV.text().txt("New coordinate system").xys(10,25)
+);
+</pre>
+            <div id="DV-01"></div>
+            <script>
+                var svg = DV.svg().size(400,150).into("DV-01");
+                DV.g().into(svg).append(
+                    DV.line().bound(1,1,100,1).stroke("gray",1),
+                    DV.line().bound(1,1,1,50).stroke("gray",1),
+                    DV.text().txt("Original coordinate system").xys(10,25)
+                );
+                DV.g().matrix(1,0,0,1,50,100).into(svg).append(
+                    DV.line().bound(1,1,100,1).stroke("gray",1),
+                    DV.line().bound(1,1,1,50).stroke("gray",1),
+                    DV.text().txt("New coordinate system").xys(10,25)
+                );
+            </script>
+        </section>
+        <section>
+            <h2>참고</h2>
+            <ul>
+                <li><a href="../dv/g.html">g</a></li>
+                <li><a href="../dv/line.html">line</a></li>
+                <li><a href="../dv/svg.html">svg</a></li>
+                <li><a href="../dv/text.html">text</a></li>
+                <li><a href="append.html">append</a></li>
+                <li><a href="bound.html">bound</a></li>
+                <li><a href="into.html">into</a></li>
+                <li><a href="size.html">size</a></li>
+                <li><a href="stroke.html">stroke</a></li>
+                <li><a href="txt.html">txt</a></li>
+                <li><a href="xys.html">xys</a></li>
+            </ul>
+        </section>
+    </section>
+    <footer>
+    </footer>
+</body>
+</html>

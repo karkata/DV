@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <title></title>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" href="../../../css/style.css"/>           
+    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
+    <script src="../../../js/dv.core.js"></script>
+    <script src="../../../js/dv.shape.js"></script>
+</head>
+<body>
+    <section>
+        <nav class="nav-structure">
+            <ul>
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="index.html">References</a></li>
+                <li>tanchor</li>
+            </ul>
+        </nav>
+    </section>
+    <section>
+        <h1>DVE.prototype.tanchor()</h1>
+        <section>
+            <h2>문법</h2>
+            <pre class="prettyprint">var ret = dve.tanchor(anchor)</pre>
+            </section><section><h2>파라미터</h2>
+            <table class="parameters">
+                <thead>
+                    <tr>
+                        <th>이름</th>
+                        <th>형식</th>
+                        <th>설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>anchor</td>
+                        <td>'start'|'middle'|'end'</td>
+                        <td>
+                            <p>text, tspan과 같은 요소를 사용하여 텍스트를 렌더링할 때, 주어진 위치에서의 텍스트를 정렬하는 방식입니다.</p>
+                        </td>
+                    </tr>
+                <tbody>
+            </table>
+            </section><section><h2>반환</h2>
+            <p>DVE 객체를 반환합니다.</p>
+        </section>
+        <section>
+            <h2>설명</h2>
+            <p>tanchor 메소드는 렌더링이 되는 text, tspan 요소에서 텍스트를 렌더링할 때 주어진 위치에서 텍스트를 정렬하는 방식을 나타내는 text-anchor 속성을 설정하는 용도로 사용됩니다.</p>
+            <pre class="prettyprint">
+&lt;svg width="240" height="120"&gt;
+    &lt;text x="120" y="20" font-size="2em" fill="#03A9F4" text-anchor="start"&gt;start&lt;/text&gt;
+    &lt;text x="120" y="50" font-size="2em" fill="#03A9F4" text-anchor="middle"&gt;middle&lt;/text&gt;
+    &lt;text x="120" y="80" font-size="2em" fill="#03A9F4" text-anchor="end"&gt;end&lt;/text&gt;
+&lt;/svg&gt;
+</pre>    
+            <div>
+                <svg width="240" height="120">
+                    <text x="120" y="20" font-size="2em" fill="#03A9F4" text-anchor="start">start</text>
+                    <text x="120" y="50" font-size="2em" fill="#03A9F4" text-anchor="middle">middle</text>
+                    <text x="120" y="80" font-size="2em" fill="#03A9F4" text-anchor="end">end</text>
+                </svg>
+            </div>
+            <pre class="prettyprint">
+var svg = DV.svg().size(240,120).into("dv-01");
+DV.text().txt("start").xys(120,20).fsize("2em").fill("#03A9F4").tanchor("start").into(svg);
+DV.text().txt("middle").xys(120,50).fsize("2em").fill("#03A9F4").tanchor("middle").into(svg);
+DV.text().txt("end").xys(120,80).fsize("2em").fill("#03A9F4").tanchor("end").into(svg);
+</pre>
+            <div id="dv-01"></div>
+            <script>
+                var svg = DV.svg().size(240,120).into("dv-01");
+                DV.text().txt("start").xys(120,20).fsize("2em").fill("#03A9F4").tanchor("start").into(svg);
+                DV.text().txt("middle").xys(120,50).fsize("2em").fill("#03A9F4").tanchor("middle").into(svg);
+                DV.text().txt("end").xys(120,80).fsize("2em").fill("#03A9F4").tanchor("end").into(svg);
+            </script>
+        </section>
+        <section>
+            <h2>참고</h2>
+            <ul>
+                <li><a href="../dv/svg.html">svg</a></li>
+                <li><a href="../dv/text.html">text</a></li>
+                <li><a href="fill.html">fill</a></li>
+                <li><a href="fsize.html">fsize</a></li>
+                <li><a href="into.html">into</a></li>
+                <li><a href="size.html">size</a></li>
+                <li><a href="txt.html">txt</a></li>
+                <li><a href="xys.html">xys</a></li>
+            </ul>
+        </section>
+    </section>
+    <footer>
+    </footer>
+</body>
+</html>

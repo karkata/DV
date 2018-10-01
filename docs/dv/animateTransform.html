@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <title></title>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" href="../../../css/style.css"/>           
+    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
+    <script src="../../../js/dv.core.js"></script>
+    <script src="../../../js/dv.shape.js"></script>
+    <script src="../../../js/dv.animation.js"></script>
+</head>
+<body>
+    <section>
+        <nav class="nav-structure">
+            <ul>
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="index.html">References</a></li>
+                <li>animateTransform</li>
+            </ul>
+        </nav>
+    </section>
+    <section>
+        <h1>DV.prototype.animateTransform()</h1>
+        <section>
+            <h2>문법</h2>
+            <pre class="prettyprint">var ret = DV.animateTransform();</pre>
+            </section><section><h2>파라미터</h2>
+            </section><section><h2>반환</h2>
+            <p>DVE 객체를 반환합니다.</p>
+        </section>
+        <section>
+            <h2>설명</h2>
+            <p>animateTransform 메소드는 animateTransform 요소를 생성합니다.</p>
+            <p>animateTransform 요소는 대상 요소의 변형 속성을 애니메이션으로 처리합니다. 이 요소는 이동, 스케일링, 회전, 비틀림을 제어하는 애니메이션 기법을 제공합니다.</p>
+            <p>변형 애니메이션는 animateTranform 요소의 type 속성으로 지정하며, translate, scale, rotate, skewX, skewY를 그 값으로 사용합니다.</p>
+            <pre class="prettyprint">
+&lt;svg width="200" height="100"&gt;
+    &lt;rect x="75" y="25" width="50" height="50" fill="red" transform="skewX(10)"&gt;
+        &lt;!-- 상자를 상자의 중심을 기준으로 3초간 360도 회전시킵니다. --&gt;
+        &lt;!-- additive="sum"은 상자의 skewX 변형을 유지하기 위한 설정입니다. --&gt;
+        &lt;!-- 여러 변형 애니메이션을 유지하려면 additive="sum"이 필요합니다. --&gt;
+        &lt;animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0,100,50" to="360,100,50" dur="3s" additive="sum" fill="freeze"/&gt;
+    &lt;/rect&gt;
+&lt;/svg&gt;
+</pre>
+            <div>
+                <svg width="200" height="100">
+                   <rect x="75" y="25" width="50" height="50" fill="red" transform="skewX(10)">
+                        <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0,100,50" to="360,100,50" dur="3s" additive="sum" fill="freeze"/>
+                    </rect>
+                </svg>
+            </div>
+            <pre class="prettyprint">
+var svg = DV.svg().size(500,150).into("dv-01");
+var rect = DV.rect().dim(75,25,50,50).fill("red").skewx(10).into(svg);
+DV.animateTransform().toWhat("rotate").fromToBy("0,100,50","360,100,50").time("0s","3s").add("sum").freeze().into(rect);
+</pre>
+            <div id="dv-01"></div>
+            <script>
+                var svg = DV.svg().size(500,150).into("dv-01");
+                var rect = DV.rect().dim(75,25,50,50).fill("red").skewx(10).into(svg);
+                DV.animateTransform().toWhat("rotate").fromToBy("0,100,50","360,100,50").time("0s","3s").add("sum").freeze().into(rect);
+            </script>
+        </section>
+        <section>
+            <h2>참고</h2>
+            <ul>
+                <li><a href="../dve/add.html">add</a></li>
+                <li><a href="../dve/dim.html">dim</a></li>
+                <li><a href="../dve/fill.html">fill</a></li>
+                <li><a href="../dve/freeze.html">freeze</a></li>
+                <li><a href="../dve/fromToBy.html">fromToBy</a></li>
+                <li><a href="../dve/id.html">id</a></li>
+                <li><a href="../dve/into.html">into</a></li>
+                <li><a href="../dve/size.html">size</a></li>
+                <li><a href="../dve/skewx.html">skewx</a></li>
+                <li><a href="../dve/time.html">time</a></li>
+                <li><a href="rect.html">rect</a></li>
+                <li><a href="svg.html">svg</a></li>
+            </ul>
+        </section>
+    </section>
+    <footer>
+    </footer>
+</body>
+</html>

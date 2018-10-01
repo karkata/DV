@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <title></title>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" href="../../../css/style.css"/>           
+    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
+    <script src="../../../js/dv.core.js"></script>
+    <script src="../../../js/dv.shape.js"></script>
+</head>
+<body>
+    <section>
+        <nav class="nav-structure">
+            <ul>
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="index.html">References</a></li>
+                <li>pathSpacing</li>
+            </ul>
+        </nav>
+    </section>
+    <section>
+        <h1>DVE.prototype.pathSpacing()</h1>
+        <section>
+            <h2>문법</h2>
+            <pre class="prettyprint">var ret = dve.pathSpacing(spacing)</pre>
+            </section><section><h2>파라미터</h2>
+            <table class="parameters">
+                <thead>
+                    <tr>
+                        <th>이름</th>
+                        <th>형식</th>
+                        <th>설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>spacing</td>
+                        <td>"auto"|"exact"</td>
+                        <td>
+                            <p>텍스트가 패스를 따라 렌더링할 때, 자간을 계산하는 방법을 나타냅니다.</p>
+                            <p>패스를 따라 텍스트의 위치가 놓여지는 룰에 따라 자간이 정해지는 exact 값만 지원합니다. (auto 미지원)</p>
+                        </td>
+                    </tr>
+                <tbody>
+            </table>
+            </section><section><h2>반환</h2>
+            <p>DVE 객체를 반환합니다.</p>
+        </section>
+        <section>
+            <h2>설명</h2>
+            <p>pathSpacing 메소드는 textPath 요소의 spacing 속성값을 설정할 때 사용합니다. spacing 속성은 텍스트의 자간을 계산하는 방법을 결정하는데, exact 값만 지원(기본)하고 auto는 지원하지 않습니다.</p>
+             <pre class="prettyprint">
+&lt;svg width="300" height="200"&gt;
+    &lt;defs&gt;
+        &lt;path id="S01P01" d="M150,50 a50,50 0 0,1 0,100 a50,50 0 0,1 0,-100"/&gt;
+    &lt;/defs&gt;
+    &lt;!-- guide line --&gt;
+    &lt;path d="M150,50 a50,50 0 0,1 0,100 a50,50 0 0,1 0,-100" fill="none" stroke="red"/&gt;
+    &lt;text&gt;
+        &lt;textPath xlink:href="#S01P01" spacing="auto"&gt;Offset from the start of the ‘path’&lt;/textPath&gt;
+    &lt;/text&gt;
+&lt;/svg&gt;
+</pre>    
+            <div>
+                <svg width="300" height="200">
+                    <defs>
+                        <path id="S01P01" d="M150,50 a50,50 0 0,1 0,100 a50,50 0 0,1 0,-100"/>
+                    </defs>
+                    <!-- guide line -->
+                    <path d="M150,50 a50,50 0 0,1 0,100 a50,50 0 0,1 0,-100" fill="none" stroke="red"/>
+                    <text>
+                        <textPath xlink:href="#S01P01" spacing="auto">Offset from the start of the ‘path’</textPath>
+                    </text>
+                </svg>
+            </div>
+            <pre class="prettyprint">
+var svg = DV.svg().size(300,200).into("dv-01");
+DV.defs().into(svg).append(
+    DV.path().mto(150,50).arc(50,50,0,0,1,0,100,true).arc(50,50,0,0,1,0,-100,true).id("D01P01")
+)
+DV.path().mto(150,50).arcf(50,50).nofill().stroke("red").into(svg);
+var t = DV.text().into(svg);
+DV.textPath().xhref("#D01P01").pathSpacing("auto").txt("Offset from the start of the ‘path’").into(t);
+</pre>
+            <div id="dv-01"></div>
+            <script>
+                var svg = DV.svg().size(300,200).into("dv-01");
+                DV.defs().into(svg).append(
+                    DV.path().mto(150,50).arc(50,50,0,0,1,0,100,true).arc(50,50,0,0,1,0,-100,true).id("D01P01")
+                )
+                DV.path().mto(150,50).arcf(50,50).nofill().stroke("red").into(svg);
+                var t = DV.text().into(svg);
+                DV.textPath().xhref("#D01P01").pathSpacing("auto").txt("Offset from the start of the ‘path’").into(t);
+            </script>
+        </section>
+        <section>
+            <h2>참고</h2>
+            <ul>
+                <li><a href="../dv/defs.html">defs</a></li>
+                <li><a href="../dv/path.html">path</a></li>
+                <li><a href="../dv/svg.html">svg</a></li>
+                <li><a href="../dv/text.html">text</a></li>
+                <li><a href="../dv/textPath.html">textPath</a></li>
+                <li><a href="../dv/tspan.html">tspan</a></li>
+                <li><a href="append.html">append</a></li>
+                <li><a href="arc.html">arc</a></li>
+                <li><a href="arcf.html">arcf</a></li>
+                <li><a href="attr.html">attr</a></li>
+                <li><a href="dxys.html">dxys</a></li>
+                <li><a href="id.html">id</a></li>
+                <li><a href="into.html">into</a></li>
+                <li><a href="mto.html">mto</a></li>
+                <li><a href="nofill.html">nofill</a></li>
+                <li><a href="size.html">size</a></li>
+                <li><a href="startOffset.html">startOffset</a></li>
+                <li><a href="stroke.html">stroke</a></li>
+                <li><a href="txt.html">txt</a></li>
+                <li><a href="xhref.html">xhref</a></li>
+            </ul>
+        </section>
+    </section>
+    <footer>
+    </footer>
+</body>
+</html>

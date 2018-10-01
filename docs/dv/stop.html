@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <title></title>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" href="../../../css/style.css"/>           
+    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
+    <script src="../../../js/dv.core.js"></script>
+    <script src="../../../js/dv.shape.js"></script>
+</head>
+<body>
+    <section>
+        <nav class="nav-structure">
+            <ul>
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="index.html">References</a></li>
+                <li>stop</li>
+            </ul>
+        </nav>
+    </section>
+    <section>
+        <h1>DV.prototype.stop()</h1>
+        <section>
+            <h2>문법</h2>
+            <pre class="prettyprint">var ret = DV.stop(props);</pre>
+            </section><section><h2>파라미터</h2>
+            <p>'props' 파라미터의 속성은 다음과 같습니다.</p>
+            <table class="parameters">
+                <thead>
+                    <tr>
+                        <th>이름</th>
+                        <th>형식</th>
+                        <th>설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>offset</td>
+                        <td>&lt;number&gt;|&lt;percentage&gt;</td>
+                        <td>
+                            <p>'stop' 요소가 놓이는 위치입니다.</p>
+                            <p>0부터 1사이의 값이거나, 퍼센티지(보통 0~100%) 값입니다.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>stop-color</td>
+                        <td>&lt;color&gt;|&lt;icccolor&gt;</td>
+                        <td>
+                            <p>'stop' 요소가 놓이는 위치의 색입니다.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>stop-opacity</td>
+                        <td>&lt;opacity-value&gt;</td>
+                        <td>
+                            <p>'stop' 요소가 놓이는 위치의 불투명도를 나타냅니다.</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            </section><section><h2>반환</h2>
+            <p>DVE 객체입니다.</p>
+        </section>
+        <section>
+            <h2>설명</h2>
+            <p>gradients 효과를 표현할 때 주어진 벡터 방향에서 색상이 변화되는 위치를 'stop' 요소로 표현합니다.</p>
+            <p>'stop' 메소드는 현재 요소가 'linearGradient, radialGradient'일 때, 'stop' 요소를 추가하는 작업을 수행합니다.</p>
+            <pre class="prettyprint">
+&lt;svg width="300px" height="150px"&gt;
+    &lt;defs&gt;
+        &lt;linearGradient id="S01GD01"&gt;
+            &lt;stop offset="10%" stop-color="#5d4037"/&gt;
+            &lt;stop offset="90%" stop-color="#d7ccc8"/&gt;
+        &lt;/linearGradient&gt;
+        &lt;radialGradient id="S01GD02" cx="50%" cy="50%" r="50%"&gt;
+            &lt;stop offset="10%" stop-color="#5d4037"/&gt;
+            &lt;stop offset="90%" stop-color="#d7ccc8"/&gt;
+        &lt;/linearGradient&gt;
+    &lt;/defs&gt;
+    &lt;rect x="0" y="25" width="100" height="100" fill="url(#S01GD01)"/&gt;
+    &lt;rect x="150" y="25" width="100" height="100" fill="url(#S01GD02)"/&gt;
+&lt;/svg&gt;
+</pre>    
+            <div>
+                <svg width="300px" height="150px">
+                    <defs>
+                        <linearGradient id="S01GD01">
+                            <stop offset="10%" stop-color="#5d4037"/>
+                            <stop offset="90%" stop-color="#d7ccc8"/>
+                        </linearGradient>
+                        <radialGradient id="S01GD02" cx="50%" cy="50%" r="50%">
+                            <stop offset="10%" stop-color="#5d4037"/>
+                            <stop offset="90%" stop-color="#d7ccc8"/>
+                        </linearGradient>
+                    </defs>
+                    <rect x="0" y="25" width="100" height="100" fill="url(#S01GD01)"/>
+                    <rect x="150" y="25" width="100" height="100" fill="url(#S01GD02)"/>
+                </svg>
+            </div>
+            <pre class="prettyprint">
+var svg = DV.svg().size(300,150).into("dv-01");
+var def = DV.defs().into(svg);
+var grad1 = DV.gradl().id("D01GD01").into(def);
+DV.stop().oco(0.1,"#5d4037").into(grad1);
+DV.stop().oco(0.9,"#d7ccc8").into(grad1);
+var grad2 = DV.gradr().id("D01GD02").into(def);
+DV.stop().oco(0.1,"#5d4037").into(grad2);
+DV.stop().oco(0.9,"#d7ccc8").into(grad2);
+DV.rect().dim(0,25,100,100).fill(grad1).into(svg);
+DV.rect().dim(150,25,100,100).fill(grad2).into(svg);
+            <div id="dv-01"></div>
+            <script>
+                var svg = DV.svg().size(300,150).into("dv-01");
+                var def = DV.defs().into(svg);
+                var grad1 = DV.gradl().id("D01GD01").into(def);
+                DV.stop().oco(0.1,"#5d4037").into(grad1);
+                DV.stop().oco(0.9,"#d7ccc8").into(grad1);
+                var grad2 = DV.gradr().id("D01GD02").into(def);
+                DV.stop().oco(0.1,"#5d4037").into(grad2);
+                DV.stop().oco(0.9,"#d7ccc8").into(grad2);
+                DV.rect().dim(0,25,100,100).fill(grad1).into(svg);
+                DV.rect().dim(150,25,100,100).fill(grad2).into(svg);
+            </script>
+        </section>
+        <section>
+            <h2>참고</h2>
+            <ul>
+                <li><a href="../dve/into.html">into</a></li>
+                <li><a href="../dve/dim.html">dim</a></li>
+                <li><a href="../dve/fill.html">fill</a></li>
+                <li><a href="../dve/id.html">id</a></li>
+                <li><a href="../dve/oco.html">oco</a></li>
+                <li><a href="../dve/size.html">size</a></li>
+                <li><a href="defs.html">defs</a></li>
+                <li><a href="gradl.html">gradl</a></li>
+                <li><a href="gradr.html">gradr</a></li>
+                <li><a href="rect.html">rect</a></li>
+                <li><a href="svg.html">svg</a></li>
+            </ul>
+        </section>
+    </section>
+    <footer>
+    </footer>
+</body>
+</html>

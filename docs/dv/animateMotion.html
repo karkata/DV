@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <title></title>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" href="../../../css/style.css"/>           
+    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
+    <script src="../../../js/dv.core.js"></script>
+    <script src="../../../js/dv.shape.js"></script>
+    <script src="../../../js/dv.animation.js"></script>
+</head>
+<body>
+    <section>
+        <nav class="nav-structure">
+            <ul>
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="index.html">References</a></li>
+                <li>animateMotion</li>
+            </ul>
+        </nav>
+    </section>
+    <section>
+        <h1>DV.prototype.animateMotion()</h1>
+        <section>
+            <h2>문법</h2>
+            <pre class="prettyprint">var ret = DV.animateMotion();</pre>
+            </section><section><h2>파라미터</h2>
+            </section><section><h2>반환</h2>
+            <p>DVE 객체를 반환합니다.</p>
+        </section>
+        <section>
+            <h2>설명</h2>
+            <p>animateMotion 메소드는 animateMotion 요소를 생성합니다.</p>
+            <p>animateMotion 요소는 참조된 요소가 모션 경로를 따라 이동하도록 합니다.</p>
+            <pre class="prettyprint">
+&lt;svg width="500" height="150"&gt;
+    &lt;path d="M50,50 c50,-25 50,-25 100,0 s50,25 100,0 s50,-25 100,0 s50,25 100,0" stroke-width="1.5" stroke="gray" fill="none"/&gt;
+    &lt;rect x="-5" y="-5" width="10" height="10" fill="red"&gt;
+        &lt;animateMotion path="M50,50 c50,-25 50,-25 100,0 s50,25 100,0 s50,-25 100,0 s50,25 100,0" begin="0s" dur="5s" rotate="auto" fill="freeze"/&gt;
+    &lt;/rect&gt;
+&lt;/svg&gt;
+</pre>
+            <div>
+                <svg width="500" height="150">
+                    <path d="M50,50 c50,-25 50,-25 100,0 s50,25 100,0 s50,-25 100,0 s50,25 100,0" stroke-width="1.5" stroke="gray" fill="none"/>
+                   <rect x="-5" y="-5" width="10" height="10" fill="red">
+                        <animateMotion path="M50,50 c50,-25 50,-25 100,0 s50,25 100,0 s50,-25 100,0 s50,25 100,0" begin="0s" dur="5s" rotate="auto" fill="freeze"/>
+                    </rect>
+                </svg>
+            </div>
+            <pre class="prettyprint">
+var svg = DV.svg().size(500,150).into("dv-01");
+var d = DV.path().mto(50,50).csto([
+        [[50,-25],[50,-25],[100,0]],
+        [[50,25],[100,0]],
+        [[50,-25],[100,0]],
+        [[50,25],[100,0]]
+    ],true).nofill().stroke("gray",1.5).into(svg).attr("d");
+var rect = DV.rect().dim(-5,-5,10,10).fill("red").into(svg);
+DV.animateMotion().motionPath(d).time("0s","5s").motionRotate("auto").freeze().into(rect);
+</pre>
+            <div id="dv-01"></div>
+            <script>
+                var svg = DV.svg().size(500,150).into("dv-01");
+                var d = DV.path().mto(50,50).csto([
+                        [[50,-25],[50,-25],[100,0]],
+                        [[50,25],[100,0]],
+                        [[50,-25],[100,0]],
+                        [[50,25],[100,0]]
+                    ],true).nofill().stroke("gray",1.5).into(svg).attr("d");
+                var rect = DV.rect().dim(-5,-5,10,10).fill("red").into(svg);
+                DV.animateMotion().motionPath(d).time("0s","5s").motionRotate("auto").freeze().into(rect);
+            </script>
+        </section>
+        <section>
+            <h2>참고</h2>
+            <ul>
+                <li><a href="../dve/attr.html">attr</a></li>
+                <li><a href="../dve/csto.html">csto</a></li>
+                <li><a href="../dve/dim.html">dim</a></li>
+                <li><a href="../dve/fill.html">fill</a></li>
+                <li><a href="../dve/freeze.html">freeze</a></li>
+                <li><a href="../dve/id.html">id</a></li>
+                <li><a href="../dve/into.html">into</a></li>
+                <li><a href="../dve/motionPath.html">motionPath</a></li>
+                <li><a href="../dve/motionRotate.html">motionRotate</a></li>
+                <li><a href="../dve/mto.html">mto</a></li>
+                <li><a href="../dve/nofill.html">nofill</a></li>
+                <li><a href="../dve/size.html">size</a></li>
+                <li><a href="../dve/stroke.html">stroke</a></li>
+                <li><a href="../dve/time.html">time</a></li>
+                <li><a href="path.html">path</a></li>
+                <li><a href="rect.html">rect</a></li>
+                <li><a href="svg.html">svg</a></li>
+            </ul>
+        </section>
+    </section>
+    <footer>
+    </footer>
+</body>
+</html>

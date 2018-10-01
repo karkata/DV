@@ -1,0 +1,94 @@
+﻿<!DOCTYPE htm>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <title></title>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" href="../../../css/style.css"/>           
+    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
+    <script src="../../../js/dv.core.js"></script>
+    <script src="../../../js/dv.shape.js"></script>
+    <script></script>
+</head>
+<body>
+    <section>
+        <nav class="nav-structure">
+            <ul>
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="index.html">References</a></li>
+                <li>styleblock</li>
+            </ul>
+        </nav>
+    </section>
+    <section>
+        <h1>DV.prototype.styleblock()</h1>
+        <section>
+            <h2>문법</h2>
+            <pre class="prettyprint">var ret = DV.styleblock(css);</pre>
+            </section><section><h2>파라미터</h2>
+            <table>
+                <tbody>
+                    <tr>
+                        <th>css</th>
+                        <td>String</td>
+                        <td>
+                            <p>CSS 스타일 정의입니다.</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            </section><section><h2>반환</h2>
+            <p>DVE 객체를 반환합니다.</p>
+        </section>
+        <section>
+            <h2>설명</h2>
+            <p>'styleblock' 메소드는 'style' 요소를 생성합니다.</p>
+            <p>'style' 요소는 SVG 문서 내부에 스타일 시트를 포함시켜 사용할 때 사용됩니다.</p>
+            <pre class="prettyprint">
+&lt;svg width="400px" height="100px"&gt;
+    &lt;style type="text/css"&gt;
+        #S01R01.common-border-style { stroke: red; stroke-width: 5px; }
+    &lt;/style&gt;
+    &lt;rect id="S01R01" x="10" y="10" width="100" height="50" class="common-border-style" fill="orange"/&gt;
+&lt;/svg&gt;
+</pre>    
+            <div>
+                <svg width="400px" height="100px">
+                    <style type="text/css">
+                        #S01R01.common-border-style { stroke: red; stroke-width: 5px; }
+                    </style>
+                    <rect id="S01R01" x="10" y="10" width="100" height="50" class="common-border-style" fill="orange"/>
+                </svg>
+            </div>
+            <pre class="prettyprint">
+var svg = DV.svg().size(400,100).into("dv-01");
+DV.styleblock().txt("#D01R01.common-border-style { stroke: red; stroke-width: 5px; }").into(svg);
+DV.rect().dim(10,10,100,50).fill("orange").id("D01R01").class("common-border-style").into(svg);
+</pre>
+            <div id="dv-01"></div>
+            <script>
+                var svg = DV.svg().size(400,100).into("dv-01");
+                DV.styleblock().txt("#D01R01.common-border-style { stroke: red; stroke-width: 5px; }").into(svg);
+                DV.rect().dim(10,10,100,50).fill("orange").id("D01R01").class("common-border-style").into(svg);
+            </script>
+        </section>
+        <section>
+            <h2>참고</h2>
+            <ul>
+                <li><a href="../dve/class.html">class</a></li>
+                <li><a href="../dve/dim.html">dim</a></li>
+                <li><a href="../dve/fill.html">fill</a></li>
+                <li><a href="../dve/id.html">id</a></li>
+                <li><a href="../dve/into.html">into</a></li>
+                <li><a href="../dve/size.html">size</a></li>
+                <li><a href="../dve/txt.html">txt</a></li>
+                <li><a href="rect.html">rect</a></li>
+                <li><a href="svg.html">svg</a></li>
+            </ul>
+        </section>
+    </section>
+    <footer>
+    </footer>
+</body>
+</html>

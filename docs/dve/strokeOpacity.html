@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <title></title>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" href="../../../css/style.css"/>           
+    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
+    <script src="../../../js/dv.core.js"></script>
+    <script src="../../../js/dv.shape.js"></script>
+</head>
+<body>
+    <section>
+        <nav class="nav-structure">
+            <ul>
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="index.html">References</a></li>
+                <li>strokeOpacity</li>
+            </ul>
+        </nav>
+    </section>
+    <section>
+        <h1>DVE.prototype.strokeOpacity()</h1>
+        <section>
+            <h2>문법</h2>
+            <pre class="prettyprint">var ret = dve.strokeOpacity(opacity)</pre>
+            </section><section><h2>파라미터</h2>
+            <table class="parameters">
+                <thead>
+                    <tr>
+                        <th>이름</th>
+                        <th>형식</th>
+                        <th>설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>opacity</td>
+                        <td>Number</td>
+                        <td>
+                            <p>테두리의 불투명도를 설정합니다.</p>
+                            <p>0.0 ~ 1.0까지의 값을 가질 수 있으며, 기본값은 1.0입니다.</p>
+                        </td>
+                    </tr>
+                <tbody>
+            </table>
+            </section><section><h2>반환</h2>
+            <p>DVE 객체를 반환합니다.</p>
+        </section>
+        <section>
+            <h2>설명</h2>
+            <p>strokeOpacity 메소드는 SVG 요소의 stroke-opacity 속성을 설정합니다.</p>
+            <p>opacity 파라미터는 테두리 불투명도를 설정합니다.</p>
+            <pre class="prettyprint">
+&lt;svg width="200" height="150"&gt;
+  &lt;path d="M10,30 l100,0" fill="none" stroke="#212121" stroke-width="23" stroke-opacity="1.0"/&gt;
+  &lt;path d="M10,30 l100,0" fill="none" stroke="#448AFF" stroke-width="1"/&gt;
+  &lt;path d="M10,60 l100,0" fill="none" stroke="#212121" stroke-width="23" stroke-opacity="0.5"/&gt;
+  &lt;path d="M10,60 l100,0" fill="none" stroke="#448AFF" stroke-width="1"/&gt;
+  &lt;path d="M10,90 l100,0" fill="none" stroke="#212121" stroke-width="23" stroke-opacity="0.25"/&gt;
+  &lt;path d="M10,90 l100,0" fill="none" stroke="#448AFF" stroke-width="1"/&gt;
+&lt;/svg&gt;
+</pre>
+            <div>
+                <svg width="200" height="150">
+                    <path d="M10,30 l100,0" fill="none" stroke="#212121" stroke-width="23" stroke-opacity="1.0"/>
+                    <path d="M10,30 l100,0" fill="none" stroke="#448AFF" stroke-width="1"/>
+                    <path d="M10,60 l100,0" fill="none" stroke="#212121" stroke-width="23" stroke-opacity="0.5"/>
+                    <path d="M10,60 l100,0" fill="none" stroke="#448AFF" stroke-width="1"/>
+                    <path d="M10,90 l100,0" fill="none" stroke="#212121" stroke-width="23" stroke-opacity="0.25"/>
+                    <path d="M10,90 l100,0" fill="none" stroke="#448AFF" stroke-width="1"/>
+                </svg>
+            </div>
+            <pre class="prettyprint">
+var svg = DV.svg().size(200,150).into("dv-01");
+DV.path().d("M10,30 l100,0").fill("none").stroke("#212121",23,undefined,undefined,undefined,undefined,1.0).into(svg);
+DV.path().d("M10,30 l100,0").fill("none").stroke("#448AFF",1).into(svg);
+DV.path().d("M10,60 l100,0").fill("none").stroke("#212121",23).attr("stroke-opacity",0.5).into(svg);
+DV.path().d("M10,60 l100,0").fill("none").stroke("#448AFF",1).into(svg);
+DV.path().d("M10,90 l100,0").fill("none").stroke("#212121",23).strokeOpacity(0.25).into(svg);
+DV.path().d("M10,90 l100,0").fill("none").stroke("#448AFF",1).into(svg);
+</pre>
+            <div id="dv-01"></div>
+            <script>
+                var svg = DV.svg().size(200,150).into("dv-01");
+                DV.path().d("M10,30 l100,0").fill("none").stroke("#212121",23,undefined,undefined,undefined,undefined,1.0).into(svg);
+                DV.path().d("M10,30 l100,0").fill("none").stroke("#448AFF",1).into(svg);
+                DV.path().d("M10,60 l100,0").fill("none").stroke("#212121",23).attr("stroke-opacity",0.5).into(svg);
+                DV.path().d("M10,60 l100,0").fill("none").stroke("#448AFF",1).into(svg);
+                DV.path().d("M10,90 l100,0").fill("none").stroke("#212121",23).strokeOpacity(0.25).into(svg);
+                DV.path().d("M10,90 l100,0").fill("none").stroke("#448AFF",1).into(svg);
+            </script>
+        </section>
+        <section>
+            <h2>참고</h2>
+            <ul>
+                <li><a href="../dv/path.html">path</a></li>
+                <li><a href="../dv/svg.html">svg</a></li>
+                <li><a href="attr.html">attr</a></li>
+                <li><a href="d.html">d</a></li>
+                <li><a href="fill.html">fill</a></li>
+                <li><a href="into.html">into</a></li>
+                <li><a href="size.html">size</a></li>
+                <li><a href="stroke.html">stroke</a></li>
+            </ul>
+        </section>
+    </section>
+    <footer>
+    </footer>
+</body>
+</html>

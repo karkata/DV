@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <title></title>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" href="../../../css/style.css"/>           
+    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
+    <script src="../../../js/dv.core.js"></script>
+    <script src="../../../js/dv.shape.js"></script>
+    <script src="../../../js/dv.animation.js"></script>
+</head>
+<body>
+    <section>
+        <nav class="nav-structure">
+            <ul>
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="index.html">References</a></li>
+                <li>mpath</li>
+            </ul>
+        </nav>
+    </section>
+    <section>
+        <h1>DV.prototype.mpath</h1>
+        <section>
+            <h2>문법</h2>
+            <pre class="prettyprint">var ret = DV.mpath(props);</pre>
+            </section><section><h2>파라미터</h2>
+            <p>props 객체의 속성은 다음과 같습니다.</p>
+            <table class="parameters">
+                <thead>
+                    <tr>
+                        <th>이름</th>
+                        <th>형식</th>
+                        <th>설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>href</td>
+                        <td>&lt;iri&gt;</td>
+                        <td>
+                            <p>이동 경로를 정의하는 'path' 요소를 가리키는 IRI 참조입니다.</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            </section><section><h2>반환</h2>
+            <p>DVE 객체를 반환합니다.</p>
+        </section>
+        <section>
+            <h2>설명</h2>
+            <p>mpath 메소드는 animateMotion 요소의 서브 요소인 mpath 요소를 정의할 때 사용합니다.</p>
+            <pre class="prettyprint">
+&lt;svg width="500" height="150"&gt;
+    &lt;path id="S01P01" d="M50,50 c50,-25 50,-25 100,0 s50,25 100,0 s50,-25 100,0 s50,25 100,0" stroke-width="1.5" stroke="gray" fill="none"/&gt;
+    &lt;rect x="-5" y="-5" width="10" height="10" fill="red"&gt;
+        &lt;animateMotion begin="0s" dur="5s" rotate="auto" fill="freeze"&gt;
+            &lt;mpath xlink:href="#S01P01"/&gt;
+        &lt;/animateMotion&gt;
+    &lt;/rect&gt;
+&lt;/svg&gt;
+</pre>
+            <div>
+                <svg width="500" height="150">
+                    <path id="S01P01" d="M50,50 c50,-25 50,-25 100,0 s50,25 100,0 s50,-25 100,0 s50,25 100,0" stroke-width="1.5" stroke="gray" fill="none"/>
+                    <rect x="-5" y="-5" width="10" height="10" fill="red">
+                        <animateMotion begin="0s" dur="5s" rotate="auto" fill="freeze">
+                            <mpath xlink:href="#S01P01"/>
+                        </animateMotion>
+                    </rect>
+                </svg>
+            </div>
+            <pre class="prettyprint">
+var svg = DV.svg().size(500,150).into("dv-01");
+DV.path().mto(50,50).csto([
+        [[50,-25],[50,-25],[100,0]],
+        [[50,25],[100,0]],
+        [[50,-25],[100,0]],
+        [[50,25],[100,0]]
+    ],true).nofill().stroke("gray",1.5).id("D01P01").into(svg);
+DV.rect().dim(-5,-5,10,10).fill("red").into(svg).append(
+    DV.animateMotion().time("0s","5s").motionRotate("auto").freeze().append(
+        DV.mpath().xhref("#D01P01")
+    )
+);
+</pre>
+            <div id="dv-01"></div>
+            <script>
+                var svg = DV.svg().size(500,150).into("dv-01");
+                DV.path().mto(50,50).csto([
+                        [[50,-25],[50,-25],[100,0]],
+                        [[50,25],[100,0]],
+                        [[50,-25],[100,0]],
+                        [[50,25],[100,0]]
+                    ],true).nofill().stroke("gray",1.5).id("D01P01").into(svg);
+                DV.rect().dim(-5,-5,10,10).fill("red").into(svg).append(
+                    DV.animateMotion().time("0s","5s").motionRotate("auto").freeze().append(
+                        DV.mpath().xhref("#D01P01")
+                    )
+                );
+            </script>
+        </section>
+        <section>
+            <h2>참고</h2>
+            <ul>
+                <li><a href="../dve/append.html">append</a></li>
+                <li><a href="../dve/csto.html">csto</a></li>
+                <li><a href="../dve/dim.html">dim</a></li>
+                <li><a href="../dve/fill.html">fill</a></li>
+                <li><a href="../dve/freeze.html">freeze</a></li>
+                <li><a href="../dve/id.html">id</a></li>
+                <li><a href="../dve/into.html">into</a></li>
+                <li><a href="../dve/motionRotate.html">motionRotate</a></li>
+                <li><a href="../dve/mto.html">mto</a></li>
+                <li><a href="../dve/nofill.html">nofill</a></li>
+                <li><a href="../dve/size.html">size</a></li>
+                <li><a href="../dve/stroke.html">stroke</a></li>
+                <li><a href="../dve/time.html">time</a></li>
+                <li><a href="../dve/xhref.html">xhref</a></li>
+                <li><a href="animateMotion.html">animateMotion</a></li>
+                <li><a href="rect.html">rect</a></li>
+                <li><a href="svg.html">svg</a></li>
+            </ul>
+        </section>
+    </section>
+    <footer>
+    </footer>
+</body>
+</html>

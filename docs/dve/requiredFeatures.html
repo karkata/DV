@@ -1,0 +1,132 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <title></title>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" href="../../../css/style.css"/>           
+    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
+    <script src="../../../js/dv.core.js"></script>
+    <script src="../../../js/dv.shape.js"></script>
+</head>
+<body>
+    <section>
+        <nav class="nav-structure">
+            <ul>
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="index.html">References</a></li>
+                <li>requiredFeatures</li>
+            </ul>
+        </nav>
+    </section>
+    <section>
+        <h1>DVE.prototype.requiredFeatures()</h1>
+        <section>
+            <h2>문법</h2>
+            <pre class="prettyprint">var ret = dve.requiredFeatures(value);</pre>
+            </section><section><h2>파라미터</h2>
+            <table class="parameters">
+                <thead>
+                    <tr>
+                        <th>이름</th>
+                        <th>형식</th>
+                        <th>설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>value</td>
+                        <td>String(list-of-features)|Array(list-of-features)</td>
+                        <td>
+                            <p>SVG 특성을 나타내는 문자열 리스트(공백으로 구분된)이나, 특성 문자열을 항목을 갖는 배열입니다.</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            </section><section><h2>반환</h2>
+            <p>DVE 객체를 반환합니다.</p>
+        </section>
+        <section>
+            <h2>설명</h2>
+            <p>'switchblock' 메소드를 사용하여 'switch' 컨테이너 요소를 생성하면,
+            하위 요소들은 'requiredFeatures, requiredExtensions, systemLanguage' 속성을 사용하여 조건에 부합되는 요소만 렌더링을 하도록 구성할 수 있습니다.</p>
+            <p><a href="https://www.w3.org/TR/SVG11/feature.html">requiredFeatures</a>는 SVG 렌더링을 처리하는 장치의 특성을 공백 문자열로 구분하여 나타냅니다.</p>
+            <h1>Examples</h1>
+            <pre class="prettyprint">
+&lt;svg width="400px" height="100px"&gt;
+  &lt;switch&gt;
+    &lt;text x="10" y="25" requiredFeatures="http://www.w3.org/TR/SVG11/feature#ColorProfile"&gt;A: http://www.w3.org/TR/SVG11/feature#ColorProfile&lt;/text&gt;
+    &lt;text x="10" y="25" fill="#ccc"&gt;B: http://www.w3.org/TR/SVG11/feature#ColorProfile&lt;/text&gt;
+  &lt;/switch&gt;
+  &lt;switch&gt;
+    &lt;text x="10" y="50" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Filter"&gt;A: http://www.w3.org/TR/SVG11/feature#Filter&lt;/text&gt;
+    &lt;text x="10" y="50" fill="#ccc"&gt;B: http://www.w3.org/TR/SVG11/feature#Filter&lt;/text&gt;
+  &lt;/switch&gt;
+  &lt;switch&gt;
+    &lt;text x="10" y="75" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Script"&gt;A: http://www.w3.org/TR/SVG11/feature#Script&lt;/text&gt;
+    &lt;text x="10" y="75" fill="#ccc"&gt;B: http://www.w3.org/TR/SVG11/feature#Script&lt;/text&gt;
+  &lt;/switch&gt;
+&lt;/svg&gt;
+</pre>    
+            <div>
+                <svg width="400px" height="100px">
+                    <switch>
+                        <text x="10" y="25" requiredFeatures="http://www.w3.org/TR/SVG11/feature#ColorProfile">A: http://www.w3.org/TR/SVG11/feature#ColorProfile</text>
+                        <text x="10" y="25" fill="#ccc">B: http://www.w3.org/TR/SVG11/feature#ColorProfile</text>
+                    </switch>
+                    <switch>
+                        <text x="10" y="50" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Filter">A: http://www.w3.org/TR/SVG11/feature#Filter</text>
+                        <text x="10" y="50" fill="#ccc">B: http://www.w3.org/TR/SVG11/feature#Filter</text>
+                    </switch>
+                    <switch>
+                        <text x="10" y="75" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Script">A: http://www.w3.org/TR/SVG11/feature#Script</text>
+                        <text x="10" y="75" fill="#ccc">B: http://www.w3.org/TR/SVG11/feature#Script</text>
+                    </switch>
+                </svg>
+            </div>
+            <pre class="prettyprint">
+var svg = DV.svg().size(400,100).into("dv-01");
+var sw1 = DV.switchblock().into(svg);
+DV.text().txt("A: http://www.w3.org/TR/SVG11/feature#ColorProfile").xys(10,25).requiredFeatures("http://www.w3.org/TR/SVG11/feature#ColorProfile").into(sw1);
+DV.text().txt("B: http://www.w3.org/TR/SVG11/feature#ColorProfile").xys(10,25).fill("#ccc").into(sw1);
+var sw2 = DV.switchblock().into(svg);
+DV.text().txt("A: http://www.w3.org/TR/SVG11/feature#Filter").xys(10,50).requiredFeatures("http://www.w3.org/TR/SVG11/feature#Filter").into(sw2);
+DV.text().txt("B: http://www.w3.org/TR/SVG11/feature#Filter").xys(10,50).fill("#ccc").into(sw2);
+var sw3 = DV.switchblock().into(svg);
+DV.text().txt("A: http://www.w3.org/TR/SVG11/feature#Script").xys(10,75).requiredFeatures("http://www.w3.org/TR/SVG11/feature#Script").into(sw3);
+DV.text().txt("B: http://www.w3.org/TR/SVG11/feature#Script").xys(10,75).fill("#ccc").into(sw3);
+</pre>
+            <div id="dv-01"></div>
+            <script>
+                var svg = DV.svg().size(400,100).into("dv-01");
+                var sw1 = DV.switchblock().into(svg);
+                DV.text().txt("A: http://www.w3.org/TR/SVG11/feature#ColorProfile").xys(10,25).requiredFeatures("http://www.w3.org/TR/SVG11/feature#ColorProfile").into(sw1);
+                DV.text().txt("B: http://www.w3.org/TR/SVG11/feature#ColorProfile").xys(10,25).fill("#ccc").into(sw1);
+                var sw2 = DV.switchblock().into(svg);
+                DV.text().txt("A: http://www.w3.org/TR/SVG11/feature#Filter").xys(10,50).requiredFeatures("http://www.w3.org/TR/SVG11/feature#Filter").into(sw2);
+                DV.text().txt("B: http://www.w3.org/TR/SVG11/feature#Filter").xys(10,50).fill("#ccc").into(sw2);
+                var sw3 = DV.switchblock().into(svg);
+                DV.text().txt("A: http://www.w3.org/TR/SVG11/feature#Script").xys(10,75).requiredFeatures("http://www.w3.org/TR/SVG11/feature#Script").into(sw3);
+                DV.text().txt("B: http://www.w3.org/TR/SVG11/feature#Script").xys(10,75).fill("#ccc").into(sw3);
+            </script>
+        </section>
+        <section>
+            <h2>참고</h2>
+            <ul>
+                <li><a href="../dv/svg.html">svg</a></li>
+                <li><a href="../dv/switchblock.html">switchblock</a></li>
+                <li><a href="../dv/text.html">text</a></li>
+                <li><a href="attr.html">attr</a></li>
+                <li><a href="fill.html">fill</a></li>
+                <li><a href="into.html">into</a></li>
+                <li><a href="size.html">size</a></li>
+                <li><a href="txt.html">txt</a></li>
+                <li><a href="xys.html">xys</a></li>
+            </ul>
+        </section>
+    </section>
+    <footer>
+    </footer>
+</body>
+</html>

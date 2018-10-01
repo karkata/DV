@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <title></title>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" href="../../../css/style.css"/>           
+    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
+    <script src="../../../js/dv.core.js"></script>
+    <script src="../../../js/dv.shape.js"></script>
+</head>
+<body>
+    <section>
+        <nav class="nav-structure">
+            <ul>
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="index.html">References</a></li>
+                <li>bind</li>
+            </ul>
+        </nav>
+    </section>
+    <section>
+        <h1>DVE.prototype.bind()</h1>
+        <section>
+            <h2>문법</h2>
+            <pre class="prettyprint">var ret = dve.bind(type, listener[, useCapture]);</pre>
+            </section><section><h2>파라미터</h2>
+            <table class="parameters">
+                <thead>
+                    <tr>
+                        <th>이름</th>
+                        <th>형식</th>
+                        <th>설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>type</td>
+                        <td>String</td>
+                        <td>
+                            <p>등록할 이벤트 형식을 나타내는 문자열</p>
+                            <ul>
+                                <li>load: 요소를 갖는 SVG 문서 조각이 렌더링할 준비가 되는 시점을 말합니다.</li>
+                                <li>unload: window 또는 frame에서 document가 제거되는 시점을 말합니다.</li>
+                                <li>abort: SVG 문서가 로드되는 과정 중에 중지가 되는 시점입니다.</li>
+                                <li>error: 요소가 로드가 되지 못했거나, 스크립트 실행 중에 오류가 발생한 경우입니다.</li>
+                                <li>resize: 최상위 SVG 문서의 크기가 리사이징되는 시점입니다. 이 이벤트의 타겟은 'svg' 요소가 됩니다.</li>
+                                <li>scroll: 사용자의 직접적인 액션이나, currentTranslate 프로퍼티를 통한 화면 이동이 있는 시점입니다. 이 이벤트는 최상위 SVG 문서에만 적용되며, 이동이 있는 직후에 이벤트가 패치됩니다. 이벤트의 타겟은 'svg'입니다.</li>
+                                <li>zoom: 사용자의 직접적인 액션이나, currentScale 프로퍼티의 변경으로 인해 화면 줌 레벨이 변경되는 시점입니다. 이 이벤트는 최상위 SVG 문서에만 적용되며, 줌 레벨이 변경된 후에 이벤트가 패치됩니다. 이벤트의 타겟은 'svg'입니다.</li>
+                                <li>focusin: 요소가 포커스가 되는 시점입니다. 'text' 요소의 경우에는 요소가 선택되는 시점이 됩니다.</li>
+                                <li>focusout: 요소가 포커스를 잃어버리는 시점입니다. 'text' 요소는 선택이 해지되는 시점이 됩니다.</li>
+                                <li>activate: 마우스 클릭 또는 키 누르기를 통해 요소가 활성화 될 때 발생합니다. 활성화 유형을 나타내는 숫자 인수가 제공이 되는데, 1은 간단한 클릭 또는 엔터와 같은 단순한 활성화를, 2는 더블 클릭, 쉬프트 엔터와 같은 과활성화(hyperactivation)를 나타냅니다.</li>
+                                <li>click: 포인팅 장치를 눌러 요소 위에서 클릭을 한 시점입니다. 클릭이란 동일한 화면의 위치에서 mousedown과 mouseup이 함께 일어 난 경우를 말합니다. 그러므로 mousedown, mouseup, click의 순서대로 이벤트가 발생합니다. 만약 여러 번의 클릭이 동일한 화면 위치에서 일어난다면, 연속적으로 이벤트가 발생함과 동시에 detail 프로퍼티에서 이벤트 반복 횟수 값을 얻을 수 있습니다.</li>
+                                <li>mousedown: 포인팅 장치를 요소 위에서 눌렀을 때입니다.</li>
+                                <li>mouseup: 포인팅 장치를 요소 위에서 뗐을 때입니다.</li>
+                                <li>mouseover: 포인팅 장치를 요소 안으로 이동시킬 때입니다.</li>
+                                <li>mousemove: 포인팅 장치를 요소 안에서 이동시킬 때입니다.</li>
+                                <li>mouseout: 포인팅 장치를 요소 밖으로 이동시킬 때입니다.</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>listener</td>
+                        <td>Object, Function</td>
+                        <td>
+                            <p>이벤트가 발생할 때 알림을 받을 객체로써, EventListener 인터페이스를 수행하는 객체이거나, JavaScript function이어야 합니다.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>useCapture</td>
+                        <td>Boolean</td>
+                        <td>
+                            <p>true이면 사용자가 capture를 초기화하길 원한다는 것을 나타냅니다.</p>
+                            <p>capture가 초기화한 후, 모든 지정된 타입의 이벤트는 DOM 트리에서 하위의 어떤 EventTarget에 전달되기 전에 등록된 리스너에게 먼저 전달될 것입니다.</p>
+                            <p>이벤트 버블링과 캡처링은 다른 엘리먼트를 포함하는 중첩된 한 엘리먼트에서, 두 엘리먼트에 이벤트를 위한 핸들이 등록되어 있을 때 이벤트를 전파하는 두 가지 방법입니다.</p>
+                            <p>이벤트 전파 모드는 엘리먼트들이 이벤트를 받는 순서를 결정합니다. useCapture의 기본값은 false입니다.</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            </section><section><h2>반환</h2>
+            <p>DVE 객체를 반환합니다.</p>
+        </section>
+        <section>
+            <h2>설명</h2>
+            <p>bind 메소드는 엘리먼트가 특정 이벤트가 발생할 때 불려질 리스너를 등록하고자할 때 사용됩니다.</p>
+            <pre class="prettyprint">
+var svg = DV.svg().size(400,100).into("dv-01");
+DV.text().txt("Click the below box").xys(10,20).into(svg);
+DV.rect().dim(10,50,200,20).fill("red").into(svg).bind("click", function () {
+    alert("I am clicked!");
+});
+</pre>
+            <div id="dv-01"></div>
+            <script>
+                var svg = DV.svg().size(400,100).into("dv-01");
+                DV.text().txt("Click the below box").xys(10,20).into(svg);
+                DV.rect().dim(10,50,200,20).fill("red").into(svg).bind("click", function () {
+                    alert("I am clicked!");
+                });
+            </script>
+        </section>
+        <section>
+            <h2>참고</h2>
+            <ul>
+                <li><a href="../dv/rect.html">rect</a></li>
+                <li><a href="../dv/svg.html">svg</a></li>
+                <li><a href="../dv/text.html">text</a></li>
+                <li><a href="dim.html">dim</a></li>
+                <li><a href="fill.html">fill</a></li>
+                <li><a href="into.html">into</a></li>
+                <li><a href="size.html">size</a></li>
+                <li><a href="txt.html">txt</a></li>
+                <li><a href="xys.html">xys</a></li>
+            </ul>
+        </section>
+    </section>
+    <footer>
+    </footer>
+</body>
+</html>

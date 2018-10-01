@@ -1,0 +1,179 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <title></title>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" href="../../../css/style.css"/>           
+    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
+    <script src="../../../js/dv.core.js"></script>
+    <script src="../../../js/dv.shape.js"></script>
+</head>
+<body>
+    <section>
+        <nav class="nav-structure">
+            <ul>
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="index.html">References</a></li>
+                <li>clipper</li>
+            </ul>
+        </nav>
+    </section>
+    <section>
+        <h1>DV.prototype.clipper()</h1>
+        <section>
+            <h2>문법</h2>
+            <pre class="prettyprint">var ret = DV.clipper(props);</pre>
+            </section><section><h2>파라미터</h2>
+            <p>'props' 파라미터의 속성은 다음과 같습니다.</p> 
+            <table class="parameters">
+                <thead>
+                    <tr>
+                        <th>이름</th>
+                        <th>형식</th>
+                        <th>설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>clipPathUnits</td>
+                        <td>'userSpaceOnUse'|'objectBoundingBox'</td>
+                        <td>
+                            <p>'clipPath' 내용을 위한 좌표 시스템입니다.<p>
+                            <ul>
+                                <li>'userSpaceOnUse': 'clipPath' 요소가 참조되는 시점의 사용자 좌표 시스템을 가지고 내용을 표현합니다.</li>
+                                <li>'objectBoundingBox': 'clipPath' 요소의 내용을 위한 사용자 좌표 시스템은 클리핑 영역으로 적용되는 박스 영역을 사용하여 만들어집니다.</li>
+                            </ul>
+                            <p>파라미터 값이 지정되지 않는다면, 'userSpaceOnUse'로 설정한 것과 동일한 영향을 받습니다.</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            </section><section><h2>반환</h2>
+            <p>dve 객체를 반환합니다.</p>
+        </section>
+        <section>
+            <h2>설명</h2>
+            <p>'svg, symbol, image, foreignObject, pattern, marker'와 같은 요소들의 viewport 영역을 클리핑하기 위해서 'overflow, clip' 속성을 사용할 수 있습니다.</p>
+            <p>'clip' 속성은 CSS의 'clip' 속성을 위해 정의된 파라미터 값과 동일합니다. 클리핑 영역을 지정할 때, 단위가 생략되면 현재 좌표계 시스템을 따라 클리핑 영역을 지정하게 됩니다. 이 값이 'auto'이면 주어진 요소의 뷰포트와 동일한 클리핑 경계가 생성이 됩니다.</p>
+            <p class="notice">'clip' 속성은 deprecated된 속성이므로, 앞으로 브라우저의 지원을 책임질 수 없는 상황인데다, 절대좌표가 적용된 요소에만 적용되기 때문에, 클리핑 영역을 지정하기가 매우 까다롭습니다. 즉, position:absolute 또는position:fixed만 적용된 요소만 그 효과를 볼 수 있는데, SVG는 요소들이 놓이는 방법이 절대 좌표만 지원함에도 불구하고 'clip' 속성을 사용했을 때, 클리핑 영역이 지정되지 않습니다. (현상만 확인)</p>
+            <p>클리핑 경로는 'clipPath'라는 요소를 가지고도 정의할 수 있는데, 'clipper' 메소드는 이 'clipPath' 요소를 생성하는 용도로 사용됩니다.</p>
+            <p class="notice">'clipPath' 요소와 'clip-path' 속성의 이름이 서로 혼동되기 때문에 'clipPath' 요소를 생성하는 메소드의 이름을 'clipper'로 결정했습니다.</p>
+            <p>'clipPath' 요소를 통하여 정의된 클리핑 경로 정보는 'clip-path' 속성을 사용하여 대상 요소의 클리핑 영역을 설정하도록 되어 있습니다. 이 말은 'clipPath' 요소로 클리핑 경로를 만들고, 클리핑 영역을 필요로하는 대상의 'clip-path' 속성에다가 &lt;funcIRI&gt;를 지정하면 영역이 설정되는 것입니다.</p>
+            <p>'clipPath' 요소는 'path, text, use' 그리고 기본 도형들을 가질 수 있습니다. 만약 'use' 요소를 가진다면, 'path, text' 또는 기본 도형 요소를 직접 참조해야 합니다. 간접 참조를 하는 경우에는 오류가 발생합니다.</p>
+            <p>'fill, storke, stroke-width'와 같은 렌더링 요소를 제외한 자식 요소들의 원형(raw geometry) 개념적으로 1 비트 마스크를 정의합니다. ( 가장자리를 따라 적용되는 앤티앨리어싱은 제외합니다.) 이 영역의 윤곽선 외부는 모두 마스크 처리됩니다. 만일 'display, visibility'를 사용하여 보여지지 않도록 되어 있는 자식 요소가 있다면, 클리핑 경로를 정의하는데 배제됩니다.</p>
+            <p>여러 자식 요소들은 있을 때는 자식 요소들의 실루엣들을 논리합으로 합쳐서 하나의 단일 실루엣을 만들고, 페인팅을 할 수 있는 영역을 제한하는 데 사용됩니다. 따라서 'clipPath'의 자식 요소들 내부에 있다면, 그 점은 클리핑 경로의 내부에 있게 됩니다.</p>
+            <ul class="notice">
+                <li>'clipPath' 요소 자신과 자식 요소들은 'clipPath'의 부모(상위 모든) 요소로부터 클리핑 경로를 상속받지 않습니다.</li>
+                <li>'clipPath' 요소와 자식 요소들은 'clip-path' 속성을 지정할 수 있습니다. 'clipPath' 요소가 'clip-path' 속성을 참조한다면 'clipPath'가 만들어내는 글리핑 경로와 교차(intersaction)되는 경로를 클리핑 경로로 사용합니다. 만일 자식 요소가 'clip-path' 속성을 참조하고 있다면 참조되고 있는 경로를 해당 요소의 실루엣으로 하고, 전체 클리핑 영역을 논리곱을 계산하게 됩니다.</li>
+            </ul>
+            <p>&nbsp;</p>
+            <p>다음은 파란색 사각형 모양의 도형을 작은 사각형 두 개로 만드는 클리핑 경로 내부만 렌더링되도록 하는 예제입니다.</p>
+            <pre class="prettyprint">
+&lt;svg id="svg-01" width="200" height="60"&gt;
+    &lt;defs&gt;
+        &lt;clipPath id="S01CP01"&gt;
+            &lt;path d="M10,10 h10 v10 h-10 z"/&gt;
+            &lt;path d="M30,30 h10 v10 h-10 z"/&gt;
+        &lt;/clipPath&gt;
+    &lt;/defs&gt;
+    &lt;rect x="0" y="0" width="50" height="50" fill="blue" clip-path="url(#S01CP01)"/&gt;
+&lt;svg&gt;
+            </pre>
+            <div>
+                <svg id="svg-01" width="200" height="60">
+                    <defs>
+                        <clipPath id="S01CP01">
+                            <path d="M10,10 h10 v10 h-10 z"/>
+                            <path d="M30,30 h10 v10 h-10 z"/>
+                        </clipPath>
+                    </defs>
+                    <rect x="0" y="0" width="50" height="50" fill="blue" clip-path="url(#S01CP01)"/>
+                <svg>
+            </div>
+            <p>dv를 사용한 예제는 다음과 같습니다.</p>
+            <pre class="prettyprint">
+var svg = DV.svg().size(200,60).into("dv-01");
+var defs = DV.defs().into(svg);
+var cp = DV.clipper().id("D01CP01").into(defs);
+DV.path().mto(10,10).hto(10,true).vto(10,true).hto(-10,true).pz().into(cp);
+DV.path().mto(30,30).hto(10,true).vto(10,true).hto(-10,true).pz().into(cp);
+DV.rect().dim(0,0,50,50).fill("blue").clipPath("#D01CP01").into(svg);
+</pre>
+            <div id="dv-01"></div>
+            <script>
+                var svg = DV.svg().size(200,60).into("dv-01");
+                var defs = DV.defs().into(svg);
+                var cp = DV.clipper().id("D01CP01").into(defs);
+                DV.path().mto(10,10).hto(10,true).vto(10,true).hto(-10,true).pz().into(cp);
+                DV.path().mto(30,30).hto(10,true).vto(10,true).hto(-10,true).pz().into(cp);
+                DV.rect().dim(0,0,50,50).fill("blue").clipPath("#D01CP01").into(svg);
+            </script>
+            <p>다음은 'clipPathUnits' 속성을 'objectBoundingBox'로 설정했을 때, 클리핑 경로를 설정하는 방법을 보여줍니다. 클리핑 경로를 설정할 때는 좌표값을 0~1사이의 비율 값으로 설정해주어야 합니다.</p>
+            <pre class="prettyprint">
+&lt;svg id="svg-02" width="200" height="100"&gt;
+    &lt;defs&gt;
+        &lt;clipPath id="S02CP01" clipPathUnits="objectBoundingBox"&gt;
+            &lt;path d="M0.2,0.2 h0.2 v0.2 h-0.2 z"/&gt;
+            &lt;path d="M0.6,0.6 h0.2 v0.2 h-0.2 z"/&gt;
+        &lt;/clipPath&gt;
+    &lt;/defs&gt;
+    &lt;rect x="50" y="25" width="50" height="50" fill="blue" clip-path="url(#S02CP01)"/&gt;
+&lt;svg&gt;
+            </pre>
+            <div>
+                <svg id="svg-02" width="200" height="100">
+                    <defs>
+                        <clipPath id="S02CP01" clipPathUnits="objectBoundingBox">
+                            <path d="M0.2,0.2 h0.2 v0.2 h-0.2 z"/>
+                            <path d="M0.6,0.6 h0.2 v0.2 h-0.2 z"/>
+                        </clipPath>
+                    </defs>
+                    <rect x="50" y="25" width="50" height="50" fill="blue" clip-path="url(#S02CP01)"/>
+                <svg>
+            </div>
+            <p>dv를 사용한 예제는 다음과 같습니다.</p>
+            <pre class="prettyprint">
+var svg = DV.svg().size(200,100).into("dv-02");
+var def = DV.defs().into(svg);
+var cp = DV.clipper().clipPathUnits("objectBoundingBox").id("D02CP01").into(def);
+DV.path().mto(0.2,0.2).hto(0.2,true).vto(0.2,true).hto(-0.2,true).pz().into(cp);
+DV.path().mto(0.6,0.6).hto(0.2,true).vto(0.2,true).hto(-0.2,true).pz().into(cp);
+DV.rect().dim(50,25,50,50).fill("blue").clipPath(cp).into(svg);
+</pre>
+            <div id="dv-02"></div>
+            <script>
+                var svg = DV.svg().size(200,100).into("dv-02");
+                var def = DV.defs().into(svg);
+                var cp = DV.clipper().clipPathUnits("objectBoundingBox").id("D02CP01").into(def);
+                DV.path().mto(0.2,0.2).hto(0.2,true).vto(0.2,true).hto(-0.2,true).pz().into(cp);
+                DV.path().mto(0.6,0.6).hto(0.2,true).vto(0.2,true).hto(-0.2,true).pz().into(cp);
+                DV.rect().dim(50,25,50,50).fill("blue").clipPath(cp).into(svg);
+            </script>
+        </section>
+        <section>
+            <h2>참고</h2>
+            <ul>
+                <li><a href="../dve/clipPathUnits.html">clipPathUnits</a></li>
+                <li><a href="../dve/clipPath.html">clipPath</a></li>
+                <li><a href="../dve/dim.html">dim</a></li>
+                <li><a href="../dve/fill.html">fill</a></li>
+                <li><a href="../dve/hto.html">hto</a></li>
+                <li><a href="../dve/id.html">id</a></li>
+                <li><a href="../dve/into.html">into</a></li>
+                <li><a href="../dve/mto.html">mto</a></li>
+                <li><a href="../dve/pz.html">pz</a></li>
+                <li><a href="../dve/size.html">size</a></li>
+                <li><a href="../dve/vto.html">vto</a></li>
+                <li><a href="defs.html">defs</a></li>
+                <li><a href="path.html">path</a></li>
+                <li><a href="rect.html">rect</a></li>
+                <li><a href="svg.html">svg</a></li>
+            </ul>
+        </section>
+    </section>
+    <footer>
+    </footer>
+</body>
+</html>

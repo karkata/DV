@@ -1,0 +1,184 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <title></title>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" href="../../../css/style.css"/>           
+    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
+    <script src="../../../js/dv.core.js"></script>
+    <script src="../../../js/dv.shape.js"></script>
+</head>
+<body>
+    <section>
+        <nav class="nav-structure">
+            <ul>
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="index.html">References</a></li>
+                <li>strokeLinejoin</li>
+            </ul>
+        </nav>
+    </section>
+    <section>
+        <h1>DVE.prototype.strokeLinejoin()</h1>
+        <section>
+            <h2>문법</h2>
+            <pre class="prettyprint">var ret = dve.strokeLinejoin(linejoin[, miterlimit])</pre>
+            </section><section><h2>파라미터</h2>
+            <table class="parameters">
+                <thead>
+                    <tr>
+                        <th>이름</th>
+                        <th>형식</th>
+                        <th>설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>linejoin</td>
+                        <td>"miter"|"round"|"bevel"</td>
+                        <td>
+                            <p>테두리의 코너를 그리는 방법을 결정합니다.</p>
+                            <p>'miter', 'round', 'bevel' 값으로 설정할 수 있습니다.</p>
+                            <p><img src="https://www.w3.org/TR/SVG11/images/painting/linejoin.png" alt="linejoin"/></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>miterlimit</td>
+                        <td>&lt;miterlimit&gt;</td>
+                        <td>옵션. miter 길이를 제한하는 비율 값</td>
+                    </tr>
+                <tbody>
+            </table>
+            </section><section><h2>반환</h2>
+            <p>DVE 객체를 반환합니다.</p>
+        </section>
+        <section>
+            <h2>설명</h2>
+            <p>strokeLinejoin 메소드는 SVG 요소의 stroke-linejoin 속성을 설정합니다.</p>
+            <p>linejoin 파라미터는 세그먼트 중간의 꼭지점마다 테두리 선을 그리는 방식을 결정합니다.</p>
+            <pre class="prettyprint">
+&lt;svg width="450" height="150"&gt;
+  &lt;path d="M30,60 l100,30 l-100,30" fill="none" stroke="#212121" stroke-width="25" stroke-linejoin="miter"/&gt;
+  &lt;path d="M30,60 l100,30 l-100,30" fill="none" stroke="#448AFF" stroke-width="3" /&gt;
+  &lt;path d="M150,60 l100,30 l-100,30" fill="none" stroke="#212121" stroke-width="25" stroke-linejoin="round"/&gt;
+  &lt;path d="M150,60 l100,30 l-100,30" fill="none" stroke="#448AFF" stroke-width="3" /&gt;
+  &lt;path d="M270,60 l100,30 l-100,30" fill="none" stroke="#212121" stroke-width="25" stroke-linejoin="bevel"/&gt;
+  &lt;path d="M270,60 l100,30 l-100,30" fill="none" stroke="#448AFF" stroke-width="3" /&gt;
+&lt;/svg&gt;
+</pre>
+            <div>
+                <svg width="450" height="150">
+                    <path d="M30,60 l100,30 l-100,30" fill="none" stroke="#212121" stroke-width="25" stroke-linejoin="miter"/>
+                    <path d="M30,60 l100,30 l-100,30" fill="none" stroke="#448AFF" stroke-width="3" />
+                    <path d="M150,60 l100,30 l-100,30" fill="none" stroke="#212121" stroke-width="25" stroke-linejoin="round"/>
+                    <path d="M150,60 l100,30 l-100,30" fill="none" stroke="#448AFF" stroke-width="3" />
+                    <path d="M270,60 l100,30 l-100,30" fill="none" stroke="#212121" stroke-width="25" stroke-linejoin="bevel"/>
+                    <path d="M270,60 l100,30 l-100,30" fill="none" stroke="#448AFF" stroke-width="3" />
+                </svg>
+            </div>
+            <pre class="prettyprint">
+var svg = DV.svg().size(420,150).into("dv-01");
+DV.path().d("M30,60 l100,30 l-100,30").fill("none").stroke("#212121",25,undefined,"miter").into(svg);
+DV.path().d("M30,60 l100,30 l-100,30").fill("none").stroke("#448aff",3).into(svg);
+DV.path().d("M150,60 l100,30 l-100,30").fill("none").stroke("#212121",23).attr("stroke-linejoin","round").into(svg);
+DV.path().d("M150,60 l100,30 l-100,30").fill("none").stroke("#448aff",3).into(svg);
+DV.path().d("M270,60 l100,30 l-100,30").fill("none").stroke("#212121",23).strokeLinejoin("bevel").into(svg);
+DV.path().d("M270,60 l100,30 l-100,30").fill("none").stroke("#448aff",3).into(svg);
+</pre>
+            <div id="dv-01"></div>
+            <script>
+                var svg = DV.svg().size(420,150).into("dv-01");
+                DV.path().d("M30,60 l100,30 l-100,30").fill("none").stroke("#212121",25,undefined,"miter").into(svg);
+                DV.path().d("M30,60 l100,30 l-100,30").fill("none").stroke("#448aff",3).into(svg);
+                DV.path().d("M150,60 l100,30 l-100,30").fill("none").stroke("#212121",23).attr("stroke-linejoin","round").into(svg);
+                DV.path().d("M150,60 l100,30 l-100,30").fill("none").stroke("#448aff",3).into(svg);
+                DV.path().d("M270,60 l100,30 l-100,30").fill("none").stroke("#212121",23).strokeLinejoin("bevel").into(svg);
+                DV.path().d("M270,60 l100,30 l-100,30").fill("none").stroke("#448aff",3).into(svg);
+            </script>
+            <p>경로상 두 세그먼트가 만날 때, linejoin 속성이 miter로 설정되어 있다면, 선의 두께만큼의 연장선을 이은 모습을 띄게 됩니다.</p>
+            <p>이 때, 아래처럼 오른쪽에 표족한 모서리를 갖는 형태가 그려지는데, 안쪽 모서리에서 바깥 모서리까지의 길이(빨간색 선과 동일)를 miter length라고 합니다.</p>
+            <p>miterlimit는 설정된 비율 값에 따라 miter length를 잘라 linejoin 속성이 bevel인 것처럼 효과를 냅니다.</p>
+            <p>miterlimit는 miter length와 stroke width의 비율로 나타내며 이는 miterlimit = (miter length / stroke width) = (1 / sin(사이각/2))가 됩니다. 그러므로 값이 1.0이라면 miter length 길이는 최대 stroke width의 1배수까지만 허용됩니다.(1.0이 최소값이기도 합니다.)</p>                
+            <pre class="prettyprint">
+&lt;svg width="450" height="170"&gt;
+  &lt;path d="M30,120 l30,-80 l30,80" fill="none" stroke="#212121" stroke-width="25" stroke-miterlimit="1.0"/&gt;
+  &lt;path d="M30,120 l30,-80 l30,80" fill="none" stroke="#448AFF" stroke-width="3" /&gt;
+  &lt;text x="60" y="150" text-anchro="middle"&gt;1.0&lt;/text&gt;
+  &lt;path d="M120,120 l30,-80 l30,80" fill="none" stroke="#212121" stroke-width="25" stroke-miterlimit="round"/&gt;
+  &lt;path d="M120,120 l30,-80 l30,80" fill="none" stroke="#448AFF" stroke-width="3" /&gt;
+  &lt;text x="150" y="150" text-anchor="middle"&gt;2.0&lt;/text&gt;
+  &lt;path d="M210,120 l30,-80 l30,80" fill="none" stroke="#212121" stroke-width="25" stroke-miterlimit="bevel"/&gt;
+  &lt;path d="M210,120 l30,-80 l30,80" fill="none" stroke="#448AFF" stroke-width="3" /&gt;
+  &lt;path d="M280,73 l0,-65" fill="none" stroke="#f00" stroke-width="5"/&gt;
+  &lt;text x="240" y="150" text-anchor="middle"&gt;4.0&lt;/text&gt;
+&lt;/svg&gt;
+</pre>
+            <div>
+                <svg width="450" height="170">
+                    <path d="M30,120 l30,-80 l30,80" fill="none" stroke="#212121" stroke-width="25" stroke-miterlimit="1.0"/>
+                    <path d="M30,120 l30,-80 l30,80" fill="none" stroke="#448AFF" stroke-width="3" />
+                    <text x="60" y="150" text-anchro="middle">1.0</text>
+                    <path d="M120,120 l30,-80 l30,80" fill="none" stroke="#212121" stroke-width="25" stroke-miterlimit="round"/>
+                    <path d="M120,120 l30,-80 l30,80" fill="none" stroke="#448AFF" stroke-width="3" />
+                    <text x="150" y="150" text-anchor="middle">2.0</text>
+                    <path d="M210,120 l30,-80 l30,80" fill="none" stroke="#212121" stroke-width="25" stroke-miterlimit="bevel"/>
+                    <path d="M210,120 l30,-80 l30,80" fill="none" stroke="#448AFF" stroke-width="3" />
+                    <path d="M280,73 l0,-65" fill="none" stroke="#f00" stroke-width="5"/>
+                    <text x="240" y="150" text-anchor="middle">4.0</text>
+                </svg>
+            </div>
+            <pre class="prettyprint">
+var svg = DV.svg().size(420,170).into("dv-02");
+DV.path().d("M30,120 l30,-80 l30,80").fill("none").stroke("#212121",25,undefined,"miter").attr("stroke-miterlimit",1.0).into(svg);
+DV.path().d("M30,120 l30,-80 l30,80").fill("none").stroke("#448aff",3).into(svg);
+DV.text().txt("1.0", 60, 150).attr("text-anchor","middle").into(svg);
+
+DV.path().d("M120,120 l30,-80 l30,80").fill("none").stroke("#212121",23).attr("stroke-linejoin","miter").attr("stroke-miterlimit",2.0).into(svg);
+DV.path().d("M120,120 l30,-80 l30,80").fill("none").stroke("#448aff",3).into(svg);
+DV.text().txt("2.0",150,150).attr("text-anchor","middle").into(svg);
+
+DV.path().d("M210,120 l30,-80 l30,80").fill("none").stroke("#212121",23).strokeLinejoin("miter",4.0).into(svg);
+DV.path().d("M210,120 l30,-80 l30,80").fill("none").stroke("#448aff",3).into(svg);
+DV.path().d("M280,73 l0,-65").fill("none").stroke("#f00",5).into(svg);
+DV.text().txt("4.0", 240, 150).attr("text-anchor","middle").into(svg);
+</pre>
+            <div id="dv-02"></div>
+            <script>
+                var svg = DV.svg().size(420,170).into("dv-02");
+                DV.path().d("M30,120 l30,-80 l30,80").fill("none").stroke("#212121",25,undefined,"miter").attr("stroke-miterlimit",1.0).into(svg);
+                DV.path().d("M30,120 l30,-80 l30,80").fill("none").stroke("#448aff",3).into(svg);
+                DV.text().txt("1.0").xys(60,150).attr("text-anchor","middle").into(svg);
+
+                DV.path().d("M120,120 l30,-80 l30,80").fill("none").stroke("#212121",23).attr("stroke-linejoin","miter").attr("stroke-miterlimit",2.0).into(svg);
+                DV.path().d("M120,120 l30,-80 l30,80").fill("none").stroke("#448aff",3).into(svg);
+                DV.text().txt("2.0").xys(150,150).attr("text-anchor","middle").into(svg);
+
+                DV.path().d("M210,120 l30,-80 l30,80").fill("none").stroke("#212121",23).strokeLinejoin("miter",4.0).into(svg);
+                DV.path().d("M210,120 l30,-80 l30,80").fill("none").stroke("#448aff",3).into(svg);
+                DV.path().d("M280,73 l0,-65").fill("none").stroke("#f00",5).into(svg);
+                DV.text().txt("4.0").xys(240,150).attr("text-anchor","middle").into(svg);
+            </script>
+        </section>
+        <section>
+            <h2>참고</h2>
+            <ul>
+                <li><a href="../dv/path.html">path</a></li>
+                <li><a href="../dv/svg.html">svg</a></li>
+                <li><a href="../dv/text.html">text</a></li>
+                <li><a href="attr.html">attr</a></li>
+                <li><a href="d.html">d</a></li>
+                <li><a href="fill.html">fill</a></li>
+                <li><a href="into.html">into</a></li>
+                <li><a href="size.html">size</a></li>
+                <li><a href="stroke.html">stroke</a></li>
+                <li><a href="txt.html">txt</a></li>
+                <li><a href="xys.html">xys</a></li>
+            </ul>
+        </section>
+    </section>
+    <footer>
+    </footer>
+</body>
+</html>

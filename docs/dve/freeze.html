@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <title></title>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" href="../../../css/style.css"/>           
+    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
+    <script src="../../../js/dv.core.js"></script>
+    <script src="../../../js/dv.shape.js"></script>
+    <script src="../../../js/dv.animation.js"></script>
+</head>
+<body>
+    <section>
+        <nav class="nav-structure">
+            <ul>
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="index.html">References</a></li>
+                <li>freeze</li>
+            </ul>
+        </nav>
+    </section>
+    <section>
+        <h1>DVE.prototype.freeze()</h1>
+        <section>
+            <h2>문법</h2>
+            <pre class="prettyprint">var ret = dve.freeze();</pre>
+            </section><section><h2>파라미터</h2>
+            </section><section><h2>반환</h2>
+            <p>DVE 객체를 반환합니다.</p>
+        </section>
+        <section>
+            <h2>설명</h2>
+            <p>freeze 메소드는 fill 애니메이션 속성값을 freeze로 설정합니다.</p>
+            <p>animate, set, animateMotion, animateTransform 요소는 애니메이션이 끝날 때, 대상 요소의 상태를 애니메이션 초기 상태 또는 마지막 상태로 설정할 수 있습니다.</p>
+            <p>fill 애니메이션 속성이 정해지지 않거나 remove이라면 애니메이션이 끝나고 난 후, 대상 요소는 처음 상태로 돌아갑니다. 반면에 freeze로 설정된다면 대상은 애니메이션의 마지막 상태를 유지하게 됩니다.</p>
+            <pre class="prettyprint">
+&lt;svg width="200" height="100"&gt;
+    &lt;rect x="25" y="25" width="50" height="50" fill="red"&gt;
+        &lt;!-- 'fill' 값을 'remove'로 설정하거나 'fill' 속성을 제거합니다. --&gt;
+        &lt;animate attributeName="opacity" attributeType="CSS" from="1" to="0" begin="0s" dur="3s" fill="remove"/&gt;
+    &lt;/rect&gt;
+    &lt;rect x="125" y="25" width="50" height="50" fill="red"&gt;
+        &lt;animate attributeName="opacity" attributeType="CSS" from="1" to="0" begin="0s" dur="3s" fill="freeze"/&gt;
+    &lt;/rect&gt;
+&lt;/svg&gt;
+</pre>
+            <div>
+                <svg width="200" height="100">
+                    <rect x="25" y="25" width="50" height="50" fill="red">
+                        <animate attributeName="opacity" attributeType="CSS" from="1" to="0" begin="0s" dur="3s" fill="remove"/>
+                    </rect>
+                    <rect x="125" y="25" width="50" height="50" fill="red">
+                        <animate attributeName="opacity" attributeType="CSS" from="1" to="0" begin="0s" dur="3s" fill="freeze"/>
+                    </rect>
+                </svg>
+            </div>
+            <p>DV를 사용하여 동일한 애니메이션을 수행할 수 있습니다.</p>
+            <pre class="prettyprint">
+var svg = DV.svg().size(200,100).into("dv-01");
+DV.rect().dim(25,25,50,50).fill("red").append(
+    DV.animate().toWhat("opacity").fromToBy(1,0).time("0s","3s")
+).into(svg);
+DV.rect().dim(125,25,50,50).fill("red").append(
+    DV.animate().toWhat("opacity").fromToBy(1,0).time("0s","3s").freeze()
+).into(svg);
+</pre>
+            <div id="dv-01"></div>
+            <script>
+                var svg = DV.svg().size(200,100).into("dv-01");
+                DV.rect().dim(25,25,50,50).fill("red").append(
+                    DV.animate().toWhat("opacity").fromToBy(1,0).time("0s","3s")
+                ).into(svg);
+                DV.rect().dim(125,25,50,50).fill("red").append(
+                    DV.animate().toWhat("opacity").fromToBy(1,0).time("0s","3s").freeze()
+                ).into(svg);
+            </script>
+        </section>
+        <section>
+            <h2>참고</h2>
+            <ul>
+                <li><a href="../dv/animate.html">animate</a></li>
+                <li><a href="../dv/rect.html">rect</a></li>
+                <li><a href="../dv/svg.html">svg</a></li>
+                <li><a href="append.html">append</a></li>
+                <li><a href="dim.html">dim</a></li>
+                <li><a href="fill.html">fill</a></li>
+                <li><a href="fromToBy.html">fromToBy</a></li>
+                <li><a href="id.html">id</a></li>
+                <li><a href="into.html">into</a></li>
+                <li><a href="size.html">size</a></li>
+                <li><a href="time.html">time</a></li>
+                <li><a href="toWhat.html">toWhat</a></li>
+            </ul>
+        </section>
+    </section>
+    <footer>
+    </footer>
+</body>
+</html>

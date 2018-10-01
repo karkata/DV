@@ -1,0 +1,267 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <title></title>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" href="../../../css/style.css"/>           
+    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
+    <script src="../../../js/dv.core.js"></script>
+    <script src="../../../js/dv.shape.js"></script>
+    <script src="../../../js/dv.animation.js"></script>
+</head>
+<body>
+    <section>
+        <nav class="nav-structure">
+            <ul>
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="index.html">References</a></li>
+                <li>calcMode</li>
+            </ul>
+        </nav>
+    </section>
+    <section>
+        <h1>DVE.prototype.calcMode()</h1>
+        <section>
+            <h2>문법</h2>
+            <pre class="prettyprint">var ret = dve.calcMode(value);</pre>
+            </section><section><h2>파라미터</h2>
+            <table class="parameters">
+                <thead>
+                    <tr>
+                        <th>이름</th>
+                        <th>형식</th>
+                        <th>설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>value</td>
+                        <td>String</td>
+                        <td>
+                            <p>애니메이션 보간 방법입니다.</p>
+                            <ul>
+                                <li>discrete: path 속성과 함께 사용되면 대상 요소는 점대 점 방식으로 이동(점프)하게 됩니다. 만일 keyTimes 속성을 지정하지 않았다면 시간은 경로를 지정하는 포인트를 기반으로 유추됩니다.</li>
+                                <li>linear: values, path, keyTimes에서 설명된 2 점 (이상)과 linear 값을 갖는 calcMode가 사용되면 가변 속도를 가지는 모션을 만들 수 있습니다. values, path, keyTimes와 같은 속성으로 생성된 세그먼트를 균등하게 나누어지도록 지정합니다. linear는 각 세그먼트의 거리에 따라 균등하게 나누어 진다고 명시하지는 않습니다.</li>
+                                <li>paced: 주어진 애니메이션 경로를 따라 일정한 속도 모션이 생성됩니다.</li>
+                                <li>spline: 완전한 속도 제어를 위해서는, calcMode 속성을 spline으로 설정하고, keyTimes, keySplines 속성을 사용하여 속도 제어 스플라인을 지정할 수 있습니다.</li>
+                            </ul>
+                            <p>animateMotion 요소의 기본값은 paced입니다.</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            </section><section><h2>반환</h2>
+            <p>DVE 객체를 반환합니다.</p>
+        </section>
+        <section>
+            <h2>설명</h2>
+            <p>calcMode 메소드는 animate, animateMotion 요소의 calcMode 속성을 설정합니다.</p>
+            <p>calcMode 속성은 애니메이션 보간 방법을 지정할 때 사용합니다.</p>
+            <pre class="prettyprint">
+&lt;svg width="500" height="150"&gt;
+    &lt;path d="M50,50 c50,-25 50,-25 100,0 s50,25 100,0 s50,-25 100,0 s50,25 100,0" stroke-width="1.5" stroke="gray" fill="none"/&gt;
+    &lt;rect x="-5" y="-5" width="10" height="10" fill="red"&gt;
+        &lt;animateMotion path="M50,50 c50,-25 50,-25 100,0 s50,25 100,0 s50,-25 100,0 s50,25 100,0" begin="0s" dur="5s" rotate="auto" fill="freeze"/&gt;
+    &lt;/rect&gt;
+&lt;/svg&gt;
+</pre>
+            <div>
+                <svg width="500" height="150">
+                    <path d="M50,50 c50,-25 50,-25 100,0 s50,25 100,0 s50,-25 100,0 s50,25 100,0" stroke-width="1.5" stroke="gray" fill="none"/>
+                    <rect x="-5" y="-5" width="10" height="10" fill="red">
+                        <animateMotion path="M50,50 c50,-25 50,-25 100,0 s50,25 100,0 s50,-25 100,0 s50,25 100,0" begin="0s" dur="5s" rotate="auto" fill="freeze"/>
+                    </rect>
+                </svg>
+            </div>
+            <pre class="prettyprint">
+var svg = DV.svg().size(500,150).into("dv-01");
+var d = DV.path().mto(50,50).csto([
+        [[50,-25],[50,-25],[100,0]],
+        [[50,25],[100,0]],
+        [[50,-25],[100,0]],
+        [[50,25],[100,0]]
+    ],true).nofill().stroke("gray",1.5).into(svg).attr("d");
+DV.rect().dim(-5,-5,10,10).fill("red").append(
+    DV.animateMotion().motionPath(d).time("0s","5s").motionRotate("auto").freeze()
+).into(svg);
+</pre>
+            <div id="dv-01"></div>
+            <script>
+                var svg = DV.svg().size(500,150).into("dv-01");
+                var d = DV.path().mto(50,50).csto([
+                        [[50,-25],[50,-25],[100,0]],
+                        [[50,25],[100,0]],
+                        [[50,-25],[100,0]],
+                        [[50,25],[100,0]]
+                    ],true).nofill().stroke("gray",1.5).into(svg).attr("d");
+                DV.rect().dim(-5,-5,10,10).fill("red").append(
+                    DV.animateMotion().motionPath(d).time("0s","5s").motionRotate("auto").freeze()
+                ).into(svg);
+            </script>
+            <p>animateMotion를 가지고 애니메이션을 할 때, calcMode 기본값은 paced이므로 대상이 움직이는 속도(시간당 이동 거리)를 일정합니다. 만일 linear로 지정을 하면 대상의 속도를 가변적으로 변경할 수 있으며, 이를 위해서는 keyTimes, keyPoints를 사용하여 진행된 시간에 따른 이동 거리 비율을 바꿔줘야 합니다.</p>
+            <pre class="prettyprint">
+&lt;svg width="500" height="150"&gt;
+    &lt;path d="M50,50 c50,-25 50,-25 100,0 s50,25 100,0 s50,-25 100,0 s50,25 100,0" stroke-width="1.5" stroke="gray" fill="none"/&gt;
+    &lt;rect x="-5" y="-5" width="10" height="10" fill="red"&gt;
+        &lt;!-- 2.5초까지는 전체 경로의 20%만 이동하도록 합니다. --&gt;
+        &lt;animateMotion path="M50,50 c50,-25 50,-25 100,0 s50,25 100,0 s50,-25 100,0 s50,25 100,0" calcMode="linear" keyTimes="0;0.5;1" keyPoints="0;0.2;1" begin="0s" dur="5s" rotate="auto" fill="freeze"/&gt;
+    &lt;/rect&gt;
+&lt;/svg&gt;
+</pre>
+            <div>
+                <svg width="500" height="150">
+                    <path d="M50,50 c50,-25 50,-25 100,0 s50,25 100,0 s50,-25 100,0 s50,25 100,0" stroke-width="1.5" stroke="gray" fill="none"/>
+                    <rect x="-5" y="-5" width="10" height="10" fill="red">
+                        <animateMotion path="M50,50 c50,-25 50,-25 100,0 s50,25 100,0 s50,-25 100,0 s50,25 100,0" calcMode="linear" keyTimes="0;0.5;1" keyPoints="0;0.2;1" begin="0s" dur="5s" rotate="auto" fill="freeze"/>
+                    </rect>
+                </svg>
+            </div>
+            <pre class="prettyprint">
+var svg = DV.svg().size(500,150).into("dv-02");
+var d = DV.path().mto(50,50).csto([
+        [[50,-25],[50,-25],[100,0]],
+        [[50,25],[100,0]],
+        [[50,-25],[100,0]],
+        [[50,25],[100,0]]
+    ],true).nofill().stroke("gray",1.5).into(svg).attr("d");
+DV.rect().dim(-5,-5,10,10).fill("red").append(
+    DV.animateMotion().motionPath(d).calcMode("linear").keyTimes([0,0.5,1]).keyPoints([0,0.2,1]).time("0s","5s").motionRotate("auto").freeze()
+).into(svg);
+</pre>
+            <div id="dv-02"></div>
+            <script>
+                var svg = DV.svg().size(500,150).into("dv-02");
+                var d = DV.path().mto(50,50).csto([
+                        [[50,-25],[50,-25],[100,0]],
+                        [[50,25],[100,0]],
+                        [[50,-25],[100,0]],
+                        [[50,25],[100,0]]
+                    ],true).nofill().stroke("gray",1.5).into(svg).attr("d");
+                DV.rect().dim(-5,-5,10,10).fill("red").append(
+                    DV.animateMotion().motionPath(d).calcMode("linear").keyTimes([0,0.5,1]).keyPoints([0,0.2,1]).time("0s","5s").motionRotate("auto").freeze()
+                ).into(svg);
+            </script>
+            <p>discrete는 애니메이션 대상이 되는 속성의 값을 보간없이 바로 건너 뛰게 됩니다.</p>
+            <pre class="prettyprint">
+&lt;svg width="500" height="50"&gt;
+    &lt;rect x="0" y="10" width="10" height="10" fill="red"&gt;
+        &lt;animate attributeType="XML" attributeName="x" from="0" to="100" begin="0s" dur="2s" fill="freeze"/&gt;
+    &lt;/rect&gt;
+    &lt;rect x="0" y="30" width="10" height="10" fill="red"&gt;
+        &lt;animate calcMode="discrete" attributeType="XML" attributeName="x" from="0" to="100" begin="0s" dur="2s" fill="freeze"/&gt;
+    &lt;/rect&gt;
+&lt;/svg&gt;
+</pre>
+            <div>
+                <svg width="500" height="50">
+                   <rect x="0" y="10" width="10" height="10" fill="red">
+                        <animate attributeType="XML" attributeName="x" from="0" to="100" begin="0s" dur="2s" fill="freeze"/>
+                   </rect>
+                   <rect x="0" y="30" width="10" height="10" fill="red">
+                        <animate calcMode="discrete" attributeType="XML" attributeName="x" from="0" to="100" begin="0s" dur="2s" fill="freeze"/>
+                    </rect>
+                </svg>
+            </div>
+            <pre class="prettyprint">
+var svg = DV.svg().size(500,50).into("dv-03");
+DV.rect().dim(0,10,10,10).fill("red").append(
+    DV.animate().toWhat("x").fromToBy(0,100).time("0s","2s").freeze()
+).into(svg);
+DV.rect().dim(0,30,10,10).fill("red").append(
+    DV.animate().toWhat("x").fromToBy(0,100).time("0s","2s").calcMode("discrete").freeze()
+).into(svg);
+</pre>
+            <div id="dv-03"></div>
+            <script>
+                var svg = DV.svg().size(500,50).into("dv-03");
+                DV.rect().dim(0,10,10,10).fill("red").append(
+                    DV.animate().toWhat("x").fromToBy(0,100).time("0s","2s").freeze()
+                ).into(svg);
+                DV.rect().dim(0,30,10,10).fill("red").append(
+                    DV.animate().toWhat("x").fromToBy(0,100).time("0s","2s").calcMode("discrete").freeze()
+                ).into(svg);
+            </script>
+            <p>spline은 애니메이션 구간을 cubic Bezier 스플라인을 이용한 시간 함수를 사용하여 보간을 합니다. 스플라인은 keyTimes, keySplines 속성을 사용하여 정의됩니다.</p>
+            <pre class="prettyprint">
+&lt;svg width="200" height="150"&gt;
+    &lt;path id="S01P01" d="M50,125 c0,-75 25,-100 100,-100" stroke-width="1.5" stroke="gray" fill="none"/&gt;
+    &lt;rect x="-5" y="-5" width="10" height="10" fill="red"&gt;
+        &lt;!--
+            박스를 50, 125 위치에서 150, 25 위치로 큐빅 베지어 곡선을 따라 이동합니다.
+            박스는 2초동안 주어진 곡선위에서 0 .75 .25 1 베지어 컨트롤 포인트로 계산되는 보간법에 따라 위치가 결정됩니다.
+        --&gt;
+        &lt;animateMotion calcMode="spline" keyTimes="0;1" keySplines="0 .75 .25 1" begin="0s" dur="2s" rotate="auto" fill="freeze"&gt;
+            &lt;mpath xlink:href="#S01P01"/&gt;
+        &lt;/animteMotion&gt;
+    &lt;/rect&gt;
+&lt;/svg&gt;
+</pre>
+            <div>
+                <svg width="200" height="150">
+                    <path id="S01P01" d="M50,125 c0,-75 25,-100 100,-100" stroke-width="1.5" stroke="gray" fill="none"/>
+                    <rect x="-5" y="-5" width="10" height="10" fill="red">
+                        <animateMotion calcMode="spline" keyTimes="0;1" keySplines="0 .75 .25 1" begin="0s" dur="2s" rotate="auto" fill="freeze">
+                            <mpath xlink:href="#S01P01"/>
+                        </animteMotion>
+                    </rect>
+                </svg>
+            </div>
+            <p>DV를 사용하여 동일한 효과를 보여줄 수 있습니다.</p>
+            <pre class="prettyprint">
+var svg = DV.svg().size(200,150).into("dv-04");
+DV.path().id("D01P01").mto(50, 125).cto([[0, -75], [25, -100], [100, -100]], true).stroke("gray", 1.5).fill("none").into(svg);
+DV.rect().dim(-5,-5,10,10).fill("red").append(
+    DV.animateMotion().calcMode("spline").time("0s","2s").keyTimes([0, 1]).keySplines([0,.75,.25,1]).motionRotate("auto").freeze().append(
+        DV.mpath().xhref("#D01P01")
+    )
+).into(svg);
+</pre>
+            <div id="dv-04"></div>
+            <script>
+                var svg = DV.svg().size(200,150).into("dv-04");
+                DV.path().id("D01P01").mto(50, 125).cto([[0, -75], [25, -100], [100, -100]], true).stroke("gray", 1.5).fill("none").into(svg);
+                DV.rect().dim(-5,-5,10,10).fill("red").append(
+                    DV.animateMotion().calcMode("spline").time("0s","2s").keyTimes([0, 1]).keySplines([0,.75,.25,1]).motionRotate("auto").freeze().append(
+                        DV.mpath().xhref("#D01P01")
+                    )
+                ).into(svg);
+            </script>
+        </section>
+        <section>
+            <h2>참고</h2>
+            <ul>
+                <li><a href="../dv/animate.html">animate</a></li>
+                <li><a href="../dv/mpath.html">mpath</a></li>
+                <li><a href="../dv/path.html">path</a></li>
+                <li><a href="../dv/rect.html">rect</a></i>
+                <li><a href="../dv/svg.html">svg</a></li>
+                <li><a href="append.html">append</a></li>
+                <li><a href="attr.html">attr</a></li>
+                <li><a href="csto.html">csto</a></li>
+                <li><a href="cto.html">cto</a></li>
+                <li><a href="dim.html">dim</a></li>
+                <li><a href="fill.html">fill</a></li>
+                <li><a href="freeze.html">freeze</a></li>
+                <li><a href="fromToBy.html">fromToBy</a></li>
+                <li><a href="id.html">id</a></li>
+                <li><a href="into.html">into</a></li>
+                <li><a href="keyPoints.html">keyPoints</a></li>
+                <li><a href="keySplines.html">keySplines</a></li>
+                <li><a href="keyTimes.html">keyTimes</a></li>
+                <li><a href="motionPath.html">motionPath</a></li>
+                <li><a href="motionRotate.html">motionRotate</a></li>
+                <li><a href="mto.html">mto</a></li>
+                <li><a href="nofill.html">nofill</a></li>
+                <li><a href="size.html">size</a></li>
+                <li><a href="stroke.html">stroke</a></li>
+                <li><a href="time.html">time</a></li>
+                <li><a href="xhref.html">xhref</a></li>
+            </ul>
+        </section>
+    </section>
+    <footer>
+    </footer>
+</body>
+</html>

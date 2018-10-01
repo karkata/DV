@@ -1,0 +1,143 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <title></title>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" href="../../../css/style.css"/>           
+    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
+    <script src="../../../js/dv.core.js"></script>
+    <script src="../../../js/dv.shape.js"></script>
+    <script src="../../../js/dv.animation.js"></script>
+</head>
+<body>
+    <section>
+        <nav class="nav-structure">
+            <ul>
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="index.html">References</a></li>
+                <li>keySplines</li>
+            </ul>
+        </nav>
+    </section>
+    <section>
+        <h1>DVE.prototype.keySplines()</h1>
+        <section>
+            <h2>문법</h2>
+            <pre class="prettyprint">var ret = dve.keySplines(splines);</pre>
+            </section><section><h2>파라미터</h2>
+            <table class="parameters">
+                <thead>
+                    <tr>
+                        <th>이름</th>
+                        <th>형식</th>
+                        <th>설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>splines</td>
+                        <td>&lt;list&gt;</td>
+                        <td>
+                            <p>하나 또는 그 이상의 베지어(큐빅) 컨트롤 좌표 값입니다.</p>
+                            <p>값은 하나 이상의 베지어 컨트롤 좌표 값을 가질 때 세미콜론 문자로 구분이 되며, 각각의 컨트롤 좌표는 x1 y1 x2 y2 네가지 값을 하나 세트로 구성하고 있습니다. 베지어 컨트롤 포인트의 좌표값을 나타내는 이 값들은 공백 문자로 구분을 합니다.</p>
+                            <p>값은 SVG에서만 사용되는 특별한 형식을 제외하고, 표준적으로 SMIL 스펙을 따릅니다.</p> 
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            </section><section><h2>반환</h2>
+            <p>DVE 객체를 반환합니다.</p>
+        </section>
+        <section>
+            <h2>설명</h2>
+            <p>keySplines 메소드는 animate, animateMotion 요소의 keySplines 속성을 설정합니다. keySplines 속성은 큐빅 베지어 컨트롤 포인트 값들의 목록을 의미하며 keyTimes 속성 값에 대응되도록 설정해야 합니다.</p>
+            <p>속성 값은 0부터 1사이의 값이며, calcMode 속성이 spline이 아니라면 무시됩니다.</p>
+            <table>
+                <tbody>
+                    <tr>
+                        <td><img src="http://www.w3.org/TR/SVG11/images/animate/keySplines01.png" alt=""/></td>
+                        <td><img src="http://www.w3.org/TR/SVG11/images/animate/keySplines02.png" alt=""/></td>
+                    </tr>
+                    <tr>
+                        <td><img src="http://www.w3.org/TR/SVG11/images/animate/keySplines03.png" alt=""/></td>
+                        <td><img src="http://www.w3.org/TR/SVG11/images/animate/keySplines04.png" alt=""/></td>
+                    </tr>
+                </tbody>
+            </table>
+            <pre class="prettyprint">
+&lt;svg width="200" height="150"&gt;
+    &lt;path id="svg-path-01" d="M50,125 c0,-75 25,-100 100,-100" stroke-width="1.5" stroke="gray" fill="none"/&gt;
+    &lt;rect x="-5" y="-5" width="10" height="10" fill="red"&gt;
+        &lt;!--
+            박스를 50, 125 위치에서 150, 25 위치로 큐빅 베지어 곡선을 따라 이동합니다.
+            박스는 2초동안 주어진 곡선위에서 0 .75 .25 1 베지어 컨트롤 포인트로 계산되는 보간법에 따라 위치가 결정됩니다.
+        --&gt;
+        &lt;animateMotion calcMode="spline" keyTimes="0;1" keySplines="0 .75 .25 1" begin="0s" dur="2s" rotate="auto" fill="freeze"&gt;
+            &lt;mpath xlink:href="#svg-path-01"/&gt;
+        &lt;/animteMotion&gt;
+    &lt;/rect&gt;
+&lt;/svg&gt;&lt;/pre&gt;
+</pre>
+            <div>
+                <svg width="200" height="150">
+                    <path id="S01P01" d="M50,125 c0,-75 25,-100 100,-100" stroke-width="1.5" stroke="gray" fill="none"/>
+                    <rect x="-5" y="-5" width="10" height="10" fill="red">
+                        <animateMotion calcMode="spline" keyTimes="0;1" keySplines="0 .75 .25 1" begin="0s" dur="2s" rotate="auto" fill="freeze">
+                            <mpath xlink:href="#S01P01"/>
+                        </animteMotion>
+                    </rect>
+                </svg>
+            </div>
+            <p>DV를 사용하여 동일한 효과를 보여줄 수 있습니다.</p>
+            <pre class="prettyprint">
+var svg = DV.svg().size(200,150).into("dv-01");
+DV.path().id("D01P01").mto(50,125).cto([[0,-75],[25,-100],[100,-100]],true).stroke("gray",1.5).fill("none").into(svg);
+DV.rect().dim(-5,-5,10,10).fill("red").append(
+    DV.animateMotion().calcMode("spline").time("0s","2s").keyTimes([0,1]).keySplines([0,.75,.25,1]).motionRotate("auto").freeze().append(
+        DV.mpath().xhref("#D01P01")
+    )
+).into(svg);
+</pre>
+            <div id="dv-01"></div>
+            <script>
+                var svg = DV.svg().size(200,150).into("dv-01");
+                DV.path().id("D01P01").mto(50,125).cto([[0,-75],[25,-100],[100,-100]],true).stroke("gray",1.5).fill("none").into(svg);
+                DV.rect().dim(-5,-5,10,10).fill("red").append(
+                    DV.animateMotion().calcMode("spline").time("0s","2s").keyTimes([0,1]).keySplines([0,.75,.25,1]).motionRotate("auto").freeze().append(
+                        DV.mpath().xhref("#D01P01")
+                    )
+                ).into(svg);
+            </script>
+        </section>
+        <section>
+            <h2>참고</h2>
+            <ul>
+                <li><a href="../dv/animateMotion.html">animateMotion</a></li>
+                <li><a href="../dv/mpath.html">mpath</a></li>
+                <li><a href="../dv/path.html">path</a></li>
+                <li><a href="../dv/rect.html">rect</a></li>
+                <li><a href="../dv/svg.html">svg</a></li>
+                <li><a href="append.html">append</a></li>
+                <li><a href="calcMode.html">calcMode</a></li>
+                <li><a href="cto.html">cto</a></li>
+                <li><a href="dim.html">dim</a></li>
+                <li><a href="fill.html">fill</a></li>
+                <li><a href="freeze.html">freeze</a></li>
+                <li><a href="id.html">id</a></li>
+                <li><a href="into.html">into</a></li>
+                <li><a href="keyTimes.html">keyTimes</a></li>
+                <li><a href="motionRotate.html">motionRotate</a></li>
+                <li><a href="mto.html">mto</a></li>
+                <li><a href="size.html">size</a></li>
+                <li><a href="stroke.html">stroke</a></li>
+                <li><a href="time.html">time</a></li>
+                <li><a href="xhref.html">xhref</a></li>
+            </ul>
+        </section>
+    </section>
+    <footer>
+    </footer>
+</body>
+</html>

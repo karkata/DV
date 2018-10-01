@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <title></title>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" href="../../../css/style.css"/>           
+    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
+    <script src="../../../js/dv.core.js"></script>
+    <script src="../../../js/dv.shape.js"></script>
+</head>
+<body>
+    <section>
+        <nav class="nav-structure">
+            <ul>
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="index.html">References</a></li>
+                <li>stopOffset</li>
+            </ul>
+        </nav>
+    </section>
+    <section>
+        <h1>dve.prototype.stopOffset()</h1>
+        <section>
+            <h2>문법</h2>
+            <pre class="prettytext">var ret = dve.stopOffset(offset);</pre>
+            </section><section><h2>파라미터</h2>
+            <table class="parameters">
+                <thead>
+                    <tr>
+                        <th>이름</th>
+                        <th>형식</th>
+                        <th>설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>offset</td>
+                        <td>&lt;number&gt;|&lt;percentage&gt;</td>
+                        <td>
+                            <p>gradient stop이 놓이는 위치를 말합니다.</p>
+                            <p>linear gradient에서는 gradient 벡터를 따라 놓이는 위치를 나타내며, radial gradient에서는 초점을 기준으로 가장 바깥의 원까지의 거리를 의미합니다.</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            </section><section><h2>반환</h2>
+            <p>dve 객체를 반환합니다.</p>
+        </section>
+        <section>
+            <h2>설명</h2>
+            <p>'stopOffset' 메소드는 'stop' 요소의 'offset' 속성을 설정할 때 사용합니다.</p>
+            <p>'stop' 요소는 gradient를 표현할 때 사용되는 색상 정보를 나타냅니다.</p>
+            <pre class="prettyprint">
+&lt;svg width="600px" height="150px"&gt;
+    &lt;defs&gt;
+        &lt;linearGradient id="S01LG01" x2="50%"&gt;
+            &lt;stop offset="30%" stop-color="#F60"/&gt;
+            &lt;stop offset="70%" stop-color="#FF6"/&gt;
+        &lt;/linearGradient&gt;
+        &lt;radialGradient id="S01RG01" cx=".25" cy=".25" r="1"&gt;
+            &lt;stop offset="0%" stop-color="red"/&gt;
+            &lt;stop offset="100%" stop-color="blue"/&gt;
+        &lt;/radialGradient&gt;
+    &lt;/defs&gt;
+    &lt;rect x="0" y="25" width="200" height="25" fill="url(#S01LG01)"/&gt;
+    &lt;rect x="0" y="85" width="200" height="25" fill="url(#S01RG01)"/&gt;
+    &lt;/g&gt;
+&lt;/svg&gt;
+</pre>    
+            <div>
+                <svg width="600px" height="150px">
+                    <defs>
+                        <linearGradient id="S01LG01" x2="50%">
+                            <stop offset="30%" stop-color="#F60"/>
+                            <stop offset="70%" stop-color="#FF6"/>
+                        </linearGradient>
+                        <radialGradient id="S01RG01" cx=".25" cy=".25" r="1">
+                            <stop offset="0%" stop-color="red"/>
+                            <stop offset="100%" stop-color="blue"/>
+                        </radialGradient>
+                    </defs>
+                    <rect x="0" y="25" width="200" height="25" fill="url(#S01LG01)"/>
+                    <rect x="0" y="85" width="200" height="25" fill="url(#S01RG01)"/>
+                    </g>
+                </svg>
+            </div>
+            <pre class="prettyprint">
+var svg = DV.svg().size(600,150).into("dv-01");
+var def = DV.defs().into(svg);
+var grad1 = DV.gradl().point2("50%").id("D01GRL01").into(def);
+DV.stop().stopOffset("30%").stopColor("#F60").into(grad1);
+DV.stop().stopOffset("70%").stopColor("#FF6").into(grad1);
+var grad2 = DV.gradr().center(.25,.25).radius(1).id("D01GRL02").into(def);
+DV.stop().stopOffset("0%").stopColor("red").into(grad2);
+DV.stop().stopOffset("100%").stopColor("blue").into(grad2);
+
+DV.rect().dim(0,25,200,25).fill(grad1).into(svg);
+DV.rect().dim(0,85,200,25).fill(grad2).into(svg);
+</pre>
+            <div id="dv-01"></div>
+            <script>
+                var svg = DV.svg().size(600,150).into("dv-01");
+                var def = DV.defs().into(svg);
+                var grad1 = DV.gradl().point2("50%").id("D01GRL01").into(def);
+                DV.stop().stopOffset("30%").stopColor("#F60").into(grad1);
+                DV.stop().stopOffset("70%").stopColor("#FF6").into(grad1);
+                var grad2 = DV.gradr().center(.25,.25).radius(1).id("D01GRL02").into(def);
+                DV.stop().stopOffset("0%").stopColor("red").into(grad2);
+                DV.stop().stopOffset("100%").stopColor("blue").into(grad2);
+
+                DV.rect().dim(0,25,200,25).fill(grad1).into(svg);
+                DV.rect().dim(0,85,200,25).fill(grad2).into(svg);
+            </script>
+        </section>
+        <section>
+            <h2>참고</h2>
+            <ul>
+                <li><a href="../dv/defs.html">defs</a></li>
+                <li><a href="../dv/g.html">g</a></li>
+                <li><a href="../dv/gradl.html">gradl</a></li>
+                <li><a href="../dv/gradr.html">gradr</a></li>
+                <li><a href="../dv/rect.html">rect</a></li>
+                <li><a href="../dv/stop.html">stop</a></li>
+                <li><a href="../dv/svg.html">svg</a></li>
+                <li><a href="dim.html">dim</a></li>
+                <li><a href="fill.html">fill</a></li>
+                <li><a href="id.html">id</a></li>
+                <li><a href="into.html">into</a></li>
+                <li><a href="oco.html">oco</a></li>
+                <li><a href="point2.html">point2</a></li>
+                <li><a href="size.html">size</a></li>
+                <li><a href="stopColor.html">stopColor</a></li>
+                <li><a href="stopOpacity.html">stopOpacity</a></li>
+            </ul>
+        </section>
+    </section>
+    <footer>
+    </footer>
+</body>
+</html>

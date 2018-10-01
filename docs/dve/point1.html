@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <title></title>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" href="../../../css/style.css"/>           
+    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
+    <script src="../../../js/dv.core.js"></script>
+    <script src="../../../js/dv.shape.js"></script>
+</head>
+<body>
+    <section>
+        <nav class="nav-structure">
+            <ul>
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="index.html">Reference</a></li>
+                <li>point1</li>
+            </ul>
+        </nav>
+    </section>
+    <section>
+        <h1>DVE.prototype.point1()</h1>
+        <section>
+            <h2>문법</h2>
+            <pre class="prettyprint">var ret = dve.point1(x1, y1);</pre>
+            </section><section><h2>파라미터</h2>
+            <table class="parameters">
+                <thead>
+                    <tr>
+                        <th>이름</th>
+                        <th>형식</th>
+                        <th>설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>x1, y1</td>
+                        <td>&lt;coordinate&gt;</td>
+                        <td>
+                            <p>시작점(x1, y1)을 나타냅니다.</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            </section><section><h2>반환</h2>
+            <p>DVE 객체를 반환합니다.</p>
+        </section>
+        <section>
+            <h2>설명</h2>
+            <p>point1 메소드는 line 요소의 시작점을 설정합니다.</p> 
+            <pre class="prettyprint">
+&lt;svg width="300px" height="150px"&gt;
+  &lt;line x1="10" y1="10" x2="50" y2="100" stroke="green"/&gt;
+  &lt;line x1="50" y1="10" x2="100" y2="100" stroke="green" stroke-width="5"/&gt;
+  &lt;line x1="100" y1="10" x2="150" y2="100" stroke="green" stroke-width="10"/&gt;
+  &lt;line x1="150" y1="10" x2="200" y2="100" stroke="green" stroke-width="15" stroke-dasharray="5 5"/&gt;
+&lt;/svg&gt;
+</pre>    
+            <div>
+                <svg width="300px" height="150px">
+                    <line x1="10" y1="10" x2="50" y2="100" stroke="green"/>
+                    <line x1="50" y1="10" x2="100" y2="100" stroke="green" stroke-width="5"/>
+                    <line x1="100" y1="10" x2="150" y2="100" stroke="green" stroke-width="10"/>
+                    <line x1="150" y1="10" x2="200" y2="100" stroke="green" stroke-width="15" stroke-dasharray="5 5"/>
+                </svg>
+            </div>
+            <pre class="prettyprint">
+var svg = DV.svg().size(300,150).into("dv-01");
+DV.line().point1(10,10).point2(50,100).stroke("green").into(svg);
+DV.line().bound(50,10,100,100).stroke("green",5).into(svg);
+DV.line().bound(100,10,150,100).stroke("green",10).into(svg);
+DV.line().bound(150,10,200,100).stroke("green",15).strokeDash("5 5").into(svg);
+</pre>
+            <div id="dv-01"></div>
+            <script>
+                var svg = DV.svg().size(300,150).into("dv-01");
+                DV.line().point1(10,10).point2(50,100).stroke("green").into(svg);
+                DV.line().bound(50,10,100,100).stroke("green",5).into(svg);
+                DV.line().bound(100,10,150,100).stroke("green",10).into(svg);
+                DV.line().bound(150,10,200,100).stroke("green",15).strokeDash("5 5").into(svg);
+            </script>
+        </section>
+        <section>
+            <h2>참고</h2>
+            <ul>
+                <li><a href="../dv/line.html">line</a></li>
+                <li><a href="../dv/svg.html">svg</a></li>
+                <li><a href="bound.html">bound</a></li>
+                <li><a href="into.html">into</a></li>
+                <li><a href="point2.html">point2</a></li>
+                <li><a href="size.html">size</a></li>
+                <li><a href="stroke.html">stroke</a></li>
+                <li><a href="strokeDash.html">strokeDash</a></li>
+            </ul>
+        </section>
+    </section>
+    <footer>
+    </footer>
+</body>
+</html>

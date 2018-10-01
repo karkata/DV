@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <title></title>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" href="../../../css/style.css"/>           
+    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
+    <script src="../../../js/dv.core.js"></script>
+    <script src="../../../js/dv.shape.js"></script>
+</head>
+<body>
+    <section>
+        <nav class="nav-structure">
+            <ul>
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="index.html">References</a></li>
+                <li>ref</li>
+            </ul>
+        </nav>
+    </section>
+    <section>
+        <h1>DVE.prototype.ref()</h1>
+        <section>
+            <h2>문법</h2>
+            <pre class="prettyprint">var ret = dve.ref();</pre>
+            </section><section><h2>파라미터</h2>
+            </section><section><h2>반환</h2>
+            <p>'#' 문자가 붙은 아이디를 반환합니다.</p>
+        </section>
+        <section>
+            <h2>설명</h2>
+            <p>ref 메소드는 요소의 id 속성값을 반환합니다.</p>
+            <p>반환되는 요소의 아이디 값은 앞에 '#' 문자가 붙습니다. 이것은 다른 요소에서 IRI 참조를 사용할 수 있도록 하기 위한 목적으로 사용됩니다.</p>
+            <p>만일 '#' 문자를 포함하지 않는 원래 아이디 값을 얻고 싶다면, id 메소드를 사용하거나 attr 메소드를 사용합니다.</p>
+            <p>use 요소를 사용될 때, 참조가 사용되며, 이 참조값을 ref 메소드를 사용하여 얻을 수 있습니다.</p>
+            <pre class="prettyprint">
+&lt;svg width="300" height="100"&gt;
+  &lt;defs&gt;
+    &lt;rect id="S01R01" width="50" height="20" fill="blue"/&gt;
+  &lt;/defs&gt;
+  &lt;use xlink:href="#S01R01" x="50" y="25"/&gt;
+&lt;/svg&gt;
+</pre>
+            <div>
+                <svg width="300" height="100">
+                    <defs>
+                        <rect id="S01R01" width="50" height="20" fill="blue"/>
+                    </defs>
+                    <use xlink:href="#S01R01" x="50" y="25"/>
+                </svg>
+            </div>
+            <pre class="prettyprint">
+var svg = DV.svg().size(300,100).into("dv-01");
+var def = DV.defs().into(svg);
+var rect = DV.rect().size(50,20).fill("blue").id("D01R01").into(def);
+DV.use().xhref(rect.ref()).point(50,25).into(svg);
+// xhref 메소드는 ref 메소드를 사용하지 않고 DVE 객체만 파라미터로 받을 수도 있습니다.
+// DV.use().xhref(rect).size(.........
+</pre>
+            <div id="dv-01"></div>
+            <script>
+                var svg = DV.svg().size(300,100).into("dv-01");
+                var def = DV.defs().into(svg);
+                var rect = DV.rect().size(50,20).fill("blue").id("D01R01").into(def);
+                DV.use().xhref(rect.ref()).point(50,25).into(svg);
+            </script>
+        </section>
+        <section>
+            <h2>참고</h2>
+            <ul>
+                <li><a href="../dv/defs.html">defs</a></li>
+                <li><a href="../dv/rect.html">rect</a></li>
+                <li><a href="../dv/svg.html">svg</a></li>
+                <li><a href="../dv/use.html">use</a></li>
+                <li><a href="fill.html">fill</a></li>
+                <li><a href="id.html">id</a></li>
+                <li><a href="into.html">into</a></li>
+                <li><a href="point.html">point</a></li>
+                <li><a href="size.html">size</a></li>
+            </ul>
+        </section>
+    </section>
+    <footer>
+    </footer>
+</body>
+</html>

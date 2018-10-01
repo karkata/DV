@@ -1,0 +1,135 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <title></title>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" href="../../../css/style.css"/>           
+    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
+    <script src="../../../js/dv.core.js"></script>
+    <script src="../../../js/dv.shape.js"></script>
+    <script src="../../../js/dv.animation.js"></script>
+</head>
+<body>
+    <section>
+        <nav class="nav-structure">
+            <ul>
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="index.html">References</a></li>
+                <li>translate</li>
+            </ul>
+        </nav>
+    </section>
+    <section>
+        <h1>DVE.prototype.translate()</h1>
+        <section>
+            <h2>문법</h2>
+            <pre class="prettyprint">var ret = dve.translate(tx[, ty]);</pre>
+            </section><section><h2>파라미터</h2>
+            <table class="parameters">
+                <thead>
+                    <tr>
+                        <th>이름</th>
+                        <th>형식</th>
+                        <th>설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>tx, ty</td>
+                        <td>&lt;coordinate&gt;</td>
+                        <td>
+                            <p>현재 좌표계의 원점을 이동시킬 위치</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            </section><section><h2>반환</h2>
+            <p>DVE 객체를 반환합니다.</p>
+        </section>
+        <section>
+            <h2>설명</h2>
+            <p>translate 함수는 SVG 요소의 좌표계를 이동시킬 때 사용합니다.</p>
+            <p>SVG 요소들이 그려지는(Rendered) 공간을 SVG canvas라고 합니다. 이론적으로 이 canvas는 무한한 공간이지만, 실제로는 사각형의 유한한 영역에만 렌더링이 되는데, 이를 SVG viewport라고 합니다.즉 SVG viewport는 그려질 SVG 요소들이 보이는 공간을 의미하며, 내부적으로 viewport 영역을 벗어나는 다른 좌표의 요소들은 렌더링을 하지 않습니다.</p>
+            <p>결정된 viewport에는 viewport cooridnate system과 user coordinate system이 있는데, viewport coordinate system을 viewport space라 하고, user coordinate system을 user space라고 명명합니다. viewport의 크기는 width, height로 결정이 되는데 이 속성들은 em, ex, px, pt, pc, cm, mm, in, percentage 단위 식별자를 갖는 값을 사용하여 설정할 수 있습니다.</p>
+            <p>초기 view space와 user space는 동일하며, pixel을 기본 단위로 하는 좌표계입니다. 좌측-상단(0,0)을 원점으로 하고 오른쪽 방향으로 양의 x축, 아래 방향으로 양의 y축이 됩니다.</p>
+            <p>새로운 user space를 만들기 위해서 두가지 방법이 있습니다. 하나는 SVG document fragment(svg 요소 내부에 또 다른 svg 요소를 선언하여 또 다른 공간을 생성할 수 있습니다.)에 좌표계를 변형하는 방법이고, 다른 하나는 일반 요소에 transformation 명령을 사용하여 변형하는 방법입니다.
+            <p>translate 함수는 SVG 요소의 transform 속성값에 translate 명령어를 사용하여 기존 좌표계를 이동시킨 새로운 좌표 시스템을 생성합니다.</p>
+            <pre class="prettyprint">
+&lt;svg width="400" height="150"&gt;
+    &lt;g&gt;
+        &lt;line x1="1" y1="1" x2="100" y2="1" stroke="gray" stroke-width="1"/&gt;
+        &lt;line x1="1" y1="1" x2="1" y2="50" stroke="gray" stroke-width="1"/&gt;
+        &lt;text x="10" y="25"&gt;Original coordinate system&lt;/text&gt;
+    &lt;/g&gt;
+    &lt;g transform="translate(50, 50)"&gt;
+        &lt;line x1="1" y1="1" x2="100" y2="1" stroke="gray" stroke-width="1"/&gt;
+        &lt;line x1="1" y1="1" x2="1" y2="50" stroke="gray" stroke-width="1"/&gt;
+        &lt;text x="10" y="25"&gt;New coordinate system&lt;/text&gt;
+    &lt;/g&gt;
+&lt;/svg&gt;
+</pre>    
+            <div>
+                <svg width="400" height="150">
+                    <g>
+                        <line x1="1" y1="1" x2="100" y2="1" stroke="gray" stroke-width="1"/>
+                        <line x1="1" y1="1" x2="1" y2="50" stroke="gray" stroke-width="1"/>
+                        <text x="10" y="25">Original coordinate system</text>
+                    </g>
+                    <g transform="translate(50, 50)">
+                        <line x1="1" y1="1" x2="100" y2="1" stroke="gray" stroke-width="1"/>
+                        <line x1="1" y1="1" x2="1" y2="50" stroke="gray" stroke-width="1"/>
+                        <text x="10" y="25">New coordinate system</text>
+                    </g>
+                </svg>
+            </div>
+            <pre class="prettyprint">
+var svg = DV.svg().size(400,150).into("dv-01");
+DV.g().into(svg).append(
+    DV.line().bound(1,1,100,1).stroke("gray",1),
+    DV.line().bound(1,1,1,50).stroke("gray",1),
+    DV.text().txt("Original coordinate system").xys(10,25)
+);
+DV.g().translate(50,50).into(svg).append(
+    DV.line().bound(1,1,100,1).stroke("gray",1),
+    DV.line().bound(1,1,1,50).stroke("gray",1),
+    DV.text().txt("New coordinate system").xys(10,25)
+);
+</pre>
+            <div id="dv-01"></div>
+            <script>
+                var svg = DV.svg().size(400,150).into("dv-01");
+                DV.g().into(svg).append(
+                    DV.line().bound(1,1,100,1).stroke("gray",1),
+                    DV.line().bound(1,1,1,50).stroke("gray",1),
+                    DV.text().txt("Original coordinate system").xys(10,25)
+                );
+                DV.g().translate(50,50).into(svg).append(
+                    DV.line().bound(1,1,100,1).stroke("gray",1),
+                    DV.line().bound(1,1,1,50).stroke("gray",1),
+                    DV.text().txt("New coordinate system").xys(10,25)
+                );
+            </script>
+        </section>
+        <section>
+            <h2>참고</h2>
+            <ul>
+                <li><a href="../dv/g.html">g</a></li>
+                <li><a href="../dv/line.html">line</a></li>
+                <li><a href="../dv/svg.html">svg</a></li>
+                <li><a href="../dv/text.html">text</a></li>
+                <li><a href="append.html">append</a></li>
+                <li><a href="bound.html">bound</a></li>
+                <li><a href="into.html">into</a></li>
+                <li><a href="size.html">size</a></li>
+                <li><a href="stroke.html">stroke</a></li>
+                <li><a href="txt.html">txt</a></li>
+                <li><a href="xys.html">xys</a></li>
+            </ul>
+        </section>
+    </section>
+    <footer>
+    </footer>
+</body>
+</html>

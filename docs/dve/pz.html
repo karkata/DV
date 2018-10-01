@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <title></title>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" href="../../../css/style.css"/>           
+    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
+    <script src="../../../js/dv.core.js"></script>
+    <script src="../../../js/dv.shape.js"></script>
+</head>
+<body>
+    <section>
+        <nav class="nav-structure">
+            <ul>
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="index.html">References</a></li>
+                <li>pz</li>
+            </ul>
+        </nav>
+    </section>
+    <section>
+        <h1>DVE.prototype.pz()</h1>
+        <section>
+            <h2>문법</h2>
+            <pre class="prettyprint">var ret = dve.pz();</pre>
+            </section><section><h2>파라미터</h2>
+            </section><section><h2>반환</h2>
+            <p>DVE 객체를 반환합니다.</p>
+        </section>
+        <section>
+            <h2>설명</h2>
+            <p>'pz' 메소드는 'path' 요소의 'closepath' 커맨드를 나타냅니다.</p>
+            
+            <p>closepath는 현재 서브 패스 상에서 현재 위치와 서브 패스의 첫 위치와 선분를 그려, 서브 패스를 닫게합니다.</p>
+            <pre class="prettyprint">
+&lt;svg width="5cm" height="4cm" viewBox="0 0 500 400"&gt;
+  &lt;path d="M100,100 L400,100 M400,300 L100,300 L100,350 z" fill="none" stroke="blue" stroke-width="5"/&gt;
+&lt;/svg&gt;
+</pre>
+            <div>
+                <svg width="5cm" height="4cm" viewBox="0 0 500 400">
+                    <path d="M100,100 L400,100 M400,300 L100,300 L100,350 z" fill="none" stroke="blue" stroke-width="5"/>
+                </svg>
+            </div>
+            <pre class="prettyprint">
+var svg = DV.svg().size("5cm","4cm").viewbox(0,0,500,400).into("dv-01");
+DV.path().d("M100,100 L400,100 M400,300 L100,300 L100,350 Z").fill("none").stroke("blue",5).into(svg);
+</pre>
+            <div id="dv-01"></div>
+            <script>
+                var svg = DV.svg().size("5cm","4cm").viewbox(0,0,500,400).into("dv-01");
+                DV.path().d("M100,100 L400,100 M400,300 L100,300 L100,350 Z").fill("none").stroke("blue",5).into(svg);
+            </script>
+            <pre class="prettyprint">
+var svg = DV.svg().size("5cm","4cm").viewbox(0,0,500,400).into("dv-02");
+DV.path().fill("none").stroke("blue",5)
+    .mto(100,100).lto(400,100)
+    .mto(400,300).lto(100,300).lto(100,350)
+    .pz().into(svg);
+</pre>
+            <div id="dv-02"></div>
+            <script>
+                var svg = DV.svg().size("5cm","4cm").viewbox(0,0,500,400).into("dv-02");
+                DV.path().fill("none").stroke("blue",5)
+                    .mto(100,100).lto(400,100)
+                    .mto(400,300).lto(100,300).lto(100,350)
+                    .pz().into(svg);
+            </script>
+            <pre class="prettyprint">
+var svg = DV.svg().size("5cm","4cm").viewbox(0,0,500,400).into("dv-03");
+DV.path().fill("none").stroke("blue",5)
+    .mto(100,100).lto(400,100)
+    .mto(0, 200,true).lto(-300,0,true).lto(0,50,true)
+    .pz().into(svg);
+</pre>
+            <div id="dv-03"></div>
+            <script>
+                var svg = DV.svg().size("5cm","4cm").viewbox(0,0,500,400).into("dv-03");
+                DV.path().fill("none").stroke("blue",5)
+                    .mto(100,100).lto(400,100)
+                    .mto(0, 200,true).lto(-300,0,true).lto(0,50,true)
+                    .pz().into(svg);
+            </script>
+        </section>
+        <section>
+            <h2>참고</h2>
+            <ul>
+                <li><a href="../dv/path.html">path</a></li>
+                <li><a href="../dv/svg.html">svg</a></li>
+                <li><a href="arc.html">arc</a></li>
+                <li><a href="arcf.html">arcf</a></li>
+                <li><a href="csto.html">csto</a></li>
+                <li><a href="cto.html">cto</a></li>
+                <li><a href="fill.html">fill</a></li>
+                <li><a href="hto.html">hto</a></li>
+                <li><a href="into.html">into</a></li>
+                <li><a href="lto.html">lto</a></li>
+                <li><a href="mto.html">mto</a></li>
+                <li><a href="qsto.html">qsto</a></li>
+                <li><a href="qto.html">qto</a></li>
+                <li><a href="size.html">size</a></li>
+                <li><a href="stroke.html">stroke</a></li>
+                <li><a href="viewbox.html">viewbox</a></li>
+                <li><a href="vto.html">vto</a></li>
+            </ul>
+        </section>
+    </section>
+    <footer>
+    </footer>
+</body>
+</html>

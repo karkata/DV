@@ -1,0 +1,132 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <title></title>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" href="../../../css/style.css"/>           
+    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
+    <script src="../../../js/dv.core.js"></script>
+    <script src="../../../js/dv.shape.js"></script>
+</head>
+<body>
+    <section>
+        <nav class="nav-structure">
+            <ul>
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="index.html">References</a></li>
+                <li>skewy</li>
+            </ul>
+        </nav>
+    </section>
+    <section>
+        <h1>DVE.prototype.skewy()</h1>
+        <section>
+            <h2>문법</h2>
+            <pre class="prettyprint">var ret = dve.skewy(angle);</pre>
+            </section><section><h2>파라미터</h2>
+            <table class="parameters">
+                <thead>
+                    <tr>
+                        <th>이름</th>
+                        <th>형식</th>
+                        <th>설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>angle</td>
+                        <td>&lt;angle&gt;</td>
+                        <td>
+                            <p>y축 좌표를 왜곡시킬 각도</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            </section><section><h2>반환</h2>
+            <p>DVE 객체를 반환합니다.</p>
+        </section>
+        <section>
+            <h2>설명</h2>
+            <p>skewy 함수는 SVG 요소의 y 좌표축을 주어진 각도만큼 왜곡시킬 때 사용합니다.</p>
+            <p>skewy 함수는 SVG 요소의 transform 속성값에 skewY 명령어를 사용하여 y 좌표축을 왜곡시킨 새로운 좌표 시스템을 생성합니다.</p>
+            <pre class="prettyprint">
+&lt;svg width="400" height="150"&gt;
+    &lt;g&gt;
+        &lt;line x1="1" y1="1" x2="100" y2="1" stroke="gray" stroke-width="1"/&gt;
+        &lt;line x1="1" y1="1" x2="1" y2="50" stroke="gray" stroke-width="1"/&gt;
+        &lt;text x="10" y="25"&gt;Original coordinate system&lt;/text&gt;
+    &lt;/g&gt;
+    &lt;g transform="translate(50, 50) skewY(30)"&gt;
+        &lt;line x1="1" y1="1" x2="100" y2="1" stroke="gray" stroke-width="1"/&gt;
+        &lt;line x1="1" y1="1" x2="1" y2="50" stroke="gray" stroke-width="1"/&gt;
+        &lt;text x="10" y="25"&gt;New coordinate system&lt;/text&gt;
+    &lt;/g&gt;
+&lt;/svg&gt;
+</pre>    
+            <div>
+                <svg width="400" height="150">
+                    <g>
+                        <line x1="1" y1="1" x2="100" y2="1" stroke="gray" stroke-width="1"/>
+                        <line x1="1" y1="1" x2="1" y2="50" stroke="gray" stroke-width="1"/>
+                        <text x="10" y="25">Original coordinate system</text>
+                    </g>
+                    <g transform="translate(50, 50) skewY(30)">
+                        <line x1="1" y1="1" x2="100" y2="1" stroke="gray" stroke-width="1"/>
+                        <line x1="1" y1="1" x2="1" y2="50" stroke="gray" stroke-width="1"/>
+                        <text x="10" y="25">New coordinate system</text>
+                    </g>
+                </svg>
+            </div>
+            <pre class="prettyprint">
+var svg = DV.svg().size(400,150).into("dv-01");
+DV.g().into(svg).append(
+    DV.line().bound(1,1,100,1).stroke("gray",1),
+    DV.line().bound(1,1,1,50).stroke("gray",1),
+    DV.text().txt("Original coordinate system").xys(10,25)
+);
+DV.g().translate(50,50).skewy(30).into(svg).append(
+    DV.line().bound(1,1,100,1).stroke("gray",1),
+    DV.line().bound(1,1,1,50).stroke("gray",1),
+    DV.text().txt("New coordinate system").xys(10,25)
+);
+</pre>
+            <div id="dv-01"></div>
+            <script>
+                var svg = DV.svg().size(400,150).into("dv-01");
+                DV.g().into(svg).append(
+                    DV.line().bound(1,1,100,1).stroke("gray",1),
+                    DV.line().bound(1,1,1,50).stroke("gray",1),
+                    DV.text().txt("Original coordinate system").xys(10,25)
+                );
+                DV.g().translate(50,50).skewy(30).into(svg).append(
+                    DV.line().bound(1,1,100,1).stroke("gray",1),
+                    DV.line().bound(1,1,1,50).stroke("gray",1),
+                    DV.text().txt("New coordinate system").xys(10,25)
+                );
+            </script>
+        </section>
+        <section>
+            <h2>참고</h2>
+            <ul>
+                <li><a href="../dv/g.html">g</a></li>
+                <li><a href="../dv/line.html">line</a></li>
+                <li><a href="../dv/svg.html">svg</a></li>
+                <li><a href="../dv/text.html">text<a/></li>
+                <li><a href="append.html">append</a></li>
+                <li><a href="bound.html">bound</a></li>
+                <li><a href="fill.html">fill</a></li>
+                <li><a href="into.html">into</a></li>
+                <li><a href="size.html">size</a></li>
+                <li><a href="stroke.html">stroke</a></li>
+                <li><a href="translate.html">translate</a></li>
+                <li><a href="txt.html">txt</a></li>
+                <li><a href="xys.html">xys</a></li>
+            </ul>
+        </section>
+    </section>
+    <footer>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <title></title>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" href="../../../css/style.css"/>           
+    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
+    <script src="../../../js/dv.core.js"></script>
+    <script src="../../../js/dv.shape.js"></script>
+</head>
+<body>
+    <section>
+        <nav class="nav-structure">
+            <ul>
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="index.html">References</a></li>
+                <li>gradr</li>
+            </ul>
+        </nav>
+    </section>
+    <section>
+        <h1>DV.prototype.gradr()</h1>
+        <section>
+            <h2>문법</h2>
+            <pre class="prettyprint">var ret = DV.gradr(props);</pre>
+            </section><section><h2>파라미터</h2>
+            <p>'props' 파라미터는 'radialGradient' 요소를 생성하는데 필요한 속성을 갖는 객체입니다.</p>
+            <table class="parameters">
+                <thead>
+                    <tr>
+                        <th>이름</th>
+                        <th>형식</th>
+                        <th>설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>cx, cy, r, fx, fy</td>
+                        <td>&lt;coordinate&gt;</td>
+                        <td>
+                            <p>gradients가 렌더링될 요소의 사각형 영역에서 gradients 방향을 나타내는 벡터입니다.</p>
+                            <p>cx, cy는 벡터의 시작점을, r은 벡터의 반지름을 나타냅니다.</p>
+                            <p>fx, fy는 focal point를 나타냅니다. cx, cy, r이 gradients가 렌더링되는 영역을 나타낸다면, focal point는 gradients 중심을 의미합니다.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>gradientUnits</td>
+                        <td>String('userSpaceOnUse'|'objectBoundingBox')</td>
+                        <td>
+                            <p>cx, cy, fx, fy 벡터를 결정짓는 좌표 시스템입니다.</p>
+                            <p>값이 userSpaceOnUse이면 사용자 좌표 시스템과 동일한 좌표계를 가지고 벡터가 결정됩니다.</p>
+                            <p>기본값은 objectBoundingBox으로써, gradients가 렌더링되는 요소의 사각형 영역을 좌표 시스템으로 하는 벡터가 결정됩니다.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>spreadMethod</td>
+                        <td>String('pad'|'reflect'|'repeat')</td>
+                        <td>
+                            <p>벡터를 벗어난 영역을 그리는 방법을 설정합니다.</p>
+                            <p>값이 userSpaceOnUse이면 사용자 좌표 시스템과 동일한 좌표계를 가지고 벡터가 결정됩니다.</p>
+                            <p>기본값은 pad로써 양쪽 끝 색상을 그대로 사용합니다. repeat이면 vector내에서 렌더링된 방법을 반복하며, reflect이면 반대로 처리를 합니다.</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            </section><section><h2>반환</h2>
+            <p>dve 객체를 반환합니다.</p>
+        </section>
+        <section>
+            <h2>설명</h2>
+            <p>SVG에서는 도형의 테두리와 내부를 그릴 때, color, gradients, patterns 중 하나를 사용합니다.</p>
+            <p>도형을 색칠(painting)할 때, 색칠하는 방법을 paint server(일종의 개념)이라고 합니다.</p>
+            <p>paint server은 색칠하는 방법을 의미하는 것으로 gradient, pattern도 하나의 paint server입니다.</p>
+            <p>painter server는 'fill, stroke' 속성에 사용할 때, &lt;iri&gt; 형식(url(#id))을 사용하기도 합니다.</p>
+            <p>Gradients는 하나의 색상에서 다른 색상으로 vector를 따라 부드럽게 색상이 전이되는 것을 말합니다.</p>
+            <p>SVG에서는 linear gradients와 radial gradients 두 형식을 지원하고 있습니다.</p>
+            <p>'radialGradient' 요소는 radial(방사형) gradients를 표현을 정의합니다.</p>
+            <p>gradients 효과가 시작되고 끝나는 vector는 'cx, cy, r'로 결정이 되는데, 기본적으로 radial gradients가 그려질 요소의 사각형 영역 안에서 상대좌표로 결정되며, 이 좌료값들이 생략이 되면, 'cx, cy, r' 모두 50%의 값을 갖습니다.</p>
+            <p><img src="https://www.w3.org/TR/SVG11/images/pservers/gradient_vector_and_normal.png" alt="vector"/></p>
+            <p>만일 'gradientUnits' 속성값을 'userSpaceOnUse'로 설정하는 경우, vector의 좌표는 대상 요소가 아니라 사용자 좌표계를 기준으로 처리가 됩니다.</p>
+            <p>vector를 벗어난 부분은 'spreadMethod' 속성을 가지고 처리를 합니다. 기본값은 'pad'이며, gradients 양쪽 끝 색상을 그대로 사용합니다. 'repeat'이면 vector내에서 렌더링된 방법을 반복하며, 'reflect'이면 반대로 처리를 합니다.</p>
+            <pre class="prettyprint">
+&lt;svg width="600px" height="250px"&gt;
+  &lt;defs&gt;
+    &lt;radialGradient id="S01RG01" r="25%"&gt;
+      &lt;stop offset="0%" stop-color="red"/&gt;
+      &lt;stop offset="100%" stop-color="blue"/&gt;
+    &lt;/radialGradient&gt;
+    &lt;radialGradient id="S01RG02" cx="25%" cy="50%" r="10%" gradientUnits="userSpaceOnUse"&gt;
+      &lt;stop offset="0%" stop-color="red"/&gt;
+      &lt;stop offset="100%" stop-color="blue"/&gt;
+    &lt;/radialGradient&gt;
+    &lt;radialGradient id="S01RG03" r="25%" spreadMethod="reflect"&gt;
+      &lt;stop offset="0%" stop-color="red"/&gt;
+      &lt;stop offset="100%" stop-color="blue"/&gt;
+    &lt;/radialGradient&gt;
+    &lt;radialGradient id="S01RG04" r="25%" spreadMethod="repeat"&gt;
+      &lt;stop offset="0%" stop-color="red"/&gt;
+      &lt;stop offset="100%" stop-color="blue"/&gt;
+    &lt;/radialGradient&gt;
+  &lt;/defs&gt;
+  &lt;g transform="translate(50, 50)" font-size="0.80em"&gt;
+    &lt;text x="0" y="17"&gt;gradientUnits = objectBoundingBox&lt;/text&gt;
+    &lt;rect x="0" y="25" width="200" height="50" fill="url(#S01RG01)"/&gt;
+    &lt;text x="0" y="102"&gt;gradientUnits = useSpaceOnUse&lt;/text&gt;
+    &lt;rect x="0" y="110" width="200" height="50" fill="url(#S01RG02)"/&gt;
+    &lt;circle cx="25%" cy="50%" r="10%" stroke="white" stroke-width="1" fill="none"/&gt;
+  &lt;/g&gt;
+  &lt;g transform="translate(300, 50)" font-size="0.80em"&gt;
+    &lt;text x="0" y="17"&gt;spreadMethod = reflect&lt;/text&gt;
+    &lt;rect x="0" y="25" width="200" height="50" fill="url(#S01RG03)"/&gt;
+    &lt;text x="0" y="102"&gt;spreadMethod = repeat&lt;/text&gt;
+    &lt;rect x="0" y="110" width="200" height="50" fill="url(#S01RG04)"/&gt;
+  &lt;/g&gt;
+&lt;/svg&gt;
+</pre>    
+            <div>
+                <svg width="600px" height="250px">
+                    <defs>
+                        <radialGradient id="S01RG01" r="25%">
+                            <stop offset="0%" stop-color="red"/>
+                            <stop offset="100%" stop-color="blue"/>
+                        </radialGradient>
+                        <radialGradient id="S01RG02" cx="25%" cy="50%" r="10%" gradientUnits="userSpaceOnUse">
+                            <stop offset="0%" stop-color="red"/>
+                            <stop offset="100%" stop-color="blue"/>
+                        </radialGradient>
+                        <radialGradient id="S01RG03" r="25%" spreadMethod="reflect">
+                            <stop offset="0%" stop-color="red"/>
+                            <stop offset="100%" stop-color="blue"/>
+                        </radialGradient>
+                        <radialGradient id="S01RG04" r="25%" spreadMethod="repeat">
+                            <stop offset="0%" stop-color="red"/>
+                            <stop offset="100%" stop-color="blue"/>
+                        </radialGradient>
+                    </defs>
+                    <g transform="translate(50, 50)" font-size="0.80em">
+                        <text x="0" y="17">gradientUnits = objectBoundingBox</text>
+                        <rect x="0" y="25" width="200" height="50" fill="url(#S01RG01)"/>
+                        <text x="0" y="102">gradientUnits = useSpaceOnUse</text>
+                        <rect x="0" y="110" width="200" height="50" fill="url(#S01RG02)"/>
+                        <circle cx="25%" cy="50%" r="10%" stroke="white" stroke-width="1" fill="none"/>
+                    </g>
+                    <g transform="translate(300, 50)" font-size="0.80em">
+                        <text x="0" y="17">spreadMethod = reflect</text>
+                        <rect x="0" y="25" width="200" height="50" fill="url(#S01RG03)"/>
+                        <text x="0" y="102">spreadMethod = repeat</text>
+                        <rect x="0" y="110" width="200" height="50" fill="url(#S01RG04)"/>
+                    </g>
+                </svg>
+            </div>
+            <pre class="prettyprint">
+var svg = DV.svg().size(600,250).into("dv-01");
+var def = DV.defs().into(svg);
+var grad1 = DV.gradr().radius("25%").id("D01RG01").into(def);
+DV.stop().oco("5%","red").into(grad1);
+DV.stop().oco("100%","blue").into(grad1);
+var grad2 = DV.gradr().center("25%","50%").radius("10%").gradientUnits("userSpaceOnUse").id("D01RG02").into(def);
+DV.stop().oco("5%","red").into(grad2);
+DV.stop().oco("100%","blue").into(grad2);
+var grad3 = DV.gradr().radius("25%").spreadMethod("reflect").id("D01RG03").into(def);
+DV.stop().oco("5%","red").into(grad3);
+DV.stop().oco("100%","blue").into(grad3);
+var grad4 = DV.gradr().radius("25%").spreadMethod("repeat").id("D01RG04").into(def);
+DV.stop().oco("5%","red").into(grad4);
+DV.stop().oco("100%","blue").into(grad4);
+
+var g1 = DV.g().attr("font-size","0.80em").translate(50, 25).into(svg);
+DV.text().txt("gradientUnits = objectBoudningBox").xys(0,17).into(g1);
+DV.rect().dim(0,25,200,50).fill(grad1).into(g1);
+DV.text().txt("gradientUnits = useSpaceOnUse").xys(0,102).into(g1);
+DV.rect().dim(0,110,200,50).fill(grad2).into(g1);
+DV.circle().center("25%","50%").radius("10%").stroke("white",1).fill("none").into(g1);
+
+var g2 = DV.g().attr("font-size","0.80em").translate(300, 25).into(svg);
+DV.text().txt("spreadMethod = reflect").xys(0,17).into(g2);
+DV.rect().dim(0,25,200,50).fill(grad3).into(g2);
+DV.text().txt("spreadMethod = repeat").xys(0,102).into(g2);
+DV.rect().dim(0,110,200,50).fill(grad4).into(g2);
+</pre>
+            <div id="dv-01"></div>
+            <script>
+                var svg = DV.svg().size(600,250).into("dv-01");
+                var def = DV.defs().into(svg);
+                var grad1 = DV.gradr().radius("25%").id("D01RG01").into(def);
+                DV.stop().oco("5%","red").into(grad1);
+                DV.stop().oco("100%","blue").into(grad1);
+                var grad2 = DV.gradr().center("25%","50%").radius("10%").gradientUnits("userSpaceOnUse").id("D01RG02").into(def);
+                DV.stop().oco("5%","red").into(grad2);
+                DV.stop().oco("100%","blue").into(grad2);
+                var grad3 = DV.gradr().radius("25%").spreadMethod("reflect").id("D01RG03").into(def);
+                DV.stop().oco("5%","red").into(grad3);
+                DV.stop().oco("100%","blue").into(grad3);
+                var grad4 = DV.gradr().radius("25%").spreadMethod("repeat").id("D01RG04").into(def);
+                DV.stop().oco("5%","red").into(grad4);
+                DV.stop().oco("100%","blue").into(grad4);
+
+                var g1 = DV.g().attr("font-size","0.80em").translate(50, 25).into(svg);
+                DV.text().txt("gradientUnits = objectBoudningBox").xys(0,17).into(g1);
+                DV.rect().dim(0,25,200,50).fill(grad1).into(g1);
+                DV.text().txt("gradientUnits = useSpaceOnUse").xys(0,102).into(g1);
+                DV.rect().dim(0,110,200,50).fill(grad2).into(g1);
+                DV.circle().center("25%","50%").radius("10%").stroke("white",1).fill("none").into(g1);
+
+                var g2 = DV.g().attr("font-size","0.80em").translate(300, 25).into(svg);
+                DV.text().txt("spreadMethod = reflect").xys(0,17).into(g2);
+                DV.rect().dim(0,25,200,50).fill(grad3).into(g2);
+                DV.text().txt("spreadMethod = repeat").xys(0,102).into(g2);
+                DV.rect().dim(0,110,200,50).fill(grad4).into(g2);
+            </script>
+            <pre class="prettyprint">
+&lt;svg width="600px" height="250px"&gt;
+    &lt;defs&gt;
+        &lt;radialGradient id="S02RG01" r="1"&gt;
+            &lt;stop offset="0%" stop-color="red"/&gt;
+            &lt;stop offset="100%" stop-color="blue"/&gt;
+        &lt;/radialGradient&gt;
+        &lt;radialGradient id="S02RG02" r="0.5"&gt;
+            &lt;stop offset="0%" stop-color="red"/&gt;
+            &lt;stop offset="100%" stop-color="blue"/&gt;
+        &lt;/radialGradient&gt;
+        &lt;radialGradient id="S02RG03" cx="25%" cy="25%" r="1"&gt;
+            &lt;stop offset="0%" stop-color="red"/&gt;
+            &lt;stop offset="100%" stop-color="blue"/&gt;
+        &lt;/radialGradient&gt;
+        &lt;radialGradient id="S02RG04" r="0.5" fx="75%" fy="75%"&gt;
+            &lt;stop offset="0%" stop-color="red"/&gt;
+            &lt;stop offset="100%" stop-color="blue"/&gt;
+        &lt;/radialGradient&gt;
+    &lt;/defs&gt;
+    &lt;g transform="translate(50, 50)" font-size="0.80em"&gt;
+        &lt;text x="0" y="17"&gt;r = 1&lt;/text&gt;
+        &lt;rect x="0" y="25" width="200" height="50" fill="url(#S02RG01)"/&gt;
+        &lt;text x="0" y="102"&gt;r = 0.5&lt;/text&gt;
+        &lt;rect x="0" y="110" width="200" height="50" fill="url(#S02RG02)"/&gt;
+    &lt;/g&gt;
+    &lt;g transform="translate(300, 50)" font-size="0.80em"&gt;
+        &lt;text x="0" y="17"&gt;cx = 25%, cy = 25%, r = 1&lt;/text&gt;
+        &lt;rect x="0" y="25" width="200" height="50" fill="url(#S02RG03)"/&gt;
+        &lt;text x="0" y="102"&gt;fx = 75%, fy = 75%, r = 0.5&lt;/text&gt;
+        &lt;rect x="0" y="110" width="200" height="50" fill="url(#S02RG04)"/&gt;
+    &lt;/g&gt;
+&lt;/svg&gt;
+</pre>
+            <div>
+                <svg width="600px" height="250px">
+                    <defs>
+                        <radialGradient id="S02RG01" r="1">
+                            <stop offset="0%" stop-color="red"/>
+                            <stop offset="100%" stop-color="blue"/>
+                        </radialGradient>
+                        <radialGradient id="S02RG02" r="0.5">
+                            <stop offset="0%" stop-color="red"/>
+                            <stop offset="100%" stop-color="blue"/>
+                        </radialGradient>
+                        <radialGradient id="S02RG03" cx="25%" cy="25%" r="1">
+                            <stop offset="0%" stop-color="red"/>
+                            <stop offset="100%" stop-color="blue"/>
+                        </radialGradient>
+                        <radialGradient id="S02RG04" r="0.5" fx="75%" fy="75%">
+                            <stop offset="0%" stop-color="red"/>
+                            <stop offset="100%" stop-color="blue"/>
+                        </radialGradient>
+                    </defs>
+                    <g transform="translate(50, 50)" font-size="0.80em">
+                        <text x="0" y="17">r = 1</text>
+                        <rect x="0" y="25" width="200" height="50" fill="url(#S02RG01)"/>
+                        <text x="0" y="102">r = 0.5</text>
+                        <rect x="0" y="110" width="200" height="50" fill="url(#S02RG02)"/>
+                    </g>
+                    <g transform="translate(300, 50)" font-size="0.80em">
+                        <text x="0" y="17">cx = 25%, cy = 25%, r = 1</text>
+                        <rect x="0" y="25" width="200" height="50" fill="url(#S02RG03)"/>
+                        <text x="0" y="102">fx = 75%, fy = 75%, r = 0.5</text>
+                        <rect x="0" y="110" width="200" height="50" fill="url(#S02RG04)"/>
+                    </g>
+                </svg>
+            </div>
+            <pre class="prettyprint">
+var svg = DV.svg().size(600,250).into("dv-02");
+var def = DV.defs().into(svg);
+var stops = [{ "offset": "0%", "color": "red" }, { "offset": "100%", "color": "blue"}];
+var grad1 = DV.gradr().radius(1).id("D02RG01").into(def);
+DV.stop().oco("0%","red").into(grad1);
+DV.stop().oco("100%","blue").into(grad1);
+var grad2 = DV.gradr().radius(0.5).id("D02RG02").into(def);
+DV.stop().oco("0%","red").into(grad2);
+DV.stop().oco("100%","blue").into(grad2);
+var grad3 = DV.gradr().center("25%","25%").radius(1).id("D02RG03").into(def);
+DV.stop().oco("0%","red").into(grad3);
+DV.stop().oco("100%","blue").into(grad3);
+var grad4 = DV.gradr().radius(0.5).focalPoint("75%","75%").id("D02RG04").into(def);
+DV.stop().oco("0%","red").into(grad4);
+DV.stop().oco("100%","blue").into(grad4);
+
+var g1 = DV.g().attr("font-size","0.80em").translate(50, 50).into(svg);
+DV.text().txt("r = 1").xys(0,17).into(g1);
+DV.rect().dim(0,25,200,50).fill(grad1).into(g1);
+DV.text().txt("r = 0.5").xys(0,102).into(g1);
+DV.rect().dim(0,110,200,50).fill(grad2).into(g1);
+
+var g2 = DV.g().attr("font-size","0.80em").translate(300, 50).into(svg);
+DV.text().txt("cx = 25%, cy = 25%, r = 1").xys(0,17).into(g2);
+DV.rect().dim(0,25,200,50).fill(grad3).into(g2);
+DV.text().txt("fx = 75%, fy = 75%, r = 0.5").xys(0,102).into(g2);
+DV.rect().dim(0,110,200,50).fill(grad4).into(g2);
+</pre>
+            <div id="dv-02"></div>
+            <script>
+                var svg = DV.svg().size(600,250).into("dv-02");
+                var def = DV.defs().into(svg);
+                var stops = [{ "offset": "0%", "color": "red" }, { "offset": "100%", "color": "blue"}];
+                var grad1 = DV.gradr().radius(1).id("D02RG01").into(def);
+                DV.stop().oco("0%","red").into(grad1);
+                DV.stop().oco("100%","blue").into(grad1);
+                var grad2 = DV.gradr().radius(0.5).id("D02RG02").into(def);
+                DV.stop().oco("0%","red").into(grad2);
+                DV.stop().oco("100%","blue").into(grad2);
+                var grad3 = DV.gradr().center("25%","25%").radius(1).id("D02RG03").into(def);
+                DV.stop().oco("0%","red").into(grad3);
+                DV.stop().oco("100%","blue").into(grad3);
+                var grad4 = DV.gradr().radius(0.5).focalPoint("75%","75%").id("D02RG04").into(def);
+                DV.stop().oco("0%","red").into(grad4);
+                DV.stop().oco("100%","blue").into(grad4);
+
+                var g1 = DV.g().attr("font-size","0.80em").translate(50, 50).into(svg);
+                DV.text().txt("r = 1").xys(0,17).into(g1);
+                DV.rect().dim(0,25,200,50).fill(grad1).into(g1);
+                DV.text().txt("r = 0.5").xys(0,102).into(g1);
+                DV.rect().dim(0,110,200,50).fill(grad2).into(g1);
+
+                var g2 = DV.g().attr("font-size","0.80em").translate(300, 50).into(svg);
+                DV.text().txt("cx = 25%, cy = 25%, r = 1").xys(0,17).into(g2);
+                DV.rect().dim(0,25,200,50).fill(grad3).into(g2);
+                DV.text().txt("fx = 75%, fy = 75%, r = 0.5").xys(0,102).into(g2);
+                DV.rect().dim(0,110,200,50).fill(grad4).into(g2);
+            </script>
+        </section>
+        <section>
+            <h2>참고</h2>
+            <ul>
+                <li><a href="../dve/attr.html">attr</a></li>
+                <li><a href="../dve/center.html">center</a></li>
+                <li><a href="../dve/dim.html">dim</a></li>
+                <li><a href="../dve/fill.html">fill</a></li>
+                <li><a href="../dve/focalPoint.html">focalPoint</a></li>
+                <li><a href="../dve/id.html">id</a></li>
+                <li><a href="../dve/into.html">into</a></li>
+                <li><a href="../dve/oco.html">oco</a></li>
+                <li><a href="../dve/radius.html">radius</a></li>
+                <li><a href="../dve/size.html">size</a></li>
+                <li><a href="../dve/stroke.html">stroke</a></li>
+                <li><a href="../dve/translate.html">translate</a></li>
+                <li><a href="../dve/txt.html">txt</a></li>
+                <li><a href="../dve/xys.html">xys<a/></li>
+                <li><a href="defs.html">defs</a></li>
+                <li><a href="g.html">g</a></li>
+                <li><a href="rect.html">rect</a></li>
+                <li><a href="stop.html">stop</a></li>
+                <li><a href="svg.html">svg</a></li>
+                <li><a href="text.html">text</a></li>
+            </ul>
+        </section>
+    </section>
+    <footer>
+    </footer>
+</body>
+</html>

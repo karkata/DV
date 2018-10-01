@@ -1,0 +1,147 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <title></title>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" href="../../../css/style.css"/>           
+    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
+    <script src="../../../js/dv.core.js"></script>
+    <script src="../../../js/dv.shape.js"></script>
+</head>
+<body>
+    <section>
+        <nav class="nav-structure">
+            <ul>
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="index.html">References</a></li>
+                <li>markerPoint</li>
+            </ul>
+        </nav>
+    </section>
+    <section>
+        <h1>DV.prototype.markerPoint()</h1>
+        <section>
+            <h2>문법</h2>
+            <pre class="prettyprint">var ret = DV.markerPoint(x, y);</pre>
+            </section><section><h2>파라미터</h2>
+            <table class="parameters">
+                <thead>
+                    <tr>
+                        <th>이름</th>
+                        <th>형식</th>
+                        <th>설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>x, y</td>
+                        <td>&lt;coordinate&gt;</td>
+                        <td>
+                            <p>마커가 테두리 위의 점에 올려질 위치로써, viewBox의 좌표계를 기준으로 합니다.</p>
+                            <p>만일 테두리 위의 점의 가운데에 마커가 오도록 하려면, w(markerWidth), h(markerHeight)의 반에 해당하는 값으로 설정해야 합니다.</p>
+                            <p>기본값은 0입니다.</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            </section><section><h2>반환</h2>
+            <p>dve 객체를 반환합니다.</p>
+        </section>
+        <section>
+            <h2>설명</h2>
+            <p>'markerPoint' 메소드는 'marker' 요소의 'refX, refY' 속성을 설정합니다.</p>
+            <p>'marker' 요소 내부에 그려지는 요소는 'marker' 요소의 'viewBox' 영역 내에 그려진다고 보면 됩니다.</p>
+            <p>'markerWidth, markerHeight'는 마커의 크기(viewBox가 그려질)를 말하며, 마커를 사용하는 테두리의 두께가 1인 경우를 기준으로 scaling됩니다.</p>
+            <p>만일 scaling 없이 사용하려면 'markerUnits' 속성을 'strokeWidth'가 아닌 'useSpaceOnUse'를 사용하여 스케일링없이 선언된 그대로 그려지게 할 수 있습니다.</p>
+            <p>'refX, refY'는 마커가 테두리위의 점에 올려질 위치로써, 'viewBox'의 좌측/상단은 0, 0입니다.</p>
+            <p>'orient' 속성은 그려지는 마커의 회전각을 설정할 때 사용합니다.</p>
+            <pre class="prettyprint">
+&lt;svg width="300" height="100"&gt;
+    &lt;defs&gt;
+        &lt;marker id="start" refX="5" refY="5" markerWidth="10" markerHeight="10" viewBox="0 0 10 10"&gt;
+            &lt;ellipse cx="5" cy="5" rx="5" ry="5" fill="red"/&gt;
+        &lt;/marker&gt;
+        &lt;marker id="middle" refX="5" refY="5" markerWidth="10" markerHeight="10" viewBox="0 0 10 10" orient="auto"&gt;
+            &lt;rect x="0" y="0" width="10" height="10" fill="blue"/&gt;
+        &lt;/marker&gt;
+        &lt;marker id="end" refX="5" refY="5" markerWidth="10" markerHeight="10" viewBox="0 0 10 10" orient="auto"&gt;
+            &lt;path d="M1,1 L9,5 L1,9 z" fill="orange"/&gt;
+        &lt;/marker&gt;
+    &lt;/defs&gt;
+    &lt;path d="M50,25 L100,25 L150,50" fill="none" stroke="black" stroke-width="3"
+        marker-start="url(#start)" marker-mid="url(#middle)" marker-end="url(#end)"/&gt;
+&lt;/svg&gt;
+</pre>
+            <div>
+                <svg width="300" height="100">
+                    <defs>
+                        <marker id="start" refX="5" refY="5" markerWidth="10" markerHeight="10" viewBox="0 0 10 10">
+                            <ellipse cx="5" cy="5" rx="5" ry="5" fill="red"/>
+                        </marker>
+                        <marker id="middle" refX="5" refY="5" markerWidth="10" markerHeight="10" viewBox="0 0 10 10" orient="auto">
+                            <rect x="0" y="0" width="10" height="10" fill="blue"/>
+                        </marker>
+                        <marker id="end" refX="5" refY="5" markerWidth="10" markerHeight="10" viewBox="0 0 10 10" orient="auto">
+                            <path d="M1,1 L9,5 L1,9 z" fill="orange"/>
+                        </marker>
+                    </defs>
+                    <path d="M50,25 L100,25 L150,50" fill="none" stroke="black" stroke-width="3" marker-start="url(#start)" marker-mid="url(#middle)" marker-end="url(#end)"/>
+                </svg>
+            </div>
+            <pre class="prettyprint">
+var svg = DV.svg().size(300,100).into("dv-01");
+var def = DV.defs().into(svg);
+var mk1 = DV.marker().markerPoint(5,5).markerSize(10,10).viewbox(0,0,10,10).id("D01S01").into(def);
+DV.ellipse().center(5,5).round(5,5).fill("red").into(mk1);
+var mk2 = DV.marker().markerDim(5,5,10,10,"auto").viewbox(0,0,10,10).id("D01M01").into(def);
+DV.rect().dim(0,0,10,10).fill("blue").into(mk2);
+var mk3 = DV.marker().markerDim(5,5,10,10,"auto").viewbox(0,0,10,10).id("D01E01").into(def);
+DV.path().d("M1,1 L9,5 L1,9 z").fill("orange").into(mk3);
+
+DV.path().d("M50,25 L100,25 L150,50").fill("none").stroke("black",3).mark("#D01S01","s").mark("#D01M01","m").mark("#D01E01","e").into(svg);
+</pre>
+            <div id="dv-01"></div>
+            <script>
+                var svg = DV.svg().size(300,100).into("dv-01");
+                var def = DV.defs().into(svg);
+                var mk1 = DV.marker().markerPoint(5,5).markerSize(10,10).viewbox(0,0,10,10).id("D01S01").into(def);
+                DV.ellipse().center(5,5).round(5,5).fill("red").into(mk1);
+                var mk2 = DV.marker().markerDim(5,5,10,10,"auto").viewbox(0,0,10,10).id("D01M01").into(def);
+                DV.rect().dim(0,0,10,10).fill("blue").into(mk2);
+                var mk3 = DV.marker().markerDim(5,5,10,10,"auto").viewbox(0,0,10,10).id("D01E01").into(def);
+                DV.path().d("M1,1 L9,5 L1,9 z").fill("orange").into(mk3);
+
+                DV.path().d("M50,25 L100,25 L150,50").fill("none").stroke("black",3).mark("#D01S01","s").mark("#D01M01","m").mark("#D01E01","e").into(svg);
+            </script>
+        </section>
+        <section>
+            <h2>참고</h2>
+            <ul>
+                <li><a href="../dv/defs.html">defs</a></li>
+                <li><a href="../dv/ellipse.html">ellipse</a></li>
+                <li><a href="../dv/marker.html">marker</a></li>
+                <li><a href="../dv/path.html">path</a></li>
+                <li><a href="../dv/rect.html">rect</a></li>
+                <li><a href="../dv/svg.html">svg</a></li>
+                <li><a href="append.html">append</a></li>
+                <li><a href="center.html">center</a></li>
+                <li><a href="d.html">d</a></li>
+                <li><a href="fill.html">fill</a></li>
+                <li><a href="id.html">id</a></li>
+                <li><a href="into.html">into</a></li>
+                <li><a href="mark.html">mark</a></li>
+                <li><a href="markerDim.html">markerDim</a></li>
+                <li><a href="markerSize.html">markerSize</a></li>
+                <li><a href="round.html">round</a></li>
+                <li><a href="size.html">size</a></li>
+                <li><a href="stroke.html">stroke</a></li>
+                <li><a href="viewbox.html">viewbox</a></li>
+            </ul>
+        </section>
+    </section>
+    <footer>
+    </footer>
+</body>
+</html>

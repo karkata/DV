@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <title></title>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" href="../../../css/style.css"/>           
+    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
+    <script src="../../../js/dv.core.js"></script>
+    <script src="../../../js/dv.shape.js"></script>
+</head>
+<body>
+    <section>
+        <nav class="nav-structure">
+            <ul>
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="index.html">References</a></li>
+                <li>round</li>
+            </ul>
+        </nav>
+    </section>
+    <section>
+        <h1>DVE.prototype.round()</h1>
+        <section>
+            <h2>문법</h2>
+            <pre class="prettyprint">var ret = dve.round(rx[, ry]);</pre>
+            </section><section><h2>파라미터</h2>
+            <table class="parameters">
+                <thead>
+                    <tr>
+                        <th>이름</th>
+                        <th>형식</th>
+                        <th>설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>rx</td>
+                        <td>&lt;length&gt;</td>
+                        <td><p>x 축 방향의 반지름 값입니다.</p></td>
+                    </tr>
+                    <tr>
+                        <td>ry</td>
+                        <td>&lt;length&gt;</td>
+                        <td><p>y 축 방향의 반지름 값입니다.</p></td>
+                    </tr>
+                </tbody>
+            </table>
+            </section><section><h2>반환</h2>
+            <p>DVE 객체를 반환합니다.</p>
+        </section>
+        <section>
+            <h2>설명</h2>
+            <p>'round' 메소드는 'rect, ellipse' 요소의 'rx, ry' 속성값을 설정합니다.</p>
+            <p>두 속성은 x축, y축을 기준으로 하는 반지름 길이를 나타내며, 0 또는 양수의 값을 갖습니다.</p>
+            <pre class="prettyprint">
+&lt;svg width="200" height="60"&gt;
+    &lt;rect x="10" y="10" width="50" height="20" rx="5" ry="5" fill="red"/&gt;
+    &lt;ellipse cx="100" cy="20" rx="20" ry="20" fill="purple"/&gt;
+&lt;/svg&gt;
+</pre>
+            <div>
+                <svg width="200" height="60">
+                    <rect x="10" y="10" width="50" height="20" rx="5" ry="5" fill="red"/>
+                    <ellipse cx="100" cy="20" rx="20" ry="20" fill="purple"/>
+                </svg>
+            </div>
+            <pre class="prettyprint">
+var svg = DV.svg().size(200,60).into("dv-01");
+DV.rect().dim(10,10,50,20).round(5,5).fill("red").into(svg);
+DV.ellipse().center(100,20).round(20,20).fill("purple").into(svg);
+</pre>
+            <div id="dv-01"></div>
+            <script>
+                var svg = DV.svg().size(200,60).into("dv-01");
+                DV.rect().dim(10,10,50,20).round(5,5).fill("red").into(svg);
+                DV.ellipse().center(100,20).round(20,20).fill("purple").into(svg);
+            </script>
+        </section>
+        <section>
+            <h2>참고</h2>
+            <ul>
+                <li><a href="../dv/ellipse.html">ellipse</a></li>
+                <li><a href="../dv/rect.html">rect</a></li>
+                <li><a href="../dv/svg.html">svg</a></li>
+                <li><a href="center.html">center</a></li>
+                <li><a href="dim.html">dim</a></li>
+                <li><a href="fill.html">fill</a></li>
+                <li><a href="into.html">into</a></li>
+            </ul>
+        </section>
+    </section>
+    <footer>
+    </footer>
+</body>
+</html>

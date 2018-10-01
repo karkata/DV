@@ -1,0 +1,68 @@
+* {
+    margin: 0; padding: 0;
+}
+
+html {
+    font-family: "맑은 고딕", "Apple SD Gothic Neo";
+    font-size: 14px;
+}
+
+ul {
+    /* outside: default */
+    list-style-position: inside;
+    padding-left: 1rem;
+}
+
+.nav-structure ul { list-style-type: none; margin: 0; padding: 0; }
+.nav-structure ul li { 
+    display: inline; 
+    margin-right: 1em; 
+}
+
+h1 { font-size: 2.5rem; margin-bottom: 2rem; font-weight: normal; }
+h2 { font-size: 1.5rem; font-weight: normal; }
+
+body {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+body > section {
+    width: 80%;
+}
+
+section {
+    margin-bottom: 2rem;
+}
+
+pre {
+    width: 100%;
+    margin-bottom: 1.5em;
+    font-size: .8rem;
+}
+
+p {
+    line-height: 1.5em;
+}
+
+
+
+table.parameters { border-collapse: collapse; width: 100%; }
+table.parameters td, table.parameters th { 
+    border: 1px solid #999;
+    padding: .5em .5em;
+}
+
+.notice { color: red; font-weight: bold; }
+
+table.matrix-3x3 { border-collapse: collapse; display: inline;}
+table.matrix-3x3 td { text-align: center; min-width: 20px; }
+table.matrix-3x3 tr > td:first-child { border-left: 3px solid gray; min-width: 5px; }
+table.matrix-3x3 tr > td:last-child { border-right: 3px solid gray; min-width: 5px; }
+table.matrix-3x3 tr:first-child > td:first-child { border-top: 3px solid gray }
+table.matrix-3x3 tr:first-child > td:last-child { border-top: 3px solid gray }
+table.matrix-3x3 tr:last-child > td:first-child { border-bottom: 3px solid gray }
+table.matrix-3x3 tr:last-child > td:last-child { border-bottom: 3px solid gray }
+

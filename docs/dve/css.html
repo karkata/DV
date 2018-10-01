@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <title></title>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" href="../../../css/style.css"/>           
+    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
+    <script src="../../../js/dv.core.js"></script>
+    <script src="../../../js/dv.shape.js"></script>
+</head>
+<body>
+    <section>
+        <nav class="nav-structure">
+            <ul>
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="index.html">References</a></li>
+                <li>css</li>
+            </ul>
+        </nav>
+    </section>
+    <section>
+        <h1>DVE.prototype.css()</h1>
+        <section>
+            <h2>문법</h2>
+            <pre class="prettyprint">var ret = dve.css(sname[, svalue]);</pre>
+            </section><section><h2>파라미터</h2>
+            <table class="parameters">
+                <thead>
+                    <tr>
+                        <th>이름</th>
+                        <th>형식</th>
+                        <th>설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>sname</th>
+                        <td>String</td>
+                        <td><p>CSS 속성 이름</p></td>
+                    </tr>
+                    <tr>
+                        <td>svalue</td>
+                        <td>String</td>
+                        <td><p>css 속성 값</p></td>
+                    </tr>
+                </tbody>
+            </table>
+            </section><section><h2>반환</h2>
+            <p>svalue 파라미터가 주어지지 않았다면, SVG 요소가 갖는 sname 속성 값을 반환합니다. 만일 svalue 파라미터가 주어지면, sname이 가리키는 속성을 svalue 값으로 설정하고 DVE 객체를 반환합니다.</p>
+        </section>
+        <section>
+            <h2>설명</h2>
+            <p>css 메소드는 SVG 요소가 갖는 인라인 CSS(Cascading Style Sheets) 속성값을 반환하거나, 속성값을 설정할 때 사용합니다.</p>
+            <p>sname 파라미터만 주어지면 현재 대상 속성값이 반환되고, svalue 파라미터까지 주어진다면 대상 속성값을 주어진 값으로 설정합니다.</p>
+            <p>속성값이 반환될 때와 달리, 속성값을 설정할 때에는 속성을 가지고 있는 요소의 DVE 객체가 반환됩니다.</p>
+            <p>css 메소드는 HTML 요소에 인라인 스타일을 지정하는 것처러럼 사용합니다.</p>
+            <pre class="prettyprint">
+var svg = DV.svg().size(400,100).into("dv-01");
+DV.rect().dim(10,10,200,20).css("fill","red").into(svg);
+DV.rect().dim(10,40,200,20).attr("fill","green").into(svg);
+DV.rect().dim(10,70,200,20).fill("blue").into(svg);
+</pre>
+            <div id="dv-01"></div>
+            <script>
+                var svg = DV.svg().size(400,100).into("dv-01");
+                DV.rect().dim(10,10,200,20).css("fill","red").into(svg);
+                DV.rect().dim(10,40,200,20).attr("fill","green").into(svg);
+                DV.rect().dim(10,70,200,20).fill("blue").into(svg);
+            </script>
+            <p>SVG에서 사용되는 스타일은 CSS2와 동일한 것도 있지만, SVG에서만 독자적으로 사용되는 속성들이 많습니다.</p>
+            <p>SVG에서 사용되는 <a href="https://www.w3.org/TR/SVG11/styling.html">스타일은 링크</a>에서 확인하시길 바랍니다.</p>
+        </section>
+        <section>
+            <h2>참고</h2>
+            <ul>
+                <li><a href="../dv/rect.html">rect</a></li>
+                <li><a href="../dv/svg.html">svg</a></li>
+                <li><a href="attr.html">attr</a></li>
+                <li><a href="dim.html">dim</a></li>
+                <li><a href="fill.html">fill</a></li>
+                <li><a href="into.html">into</a></li>
+                <li><a href="size.html">size</a></li>
+            </ul>
+        </section>
+    </section>
+    <footer>
+    </footer>
+</body>
+</html>

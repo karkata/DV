@@ -1,0 +1,143 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <title></title>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" href="../../../css/style.css"/>           
+    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
+    <script src="../../../js/dv.core.js"></script>
+    <script src="../../../js/dv.shape.js"></script>
+</head>
+<body>
+    <section>
+        <nav class="nav-structure">
+            <ul>
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="index.html">References</a></li>
+                <li>clipRule</li>
+            </ul>
+        </nav>
+    </section>
+    <section>
+        <h1>DVE.prototype.clipRule()</h1>
+        <section>
+            <h2>문법</h2>
+            <pre class="prettyprint">var ret = dve.clipRule(rule);</pre>
+            </section><section><h2>파라미터</h2>
+            <table class="parameters">
+                <thead>
+                    <tr>
+                        <th>이름</th>
+                        <th>형식</th>
+                        <th>설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>rule</td>
+                        <td>'nonezero'|'evenodd'</td>
+                        <td>
+                            <p>클리핑 경로를 그릴 때, 내부와 외부를 구분짓는 방법을 결정합니다.</p>
+                            <ul>
+                                <li>evenodd: 경로 내부의 임의의 점을 선택하고, 경로 바깥으로 무한한 직선을 뻗을 때, 교차되는 선분의 개수가 짝수이면, 외부이고, 그렇지 않으면 클리핑 경로의 내부로 결정합니다.</li>
+                                <li>nonezero: (default) 경로 내부의 임의의 점을 선택하고, 경로 바깥으로 무한한 직선을 뻗을 때, 왼쪽에서 오른쪽으로 그려지는 선분을 만나면 1을 더하고, 반대의 경우에는 1을 뺍니다. 이 교차점들의 최종 계산 결과가 0이면 외부, 그렇지 않으면 내부점이 되어 클리핑 경로의 내부로 결정됩니다.</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            </section><section><h2>반환</h2>
+            <p>dve 객체를 반환합니다.</p>
+        </section>
+        <section>
+            <h2>설명</h2>
+            <p>clipRule 메소드는 clip-rule 속성을 설정할 때 사용합니다.</p>
+            <p>clip-rule 속성은 clipPath 요소 내에 포함된 그래픽 요소에만 적용됩니다.</p>
+            <pre class="prettyprint">
+&lt;svg id="svg-01" width="200" height="60"&gt;
+    &lt;defs&gt;
+        &lt;clipPath id="S01CP01" clipPathUnits="objectBoundingBox"&gt;
+            &lt;path d="M0,0.3 H1 L0,1 L0.5,0 L1,1 z" clip-rule="evenodd"/&gt;
+        &lt;/clipPath&gt;
+        &lt;clipPath id="S01CP02" clipPathUnits="objectBoundingBox"&gt;
+            &lt;path d="M0,0.3 H1 L0,1 L0.5,0 L1,1 z" clip-rule="nonezero"/&gt;
+        &lt;/clipPath&gt;
+    &lt;/defs&gt;
+    &lt;rect x="0" y="0" width="50" height="50" fill="blue" clip-path="url(#S01CP01)"/&gt;
+    &lt;rect x="100" y="0" width="50" height="50" fill="blue" clip-path="url(#S01CP02)"/&gt;
+&lt;svg&gt;
+            </pre>
+            <div>
+                <svg id="svg-01" width="200" height="60">
+                    <defs>
+                        <clipPath id="S01CP01" clipPathUnits="objectBoundingBox">
+                            <path d="M0,0.3 H1 L0,1 L0.5,0 L1,1 z" clip-rule="evenodd"/>
+                        </clipPath>
+                        <clipPath id="S01CP02" clipPathUnits="objectBoundingBox">
+                            <path d="M0,0.3 H1 L0,1 L0.5,0 L1,1 z" clip-rule="nonezero"/>
+                        </clipPath>
+                    </defs>
+                    <rect x="0" y="0" width="50" height="50" fill="blue" clip-path="url(#S01CP01)"/>
+                    <rect x="100" y="0" width="50" height="50" fill="blue" clip-path="url(#S01CP02)"/>
+                <svg>
+            </div>
+            <p>dv를 사용한 예제는 다음과 같습니다.</p>
+            <pre class="prettyprint">
+DV.svg().size(200,60).into("dv-01").append(
+    DV.defs().append(
+        DV.clipper().clipPathUnits("objectBoundingBox").id("D01CP01").append(
+            DV.path().mto(0,0.3).hto(1).lto(0,1).lto(0.5,0).lto(1,1).pz().clipRule("evenodd")
+        ),
+        DV.clipper().clipPathUnits("objectBoundingBox").id("D01CP02").append(
+            DV.path().mto(0,0.3).hto(1).lto(0,1).lto(0.5,0).lto(1,1).pz().clipRule("nonezero")
+        )
+    ),
+    DV.rect().dim(0,0,50,50).fill("blue").clipPath("#D01CP01"),
+    DV.rect().dim(100,0,50,50).fill("blue").clipPath("#D01CP02")
+);
+</pre>
+            <div id="dv-01"></div>
+            <script>
+                DV.svg().size(200,60).into("dv-01").append(
+                    DV.defs().append(
+                        DV.clipper().clipPathUnits("objectBoundingBox").id("D01CP01").append(
+                            DV.path().mto(0,0.3).hto(1).lto(0,1).lto(0.5,0).lto(1,1).pz().clipRule("evenodd")
+                        ),
+                        DV.clipper().clipPathUnits("objectBoundingBox").id("D01CP02").append(
+                            DV.path().mto(0,0.3).hto(1).lto(0,1).lto(0.5,0).lto(1,1).pz().clipRule("nonezero")
+                        )
+                    ),
+                    DV.rect().dim(0,0,50,50).fill("blue").clipPath("#D01CP01"),
+                    DV.rect().dim(100,0,50,50).fill("blue").clipPath("#D01CP02")
+                );
+            </script>           
+        </section>
+        <section>
+            <h2>참고</h2>
+            <ul>
+                <li><a href="../dv/clipper.html">clipper</a></li>
+                <li><a href="../dv/defs.html">defs</a></li>
+                <li><a href="../dv/path.html">path</a></li>
+                <li><a href="../dv/rect.html">rect</a></li>
+                <li><a href="../dv/svg.html">svg</a></li>
+                <li><a href="append.html">append</a></li>
+                <li><a href="clipPath.html">clipPath</a></li>
+                <li><a href="clipPathUnits.html">clipPathUntis</a></li>
+                <li><a href="dim.html">dim</a></li>
+                <li><a href="fill.html">fill</a></li>
+                <li><a href="hto.html">hto</a></li>
+                <li><a href="id.html">id</a></li>
+                <li><a href="into.html">into</a></li>
+                <li><a href="lto.html">lto</a></li>
+                <li><a href="mto.html">mto</a></li>
+                <li><a href="pz.html">pz</a></li>
+                <li><a href="size.html">size</a></li>
+            </ul>
+        </section>
+    </section>
+    <footer>
+    </footer>
+</body>
+</html>

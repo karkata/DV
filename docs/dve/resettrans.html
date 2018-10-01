@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <title></title>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" href="../../../css/style.css"/>           
+    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
+    <script src="../../../js/dv.core.js"></script>
+    <script src="../../../js/dv.shape.js"></script>
+</head>
+<body>
+    <section>
+        <nav class="nav-structure">
+            <ul>
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="index.html">References</a></li>
+                <li>resettrans</li>
+            </ul>
+        </nav>
+    </section>
+    <section>
+        <h1>DVE.prototype.resettrans()</h1>
+        <section>
+            <h2>문법</h2>
+            <pre class="prettyprint">var ret = dve.resettrans();</pre>
+            </section><section><h2>파라미터</h2>
+            </section><section><h2>반환</h2>
+            <p>DVE 객체를 반환합니다.</p>
+        </section>
+        <section>
+            <h2>설명</h2>
+            <p>resettrans 함수는 변환된 좌표계를 원상복귀할 때 사용합니다.</p>
+            <pre class="prettyprint">
+var svg = DV.svg().size(400,150).into("dv-01");
+var box = DV.g().into(svg);
+DV.rect().dim(10,10,50,50).fill("#ff5722").into(box);
+
+var button = DV.g().css("cursor","pointer").into(svg);
+DV.rect().dim(50,100,50,25,8,8).fill("#21212").into(button);
+DV.text().txt("Move").xys(75,117).fill("white").tanchor("middle").into(button);
+button.bind("click", function (evt) {
+    if (box.transformation.length == 0)
+        box.translate(100);
+    else
+        box.resettrans();
+    evt.preventDefault();
+});
+</pre>
+            <div id="dv-01"></div>
+            <script>
+                var svg = DV.svg().size(400,150).into("dv-01");
+                var box = DV.g().into(svg);
+                DV.rect().dim(10,10,50,50).fill("#ff5722").into(box);
+
+                var button = DV.g().css("cursor","pointer").into(svg);
+                DV.rect().dim(50,100,50,25,8,8).fill("#21212").into(button);
+                DV.text().txt("Move").xys(75,117).fill("white").tanchor("middle").into(button);
+                button.bind("click", function (evt) {
+                    if (box.transformation.length == 0)
+                        box.translate(100);
+                    else
+                        box.resettrans();
+                    evt.preventDefault();
+                });
+            </script>
+        </section>
+        <section>
+            <h2>참고</h2>
+            <ul>
+                <li><a href="../dv/g.html">g</a></li>
+                <li><a href="../dv/rect.html">rect</a></li>
+                <li><a href="../dv/svg.html">svg</a></li>
+                <li><a href="../dv/text.html">text</a></li>
+                <li><a href="bind.html">bind</a></li>
+                <li><a href="css.html">css</a></li>
+                <li><a href="dim.html">dim</a></li>
+                <li><a href="fill.html">fill</a></li>
+                <li><a href="id.html">id</a></li>
+                <li><a href="into.html">into</a></li>
+                <li><a href="size.html">size</a></li>
+                <li><a href="tanchor.html">tanchor</a></li>
+                <li><a href="translate.html">translate</a></li>
+                <li><a href="txt.html">txt</a></li>
+                <li><a href="xys.html">xys</a></li>
+            </ul>
+        </section>
+    </section>
+    <footer>
+    </footer>
+</body>
+</html>

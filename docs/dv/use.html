@@ -1,0 +1,225 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <title></title>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" href="../../../css/style.css"/>           
+    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
+    <script src="../../../js/dv.core.js"></script>
+    <script src="../../../js/dv.shape.js"></script>
+</head>
+<body>
+    <section>
+        <nav class="nav-structure">
+            <ul>
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="index.html">References</a></li>
+                <li>use</li>
+            </ul>
+        </nav>
+    </section>
+    <section>
+        <h1>DV.prototype.use()</h1>
+        <section>
+            <h2>문법</h2>
+            <pre class="prettyprint">var ret = DV.use(props);</pre>
+            </section><section><h2>파라미터</h2>
+            <p>props 파라미터의 속성은 다음과 같습니다.</p>
+            <table class="parameters">
+                <thead>
+                    <tr>
+                        <th>이름</th>
+                        <th>형식</th>
+                        <th>설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>x, y, width, height</td>
+                        <td>&lt;coordinate&gt;,&lt;coordinate&gt;,&lt;length&gt;,&lt;length&gt;</td>
+                        <td>
+                            <p>참조되는 그래픽 요소를 현재 좌표 시스템에 사각형의 영역으로 매핑하기 위한 좌표 정보입니다.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>xlink:href</td>
+                        <td>&lt;IRI&gt;</td>
+                        <td><p>SVG 문서안에서 표현될 그래픽 요소를 가리키는 IRI 형식의 참조 값입니다.</p></td>
+                    </tr>
+                </tbody>
+            </table>
+            </section><section><h2>반환</h2>
+            <p>DVE 객체를 반환합니다.</p>
+        </section>
+        <section>
+            <h2>설명</h2>
+            <p>use 메소드는 use 요소를 생성합니다.</p>
+            <p>svg, symbol, g, 그래픽 요소 또는 다른 g 요소는 기본적으로 재사용할 수 있는 템플릿 특징을 갖습니다. 이런 요소들은 use 요소를 사용하여 문서의 특정 위치에 새로운 객체로 삽입되고 렌더링됩니다.</p>
+            <p>use 요소는 생성될 때, g 요소을 사용하여 변환(내부적으로)됩니다. 이 때, x, y, width, height, xlink:href 속성을 제외한 나머지 속성들이 모두 g의 속성으로 사용됩니다. 반면에 x, y는 transform 속성에서 translate 변환을 하기 위한 좌표값으로 사용되며,width, height는 svg 요소의 width, height 속성으로 바뀝니다.</p>
+            <p>그래픽 요소를 직접 참조하는 경우 width, height 속성에 영향을 주지 않습니다.</p>
+            <pre class="prettyprint">
+&lt;svg width="300" height="100"&gt;
+  &lt;defs&gt;
+    &lt;rect id="S01R01" width="50" height="20" fill="blue"/&gt;
+  &lt;/defs&gt;
+  &lt;use xlink:href="#S01R01" x="50" y="25" width="200" height="100"/&gt;
+&lt;/svg&gt;
+</pre>
+            <div>
+                <svg width="300" height="100">
+                    <defs>
+                        <rect id="S01R01" width="50" height="20" fill="blue"/>
+                    </defs>
+                    <use xlink:href="#S01R01" x="50" y="25" width="200" height="100"/>
+                </svg>
+            </div>
+            <pre class="prettyprint">
+var svg = DV.svg().size(300,100).into("dv-01");
+DV.defs().into(svg).append(
+    DV.rect().size(50,20).fill("blue").id("D01R01")
+);
+DV.use().xhref("#D01R01").dim(50,25,200,100).into(svg);
+</pre>
+            <div id="dv-01"></div>
+            <script>
+                var svg = DV.svg().size(300,100).into("dv-01");
+                DV.defs().into(svg).append(
+                    DV.rect().size(50,20).fill("blue").id("D01R01")
+                );
+                DV.use().xhref("#D01R01").dim(50,25,200,100).into(svg);
+            </script>
+            <p>symbol 요소를 참조하면 width, height 속성값에 따라 스케일링이 일어 납니다.</p>
+            <p>width, height 및 viewBox 속성에 영향을 받기 위해서 use 요소는 g 요소로 변환 후, 내부적으로 svg 요소가 사용됩니다.</p>
+            <pre class="prettyprint">
+&lt;svg width="300" height="100"&gt;
+  &lt;defs&gt;
+    &lt;symbol id="S02S01" viewBox="0 0 20 20"&gt;
+      &lt;rect x="0" y="0" width="9" height="9" fill="red"/&gt;
+      &lt;rect x="11" y="0" width="9" height="9" fill="green"/&gt;
+      &lt;rect x="0" y="11" width="9" height="9" fill="blue"/&gt;
+      &lt;rect x="11" y="11" width="9" height="9" fill="magenta"/&gt;
+    &lt;/symbol&gt;
+  &lt;/defs&gt;
+  &lt;use xlink:href="#S02S01" x="10" y="10" width="20" height="20"/&gt;
+  &lt;use xlink:href="#S02S01" x="50" y="25" width="50" height="100"/&gt;
+&lt;/svg&gt;
+</pre>
+            <div>
+                <svg width="300" height="100">
+                    <defs>
+                        <symbol id="S02S01" viewBox="0 0 20 20">
+                            <rect x="0" y="0" width="9" height="9" fill="red"/>
+                            <rect x="11" y="0" width="9" height="9" fill="green"/>
+                            <rect x="0" y="11" width="9" height="9" fill="blue"/>
+                            <rect x="11" y="11" width="9" height="9" fill="magenta"/>
+                        </symbol>
+                    </defs>
+                    <use xlink:href="#S02S01" x="10" y="10" width="20" height="20"/>
+                    <use xlink:href="#S02S01" x="50" y="25" width="50" height="50"/>
+                </svg>
+            </div>
+            <pre class="prettyprint">
+var svg = DV.svg().size(300,100).into("dv-02");
+var def = DV.defs().into(svg);
+var sim = DV.symbol().viewbox(0,0,20,20).id("D02S01").into(def);
+DV.rect().dim(0,0,9,9).fill("red").into(sim);
+DV.rect().dim(11,0,9,9).fill("blue").into(sim);
+DV.rect().dim(0,11,9,9).fill("green").into(sim);
+DV.rect().dim(11,11,9,9).fill("magenta").into(sim);
+DV.use().xhref(sim).dim(10,10,20,20).into(svg);
+DV.use().xhref(sim).dim(50,25,50,50).into(svg);
+</pre>
+            <div id="dv-02"></div>
+            <script>
+                var svg = DV.svg().size(300,100).into("dv-02");
+                var def = DV.defs().into(svg);
+                var sim = DV.symbol().viewbox(0,0,20,20).id("D02S01").into(def);
+                DV.rect().dim(0,0,9,9).fill("red").into(sim);
+                DV.rect().dim(11,0,9,9).fill("blue").into(sim);
+                DV.rect().dim(0,11,9,9).fill("green").into(sim);
+                DV.rect().dim(11,11,9,9).fill("magenta").into(sim);
+                DV.use().xhref(sim).dim(10,10,20,20).into(svg);
+                DV.use().xhref(sim).dim(50,25,50,50).into(svg);
+            </script>
+            <p>참조할 대상을 변환할 수 있습니다.</p>
+            <pre class="prettyprint">
+&lt;svg width="300" height="100"&gt;
+  &lt;defs&gt;
+    &lt;symbol id="S03S01" viewBox="0 0 20 20"&gt;
+      &lt;rect x="0" y="0" width="9" height="9" fill="red"/&gt;
+      &lt;rect x="11" y="0" width="9" height="9" fill="green"/&gt;
+      &lt;rect x="0" y="11" width="9" height="9" fill="blue"/&gt;
+      &lt;rect x="11" y="11" width="9" height="9" fill="magenta"/&gt;
+    &lt;/symbol&gt;
+  &lt;/defs&gt;
+  &lt;use xlink:href="#S03S01" x="10" y="10" width="20" height="20"/&gt;
+  &lt;use xlink:href="#S03S01" transform="translate(50, 25) rotate(10)" width="30" height="30"/&gt;
+&lt;/svg&gt;
+</pre>
+            <div>
+                <svg width="300" height="100">
+                    <defs>
+                        <symbol id="S03S01" viewBox="0 0 20 20">
+                            <rect x="0" y="0" width="9" height="9" fill="red"/>
+                            <rect x="11" y="0" width="9" height="9" fill="green"/>
+                            <rect x="0" y="11" width="9" height="9" fill="blue"/>
+                            <rect x="11" y="11" width="9" height="9" fill="magenta"/>
+                        </symbol>
+                    </defs>
+                    <use xlink:href="#S03S01" x="10" y="10" width="20" height="20"/>
+                    <use xlink:href="#S03S01" transform="translate(50, 25) rotate(10)" width="30" height="30"/>
+                </svg>
+            </div>
+            <pre class="prettyprint">
+var svg = DV.svg().size(300,100).into("dv-03");
+var def = DV.defs().into(svg);
+var sim = DV.symbol().viewbox(0,0,20,20).id("D03S01").into(def).append(
+    DV.rect().dim(0,0,9,9).fill("red"),
+    DV.rect().dim(11,0,9,9).fill("blue"),
+    DV.rect().dim(0,11,9,9).fill("green"),
+    DV.rect().dim(11,11,9,9).fill("magenta")
+);
+DV.use().xhref(sim).dim(10,10,20,20).into(svg);
+DV.use().xhref(sim).size(30,30).translate(50,25).rotate(10).into(svg);
+</pre>
+            <div id="dv-03"></div>
+            <script>
+                var svg = DV.svg().size(300,100).into("dv-03");
+                var def = DV.defs().into(svg);
+                var sim = DV.symbol().viewbox(0,0,20,20).id("D03S01").into(def).append(
+                    DV.rect().dim(0,0,9,9).fill("red"),
+                    DV.rect().dim(11,0,9,9).fill("blue"),
+                    DV.rect().dim(0,11,9,9).fill("green"),
+                    DV.rect().dim(11,11,9,9).fill("magenta")
+                );
+                DV.use().xhref(sim).dim(10,10,20,20).into(svg);
+                DV.use().xhref(sim).size(30,30).translate(50,25).rotate(10).into(svg);
+            </script>
+        </section>
+        <section>
+            <h2>참고</h2>
+            <ul>
+                <li><a href="../dve/append.html">append</a></li>
+                <li><a href="../dve/dim.html">dim</a></li>
+                <li><a href="../dve/fill.html">fill</a></li>
+                <li><a href="../dve/id.html">id</a></li>
+                <li><a href="../dve/into.html">into</a></li>
+                <li><a href="../dve/rotate.html">rotate</a></li>
+                <li><a href="../dve/size.html">size</a></li>
+                <li><a href="../dve/translate.html">translate</a></li>
+                <li><a href="../dve/viewbox.html">viewbox</a></li>
+                <li><a href="../dve/xhref.html">xhref</a></li>
+                <li><a href="defs.html">defs</a></li>
+                <li><a href="rect.html">rect</a></li>
+                <li><a href="svg.html">svg</a></li>
+                <li><a href="symbol.html">symbol</a></li>
+                <li><a href="use.html">use</a></li>
+            </ul>
+        </section>
+    </section>
+    <footer>
+    </footer>
+</body>
+</html>

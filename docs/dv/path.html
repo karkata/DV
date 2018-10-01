@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <title></title>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" href="../../../css/style.css"/>           
+    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
+    <script src="../../../js/dv.core.js"></script>
+    <script src="../../../js/dv.shape.js"></script>
+</head>
+<body>
+    <section>
+        <nav class="nav-structure">
+            <ul>
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="index.html">References</a></li>
+                <li>path</li>
+            </ul>
+        </nav>
+    </section>
+    <section>
+        <h1>DV.prototype.path()</h1>
+        <section>
+            <h2>문법</h2>
+            <pre class="prettyprint">var ret = DV.path(props);</pre>
+            </section><section><h2>파라미터</h2>
+            <p>'props' 파라미터의 속성은 다음과 같습니다.</p>
+            <table class="parameters">
+                <thead>
+                    <tr>
+                        <th>이름</th>
+                        <th>형식</th>
+                        <th>설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>d</td>
+                        <td>String</td>
+                        <td>
+                            <p>패스를 표현하는 좌표 데이터입니다.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>pathLength</td>
+                        <td>&lt;length&gt;</td>
+                        <td>
+                            <p>패스의 전체 길이에 대한 계산값입니다.</p>
+                            <p>이 값은 작성자가 직접 계산한 사용자 단위의 값입니다. 이 값은 에이전트 자신의 거리 경로 계산을 교정자의 교정과 함께 보정하는데 사용됩니다.</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            </section><section><h2>반환</h2>
+            <p>DVE 객체를 반환합니다.</p>
+        </section>
+        <section>
+            <h2>설명</h2>
+            <p>'path' 메소드는 SVG 'path' 요소를 생성합니다.</p>
+            <p>패스는 도형의 외곽선(outline)을 나타내며, 점과 점 사이를 직선 또는 곡선으로 연결하여 표현합니다.</p>
+            <p>SVG에서 패스는 'path' 요소를 사용하며, 'd' 속성을 사용하여 패스를 표현하는 좌표 데이터를 기록합니다.</p>
+            <pre class="prettyprint">
+&lt;svg width="5cm" height="4cm" viewBox="0 0 500 400"&gt;
+  &lt;path fill="none" stroke="blue" stroke-width="5" d="M100,100 L400,100 L400,300 L100,300 v-100 h100 v-50 h-100 z"/&gt;
+&lt;/svg&gt;
+</pre>    
+            <div>
+                <svg width="5cm" height="4cm" viewBox="0 0 500 400">
+                    <path fill="none" stroke="blue" stroke-width="5" d="M100,100 L400,100 L400,300 L100,300 v-100 h100 v-50 h-100 z"/>
+                </svg>
+            </div>
+            <pre class="prettyprint">
+var svg = DV.svg().size("5cm","4cm").viewbox(0,0,500,400).into("dv-01");
+DV.path().d("M100,100 L400,100 L400,300 L100,300 v-100 h100 v-50 h-100 z").fill("none").stroke("blue", 5).into(svg);
+</pre>
+            <div id="dv-01"></div>
+            <script>
+                var svg = DV.svg().size("5cm","4cm").viewbox(0,0,500,400).into("dv-01");
+                DV.path().d("M100,100 L400,100 L400,300 L100,300 v-100 h100 v-50 h-100 z").fill("none").stroke("blue", 5).into(svg);
+            </script>
+            <p>'d' 메소드를 사용하여 패스를 그릴 수도 있지만, 다른 메소드를 함께 사용하여 패스를 그리를 것을 권장합니다.</p>
+            <p>패스를 그리는 메소드들: 'mto, lto, vto, hto, cto, csto, qto, qsto, arc,arcf, pz</p>
+        </section>
+        <section>
+            <h2>참고</h2>
+            <ul>
+                <li><a href="../dve/d.html">d</a></li>
+                <li><a href="../dve/vto.html">vto</a></li>
+                <li><a href="../dve/arc.html">arc</a></li>
+                <li><a href="../dve/arcf.html">arcf</a></li>
+                <li><a href="../dve/csto.html">csto</a></li>
+                <li><a href="../dve/cto.html">cto</a></li>
+                <li><a href="../dve/fill.html">fill</a></li>
+                <li><a href="../dve/hto.html">hto</a></li>
+                <li><a href="../dve/into.html">into</a></li>
+                <li><a href="../dve/lto.html">lto</a></li>
+                <li><a href="../dve/mto.html">mto</a></li>
+                <li><a href="../dve/pz.html">pz</a></li>
+                <li><a href="../dve/qsto.html">qsto</a></li>
+                <li><a href="../dve/qto.html">qto</a></li>
+                <li><a href="../dve/size.html">size</a></li>
+                <li><a href="../dve/stroke.html">stroke</a></li>
+                <li><a href="../dve/viewbox.html">viewbox</a></li>
+                <li><a href="svg.html">svg</a></li>
+            </ul>
+        </section>
+    </section>
+    <footer>
+    </footer>
+</body>
+</html>

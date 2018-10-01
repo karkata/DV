@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <title></title>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" href="../../../css/style.css"/>           
+    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
+    <script src="../../../js/dv.core.js"></script>
+    <script src="../../../js/dv.shape.js"></script>
+</head>
+<body>
+    <section>
+        <nav class="nav-structure">
+            <ul>
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="index.html">References</a></li>
+                <li>strokeLinecap</li>
+            </ul>
+        </nav>
+    </section>
+    <section>
+        <h1>DVE.prototype.strokeLinecap()</h1>
+        <section>
+            <h2>문법</h2>
+            <pre class="prettyprint">var ret = dve.strokeLinecap(linecap)</pre>
+            </section><section><h2>파라미터</h2>
+            <table class="parameters">
+                <thead>
+                    <tr>
+                        <th>이름</th>
+                        <th>형식</th>
+                        <th>설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>linecap</td>
+                        <td>"butt"|"round"|"square"</td>
+                        <td>
+                            <p>테두리 끝을 그리는 방법을 결정합니다.</p>
+                            <p>'butt', 'round', 'square' 값으로 설정할 수 있습니다.</p>
+                            <p><img src="https://www.w3.org/TR/SVG11/images/painting/linecap.png" alt="linecap"/></p>
+                        </td>
+                    </tr>
+                <tbody>
+            </table>
+            </section><section><h2>반환</h2>
+            <p>DVE 객체를 반환합니다.</p>
+        </section>
+        <section>
+            <h2>설명</h2>
+            <p>strokeLinecap 메소드는 SVG 요소의 stroke-linecap 속성을 설정합니다.</p>
+            <p>stroke-linecap 속성은 세그먼트 경로의 양 끝 모양을 결정합니다.</p>
+            <pre class="prettyprint">
+&lt;svg width="350" height="220"&gt;
+  &lt;path d="M60,60 l50,-20 150,20 150,-20 150,20 l50,-20" fill="none" stroke="#212121" stroke-width="23" stroke-linecap="butt"/&gt;
+  &lt;path d="M60,60 l50,-20 150,20 150,-20 150,20 l50,-20" fill="none" stroke="#448AFF" stroke-width="3"/&gt;
+  &lt;path d="M60,120 l50,-20 150,20 150,-20 150,20 l50,-20" fill="none" stroke="#212121" stroke-width="23" stroke-linecap="round"/&gt;
+  &lt;path d="M60,120 l50,-20 150,20 150,-20 150,20 l50,-20" fill="none" stroke="#448AFF" stroke-width="3"/&gt;
+  &lt;path d="M60,180 l50,-20 150,20 150,-20 150,20 l50,-20" fill="none" stroke="#212121" stroke-width="23" stroke-linecap="square"/&gt;
+  &lt;path d="M60,180 l50,-20 150,20 150,-20 150,20 l50,-20" fill="none" stroke="#448AFF" stroke-width="3"/&gt;
+&lt;/svg&gt;
+</pre>
+            <div>
+                <svg width="350" height="220">
+                    <path d="M60,60 l50,-20 l50,20 l50,-20 l50,20 l50,-20" fill="none" stroke="#212121" stroke-width="23" stroke-linecap="butt"/>
+                    <path d="M60,60 l50,-20 l50,20 l50,-20 l50,20 l50,-20" fill="none" stroke="#448AFF" stroke-width="3"/>
+                    <path d="M60,120 l50,-20 l50,20 l50,-20 l50,20 l50,-20" fill="none" stroke="#212121" stroke-width="23" stroke-linecap="round"/>
+                    <path d="M60,120 l50,-20 l50,20 l50,-20 l50,20 l50,-20" fill="none" stroke="#448AFF" stroke-width="3"/>
+                    <path d="M60,180 l50,-20 l50,20 l50,-20 l50,20 l50,-20" fill="none" stroke="#212121" stroke-width="23" stroke-linecap="square"/>
+                    <path d="M60,180 l50,-20 l50,20 l50,-20 l50,20 l50,-20" fill="none" stroke="#448AFF" stroke-width="3"/>
+                </svg>
+            </div>
+            <pre class="prettyprint">
+var svg = DV.svg().size(350,220).into("dv-01");
+DV.path().d("M60,60 l50,-20 l50,20 l50,-20 l50,20 l50,-20").fill("none").stroke("#212121",23,"butt").into(svg);
+DV.path().d("M60,60 l50,-20 l50,20 l50,-20 l50,20 l50,-20").fill("none").stroke("#448aff",3).into(svg);
+
+DV.path().d("M60,120 l50,-20 l50,20 l50,-20 l50,20 l50,-20").fill("none").stroke("#212121",23).attr("stroke-linecap", "round").into(svg);
+DV.path().d("M60,120 l50,-20 l50,20 l50,-20 l50,20 l50,-20").fill("none").stroke("#448aff",3).into(svg);
+
+DV.path().d("M60,180 l50,-20 l50,20 l50,-20 l50,20 l50,-20").fill("none").stroke("#212121",23).strokeLinecap("square").into(svg);
+DV.path().d("M60,180 l50,-20 l50,20 l50,-20 l50,20 l50,-20").fill("none").stroke("#448aff",3).into(svg);
+</pre>
+            <div id="dv-01"></div>
+            <script>
+                var svg = DV.svg().size(350,220).into("dv-01");
+                DV.path().d("M60,60 l50,-20 l50,20 l50,-20 l50,20 l50,-20").fill("none").stroke("#212121",23,"butt").into(svg);
+                DV.path().d("M60,60 l50,-20 l50,20 l50,-20 l50,20 l50,-20").fill("none").stroke("#448aff",3).into(svg);
+
+                DV.path().d("M60,120 l50,-20 l50,20 l50,-20 l50,20 l50,-20").fill("none").stroke("#212121",23).attr("stroke-linecap", "round").into(svg);
+                DV.path().d("M60,120 l50,-20 l50,20 l50,-20 l50,20 l50,-20").fill("none").stroke("#448aff",3).into(svg);
+
+                DV.path().d("M60,180 l50,-20 l50,20 l50,-20 l50,20 l50,-20").fill("none").stroke("#212121",23).strokeLinecap("square").into(svg);
+                DV.path().d("M60,180 l50,-20 l50,20 l50,-20 l50,20 l50,-20").fill("none").stroke("#448aff",3).into(svg);
+            </script>
+        </section>
+        <section>
+            <h2>참고</h2>
+            <ul>
+                <li><a href="../dv/path.html">path</a></li>
+                <li><a href="../dv/svg.html">svg</a></li>
+                <li><a href="attr.html">attr</a></li>
+                <li><a href="d.html">d</a></li>
+                <li><a href="fill.html">fill</a></li>
+                <li><a href="into.html">into</a></li>
+                <li><a href="size.html">size</a></li>
+                <li><a href="stroke.html">stroke</a></li>
+            </ul>
+        </section>
+    </section>
+    <footer>
+    </footer>
+</body>
+</html>

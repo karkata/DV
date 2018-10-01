@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <title></title>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" href="../../../css/style.css"/>           
+    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
+    <script src="../../../js/dv.core.js"></script>
+    <script src="../../../js/dv.shape.js"></script>
+</head>
+<body>
+    <section>
+        <nav class="nav-structure">
+            <ul>
+                <li><a href="../../index.html">Home</a></li>
+                <li><a href="index.html">References</a></li>
+                <li>append</li>
+            </ul>
+        </nav>
+    </section>
+    <section>
+        <h1>DVE.prototype.append()</h1>
+        <section>
+            <h2>문법</h2>
+            <pre class="prettyprint">var ret = dve.append(arguments);</pre>
+            </section><section><h2>파라미터</h2>
+            <table class="parameters">
+                <thead>
+                    <tr>
+                        <th>이름</th>
+                        <th>형식</th>
+                        <th>설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>arguments</td>
+                        <td>params&lt;DVE&gt;</td>
+                        <td><p>현재 요소에 추가할 DVE 객체 파라미터들입니다. 콤마 문자를 사용하여 여러 객체를 받을 수 있습니다.</p></td>
+                    </tr>
+            </table>
+            </section><section><h2>반환</h2>
+            <p>DVE 객체를 반환합니다.</p>
+        </section>
+        <section>
+            <h2>설명</h2>
+            <p>append 메소드는 SVG 요소를 감싼 현재 객체에 다른 DVE 객체들을 추가할 때 사용합니다.</p>
+            <p>into 메소드와 정반대 역할을 담당하며, into 메소드와 달리 append 메소드는 오로지 DVE 객체만 받습니다.</p>
+            <section>
+            <pre class="prettyprint">
+var svg = DV.svg().size(400,100).into("dv-01");
+// svg 요소 하위에 rect 요소가 생성됩니다.
+var r = DV.rect().dim(10,10,100,30).fill("#7c4dff").into(svg);
+var g = DV.g().into(svg);
+// rect 요소를 svg 요소에서 제거한 후, g 요소 하위로 추가합니다. 
+g.append(r);
+</pre>
+        </section>
+        <section>
+            <h2>참고</h2>
+            <ul>
+                <li><a href="../dv/g.html">g</a></li>
+                <li><a href="../dv/rect.html">rect</a></li>
+                <li><a href="../dv/svg.html">svg</a></li>
+                <li><a href="dim.html">dim</a></li>
+                <li><a href="fill.html">fill</a></li>
+                <li><a href="into.html">into</a></li>
+                <li><a href="size.html">size</a></li>
+            </ul>
+        </section>
+    </section>
+    <footer>
+    </footer>
+</body>
+</html>

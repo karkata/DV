@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <title></title>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" href="../../../css/style.css"/>           
+    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
+    <script src="../../../js/dv.core.js"></script>
+    <script src="../../../js/dv.shape.js"></script>
+</head>
+<body>
+    <section>
+        <nav class="nav-structure">
+            <ul>
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="index.html">References</a></li>
+                <li>clipPath</li>
+            </ul>
+        </nav>
+    </section>
+    <section>
+        <h1>DVE.prototype.clipPath()</h1>
+        <section>
+            <h2>문법</h2>
+            <pre class="prettyprint">var ret = dve.clipPath(pathiri);</pre>
+            </section><section><h2>파라미터</h2>
+            <table class="parameters">
+                <thead>
+                    <tr>
+                        <th>이름</th>
+                        <th>형식</th>
+                        <th>설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>pathiri</td>
+                        <td>&lt;iri&gt;|&lt;funciri&gt;|'none'|DVE object</td>
+                        <td>
+                            <p>클리핑 경로를 나타내는 'clipPath' 요소의 IRI 또는 funcIRI입니다.<p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            </section><section><h2>반환</h2>
+            <p>DVE 객체를 반환합니다.</p>
+        </section>
+        <section>
+            <h2>설명</h2>
+            <p>클리핑 경로를 지정하기 위해서 사용하는 clip-path 속성을 설정할 때 clipPath 메소드를 사용합니다.</p>
+            <p class="notice">clipPath 요소는 clipper 메소드를 사용합니다.</p>
+            <pre class="prettyprint">
+&lt;svg id="svg-01" width="200" height="60"&gt;
+    &lt;defs&gt;
+        &lt;clipPath id="S01CP01"&gt;
+            &lt;path d="M10,10 h10 v10 h-10 z"/&gt;
+            &lt;path d="M30,30 h10 v10 h-10 z"/&gt;
+        &lt;/clipPath&gt;
+    &lt;/defs&gt;
+    &lt;rect x="0" y="0" width="50" height="50" fill="blue" clip-path="url(#S01CP01)"/&gt;
+&lt;svg&gt;
+            </pre>
+            <div>
+                <svg id="svg-01" width="200" height="60">
+                    <defs>
+                        <clipPath id="S01CP01">
+                            <path d="M10,10 h10 v10 h-10 z"/>
+                            <path d="M30,30 h10 v10 h-10 z"/>
+                        </clipPath>
+                    </defs>
+                    <rect x="0" y="0" width="50" height="50" fill="blue" clip-path="url(#S01CP01)"/>
+                <svg>
+            </div>
+            <p>dv를 사용한 예제는 다음과 같습니다.</p>
+            <pre class="prettyprint">
+var svg = DV.svg().size(200,60).into("dv-01");
+var def = DV.defs().into(svg);
+var cp = DV.clipper().id("D01CP01").into(def);
+DV.path().mto(10,10).hto(10,true).vto(10,true).hto(-10,true).pz().into(cp);
+DV.path().mto(30,30).hto(10,true).vto(10,true).hto(-10,true).pz().into(cp);
+DV.rect().dim(0,0,50,50).fill("blue").clipPath("#D01CP01").into(svg);
+</pre>
+            <div id="dv-01"></div>
+            <script>
+                var svg = DV.svg().size(200,60).into("dv-01");
+                var def = DV.defs().into(svg);
+                var cp = DV.clipper().id("D01CP01").into(def);
+                DV.path().mto(10,10).hto(10,true).vto(10,true).hto(-10,true).pz().into(cp);
+                DV.path().mto(30,30).hto(10,true).vto(10,true).hto(-10,true).pz().into(cp);
+                DV.rect().dim(0,0,50,50).fill("blue").clipPath("#D01CP01").into(svg);
+            </script>           
+        </section>
+        <section>
+            <h2>참고</h2>
+            <ul>
+                <li><a href="../dv/clipper.html">clipper</a></li>
+                <li><a href="../dv/defs.html">defs</a></li>
+                <li><a href="../dv/path.html">path</a></li>
+                <li><a href="../dv/rect.html">rect</a></li>
+                <li><a href="../dv/svg.html">svg</a></li>
+                <li><a href="dim.html">dim</a></li>
+                <li><a href="fill.html">fill</a></li>
+                <li><a href="hto.html">hto</a></li>
+                <li><a href="id.html">id</a></li>
+                <li><a href="into.html">into</a></li>
+                <li><a href="mto.html">mto</a></li>
+                <li><a href="pz.html">pz</a></li>
+                <li><a href="size.html">size</a></li>
+                <li><a href="vto.html">vto</a></li>
+            </ul>
+        </section>
+    </section>
+    <footer>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,120 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <title></title>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" href="../../../css/style.css"/>           
+    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
+    <script src="../../../js/dv.core.js"></script>
+    <script src="../../../js/dv.shape.js"></script>
+</head>
+<body>
+    <section>
+        <nav class="nav-structure">
+            <ul>
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="index.html">References</a></li>
+                <li>updateLayout</li>
+            </ul>
+        </nav>
+    </section>
+    <section>
+        <h1>DVE.prorotype.updateLayout</h1>
+        <section>
+            <h2>문법</h2>
+            <pre class="prettyprint">var ret = dve.updateLayout(dic);</pre>
+            </section><section><h2>파라미터</h2>
+            <table class="parameters">
+                <thead>
+                    <tr>
+                        <th>이름</th>
+                        <th>형식</th>
+                        <th>설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>dic</td>
+                        <td>JSON Object</td>
+                        <td>
+                            <p>미리 정해둔 상수 값을 가지고 있는 키=값 형식의 객체입니다.</p>
+                            <p>이 객체는 레이아웃 계산을 할 때 사용되는 변수를 의미합니다.</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            </section><section><h2>반환</h2>
+            <p>DVE 객체를 반환합니다</p>
+        </section>
+        <section>
+            <h2>설명</h2>
+            <p>화면 레이아웃을 구성할 때, 바운딩 정보를 명확하게 정해지지 않은 경우가 많습니다.</p>
+            <p>컨테이너 역할을 하는 부모 요소의 크기에 따라 하위 요소의 크기가 결정이 되는 경우 퍼센티지를 이용할 수 있지만, 그렇지 못한 연산을 수행을 해야할 경우도 있습니다.</p>
+            <p>updateLayout 함수는 updateLayout을 수행하는 요소의 하위 요소 크기를 재조정할 수 있습니다.</p>
+            <p>setAutoLayout 함수를 사용하여 선언된 바운딩 항목에 대해서는 다시 연산을 하여 레이아웃을 정합니다.</p>
+            <pre class="prettyprint">
+var svg = DV.svg().size(200,100).into("dv-01");
+
+// 가로 0, 세로 100%(100)인 사각형을 만듭니다.
+// 이 사각형은 부모 컨테이너의 전체 크기에서 20 픽셀 작은 크기로 설정되도록 선언합니다.
+DV.rect().dim(0,0,0,"100%").fill("red",0.25).setAutoLayout("width:100%-20").into(svg);
+
+// 가로 20, 세로 100%(100)인 사각형을 만듭니다.
+// 이 사각형은 앞선 부모 컨테이너에서 앞선 사각형이 만든 영역을 제외한 나머지 공백을 채우도록 선언합니다.
+DV.rect().dim(0,0,20,"100%").fill("blue",0.25).setAutoLayout("x:100%-20").into(svg);
+
+// updateLayout이 호출되면 계산을 다시 수행합니다.
+svg.updateLayout();
+</pre>
+            <div id="dv-01"></div>
+            <script>
+                var svg = DV.svg().size(200,100).into("dv-01");
+                DV.rect().dim(0,0,0,"100%").fill("red",0.25).setAutoLayout("width:100%-20").into(svg);
+                DV.rect().dim(0,0,20,"100%").fill("blue",0.25).setAutoLayout("x:100%-20").into(svg);
+                svg.updateLayout();
+            </script>
+            <p>변수를 선언하여 사용하는 방법은 다음과 같습니다.</p>
+            <pre class="prettyprint">
+// 속성 이름에는 '+', '-'를 포함하면 안됩니다.
+var dic = { "gapY": 10 };
+var svg = DV.svg().size(200,100).into("dv-02");
+
+// 가로 100%, 세로 0인 사각형을 만듭니다.
+// 이 사각형은 부모 컨테이너의 전체 크기에서 높이가 20 + gapY 픽셀 만큼 작도록 선언합니다.
+DV.rect().dim(0,0,"100%",0).fill("yellow",0.25).setAutoLayout("height:100%-20-{gapY}").into(svg);
+
+// 가로 100%, 세로 20인 사각형을 만듭니다.
+// 이 사각형은 앞선 부모 컨테이너에서 앞선 사각형이 만든 영역을 제외한 나머지 공백을 채우도록 선언합니다.
+DV.rect().dim(0,0,"100%",50).fill("purple",0.25).setAutoLayout("y:100%-20").into(svg);
+
+// updateLayout이 호출되면 계산을 다시 수행합니다.
+svg.updateLayout(dic);
+</pre>
+            <div id="dv-02"></div>
+            <script>
+                var dic = { "gapY": 10 };
+                var svg = DV.svg().size(200,100).into("dv-02");
+                DV.rect().dim(0,0,"100%",0).fill("yellow",0.25).setAutoLayout("height:100%-20-{gapY}").into(svg);
+                DV.rect().dim(0,0,"100%",50).fill("purple",0.25).setAutoLayout("y:100%-20").into(svg);
+                svg.updateLayout(dic);
+            </script>
+        </section>
+        <section>
+            <h2>참고</h2>
+            <ul>
+                <li><a href="../dv/rect.html">rect</a></li>
+                <li><a href="../dv/svg.html">svg</a></li>
+                <li><a href="dim.html">dim</a></li>
+                <li><a href="fill.html">fill</a></li>
+                <li><a href="into.html">into</a></li>
+                <li><a href="setAutoLayout.html">setAutoLayout</a></li>
+                <li><a href="size.html">size</a></li>
+            </ul>
+        </section>
+    </section>
+    <footer>
+    </footer>
+</body>
+</html>

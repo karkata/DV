@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <title></title>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" href="../../../css/style.css"/>           
+    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
+    <script src="../../../js/dv.core.js"></script>
+    <script src="../../../js/dv.shape.js"></script>
+</head>
+<body>
+    <section>
+        <nav class="nav-structure">
+            <ul>
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="index.html">References</a></li>
+                <li>patternUnits</li>
+            </ul>
+        </nav>
+    </section>
+    <section>
+        <h1>DVE.prototype.patternUnits()</h1>
+        <section>
+            <h2>문법</h2>
+            <pre class="prettyprint">var ret = dve.patternUnits(unit);</pre>
+            </section><section><h2>파라미터</h2>
+            <table class="parameters">
+                <thead>
+                    <tr>
+                        <th>이름</th>
+                        <th>형식</th>
+                        <th>설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>unit</td>
+                        <td>"userSpaceOnUse"|"objectBoundingBox"</td>
+                        <td>
+                            <p>'x, y, width, height'를 결정짓는 좌표 시스템입니다.</p>
+                            <p>'patternUnits' 값이 'userSpaceOnUse'이면 svg가 그려지는 문서의 좌표계를 그대로 따릅니다. 즉 차례대로 0, 0, 100, 100이면 svg 문서 조각의 좌표계를 따라 100, 100 크기의 영역에 패턴을 그리며, 다음 영역으로 패턴을 계속 복사합니다. 이 때 패턴이 시작되는 위치는 0, 0이므로 다음 패턴의 시작 위치는 100, 0이 됩니다.</p>
+                            <p>'patternUnits' 값이 'objectBoundingBox'이면 패턴은 svg 문서 조각이 아닌, 패턴이 원래 채워지거나, 그려질 요소의 사각형 영역 좌표를 따릅니다. 이 때 대상 영역의 크기는 정해진 것이 아니므로 퍼센티지 값을 갖거나 0(05), 1(100%)의 범위 값으로 'x, y, width, height'를 설정해야 합니다. 만일 차례대로 0, 0, 0.5, 0.5이면 패턴이 그려질 요소의 가로, 세로 50% 크기의 영역에 하나의 패턴을 그리며, 다음 영역으로 패턴을 계속 복사합니다. 이 때 패턴이 시작되는 위치는 0%, 0%이므로 다음 패턴의 시작 위치는 50% 0%입니다.</p>
+                            <p>기본값은 'objectBoundingBox'입니다.</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            </section><section><h2>반환</h2>
+            <p>DVE 객체를 반환합니다.</p>
+        </section>
+        <section>
+            <h2>설명</h2>
+            <p>'patternUnits' 메소드는 'pattern' 요소의 'patternUnits' 속성을 설정합니다.</p>
+            <p>'patternUnits' 속성은 'x, y, width, height'의 좌표 시스템을 결정합니다.</p>
+            <p>'patternUnits' 속성의 기본값은 'objectBoundingBox'이며 패턴이 적용될 사각형 박스 영역을 기준으로 좌표가 결정됩니다.</p>
+            <p>반면 'patternUnits' 속성의 값을 'userSpaceOnUse'로 설정하면, 'pattern' 요소가 참조되는 시점의 위치가 갖는 사용자 좌표 시스템을 그대로 사용합니다.</p>
+            <pre class="prettyprint">
+&lt;svg width="600" height="250"&gt;
+    &lt;defs&gt;
+        &lt;pattern id="S01PT01" x="0" y="0" width="0.5" height="0.5" viewBox="0 0 10 10"&gt;
+            &lt;path d="M1,1 L7,1 L4,7 z" fill="red" stroke="blue"/&gt;
+        &lt;/pattern&gt;
+        &lt;pattern id="S01PT02" x="0" y="0" width="100" height="100" viewBox="0 0 10 10" patternUnits="userSpaceOnUse"&gt;
+            &lt;path d="M1,1 L7,1 L4,7 z" fill="red" stroke="blue"/&gt;
+        &lt;/pattern&gt;
+    &lt;/defs&gt;
+    &lt;text x="150" y="25" text-anchor="middle"&gt;patternUnits = objectBoundingBox&lt;/text&gt;
+    &lt;rect x="50" y="50" width="200" height="50" fill="url(#S01PT01)" stroke="blue"/&gt;
+    &lt;text x="150" y="125" text-anchor="middle"&gt;patternUnits = userSpaceOnUse&lt;/text&gt;
+    &lt;rect x="50" y="150" width="200" height="50" fill="url(#S01PT02)" stroke="blue"/&gt;
+    &lt;/g&gt;
+&lt;/svg&gt;
+</pre>    
+            <div>
+                <svg width="600" height="250">
+                    <defs>
+                        <pattern id="S01PT01" x="0" y="0" width="0.5" height="0.5" viewBox="0 0 10 10">
+                            <path d="M1,1 L7,1 L4,7 z" fill="red" stroke="blue"/>
+                        </pattern>
+                        <pattern id="S01PT02" x="0" y="0" width="100" height="100" viewBox="0 0 10 10" patternUnits="userSpaceOnUse">
+                            <path d="M1,1 L7,1 L4,7 z" fill="red" stroke="blue"/>
+                        </pattern>
+                    </defs>
+                    <text x="150" y="25" text-anchor="middle">patternUnits = objectBoundingBox</text>
+                    <rect x="50" y="50" width="200" height="50" fill="url(#S01PT01)" stroke="blue"/>
+                    <text x="150" y="125" text-anchor="middle">patternUnits = userSpaceOnUse</text>
+                    <rect x="50" y="150" width="200" height="50" fill="url(#S01PT02)" stroke="blue"/>
+                    </g>
+                </svg>
+            </div>
+            <pre class="prettyprint">
+var svg = DV.svg().size(600,250).into("dv-01");
+var def = DV.defs().into(svg);
+DV.pattern().dim(0,0,0.5,0.5).viewbox(0,0,10,10).id("D01PT01").into(def);
+DV.path().mto(1,1).lto(7,1).lto(4,7).pz().fill("red").stroke("blue").into("D01PT01");
+DV.pattern().dim(0,0,100,100).patternUnits("userSpaceOnUse").viewbox(0,0,10,10).id("D01PT02").into(def);
+DV.path().mto(1,1).lto(7,1).lto(4,7).pz().fill("red").stroke("blue").into("D01PT02");
+
+DV.text().txt("patternUnits = objectBoudningBox").xys(150,25).attr("text-anchor","middle").into(svg);
+DV.rect().dim(50,50,200,50).fill(DVC.getFuncIRI("D01PT01")).stroke("blue").into(svg);
+DV.text().txt("patternUnits = useSpaceOnUse").xys(150,125).attr("text-anchor","middle").into(svg);
+DV.rect().dim(50,150,200,50).fill(DVC.getFuncIRI("D01PT02")).stroke("blue").into(svg);
+</pre>
+            <div id="dv-01"></div>
+            <script>
+                var svg = DV.svg().size(600,250).into("dv-01");
+                var def = DV.defs().into(svg);
+                DV.pattern().dim(0,0,0.5,0.5).viewbox(0,0,10,10).id("D01PT01").into(def);
+                DV.path().mto(1,1).lto(7,1).lto(4,7).pz().fill("red").stroke("blue").into("D01PT01");
+                DV.pattern().dim(0,0,100,100).patternUnits("userSpaceOnUse").viewbox(0,0,10,10).id("D01PT02").into(def);
+                DV.path().mto(1,1).lto(7,1).lto(4,7).pz().fill("red").stroke("blue").into("D01PT02");
+
+                DV.text().txt("patternUnits = objectBoudningBox").xys(150,25).attr("text-anchor","middle").into(svg);
+                DV.rect().dim(50,50,200,50).fill(DVC.getFuncIRI("D01PT01")).stroke("blue").into(svg);
+                DV.text().txt("patternUnits = useSpaceOnUse").xys(150,125).attr("text-anchor","middle").into(svg);
+                DV.rect().dim(50,150,200,50).fill(DVC.getFuncIRI("D01PT02")).stroke("blue").into(svg);
+            </script>
+        </section>
+        <section>
+            <h2>참고</h2>
+            <ul>
+                <li><a href="../dv/defs.html">defs</a></li>
+                <li><a href="../dv/path.html">path</a></li>
+                <li><a href="../dv/pattern.html">pattern</a></li>
+                <li><a href="../dv/rect.html">rect</a></li>
+                <li><a href="../dv/svg.html">svg</a></li>
+                <li><a href="../dv/text.html">text</a></li>
+                <li><a href="../dvc/getFuncIRI.html">getFuncIRI</a></li>
+                <li><a href="attr.html">attr</a></li>
+                <li><a href="dim.html">dim</a></li>
+                <li><a href="fill.html">fill</a></li>
+                <li><a href="id.html">id</a></li>
+                <li><a href="into.html">into</a></li>
+                <li><a href="lto.html">lto</a></li>
+                <li><a href="mto.html">mto</a></li>
+                <li><a href="pz.html">pz</a></li>
+                <li><a href="size.html">size</a></li>
+                <li><a href="stroke.html">stroke</a></li>
+                <li><a href="translate.html">translate</a></li>
+                <li><a href="txt.html">txt</a></li>
+                <li><a href="viewbox.html">viewbox</a></li>
+                <li><a href="xys.html">xys</a></li>
+            </ul>
+        </section>
+    </section>
+    <footer>
+    </footer>
+</body>
+</html>

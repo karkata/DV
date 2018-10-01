@@ -1,0 +1,296 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <title></title>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" href="../../../css/style.css"/>           
+    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
+    <script src="../../../js/dv.core.js"></script>
+    <script src="../../../js/dv.shape.js"></script>
+</head>
+<body>
+    <section>
+        <nav class="nav-structure">
+            <ul>
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="index.html">References</a></li>
+                <li>text</li>
+            </ul>
+        </nav>
+    </section>
+    <section>
+        <h1>DV.prototype.text()</h1>
+        <section>
+            <h2>문법</h2>
+            <pre class="prettyprint">var ret = DV.text(props)</pre>
+            </section><section><h2>파라미터</h2>
+            <p>'props' 객체는 다음과 같은 속성을 갖습니다.</p>
+            <table class="parameters">
+                <thead>
+                    <tr>
+                        <th>이름</th>
+                        <th>형식</th>
+                        <th>설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>x, y</td>
+                        <td>&lt;list-of-coordinates&gt;</td>
+                        <td>
+                            <p>텍스트가 렌더링되는 위치입니다.</p>
+                            <p>x, y는 하나의 값을 갖거나,  콤마 혹은 빈 문자로 구성된 리스트로 나타낼 수 있습니다.</p>
+                            <p>리스트인 경우, 항목의 개수 n만큼 텍스트의 첫 n문자의 위치가 결정됩니다.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>dx, dy</td>
+                        <td>&lt;list-of-lengths&gt;</td>
+                        <td>
+                            <p>현재 텍스트 위치에서 x, y 축 방향으로 이동하여 문자를 렌더링합니다.</p>
+                            <p>dx, dy는 하나의 값을 갖거나, 콤마 혹은 빈 문자로 구성된 리스트로 나타낼 수 있습니다.</p>
+                            <p>리스트인 경우, 항목의 개수 n만큼 텍스트의 첫 n문자의 위치가 결정됩니다.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>rotate</td>
+                        <td>&lt;list-of-angles&gt;</td>
+                        <td>
+                            <p>텍스트 모든 문자가 개별적으로 회전을 합니다.</p>
+                            <p>rotate는 하나의 값(각도)을 갖거나, 콤마 혹은 빈 문자로 구성된 리스트로 나타낼 수 있습니다.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>tlength</td>
+                        <td>&lt;length&gt;</td>
+                        <td>
+                            <p>렌더링되는 텍스트의 길이를 명시적으로 지정합니다.</p>
+                            <p>tlength로 지정된 길이에 텍스트를 모두 렌더링해야 하기 때문에, kerning, letter-spacing, word-spacing, dx, dy의 값이 모두 새로 조정됩니다.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>lengthAdjust</td>
+                        <td>"spacing"|"spacingAndGlyphs"</td>
+                        <td>
+                            <p>tlength에 지정된 길이에 텍스트를 렌더링할 때, 조정되는 대상을 설정합니다.</p>
+                            <ul>
+                                <li>spacing: 글자 사이의 간격만 조정합니다.(기본값)</li>
+                                <li>spacingAndGlyphs: 간격뿐만 아니라, 글자를 렌더링할 때 사용하는 모든 요소가 조정됩니다.</li>
+                            </ul>
+                        </td>
+                    </tr>
+                <tbody>
+            </table>
+            </section><section><h2>반환</h2>
+            <p>DVE 객체를 반환합니다.</p>
+        </section>
+        <section>
+            <h2>설명</h2>
+            <p>SVG 문서에서 텍스트는 text 요소를 사용하여 렌더링합니다.</p>
+            <p>text 요소는 다른 그래픽 요소 처럼 렌더링이 되기 때문에, 좌표 시스템, 페인팅, 클리핑, 마스킹과 같은 특징을 모두 사용할 수 있습니다.</p>
+            <p>text 요소는 텍스트를 한 줄로 표현합니다. 그러므로 자동 개행이나 word wrap을 수행하지 않습니다. 여러 행을 갖는 텍스트를 렌더링하기 위해서는 다른 방법을 사용해야 합니다.</p>
+            <p>문장의 특정 부분을 tspan 요소를 사용하여 그룹화 할 수 있습니다. tspan 요소는 text 요소 내부에서 사용됩니다.</p>
+            <p>text 메소드는text 요소를 생성합니다.</p>
+            <p>text 요소는 첫번째 문자가 시작을 결정하는 x, y 속성을 사용하여 그려질 문자의 위치를 지정합니다.</p>
+            <p>x, y는 개별 문자가 그려지는 절대 위치를 나타냅니다.</p>
+            <p>x 값이 리스트로 주어질 때, 문자의 길이가 리스트의 길이보다 길다면, 마지막 문자의 다음 위치(폰트의 크기, 자간을 고려하여)에 그려지게 됩니다.</p>
+            <p>y 값이 리스트로 주어질 때, 문자의 길이가 리스트의 길이보다 길다면, 남은 문자는 리스트의 마지막 위치 값을 그대로 사용합니다.</p>
+            <pre class="prettyprint">
+&lt;svg width="700" height="120"&gt;
+  &lt;g font-size="0.65em" fill="#03A9F4"&gt;
+    &lt;line x1="50" y1="0" x2="50" y2="100%" stroke="#03A9F4" stroke-width="1"/&gt;
+    &lt;text x="48" y="10" text-anchor="end"&gt;x: 50&lt;/text&gt;
+    &lt;line x1="0" y1="100" x2="100%" y2="100" stroke="#03A9F4" stroke-width="1"/&gt;
+    &lt;text x="0" y="98"&gt;base-line&lt;/text&gt;
+    &lt;line x1="0" y1="50" x2="100%" y2="50" stroke="#03A9F4" stroke-width="1"/&gt;
+    &lt;text x="0" y="48"&gt;y: 50&lt;/text&gt;
+    &lt;line x1="0" y1="40" x2="100%" y2="40" stroke="#03A9F4" stroke-width="1"/&gt;
+    &lt;text x="0" y="38"&gt;y: 40&lt;/text&gt;
+  &lt;/g&gt;
+  &lt;text x="50 100" y="100 110 100" font-size="3em"&gt;ABCQ-aljqt &lt;tspan x="50 80 110" y="50 50 40"&gt;xyz&lt;/tspan&gt; 12345%@!*&lt;/text&gt;
+&lt;/svg&gt;
+</pre>    
+            <div>
+                <svg width="700" height="120">
+                    <g font-size="0.65em" fill="#03A9F4">
+                        <line x1="50" y1="0" x2="50" y2="100%" stroke="#03A9F4" stroke-width="1"/>
+                        <text x="48" y="10" text-anchor="end">x: 50</text>
+                        <line x1="0" y1="100" x2="100%" y2="100" stroke="#03A9F4" stroke-width="1"/>
+                        <text x="0" y="98">base-line</text>
+                        <line x1="0" y1="50" x2="100%" y2="50" stroke="#03A9F4" stroke-width="1"/>
+                        <text x="0" y="48">y: 50</text>
+                        <line x1="0" y1="40" x2="100%" y2="40" stroke="#03A9F4" stroke-width="1"/>
+                        <text x="0" y="38">y: 40</text>
+                    </g>
+                    <text x="50 100" y="100 110 100" font-size="3em">ABCQ-aljqt <tspan x="50 80 110" y="50 50 40">xyz</tspan> 12345%@!*</text>
+                </svg>
+            </div>
+            <pre class="prettyprint">
+var svg = DV.svg().size(700,120).into("dv-01");
+var g = DV.g().attr("font-size","0.65em").fill("#03A9F4").into(svg);
+DV.line().bound(50,0,50,"100%").stroke("#03A9F4",1).into(g);
+DV.text().txt("x: 50").xys(48,10).attr("text-anchor","end").into(g);
+DV.line().bound(0,100,"100%",100).stroke("#03A9F4",1).into(g);
+DV.text().txt("base-line").xys(0,98).into(g);
+DV.line().bound(0,50,"100%",50).stroke("#03A9F4",1).into(g);
+DV.text().txt("y: 50").xys(0,48).into(g);
+DV.line().bound(0,40,"100%",40).stroke("#03A9F4",1).into(g);
+DV.text().txt("y: 40").xys(0,38).into(g);
+var t = DV.text().txt("ABCQ-aljqt ").xys([50,100],[100,110,100]).attr("font-size","3em").into(svg);
+DV.tspan().txt("xyz").xys([50,80,110],[50,50,40]).into(t);
+t.txt(" 12345%@!*", true);
+</pre>
+            <div id="dv-01"></div>
+            <script>
+                var svg = DV.svg().size(700,120).into("dv-01");
+                var g = DV.g().attr("font-size","0.65em").fill("#03A9F4").into(svg);
+                DV.line().bound(50,0,50,"100%").stroke("#03A9F4",1).into(g);
+                DV.text().txt("x: 50").xys(48,10).attr("text-anchor","end").into(g);
+                DV.line().bound(0,100,"100%",100).stroke("#03A9F4",1).into(g);
+                DV.text().txt("base-line").xys(0,98).into(g);
+                DV.line().bound(0,50,"100%",50).stroke("#03A9F4",1).into(g);
+                DV.text().txt("y: 50").xys(0,48).into(g);
+                DV.line().bound(0,40,"100%",40).stroke("#03A9F4",1).into(g);
+                DV.text().txt("y: 40").xys(0,38).into(g);
+                var t = DV.text().txt("ABCQ-aljqt ").xys([50,100],[100,110,100]).attr("font-size","3em").into(svg);
+                DV.tspan().txt("xyz").xys([50,80,110],[50,50,40]).into(t);
+                t.txt(" 12345%@!*", true);
+            </script>
+            <p>dx, dy 속성은 현재 문자가 그려질 위치의 상대 위치를 나타냅니다. dy="-10"이면 y 축으로 -10만큼 위로 이동하여 다음 문자가 렌더링 됩니다.</p>
+            <p>위의 두 속성 값은 리스트 형식으로도 제공됩니다. 리스트 형식("0 10 10 10")으로 주어진 경우, 문자 하나 하나마다 상대 위치가 결정이 되며, 문자의 길이가 주어진 리스트 값의 길이보다 길다면, 상대 위치가 모두 0이 됩니다.</p>
+            <p>dx, dy는 전체 텍스트의 시작점에 대한 상대 위치가 아니라, 각 문자의 시작점에 대한 상대 위치입니다.</p>
+            <pre class="prettyprint">
+&lt;svg width="700" height="100"&gt;
+  &lt;line x1="0" y1="50" x2="100%" y2="50" stroke="#03A9F4" stroke-width="1"/&gt;
+  &lt;text x="0" y="48" font-size="0.65em" fill="#03A9F4"&gt;base-line&lt;/text&gt;
+  &lt;text x="50" y="50" font-size="3em"&gt;ABC &lt;tspan dx="0 10 0" dy="10 10 10"&gt;1234567890&lt;/tspan&gt; xyz&lt;/text&gt;
+&lt;/svg&gt;
+</pre>    
+            <div>
+                <svg width="700" height="100">
+                    <line x1="0" y1="50" x2="100%" y2="50" stroke="#03A9F4" stroke-width="1"/>
+                    <text x="0" y="48" font-size="0.65em" fill="#03A9F4">base-line</text>
+                    <text x="50" y="50" font-size="3em">ABC <tspan dx="0 10 0" dy="10 10 10">1234567890</tspan> xyz</text>
+                </svg>
+            </div>
+            <pre class="prettyprint">
+var svg = DV.svg().size(700,100).into("dv-02");
+DV.line().bound(0,50,"100%",50).stroke("#03A9F4",1).into(svg);
+DV.text().txt("base-line").xys(0,48).attr("font-size","0.65em").fill("#03A9F4").into(svg);
+var t = DV.text().txt("ABC ").xys(50,50).attr("font-size","3em").into(svg);
+DV.tspan().txt("1234567890").dxys([0,10,0],[10,10,10]).into(t);
+t.txt(" xyz",true);
+</pre>
+            <div id="dv-02"></div>
+            <script>
+                var svg = DV.svg().size(700,100).into("dv-02");
+                DV.line().bound(0,50,"100%",50).stroke("#03A9F4",1).into(svg);
+                DV.text().txt("base-line").xys(0,48).attr("font-size","0.65em").fill("#03A9F4").into(svg);
+                var t = DV.text().txt("ABC ").xys(50,50).attr("font-size","3em").into(svg);
+                DV.tspan().txt("1234567890").dxys([0,10,0],[10,10,10]).into(t);
+                t.txt(" xyz",true);
+            </script>
+            <p>rotate 속성은 문자를 회전(개별)하여 렌더링합니다. 리스트 형식을 사용하면 개별 문자의 회전 각도를 지정할 수 있습니다.</p>
+            <pre class="prettyprint">
+&lt;svg width="700" height="100"&gt;
+  &lt;line x1="0" y1="50" x2="100%" y2="50" stroke="#03A9F4" stroke-width="1"/&gt;
+  &lt;text x="0" y="48" font-size="0.65em" fill="#03A9F4"&gt;base-line&lt;/text&gt;
+  &lt;text x="50" y="50" font-size="2em" rotate="90 45 90 25" letter-spacing="10"&gt;ABC &lt;tspan dy="20" rotate="45 90"&gt;1234567890&lt;/tspan&gt; xyz&lt;/text&gt;
+&lt;/svg&gt;
+</pre>    
+            <div>
+                <svg width="700" height="100">
+                    <line x1="0" y1="50" x2="100%" y2="50" stroke="#03A9F4" stroke-width="1"/>
+                    <text x="0" y="48" font-size="0.65em" fill="#03A9F4">base-line</text>
+                    <text x="50" y="50" font-size="2em" rotate="90 45 90 25" letter-spacing="10">ABC <tspan dy="20" rotate="45 90">1234567890</tspan> xyz</text>
+                </svg>
+            </div>
+            <pre class="prettyprint">
+var svg = DV.svg().size(700,100).into("dv-03");
+DV.line().bound(0,50,"100%",50).stroke("#03A9F4",1).into(svg);
+DV.text().txt("base-line").xys(0,48).attr("font-size","0.65em").fill("#03A9F4").into(svg);
+var t = DV.text().txt("ABC ").xys(50,50).attr("font-size","2em").attr("letter-spacing",10).trotate([90,45,90,25]).into(svg);
+DV.tspan().txt("1234567890").dxys(0,20).trotate([45,90]).into(t);
+t.txt(" xyz",true);
+</pre>
+            <div id="dv-03"></div>
+            <script>
+                var svg = DV.svg().size(700,100).into("dv-03");
+                DV.line().bound(0,50,"100%",50).stroke("#03A9F4",1).into(svg);
+                DV.text().txt("base-line").xys(0,48).attr("font-size","0.65em").fill("#03A9F4").into(svg);
+                var t = DV.text().txt("ABC ").xys(50,50).attr("font-size","2em").attr("letter-spacing",10).trotate([90,45,90,25]).into(svg);
+                DV.tspan().txt("1234567890").dxys(0,20).trotate([45,90]).into(t);
+                t.txt(" xyz",true);
+            </script>
+            <p>rotate 속성은 text, tspan 모두 사용가능하며, text 정의된 rotate 속성 값은 하위 tspan의 rotate 속성에 의해 재정의 될 수 있습니다.</p>
+            <p>다음은 rotate 속성값에 따라 문자의 회전이 어떻게 영향 받지에 대한 그림 설명입니다.</p>
+            <p><img src="https://www.w3.org/TR/SVG11/images/text/tspan05-diagram.png" alt="rotation description"/></p>
+            <p><img src="https://www.w3.org/TR/SVG11/images/text/tspan05.png" alt="rotated characters"/></p>
+            <p>텍스트가 렌더링되는 길이를 정합니다.</p>
+            <p>lengthAdjust 기본값은 'spacing'으로 글자 사이의 간격만 조정하지만, 'spacingAndGlyphs'로 설정되면, 글자 사이의 간격 뿐만 아니라, 글리프의 모양도 변형됩니다.</p>
+            <pre class="prettyprint">
+&lt;svg width="400" height="200"&gt;
+  &lt;path d="M20,10 L20,120 M220,10 L220,120" stroke="#03A9F4" stroke-width="1"/&gt;
+  &lt;text x="120" y="20" font-size="0.65em" fill="#03A9F4" text-anchor="middle"&gt;width: 200&lt;/text&gt;
+  &lt;text x="20" y="50" font-size="2em" textLength="200"&gt;I am your father. No!!!!&lt;/text&gt;
+  &lt;text x="20" y="100" font-size="2em" textLength="200" lengthAdjust="spacingAndGlyphs"&gt;I am your father. No!!!!&lt;/text&gt;
+  &lt;text x="20" y="150" font-size="2em"&gt;I am your father. No!!!!&lt;/text&gt;
+&lt;/svg&gt;
+</pre>    
+            <div>
+                <svg width="400" height="200">
+                    <path d="M20,10 L20,120 M220,10 L220,120" stroke="#03A9F4" stroke-width="1"/>
+                    <text x="120" y="20" font-size="0.65em" fill="#03A9F4" text-anchor="middle">width: 200</text>
+                    <text x="20" y="50" font-size="2em" textLength="200">I am your father. No!!!!</text>
+                    <text x="20" y="100" font-size="2em" textLength="200" lengthAdjust="spacingAndGlyphs">I am your father. No!!!!</text>
+                    <text x="20" y="150" font-size="2em">I am your father. No!!!!</text>
+                </svg>
+            </div>
+            <pre class="prettyprint">
+var svg = DV.svg().size(400,200).into("dv-04");
+DV.path().stroke("#03A9F4",1).mto(20,10).lto(20,120).mto(220,10).lto(220,120).into(svg);
+DV.text().txt("width: 200").xys(120,20).attr("font-size","0.65em").fill("#03A9F4").attr("text-anchor","middle").into(svg);
+DV.text().txt("I am your father. No!!!!").xys(20,50).attr("font-size","2em").tlength(200).into(svg);
+DV.text().txt("I am your father. No!!!!").xys(20,100).attr("font-size","2em").tlength(200,"spacingAndGlyphs").into(svg);
+DV.text().txt("I am your father. No!!!!").xys(20,150).attr("font-size", "2em").into(svg);
+</pre>
+            <div id="dv-04"></div>
+            <script>
+                var svg = DV.svg().size(400,200).into("dv-04");
+                DV.path().stroke("#03A9F4",1).mto(20,10).lto(20,120).mto(220,10).lto(220,120).into(svg);
+                DV.text().txt("width: 200").xys(120,20).attr("font-size","0.65em").fill("#03A9F4").attr("text-anchor","middle").into(svg);
+                DV.text().txt("I am your father. No!!!!").xys(20,50).attr("font-size","2em").tlength(200).into(svg);
+                DV.text().txt("I am your father. No!!!!").xys(20,100).attr("font-size","2em").tlength(200,"spacingAndGlyphs").into(svg);
+                DV.text().txt("I am your father. No!!!!").xys(20,150).attr("font-size", "2em").into(svg);
+            </script>
+        </section>
+        <section>
+            <h2>참고</h2>
+            <ul>
+                <li><a href="../dve/attr.html">attr</a></li>
+                <li><a href="../dve/bound.html">bound</a></li>
+                <li><a href="../dve/dxys.html">dxys</a></li>
+                <li><a href="../dve/fill.html">fill</a></li>
+                <li><a href="../dve/into.html">into</a></li>
+                <li><a href="../dve/lto.html">lto</a></li>
+                <li><a href="../dve/mto.html">mto</a></li>
+                <li><a href="../dve/size.html">size</a></li>
+                <li><a href="../dve/stroke.html">stroke</a></li>
+                <li><a href="../dve/tlength.html">tlength</a></li>
+                <li><a href="../dve/trotate.html">trotate</a></li>
+                <li><a href="../dve/txt.html">txt</a></li>
+                <li><a href="../dve/xys.html">xys</a></li>
+                <li><a href="g.html">g</a></li>
+                <li><a href="line.html">line</a></li>
+                <li><a href="path.html">path</a></li>
+                <li><a href="svg.html">svg</a></li>
+                <li><a href="tspan.html">tspan</a></li>
+            </ul>
+        </section>
+    </section>
+    <footer>
+    </footer>
+</body>
+</html>
