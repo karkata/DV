@@ -14,15 +14,41 @@
  * limitations under the License.
  */
 
-export VERSION = "1.2.0";
-export NS_SVG = "http://www.w3.org/2000/svg";
-export NS_XLNK = "http://www.w3.org/1999/xlink";
-export E_NAME_ANI = ["animate", "animateColor", "animateMotion", "animateTransform", "mpath", "set"];
-export E_NAME_SHP = ["circle", "ellipse", "line", "path", "polygon", "polyline", "rect"];
-export E_NAME_TXT = ["altGlyph", "altGlyphDef", "altGlyphItem", "glyph", "glyphRef", "textPath", "text", "tref", "tspan"];
-export E_NAME_PTH = ["line", "path", "polyline", "polygon"];
-export E_NAME_CTN = ["a", "defs", "glyph", "g", "marker", "mask", "missing-glyph", "pattern", "svg", "switch", "symbol"];
-export E_NAME_GRP = ["circle",  "ellipse", "image", "line", "path", "polygon", "polyline", "rect", "text", "use"];
+export const VERSION = "1.2.0";
+export const NS_SVG = "http://www.w3.org/2000/svg";
+export const NS_XLNK = "http://www.w3.org/1999/xlink";
+export const E_NAME_ANI = ["animate", "animateColor", "animateMotion", "animateTransform", "mpath", "set"];
+export const E_NAME_SHP = ["circle", "ellipse", "line", "path", "polygon", "polyline", "rect"];
+export const E_NAME_TXT = ["altGlyph", "altGlyphDef", "altGlyphItem", "glyph", "glyphRef", "textPath", "text", "tref", "tspan"];
+export const E_NAME_PTH = ["line", "path", "polyline", "polygon"];
+export const E_NAME_CTN = ["a", "defs", "glyph", "g", "marker", "mask", "missing-glyph", "pattern", "svg", "switch", "symbol"];
+export const E_NAME_GRP = ["circle",  "ellipse", "image", "line", "path", "polygon", "polyline", "rect", "text", "use"];
+export const FIXED_EASINGS = { 
+        "inSine":       [0.47, 0, 0.745, 0.715],
+        "outSine":      [0.39, 0.575, 0.565, 1],
+        "inOutSine":    [0.445, 0.05, 0.55, 0.95],
+        "inQuad":       [0.55, 0.085, 0.68, 0.53],
+        "outQuad":      [0.25, 0.46, 0.45, 0.94],
+        "inOutQuad":    [0.455, 0.03, 0.515, 0.955],
+        "inCubic":      [0.55, 0.055, 0.675, 0.19],
+        "outCubic":     [0.215, 0.61, 0.355, 1],
+        "inOutCubic":   [0.645, 0.045, 0.355, 1],
+        "inQuart":      [0.895, 0.03, 0.685, 0.22],
+        "outQuart":     [0.165, 0.84, 0.44, 1],
+        "inOutQuart":   [0.77, 0, 0.175, 1],
+        "inQuint":      [0.755, 0.05, 0.855, 0.06],
+        "outQuint":     [0.23, 1, 0.32, 1],
+        "inOutQuint":   [0.86, 0, 0.07, 1],
+        "inExpo":       [0.95, 0.05, 0.796, 0.035],
+        "outExpo":      [0.19, 1, 0.22, 1],
+        "inOutExpo":    [1, 0, 0, 1],
+        "inCirc":       [0.6, 0.04, 0.98, 0.335],
+        "outCirc":      [0.075, 0.82, 0.165, 1],
+        "inOutCirc":    [0.785, 0.135, 0.15, 0.86],
+        "inBack":       [0.6, -0.28, 0.735, 0.045],
+        "outBack":      [0.175, 0.885, 0.32, 1.275],
+        "inOutBack":    [0.68, -0.55, 0.265, 1.55]
+    };
 
 /* Polyfill */
 if (!Array.isArray) {
@@ -33,9 +59,9 @@ if (!Array.isArray) {
 
 /* Utility functions */
 
-export isXLink(source) { return (source && source.length > 6 && source.substring(0, 6) == "xlink:"); }
+export function isXLink(source) { return (source && source.length > 6 && source.substring(0, 6) == "xlink:"); }
 
-export isDef(...p) {
+export function isDef(...p) {
 	if (p.length == 0) return false;
 	for (let i = 0; i < p.length; i++) {
 		if (typeof p[i] == "undefined") return false;
@@ -43,7 +69,7 @@ export isDef(...p) {
 	return true;
 }
 
-export refineId(id, use) {
+export function refineId(id, use) {
 	let sharp = (id && id.indexOf("#") == 0);
 	if (sharp && use) return id;
 	else if (sharp && !use) return id.substring(1);
@@ -54,13 +80,13 @@ export refineId(id, use) {
 /**
  * src 객체의 속성을 dst 객체에 복사합니다. 
  */
-export cpp(dst, src, name) {
+export function cpp(dst, src, name) {
 	if (dst && src && name) {
 		dst[name] = src[name];
 	}
 }
 
-export trim(str) {
+export function trim(str) {
 	return str ? str.replace(/(^\s*)|(\s*$)/gi, "") : "";
 }
 
@@ -70,7 +96,7 @@ export trim(str) {
  * @param {<list-of-points>|Array} value The points
  * @return The converted string as <list-of-points> type.
  */
-export convertListOfPointString(value) {
+export function convertListOfPointString(value) {
 	if (isDef(value)) {
 		if (typeof(value) === "string") 
 			return value;
@@ -80,7 +106,7 @@ export convertListOfPointString(value) {
 	return undefined;
 }
 
-export convertListOfValueString(value, delimeter) {
+export function convertListOfValueString(value, delimeter) {
 	if (isDef(value)) {
 		if (typeof(value) === "string") return value;
 		return Array.isArray(value) ? value.join(delimeter || " ") : value;
@@ -93,7 +119,7 @@ export convertListOfValueString(value, delimeter) {
  * @param {object} target the SVG element.
  * @return The computed size object.
  */
-export getElementSize(target) {
+export function getElementSize(target) {
 	if (target instanceof DVE) target = target.element;
 	let s = getComputedStyle(target), size = { w: 0, h: 0 };
 	if (s) {
@@ -116,7 +142,7 @@ export getElementSize(target) {
  * @param {string} layoutString 레이아웃 문자열
  * @return 키=값 객체
  */
-export parseLayout(layoutString) {
+export function parseLayout(layoutString) {
 	let layout = {};
 	if (!layoutString) return layout;
 	let tokens = layoutString.split(/\s*;\s*/);
@@ -134,7 +160,7 @@ export parseLayout(layoutString) {
  * @param {object} g 키=값 형식의 콜렉션 객체로써 수식 내부에 있는 변수의 값을 가지고 있다.
  * @return 수식을 계산한 값을 반환한다. 수식을 인식 못하는 경우 수식을 그대로 반환한다.
  */
-export computeExpr(expr, p, g) {
+export function computeExpr(expr, p, g) {
 	let tokens = expr.toString().split(/([\+\-]+)/g);
 	if (tokens.length == 0) return expr;
 	let op = "+", num = 0, n = 0;
@@ -173,7 +199,7 @@ export computeExpr(expr, p, g) {
  * @param {object} g 키=값 형식의 콜렉션 객체로써 수식 내부에 있는 변수의 값을 가지고 있다.
  * @return 수식을 계산한 값을 반환한다. 수식을 인식 못하는 경우 수식을 그대로 반환한다.
  */
-export computeExprWithCacheFunc(dve, name, expr, p, g) {
+export function computeExprWithCacheFunc(dve, name, expr, p, g) {
 	if (dve.calculateExpression && dve.calculateExpression[name]) {
 		let uce = dve.disableCacheExpression;
 		if (!uce || uce != "disabled") {
@@ -220,7 +246,7 @@ export computeExprWithCacheFunc(dve, name, expr, p, g) {
 	return num;
 }
 
-export relayout(dve, w, h, dic) {
+export function relayout(dve, w, h, dic) {
 	if (dve.name != "g") {
 		let str = dve.autoLayout, v = 0;
 		if (str) {

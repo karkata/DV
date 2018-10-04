@@ -15,12 +15,16 @@
  */
 
 /* Drawing Vector Object */
-import * as common from "dv.common.js";
-import * as DVE from "dv.dve.js";
+import * as common from "./dv.common.js";
+import { DVE } from "./dv.dve.js";
 
-class DV {
+export function echo(v) {
+	console.log(v);
+}
+
+export class DV {
 	static mk(name, props) {
-		let em = new DVE(document.createElementNS(DVC.NS_SVG, name));
+		let em = new DVE(document.createElementNS(common.NS_SVG, name));
 		if (props) {
 			for (let pname in props) {
 				em.attr(pname, props[pname]);
@@ -38,7 +42,7 @@ class DV {
 
     static svg(props) {
         // version, width, height, x, y, viewBox, preserveAspectRatio, zoomAndPan
-        return mk("svg", props);
+        return DV.mk("svg", props);
     }
 
     static g(props) {
@@ -165,24 +169,25 @@ class DV {
     }
 
 	static animate(props) {
-        return DVC.mk("animate", props);
+        return common.mk("animate", props);
     }
 
     static set(props) {
-        return DVC.mk("set", props);
+        return common.mk("set", props);
     }
 
     static animateMotion(props) {
-        return DVC.mk("animateMotion", props);
+        return common.mk("animateMotion", props);
     }
 
     static animateTransform(props) {
-        return DVC.mk("animateTransform", props);
+        return common.mk("animateTransform", props);
     }
 
     static mpath(props) {
         // xlink:href
-        return DVC.mk("mpath", props);
+        return common.mk("mpath", props);
     }
 
 } // :~ class DV 
+
