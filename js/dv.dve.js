@@ -839,19 +839,19 @@ export class DVE {
 
     keyFrom(value) {
         if (["animate", "animateMotion", "animateTransform"].indexOf(this.name) == -1) return this;
-        if (DVC.isDef(value)) this.attr("from", value);
+        if (common.isDef(value)) this.attr("from", value);
         return this;
     }
 
     keyTo(value) {
         if (["animate", "set", "animateMotion", "animateTransform"].indexOf(this.name) == -1) return this;
-        if (DVC.isDef(value)) this.attr("to", value);
+        if (common.isDef(value)) this.attr("to", value);
         return this;
     }
 
     keyBy(value) {
         if (["animate", "animateMotion"].indexOf(this.name) == -1) return this;
-        if (DVC.isDef(value)) this.attr("by", value);
+        if (common.isDef(value)) this.attr("by", value);
         return this;
     }
 
@@ -868,26 +868,26 @@ export class DVE {
 
     keyValues(values) {
         if (["animate", "animateMotion"].indexOf(this.name) == -1) return this;
-        if (!DVC.isDef(values)) return this;
+        if (!common.isDef(values)) return this;
         this.attr("values", Array.isArray(values) ? values.join(";") : values);
         return this;
     }
 
     keyTimes(times) {
         if (["animate", "animateMotion"].indexOf(this.name) == -1) return this;
-        if (!DVC.isDef(times)) return this;
+        if (!common.isDef(times)) return this;
         return this.attr("keyTimes", Array.isArray(times) ? times.join(";") : times);
     }
 
     keySplines(splines) {
         if (["animate", "animateMotion"].indexOf(this.name) == -1) return this;
-        if (!DVC.isDef(splines)) return this;
+        if (!common.isDef(splines)) return this;
         return this.attr("keySplines", Array.isArray(splines) ? splines.join(" ") : splines);
     }
 
     keyPoints(points) {
         if (["animateMotion"].indexOf(this.name) == -1) return this;
-        if (DVC.isDef(points)) this.attr("keyPoints", Array.isArray(points) ? points.join(";") : points);
+        if (common.isDef(points)) this.attr("keyPoints", Array.isArray(points) ? points.join(";") : points);
         return this;
     }
     
@@ -899,19 +899,19 @@ export class DVE {
 
     timeBegin(value) {
         if (["animate", "set", "animateMotion", "animateTransform"].indexOf(this.name) == -1) return this;
-        if (DVC.isDef(value)) this.attr("begin", value);
+        if (common.isDef(value)) this.attr("begin", value);
         return this;
     }
 
     timeDur(value) {
         if (["animate", "set", "animateMotion", "animateTransform"].indexOf(this.name) == -1) return this;
-        if (DVC.isDef(value)) this.attr("dur", value);
+        if (common.isDef(value)) this.attr("dur", value);
         return this;
     }
 
     timeEnd(value) {
         if (["animate", "set", "animateMotion", "animateTransform"].indexOf(this.name) == -1) return this;
-        if (DVC.isDef(value)) this.attr("end", value);
+        if (common.isDef(value)) this.attr("end", value);
         return this;
     }
 
@@ -921,13 +921,13 @@ export class DVE {
 
     timeMin(value) {
 		if (["animate", "set", "animateMotion", "animateTransform"].indexOf(this.name) == -1) return this;
-		if (DVC.isDef(value)) this.attr("min", value);
+		if (common.isDef(value)) this.attr("min", value);
 		return this;
 	}
 
 	timeMax(value) {
 		if (["animate", "set", "animateMotion", "animateTransform"].indexOf(this.name) == -1) return this;
-		if (DVC.isDef(value)) this.attr("max", value);
+		if (common.isDef(value)) this.attr("max", value);
 		return this;
 	}
 
@@ -940,13 +940,13 @@ export class DVE {
 
     repeatCount(value) {
         if (["animate", "set", "animateMotion"].indexOf(this.name) == -1) return this;
-        if (DVC.isDef(value)) this.attr("repeatCount", value);
+        if (common.isDef(value)) this.attr("repeatCount", value);
         return this;
     }
 
     repeatDur(value) {
         if (["animate", "set", "animateMotion"].indexOf(this.name) == -1) return this;
-        if (DVC.isDef(value)) this.attr("repeatDur", value);
+        if (common.isDef(value)) this.attr("repeatDur", value);
         return this;
     }
 
@@ -970,13 +970,13 @@ export class DVE {
 
     motionRotate(value) {
         if (["animateMotion"].indexOf(this.name) == -1) return this;
-        if (DVC.isDef(value)) this.attr("rotate", value);
+        if (common.isDef(value)) this.attr("rotate", value);
         return this;
     }
 
     motionPath(value) {
         if (["animateMotion"].indexOf(this.name) == -1) return this;
-        if (DVC.isDef(value)) this.attr("path", value);
+        if (common.isDef(value)) this.attr("path", value);
         return this;
     }
 

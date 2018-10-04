@@ -73,7 +73,7 @@ export function refineId(id, use) {
 	let sharp = (id && id.indexOf("#") == 0);
 	if (sharp && use) return id;
 	else if (sharp && !use) return id.substring(1);
-	else if (!sharp && use) return "#${id}";
+	else if (!sharp && use) return `#${id}`;
 	else return id;
 }
 

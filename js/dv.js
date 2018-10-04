@@ -46,147 +46,147 @@ export class DV {
     }
 
     static g(props) {
-        return mk("g", props);
+        return DV.mk("g", props);
     }
 
     static switchblock(props) {
-        return mk("switch", props);
+        return DV.mk("switch", props);
     }
 
     static styleblock(css) {
-        return mk("style", { "type": "text/css" }).txt(css || "");
+        return DV.mk("style", { "type": "text/css" }).txt(css || "");
     }
 
     static defs(props) {
-        return mk("defs", props);
+        return DV.mk("defs", props);
     }
 
     static symbol(props) {
-        return mk("symbol", props);
+        return DV.mk("symbol", props);
     }
 
     static use(props) {
         // x, y, width, height, xlink:href
-        return mk("use", props);
+        return DV.mk("use", props);
     }
 
     static link(props) {
         // xlink:href, target
-        return mk("a", props);
+        return DV.mk("a", props);
     }
 
     static rect(props) {
         // x, y, width, height, rx, ry
-        return mk("rect", props);
+        return DV.mk("rect", props);
     }
 
     static circle(props) {
         // cx, cy, r
-        return mk("circle", props);
+        return DV.mk("circle", props);
     }
 
     static ellipse(props) {
         // cx, cy, rx, ry
-        return mk("ellipse", props);
+        return DV.mk("ellipse", props);
     }
 
     static line(props) {
         // x1, y1, x2, y2
-        return mk("line", props);
+        return DV.mk("line", props);
     }
 
     static polygon(props) {
         // points
-        return mk("polygon", props);
+        return DV.mk("polygon", props);
     }
 
     static polyline(props) {
         // points
-        return mk("polyline", props);
+        return DV.mk("polyline", props);
     }
 
     static image(props) {
         // x, y, width, height, xlink:href, preserveAspectRatio
-        return mk("image", props);
+        return DV.mk("image", props);
     }
 
     static text(props) {
         // x, y, dx, dy, rotate, textLength, lengthAdjust
-        return mk("text", props);
+        return DV.mk("text", props);
     }
 
     static tspan(props) {
         // x, y, dx, dy, rotate, textLength, lengthAdjust
-        return mk("tspan", props);
+        return DV.mk("tspan", props);
     }
 
     static textPath(props) {
         // xlink:href, startOffset, method, spacing
-        return mk("textPath", props);
+        return DV.mk("textPath", props);
     }
 
     static gradl(props) {
         // x1, y1, x2, y2, gradientUnits, spreadMethod
-        return mk("linearGradient", props);
+        return DV.mk("linearGradient", props);
     }
 
     static gradr(props) {
         // cx, cy, r, fx, fy, gradientUnits, spreadMethod
-        return mk("radialGradient", props);
+        return DV.mk("radialGradient", props);
     }
 
     static stop(props) {
         // offset, stop-color, stop-opacity
-        return mk("stop", props);
+        return DV.mk("stop", props);
     }
 
     static title(props) {
-        return mk("title", props);
+        return DV.mk("title", props);
     }
 
     static desc(props) {
-        return mk("desc", props);
+        return DV.mk("desc", props);
     }
 
     static clipper(props) {
         // clipPathUnits
-        return mk("clipPath", props);
+        return DV.mk("clipPath", props);
     }
 
     static path(props) {
         // d, pathLength
-        return mk("path", props);
+        return DV.mk("path", props);
     }
 
     static marker(props) {
         // refX, refY, markerWidth, markerHeight, orient, markerUnits
-        return mk("marker", props);
+        return DV.mk("marker", props);
     }
 
     static pattern(props) {
         // x, y, width, height, patternUnits, patternContentUnits, patternTransform
-        return mk("pattern", props);
+        return DV.mk("pattern", props);
     }
 
 	static animate(props) {
-        return common.mk("animate", props);
+        return DV.mk("animate", props);
     }
 
     static set(props) {
-        return common.mk("set", props);
+        return DV.mk("set", props);
     }
 
     static animateMotion(props) {
-        return common.mk("animateMotion", props);
+        return DV.mk("animateMotion", props);
     }
 
     static animateTransform(props) {
-        return common.mk("animateTransform", props);
+        return DV.mk("animateTransform", props);
     }
 
     static mpath(props) {
         // xlink:href
-        return common.mk("mpath", props);
+        return DV.mk("mpath", props);
     }
 
 } // :~ class DV 
