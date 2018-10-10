@@ -34,10 +34,10 @@ export class DV {
 	}
 
 	static getFuncIRI(value) {
-		if (!isDef(value)) throw new Error("[DV] value paramter is undefined.");
+		if (!common.isDef(value)) throw new Error("[DV] value paramter is undefined.");
 		if (value instanceof DVE) value = value.id();
 		if (value.indexOf("url(#") == 0) return value;
-		else return "url(${refineId(value, true)})";
+		else return `url(${common.refineId(value, true)})`;
 	}
 
     static svg(props) {

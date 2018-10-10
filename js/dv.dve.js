@@ -10,6 +10,13 @@ export class DVE {
 		this.parent = parent ? parent : null;
 	}
 
+	getFuncIRI(value) {
+		if (!common.isDef(value)) throw new Error("[DV] value paramter is undefined.");
+		if (value instanceof DVE) value = value.id();
+		if (value.indexOf("url(#") == 0) return value;
+		else return `url(${common.refineId(value, true)})`;
+	}
+
 	setAutoLayout(definition) {
 		this.autoLayout = definition;
 		return this;
@@ -275,7 +282,7 @@ export class DVE {
         if (this.name == "line") return this;
         if (common.E_NAME_ANI.indexOf(this.name) >= 0 && ["freeze", "remove"].indexOf(paint) < 0) return this;
         if (common.isDef(paint)) {
-            if (paint instanceof DVE) this.attr("fill", common.getFuncIRI(paint));
+            if (paint instanceof DVE) this.attr("fill", this.getFuncIRI(paint));
             else this.attr("fill", paint);
         }
         if (common.isDef(opacity)) this.attr("fill-opacity", opacity);
@@ -290,7 +297,7 @@ export class DVE {
     stroke(paint, width, linecap, linejoin, dasharray, dashoffset, opacity) {
         if (common.E_NAME_SHP.indexOf(this.name) < 0 && "g" != this.name) return this;
         if (common.isDef(paint)) {
-            if (paint instanceof DVE) this.attr("stroke", common.getFuncIRI(paint));
+            if (paint instanceof DVE) this.attr("stroke", this.getFuncIRI(paint));
             else this.attr("stroke", paint);
         }
         if (common.isDef(width)) this.attr("stroke-width", width);
@@ -562,7 +569,7 @@ export class DVE {
 
     clipPath(pathiri) {
         if (common.E_NAME_CTN.indexOf(this.name) == -1 && common.E_NAME_GRP.indexOf(this.name) == -1 && this.name != "clipPath") return this;
-        if (common.isDef(pathiri)) this.attr("clip-path", common.getFuncIRI(pathiri));
+        if (common.isDef(pathiri)) this.attr("clip-path", this.getFuncIRI(pathiri));
         return this;
     }
 
@@ -733,10 +740,10 @@ export class DVE {
     mark(marker, pos) {
         if (common.E_NAME_PTH.indexOf(this.name) == -1) return this;
         if (common.isDef(marker)) {
-            if (pos == "s") this.attr("marker-start", common.getFuncIRI(marker));
-            else if (pos == "m") this.attr("marker-mid", common.getFuncIRI(marker));
-            else if (pos == "e") this.attr("marker-end", common.getFuncIRI(marker));
-            else if (pos == "a") this.attr("marker", common.getFuncIRI(marker));
+            if (pos == "s") this.attr("marker-start", this.getFuncIRI(marker));
+            else if (pos == "m") this.attr("marker-mid", this.getFuncIRI(marker));
+            else if (pos == "e") this.attr("marker-end", this.getFuncIRI(marker));
+            else if (pos == "a") this.attr("marker", this.getFuncIRI(marker));
         }
         return this;
     }

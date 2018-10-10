@@ -5,26 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
     <title></title>
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
-    <link rel="stylesheet" href="../../../css/style.css"/>           
-    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
-    <script src="../../../js/dv.core.js"></script>
-    <script src="../../../js/dv.shape.js"></script>
+    <link rel="stylesheet" href="../css/style.css"/>           
+    <link rel="stylesheet" href="../css/tomorrow.css"/>
 </head>
 <body>
     <section>
         <nav class="nav-structure">
             <ul>
-                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../index.html">Home</a></li>
                 <li><a href="index.html">References</a></li>
                 <li>defs</li>
             </ul>
         </nav>
     </section>
     <section>
-        <h1>DV.prototype.defs()</h1>
+        <h1>DV.defs()</h1>
         <section>
             <h2>문법</h2>
-            <pre class="prettyprint">var ret = DV.defs();</pre>
+            <pre class="prettyprint">let ret = DV.defs();</pre>
             </section><section><h2>파라미터</h2>
             </section><section><h2>반환</h2>
             <p>dve 객체를 반환합니다.</p>
@@ -57,18 +55,19 @@
                 </svg>
             </div>
             <pre class="prettyprint">
-var svg = DV.svg().size(200,100).into("dv-01");
-var defs = DV.defs().into(svg);
-var grd = DV.gradl().id("D01LG01").into(defs);
+let svg = DV.svg().size(200,100).into("dv-01");
+let defs = DV.defs().into(svg);
+let grd = DV.gradl().id("D01LG01").into(defs);
 DV.stop().stopOCO("20%","#39F").into(grd);
 DV.stop().stopOCO("90%","#F3F").into(grd);
 DV.rect().dim(50,25,100,50).fill(grd).into(svg);
 </pre>
             <div id="dv-01"></div>
-            <script>
-                var svg = DV.svg().size(200,100).into("dv-01");
-                var defs = DV.defs().into(svg);
-                var grd = DV.gradl().id("D01LG01").into(defs);
+            <script type="module">
+				import { DV } from "../../js/dv.js";
+                let svg = DV.svg().size(200,100).into("dv-01");
+                let defs = DV.defs().into(svg);
+                let grd = DV.gradl().id("D01LG01").into(defs);
                 DV.stop().oco("20%","#39F").into(grd);
                 DV.stop().oco("90%","#F3F").into(grd);
                 DV.rect().dim(50,25,100,50).fill(grd).into(svg);
