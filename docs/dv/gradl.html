@@ -5,10 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
     <title></title>
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
-    <link rel="stylesheet" href="../../../css/style.css"/>           
-    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
-    <script src="../../../js/dv.core.js"></script>
-    <script src="../../../js/dv.shape.js"></script>
+    <link rel="stylesheet" href="../css/style.css"/>           
+    <link rel="stylesheet" href="../css/tomorrow.css"/>
 </head>
 <body>
     <section>
@@ -21,10 +19,10 @@
         </nav>
     </section>
     <section>
-        <h1>DV.prototype.gradl()</h1>
+        <h1>DV.gradl()</h1>
         <section>
             <h2>문법</h2>
-            <pre class="prettytext">var ret = DV.gradl(props);</pre>
+            <pre class="prettytext">let ret = DV.gradl(props);</pre>
             </section><section><h2>파라미터</h2>
             <p>'props' 파라미터는 'linearGradient' 요소를 생성하는데 필요한 속성을 갖는 객체입니다.</p>
             <table class="parameters">
@@ -147,57 +145,58 @@
                 </svg>
             </div>
             <pre class="prettyprint">
-var svg = DV.svg().size(600,200).into("dv-01");
-var def = DV.defs().into(svg);
-var grad1 = DV.gradl().bound(0,0,"50%",0).id("D01GRL01").into(def);
+let svg = DV.svg().size(600,200).into("dv-01");
+let def = DV.defs().into(svg);
+let grad1 = DV.gradl().bound(0,0,"50%",0).id("D01GRL01").into(def);
 DV.stop().oco("5%","#F60").into(grad1);
 DV.stop().oco("35%","#FF6").into(grad1);
-var grad2 = DV.gradl().bound(0,0,"50%",0).gradientUnit("userSpaceOnUse").id("D01GRL02").into(def);
+let grad2 = DV.gradl().bound(0,0,"50%",0).gradientUnit("userSpaceOnUse").id("D01GRL02").into(def);
 DV.stop().oco("5%","#F60").into(grad2);
 DV.stop().oco("35%","#FF6").into(grad2);
-var grad3 = DV.gradl().bound(0,0,"50%",0).spreadMethod("reflect").id("D01GRL03").into(def);
+let grad3 = DV.gradl().bound(0,0,"50%",0).spreadMethod("reflect").id("D01GRL03").into(def);
 DV.stop().oco("5%","#F60").into(grad3);
 DV.stop().oco("35%","#FF6").into(grad3);
-var grad4 = DV.gradl().bound(0,0,"50%",0).spreadMethod("repeat").id("D01GRL04").into(def);
+let grad4 = DV.gradl().bound(0,0,"50%",0).spreadMethod("repeat").id("D01GRL04").into(def);
 DV.stop().oco("5%","#F60").into(grad4);
 DV.stop().oco("35%","#FF6").into(grad4);
 
-var g1 = DV.g().attr("font-size","0.80em").translate(50,25).into(svg);
+let g1 = DV.g().attr("font-size","0.80em").translate(50,25).into(svg);
 DV.text().xys(0,17).txt("gradientUnits = objectBoundingBox").into(g1);
 DV.rect().dim(0,25,200,25).fill(grad1).into(g1);
 DV.text().xys(0,77).txt("gradientUnits = userSpaceOnUse").into(g1);
 DV.rect().dim(0,85,200,25).fill(grad2).into(g1);
 
-var g2 = DV.g().attr("font-size","0.80em").translate(300,25).into(svg);
+let g2 = DV.g().attr("font-size","0.80em").translate(300,25).into(svg);
 DV.text().xys(0,17).txt("spreadMethod = reflect").into(g2);
 DV.rect().dim(0,25,200,25).fill(grad3).into(g2);
 DV.text().xys(0,77).txt("spreadMethod = repeat").into(g2);
 DV.rect().dim(0,85,200,25).fill(grad4).into(g2);
 </pre>
             <div id="dv-01"></div>
-            <script>
-                var svg = DV.svg().size(600,200).into("dv-01");
-                var def = DV.defs().into(svg);
-                var grad1 = DV.gradl().bound(0,0,"50%",0).id("D01GRL01").into(def);
+            <script type="module">
+				import { DV } from "../../js/dv.js";
+                let svg = DV.svg().size(600,200).into("dv-01");
+                let def = DV.defs().into(svg);
+                let grad1 = DV.gradl().bound(0,0,"50%",0).id("D01GRL01").into(def);
                 DV.stop().oco("5%","#F60").into(grad1);
                 DV.stop().oco("35%","#FF6").into(grad1);
-                var grad2 = DV.gradl().bound(0,0,"50%",0).gradientUnits("userSpaceOnUse").id("D01GRL02").into(def);
+                let grad2 = DV.gradl().bound(0,0,"50%",0).gradientUnits("userSpaceOnUse").id("D01GRL02").into(def);
                 DV.stop().oco("5%","#F60").into(grad2);
                 DV.stop().oco("35%","#FF6").into(grad2);
-                var grad3 = DV.gradl().bound(0,0,"50%",0).spreadMethod("reflect").id("D01GRL03").into(def);
+                let grad3 = DV.gradl().bound(0,0,"50%",0).spreadMethod("reflect").id("D01GRL03").into(def);
                 DV.stop().oco("5%","#F60").into(grad3);
                 DV.stop().oco("35%","#FF6").into(grad3);
-                var grad4 = DV.gradl().bound(0,0,"50%",0).spreadMethod("repeat").id("D01GRL04").into(def);
+                let grad4 = DV.gradl().bound(0,0,"50%",0).spreadMethod("repeat").id("D01GRL04").into(def);
                 DV.stop().oco("5%","#F60").into(grad4);
                 DV.stop().oco("35%","#FF6").into(grad4);
 
-                var g1 = DV.g().attr("font-size","0.80em").translate(50,25).into(svg);
+                let g1 = DV.g().attr("font-size","0.80em").translate(50,25).into(svg);
                 DV.text().xys(0,17).txt("gradientUnits = objectBoundingBox").into(g1);
                 DV.rect().dim(0,25,200,25).fill(grad1).into(g1);
                 DV.text().xys(0,77).txt("gradientUnits = userSpaceOnUse").into(g1);
                 DV.rect().dim(0,85,200,25).fill(grad2).into(g1);
 
-                var g2 = DV.g().attr("font-size","0.80em").translate(300,25).into(svg);
+                let g2 = DV.g().attr("font-size","0.80em").translate(300,25).into(svg);
                 DV.text().xys(0,17).txt("spreadMethod = reflect").into(g2);
                 DV.rect().dim(0,25,200,25).fill(grad3).into(g2);
                 DV.text().xys(0,77).txt("spreadMethod = repeat").into(g2);

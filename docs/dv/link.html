@@ -5,26 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
     <title></title>
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
-    <link rel="stylesheet" href="../../../css/style.css"/>           
-    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
-    <script src="../../../js/dv.core.js"></script>
-    <script src="../../../js/dv.shape.js"></script>
+    <link rel="stylesheet" href="../css/style.css"/>           
+    <link rel="stylesheet" href="../css/tomorrow.css"/>
 </head>
 <body>
     <section>
         <nav class="nav-structure">
             <ul>
-                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../index.html">Home</a></li>
                 <li><a href="index.html">References</a></li>
                 <li>link</li>
             </ul>
         </nav>
     </section>
     <section>
-        <h1>DV.prototype.link()</h1>
+        <h1>DV.link()</h1>
         <section>
             <h2>문법</h2>
-            <pre class="prettyprint">var ret = DV.link(props);</pre>
+            <pre class="prettyprint">let ret = DV.link(props);</pre>
             </section><section><h2>파라미터</h2>
             <p>'props' 파라미터는 'a' 요소를 생성하는데 필요한 속성을 갖는 객체입니다.</p>
             <table class="parameters">
@@ -72,16 +70,17 @@
                 </svg>
             </div>
             <pre class="prettyprint">
-var svg = DV.svg().size(200,100).into("svg-01");
-var a = DV.link().xhref("https://www.w3.org/TR/SVG11").into(svg);
-var r = DV.rect().dim(15,35,170,30).round(15).fill("red").into(a);
+let svg = DV.svg().size(200,100).into("svg-01");
+let a = DV.link().xhref("https://www.w3.org/TR/SVG11").into(svg);
+let r = DV.rect().dim(15,35,170,30).round(15).fill("red").into(a);
 DV.text().xys(100,55).text("SVG 1.1").tanchor("middle").fill("white").into(a);
 </pre>
             <div id="svg-01"></div>
-            <script>
-                var svg = DV.svg().size(200,100).into("svg-01");
-                var a = DV.link().xhref("https://www.w3.org/TR/SVG11").into(svg);
-                var r = DV.rect().dim(15,35,170,30).round(15).fill("red").into(a);
+            <script type="module">
+				import { DV } from "../../js/dv.js";
+                let svg = DV.svg().size(200,100).into("svg-01");
+                let a = DV.link().xhref("https://www.w3.org/TR/SVG11").into(svg);
+                let r = DV.rect().dim(15,35,170,30).round(15).fill("red").into(a);
                 DV.text().xys(100,55).txt("SVG 1.1").tanchor("middle").fill("white").into(a);
             </script>
         </section>

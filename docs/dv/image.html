@@ -5,10 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
     <title></title>
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
-    <link rel="stylesheet" href="../../../css/style.css"/>           
-    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
-    <script src="../../../js/dv.core.js"></script>
-    <script src="../../../js/dv.shape.js"></script>
+    <link rel="stylesheet" href="../css/style.css"/>           
+    <link rel="stylesheet" href="../css/tomorrow.css"/>
 </head>
 <body>
     <section>
@@ -21,10 +19,10 @@
         </nav>
     </section>
     <section>
-        <h1>DV.prototype.image()</h1>
+        <h1>DV.image()</h1>
         <section>
             <h2>문법</h2>
-            <pre class="prettyprint">var ret = DV.image(props);</pre>
+            <pre class="prettyprint">let ret = DV.image(props);</pre>
             </section><section><h2>파라미터</h2>
             <p>'props' 파라미터는 'image' 요소를 생성하는데 필요한 속성을 갖는 객체입니다.</p>
             <table class="parameters">
@@ -69,34 +67,35 @@
             <p>'image' 요소는 JPEG, PNG와 같은 레스터이미지 파일과 image/svg+xml MIME 형식의 파일을 렌더링합니다.</p>
             <pre class="prettyprint">
 &lt;svg width="450" height="120"&gt;
-  &lt;image x="0" y="0" width="150" height="100" xlink:href="../../../images/svglogo.png"/&gt;
-  &lt;image x="150" y="0" width="150" height="100" xlink:href="../../../images/svglogo.png" preserveAspectRatio="xMidYMid slice"/&gt;
-  &lt;image x="300" y="0" width="150" height="100" xlink:href="../../../images/svglogo.png" preserveAspectRatio="none"/&gt;
+  &lt;image x="0" y="0" width="150" height="100" xlink:href="../images/svglogo.png"/&gt;
+  &lt;image x="150" y="0" width="150" height="100" xlink:href="../images/svglogo.png" preserveAspectRatio="xMidYMid slice"/&gt;
+  &lt;image x="300" y="0" width="150" height="100" xlink:href="../images/svglogo.png" preserveAspectRatio="none"/&gt;
 &lt;/svg&gt;
 </pre>    
             <div>
                 <svg width="450" height="120">
-                    <image x="0" y="0" width="150" height="100" xlink:href="../../../images/svglogo.png"/>
-                    <image x="150" y="0" width="150" height="100" xlink:href="../../../images/svglogo.png" preserveAspectRatio="xMidYMid slice"/>
-                    <image x="300" y="0" width="150" height="100" xlink:href="../../../images/svglogo.png" preserveAspectRatio="none"/>
+                    <image x="0" y="0" width="150" height="100" xlink:href="../images/svglogo.png"/>
+                    <image x="150" y="0" width="150" height="100" xlink:href="../images/svglogo.png" preserveAspectRatio="xMidYMid slice"/>
+                    <image x="300" y="0" width="150" height="100" xlink:href="../images/svglogo.png" preserveAspectRatio="none"/>
                 </svg>
             </div>
             <pre class="prettyprint">
-var svg = DV.svg().size(450,120).into("dv-01");
-DV.image().dim(0,0,150,100).xhref("../../../images/svglogo.png").into(svg);
-DV.image().dim(150,0,150,100).xhref("../../../images/svglogo.png").aspectRatio("xMidYMid slice").into(svg);
-DV.image().dim(300,0,150,100).xhref("../../../images/svglogo.png").aspectRatio("none").into(svg);
+let svg = DV.svg().size(450,120).into("dv-01");
+DV.image().dim(0,0,150,100).xhref("../images/svglogo.png").into(svg);
+DV.image().dim(150,0,150,100).xhref("../images/svglogo.png").aspectRatio("xMidYMid slice").into(svg);
+DV.image().dim(300,0,150,100).xhref("../images/svglogo.png").aspectRatio("none").into(svg);
 </pre>
             <p>원본 이미지는 160 x 160 길이를 갖습니다.</p>
             <p>'preserveAspectRatio'가 생략되면 'xMidYMid meet' 값을 가지므로 150 x 100 영역을 벗어나지 않도록 uniform 스케일링 됩니다.</p>
             <p>이와 달리 'slice' 값을 가지면, uniform 스케일링을 하되, 빈 공간이 없도록 영역을 꽉 채웁니다.</p>
             <p>'none' 값을 설정하면 uniform 스케일링이 적용되지 않으므로, 이미지를 150 x 100 영역에 맞도록 늘립니다.</p>
             <div id="dv-01"></div>
-            <script>
-                var svg = DV.svg().size(450,120).into("dv-01");
-                DV.image().dim(0,0,150,100).xhref("../../../images/svglogo.png").into(svg);
-                DV.image().dim(150,0,150,100).xhref("../../../images/svglogo.png").aspectRatio("xMidYMid slice").into(svg);
-                DV.image().dim(300,0,150,100).xhref("../../../images/svglogo.png").aspectRatio("none").into(svg);
+            <script type="module">
+				import { DV } from "../../js/dv.js";
+                let svg = DV.svg().size(450,120).into("dv-01");
+                DV.image().dim(0,0,150,100).xhref("../images/svglogo.png").into(svg);
+                DV.image().dim(150,0,150,100).xhref("../images/svglogo.png").aspectRatio("xMidYMid slice").into(svg);
+                DV.image().dim(300,0,150,100).xhref("../images/svglogo.png").aspectRatio("none").into(svg);
             </script>
         </section>
         <section>

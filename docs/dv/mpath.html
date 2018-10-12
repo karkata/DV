@@ -5,27 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
     <title></title>
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
-    <link rel="stylesheet" href="../../../css/style.css"/>           
-    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
-    <script src="../../../js/dv.core.js"></script>
-    <script src="../../../js/dv.shape.js"></script>
-    <script src="../../../js/dv.animation.js"></script>
+    <link rel="stylesheet" href="../css/style.css"/>           
+    <link rel="stylesheet" href="../css/tomorrow.css"/>
 </head>
 <body>
     <section>
         <nav class="nav-structure">
             <ul>
-                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../index.html">Home</a></li>
                 <li><a href="index.html">References</a></li>
                 <li>mpath</li>
             </ul>
         </nav>
     </section>
     <section>
-        <h1>DV.prototype.mpath</h1>
+        <h1>DV.mpath()</h1>
         <section>
             <h2>문법</h2>
-            <pre class="prettyprint">var ret = DV.mpath(props);</pre>
+            <pre class="prettyprint">let ret = DV.mpath(props);</pre>
             </section><section><h2>파라미터</h2>
             <p>props 객체의 속성은 다음과 같습니다.</p>
             <table class="parameters">
@@ -73,7 +70,7 @@
                 </svg>
             </div>
             <pre class="prettyprint">
-var svg = DV.svg().size(500,150).into("dv-01");
+let svg = DV.svg().size(500,150).into("dv-01");
 DV.path().mto(50,50).csto([
         [[50,-25],[50,-25],[100,0]],
         [[50,25],[100,0]],
@@ -87,8 +84,9 @@ DV.rect().dim(-5,-5,10,10).fill("red").into(svg).append(
 );
 </pre>
             <div id="dv-01"></div>
-            <script>
-                var svg = DV.svg().size(500,150).into("dv-01");
+            <script type="module">
+				import { DV } from "../../js/dv.js";
+                let svg = DV.svg().size(500,150).into("dv-01");
                 DV.path().mto(50,50).csto([
                         [[50,-25],[50,-25],[100,0]],
                         [[50,25],[100,0]],

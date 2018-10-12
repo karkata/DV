@@ -5,26 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
     <title></title>
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
-    <link rel="stylesheet" href="../../../css/style.css"/>           
-    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
-    <script src="../../../js/dv.core.js"></script>
-    <script src="../../../js/dv.shape.js"></script>
+    <link rel="stylesheet" href="../css/style.css"/>           
+    <link rel="stylesheet" href="../css/tomorrow.css"/>
 </head>
 <body>
     <section>
         <nav class="nav-structure">
             <ul>
-                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../index.html">Home</a></li>
                 <li><a href="index.html">Reference</a></li>
                 <li>line</li>
             </ul>
         </nav>
     </section>
     <section>
-        <h1>DV.prototype.line()</h1>
+        <h1>DV.line()</h1>
         <section>
             <h2>문법</h2>
-            <pre class="prettyprint">var ret = DV.line(props);</pre>
+            <pre class="prettyprint">let ret = DV.line(props);</pre>
             </section><section><h2>파라미터</h2>
             <p>props 파라미터의 속성은 다음과 같습니다.</p>
             <table class="parameters">
@@ -69,15 +67,16 @@
                 </svg>
             </div>
             <pre class="prettyprint">
-var svg = DV.svg().size(300,150).into("dv-01");
+let svg = DV.svg().size(300,150).into("dv-01");
 DV.line().point1(10,10).point2(50,100).stroke("green").into(svg);
 DV.line().bound(50,10,100,100).stroke("green",5).into(svg);
 DV.line().bound(100,10,150,100).stroke("green",10).into(svg);
 DV.line().bound(150,10,200,100).stroke("green",15).strokeDash("5 5").into(svg);
 </pre>
             <div id="dv-01"></div>
-            <script>
-                var svg = DV.svg().size(300,150).into("dv-01");
+            <script type="module">
+				import { DV } from "../../js/dv.js";
+                let svg = DV.svg().size(300,150).into("dv-01");
                 DV.line().point1(10,10).point2(50,100).stroke("green").into(svg);
                 DV.line().bound(50,10,100,100).stroke("green",5).into(svg);
                 DV.line().bound(100,10,150,100).stroke("green",10).into(svg);

@@ -5,26 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
     <title></title>
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
-    <link rel="stylesheet" href="../../../css/style.css"/>           
-    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
-    <script src="../../../js/dv.core.js"></script>
-    <script src="../../../js/dv.shape.js"></script>
+    <link rel="stylesheet" href="../css/style.css"/>           
+    <link rel="stylesheet" href="../css/tomorrow.css"/>
 </head>
 <body>
     <section>
         <nav class="nav-structure">
             <ul>
-                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../index.html">Home</a></li>
                 <li><a href="index.html">References</a></li>
                 <li>marker</li>
             </ul>
         </nav>
     </section>
     <section>
-        <h1>DV.prototype.marker()</h1>
+        <h1>DV.marker()</h1>
         <section>
             <h2>문법</h2>
-            <pre class="prettyprint">var ret = DV.marker(props);</pre>
+            <pre class="prettyprint">let ret = DV.marker(props);</pre>
             </section><section><h2>파라미터</h2>
             <p>'props' 파라미터의 속성은 다음과 같습니다.</p>
             <table class="parameters">
@@ -119,7 +117,7 @@
                 </svg>
             </div>
             <pre class="prettyprint">
-var svg = DV.svg().size(300,100).into("dv-01");
+let svg = DV.svg().size(300,100).into("dv-01");
 DV.defs().appD01E01(
     DV.marker().markerPoint(20,5).markerSize(10,10).viewbox(0,0,20,10).aspectRatio("none").id("D01S01").append(
         DV.ellipse().center(10,5).round(9,4).fill("none").stroke("red", 1)
@@ -134,8 +132,9 @@ DV.defs().appD01E01(
 DV.path().d("M50,25 L100,25 L150,50").fill("none").stroke("black", 3).mark("#D01S01","s").mark("#D01M01","m").mark("#D01E01","e").into(svg);
 </pre>
             <div id="dv-01"></div>
-            <script>
-                var svg = DV.svg().size(300,100).into("dv-01");
+            <script type="module">
+				import { DV } from "../../js/dv.js";
+                let svg = DV.svg().size(300,100).into("dv-01");
                 DV.defs().append(
                     DV.marker().markerPoint(20,5).markerSize(10,10).viewbox(0,0,20,10).aspectRatio("none").id("D01S01").append(
                         DV.ellipse().center(10,5).round(9,4).fill("none").stroke("red", 1)
