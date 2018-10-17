@@ -5,26 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
     <title></title>
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
-    <link rel="stylesheet" href="../../../css/style.css"/>           
-    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
-    <script src="../../../js/dv.core.js"></script>
-    <script src="../../../js/dv.shape.js"></script>
+    <link rel="stylesheet" href="../css/style.css"/>           
+    <link rel="stylesheet" href="../css/tomorrow.css"/>
 </head>
 <body>
     <section>
         <nav class="nav-structure">
             <ul>
-                <li><a href="../../../index.html">Home</a></li>
-                <li><a href="../../references.html">References</a></li>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="index.html">References</a></li>
                 <li>rect</li>
             </ul>
         </nav>
     </section>
     <section>
-        <h1>DV.prototype.rect()</h1>
+        <h1>DV.rect()</h1>
         <section>
             <h2>문법</h2>
-            <pre class="prettyprint">var ret = DV.rect([props]);</pre>
+            <pre class="prettyprint">let ret = DV.rect([props]);</pre>
             </section><section><h2>파라미터</h2>
             <p>'props' 파라미터는'rect' 요소를 생성하는데 필요한 속성을 갖는 객체입니다.</p>
             <table class="parameters">
@@ -77,15 +75,16 @@
                 </svg>
             </div>
             <pre class="prettyprint">
-var svg = DV.svg().size(400,150).into("dorothy-01");
+let svg = DV.svg().size(400,150).into("dorothy-01");
 DV.rect().dim(25,25,50,50).into(svg);
 DV.rect().dim(100,25,50,50).fill("red").into(svg);
 DV.rect().dim(175,25,50,50).fill("red").stroke("purple",3).into(svg);
 DV.rect().dim(250,25,50,50).round(5,5).fill("red").stroke("purple",3).into(svg);
 </pre>
             <div id="dorothy-01"></div>
-            <script>
-                var svg = DV.svg().size(400,150).into("dorothy-01");
+            <script type="module">
+				import { DV } from "../../js/dv.js";
+                let svg = DV.svg().size(400,150).into("dorothy-01");
                 DV.rect().dim(25,25,50,50).into(svg);
                 DV.rect().dim(100,25,50,50).fill("red").into(svg);
                 DV.rect().dim(175,25,50,50).fill("red").stroke("purple",3).into(svg);

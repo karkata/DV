@@ -5,26 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
     <title></title>
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
-    <link rel="stylesheet" href="../../../css/style.css"/>           
-    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
-    <script src="../../../js/dv.core.js"></script>
-    <script src="../../../js/dv.shape.js"></script>
+    <link rel="stylesheet" href="../css/style.css"/>           
+    <link rel="stylesheet" href="../css/tomorrow.css"/>
 </head>
 <body>
     <section>
         <nav class="nav-structure">
             <ul>
-                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../index.html">Home</a></li>
                 <li><a href="index.html">References</a></li>
                 <li>polyline</li>
             </ul>
         </nav>
     </section>
     <section>
-        <h1>DV.prototype.polyline()</h1>
+        <h1>DV.polyline()</h1>
         <section>
             <h2>문법</h2>
-            <pre class="prettyprint">var ret = DV.polyline(props);</pre>
+            <pre class="prettyprint">let ret = DV.polyline(props);</pre>
             </section><section><h2>파라미터</h2>
             <p>'props' 파라미터 객체의 속성은 다음과 같습니다.</p>
             <table class="parameters">
@@ -65,7 +63,7 @@
                 </svg>
             </div>
             <pre class="prettyprint">
-var svg = DV.svg().size(400,150).into("dv-01");
+let svg = DV.svg().size(400,150).into("dv-01");
 DV.polyline({ "points": "50,125 100,125 100,100 150,100 150,75 200,75 200,50 250,50 250,25 300,25" }).stroke("blue",5).into(svg);
 DV.polyline().points([
     [125,125],
@@ -81,8 +79,9 @@ DV.polyline().points([
 ]).stroke("blue",5).fill("none").into(svg);
 </pre>
             <div id="dv-01"></div>
-            <script>
-                var svg = DV.svg().size(400,150).into("dv-01");
+            <script type="module">
+				import { DV } from "../../js/dv.js";
+                let svg = DV.svg().size(400,150).into("dv-01");
                 DV.polyline({ "points": "50,125 100,125 100,100 150,100 150,75 200,75 200,50 250,50 250,25 300,25" }).stroke("blue",5).into(svg);
                 DV.polyline().points([
                     [125,125],

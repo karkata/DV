@@ -5,26 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
     <title></title>
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
-    <link rel="stylesheet" href="../../../css/style.css"/>           
-    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
-    <script src="../../../js/dv.core.js"></script>
-    <script src="../../../js/dv.shape.js"></script>
+    <link rel="stylesheet" href="../css/style.css"/>           
+    <link rel="stylesheet" href="../css/tomorrow.css"/>
 </head>
 <body>
     <section>
         <nav class="nav-structure">
             <ul>
-                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../index.html">Home</a></li>
                 <li><a href="index.html">References</a></li>
                 <li>use</li>
             </ul>
         </nav>
     </section>
     <section>
-        <h1>DV.prototype.use()</h1>
+        <h1>DV.use()</h1>
         <section>
             <h2>문법</h2>
-            <pre class="prettyprint">var ret = DV.use(props);</pre>
+            <pre class="prettyprint">let ret = DV.use(props);</pre>
             </section><section><h2>파라미터</h2>
             <p>props 파라미터의 속성은 다음과 같습니다.</p>
             <table class="parameters">
@@ -76,15 +74,16 @@
                 </svg>
             </div>
             <pre class="prettyprint">
-var svg = DV.svg().size(300,100).into("dv-01");
+let svg = DV.svg().size(300,100).into("dv-01");
 DV.defs().into(svg).append(
     DV.rect().size(50,20).fill("blue").id("D01R01")
 );
 DV.use().xhref("#D01R01").dim(50,25,200,100).into(svg);
 </pre>
             <div id="dv-01"></div>
-            <script>
-                var svg = DV.svg().size(300,100).into("dv-01");
+            <script type="module">
+				import { DV } from "../../js/dv.js";
+                let svg = DV.svg().size(300,100).into("dv-01");
                 DV.defs().into(svg).append(
                     DV.rect().size(50,20).fill("blue").id("D01R01")
                 );
@@ -121,9 +120,9 @@ DV.use().xhref("#D01R01").dim(50,25,200,100).into(svg);
                 </svg>
             </div>
             <pre class="prettyprint">
-var svg = DV.svg().size(300,100).into("dv-02");
-var def = DV.defs().into(svg);
-var sim = DV.symbol().viewbox(0,0,20,20).id("D02S01").into(def);
+let svg = DV.svg().size(300,100).into("dv-02");
+let def = DV.defs().into(svg);
+let sim = DV.symbol().viewbox(0,0,20,20).id("D02S01").into(def);
 DV.rect().dim(0,0,9,9).fill("red").into(sim);
 DV.rect().dim(11,0,9,9).fill("blue").into(sim);
 DV.rect().dim(0,11,9,9).fill("green").into(sim);
@@ -132,10 +131,11 @@ DV.use().xhref(sim).dim(10,10,20,20).into(svg);
 DV.use().xhref(sim).dim(50,25,50,50).into(svg);
 </pre>
             <div id="dv-02"></div>
-            <script>
-                var svg = DV.svg().size(300,100).into("dv-02");
-                var def = DV.defs().into(svg);
-                var sim = DV.symbol().viewbox(0,0,20,20).id("D02S01").into(def);
+            <script type="module">
+				import { DV } from "../../js/dv.js";
+                let svg = DV.svg().size(300,100).into("dv-02");
+                let def = DV.defs().into(svg);
+                let sim = DV.symbol().viewbox(0,0,20,20).id("D02S01").into(def);
                 DV.rect().dim(0,0,9,9).fill("red").into(sim);
                 DV.rect().dim(11,0,9,9).fill("blue").into(sim);
                 DV.rect().dim(0,11,9,9).fill("green").into(sim);
@@ -173,9 +173,9 @@ DV.use().xhref(sim).dim(50,25,50,50).into(svg);
                 </svg>
             </div>
             <pre class="prettyprint">
-var svg = DV.svg().size(300,100).into("dv-03");
-var def = DV.defs().into(svg);
-var sim = DV.symbol().viewbox(0,0,20,20).id("D03S01").into(def).append(
+let svg = DV.svg().size(300,100).into("dv-03");
+let def = DV.defs().into(svg);
+let sim = DV.symbol().viewbox(0,0,20,20).id("D03S01").into(def).append(
     DV.rect().dim(0,0,9,9).fill("red"),
     DV.rect().dim(11,0,9,9).fill("blue"),
     DV.rect().dim(0,11,9,9).fill("green"),
@@ -185,10 +185,11 @@ DV.use().xhref(sim).dim(10,10,20,20).into(svg);
 DV.use().xhref(sim).size(30,30).translate(50,25).rotate(10).into(svg);
 </pre>
             <div id="dv-03"></div>
-            <script>
-                var svg = DV.svg().size(300,100).into("dv-03");
-                var def = DV.defs().into(svg);
-                var sim = DV.symbol().viewbox(0,0,20,20).id("D03S01").into(def).append(
+            <script type="module">
+				import { DV } from "../../js/dv.js";
+                let svg = DV.svg().size(300,100).into("dv-03");
+                let def = DV.defs().into(svg);
+                let sim = DV.symbol().viewbox(0,0,20,20).id("D03S01").into(def).append(
                     DV.rect().dim(0,0,9,9).fill("red"),
                     DV.rect().dim(11,0,9,9).fill("blue"),
                     DV.rect().dim(0,11,9,9).fill("green"),

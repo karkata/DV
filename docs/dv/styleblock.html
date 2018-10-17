@@ -5,27 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
     <title></title>
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
-    <link rel="stylesheet" href="../../../css/style.css"/>           
-    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
-    <script src="../../../js/dv.core.js"></script>
-    <script src="../../../js/dv.shape.js"></script>
+    <link rel="stylesheet" href="../css/style.css"/>           
+    <link rel="stylesheet" href="../css/tomorrow.css"/>
     <script></script>
 </head>
 <body>
     <section>
         <nav class="nav-structure">
             <ul>
-                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../index.html">Home</a></li>
                 <li><a href="index.html">References</a></li>
                 <li>styleblock</li>
             </ul>
         </nav>
     </section>
     <section>
-        <h1>DV.prototype.styleblock()</h1>
+        <h1>DV.styleblock()</h1>
         <section>
             <h2>문법</h2>
-            <pre class="prettyprint">var ret = DV.styleblock(css);</pre>
+            <pre class="prettyprint">let ret = DV.styleblock(css);</pre>
             </section><section><h2>파라미터</h2>
             <table>
                 <tbody>
@@ -62,21 +60,22 @@
                 </svg>
             </div>
             <pre class="prettyprint">
-var svg = DV.svg().size(400,100).into("dv-01");
+let svg = DV.svg().size(400,100).into("dv-01");
 DV.styleblock().txt("#D01R01.common-border-style { stroke: red; stroke-width: 5px; }").into(svg);
 DV.rect().dim(10,10,100,50).fill("orange").id("D01R01").class("common-border-style").into(svg);
 </pre>
             <div id="dv-01"></div>
-            <script>
-                var svg = DV.svg().size(400,100).into("dv-01");
+            <script type="module">
+				import { DV } from "../../js/dv.js";
+                let svg = DV.svg().size(400,100).into("dv-01");
                 DV.styleblock().txt("#D01R01.common-border-style { stroke: red; stroke-width: 5px; }").into(svg);
-                DV.rect().dim(10,10,100,50).fill("orange").id("D01R01").class("common-border-style").into(svg);
+                DV.rect().dim(10,10,100,50).fill("orange").id("D01R01").setClass("common-border-style").into(svg);
             </script>
         </section>
         <section>
             <h2>참고</h2>
             <ul>
-                <li><a href="../dve/class.html">class</a></li>
+                <li><a href="../dve/setClass.html">setClass</a></li>
                 <li><a href="../dve/dim.html">dim</a></li>
                 <li><a href="../dve/fill.html">fill</a></li>
                 <li><a href="../dve/id.html">id</a></li>

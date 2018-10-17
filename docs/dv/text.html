@@ -5,26 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
     <title></title>
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
-    <link rel="stylesheet" href="../../../css/style.css"/>           
-    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
-    <script src="../../../js/dv.core.js"></script>
-    <script src="../../../js/dv.shape.js"></script>
+    <link rel="stylesheet" href="../css/style.css"/>           
+    <link rel="stylesheet" href="../css/tomorrow.css"/>
 </head>
 <body>
     <section>
         <nav class="nav-structure">
             <ul>
-                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../index.html">Home</a></li>
                 <li><a href="index.html">References</a></li>
                 <li>text</li>
             </ul>
         </nav>
     </section>
     <section>
-        <h1>DV.prototype.text()</h1>
+        <h1>DV.text()</h1>
         <section>
             <h2>문법</h2>
-            <pre class="prettyprint">var ret = DV.text(props)</pre>
+            <pre class="prettyprint">let ret = DV.text(props)</pre>
             </section><section><h2>파라미터</h2>
             <p>'props' 객체는 다음과 같은 속성을 갖습니다.</p>
             <table class="parameters">
@@ -128,8 +126,8 @@
                 </svg>
             </div>
             <pre class="prettyprint">
-var svg = DV.svg().size(700,120).into("dv-01");
-var g = DV.g().attr("font-size","0.65em").fill("#03A9F4").into(svg);
+let svg = DV.svg().size(700,120).into("dv-01");
+let g = DV.g().attr("font-size","0.65em").fill("#03A9F4").into(svg);
 DV.line().bound(50,0,50,"100%").stroke("#03A9F4",1).into(g);
 DV.text().txt("x: 50").xys(48,10).attr("text-anchor","end").into(g);
 DV.line().bound(0,100,"100%",100).stroke("#03A9F4",1).into(g);
@@ -138,14 +136,15 @@ DV.line().bound(0,50,"100%",50).stroke("#03A9F4",1).into(g);
 DV.text().txt("y: 50").xys(0,48).into(g);
 DV.line().bound(0,40,"100%",40).stroke("#03A9F4",1).into(g);
 DV.text().txt("y: 40").xys(0,38).into(g);
-var t = DV.text().txt("ABCQ-aljqt ").xys([50,100],[100,110,100]).attr("font-size","3em").into(svg);
+let t = DV.text().txt("ABCQ-aljqt ").xys([50,100],[100,110,100]).attr("font-size","3em").into(svg);
 DV.tspan().txt("xyz").xys([50,80,110],[50,50,40]).into(t);
 t.txt(" 12345%@!*", true);
 </pre>
             <div id="dv-01"></div>
-            <script>
-                var svg = DV.svg().size(700,120).into("dv-01");
-                var g = DV.g().attr("font-size","0.65em").fill("#03A9F4").into(svg);
+            <script type="module">
+				import { DV } from "../../js/dv.js";
+                let svg = DV.svg().size(700,120).into("dv-01");
+                let g = DV.g().attr("font-size","0.65em").fill("#03A9F4").into(svg);
                 DV.line().bound(50,0,50,"100%").stroke("#03A9F4",1).into(g);
                 DV.text().txt("x: 50").xys(48,10).attr("text-anchor","end").into(g);
                 DV.line().bound(0,100,"100%",100).stroke("#03A9F4",1).into(g);
@@ -154,7 +153,7 @@ t.txt(" 12345%@!*", true);
                 DV.text().txt("y: 50").xys(0,48).into(g);
                 DV.line().bound(0,40,"100%",40).stroke("#03A9F4",1).into(g);
                 DV.text().txt("y: 40").xys(0,38).into(g);
-                var t = DV.text().txt("ABCQ-aljqt ").xys([50,100],[100,110,100]).attr("font-size","3em").into(svg);
+                let t = DV.text().txt("ABCQ-aljqt ").xys([50,100],[100,110,100]).attr("font-size","3em").into(svg);
                 DV.tspan().txt("xyz").xys([50,80,110],[50,50,40]).into(t);
                 t.txt(" 12345%@!*", true);
             </script>
@@ -176,19 +175,20 @@ t.txt(" 12345%@!*", true);
                 </svg>
             </div>
             <pre class="prettyprint">
-var svg = DV.svg().size(700,100).into("dv-02");
+let svg = DV.svg().size(700,100).into("dv-02");
 DV.line().bound(0,50,"100%",50).stroke("#03A9F4",1).into(svg);
 DV.text().txt("base-line").xys(0,48).attr("font-size","0.65em").fill("#03A9F4").into(svg);
-var t = DV.text().txt("ABC ").xys(50,50).attr("font-size","3em").into(svg);
+let t = DV.text().txt("ABC ").xys(50,50).attr("font-size","3em").into(svg);
 DV.tspan().txt("1234567890").dxys([0,10,0],[10,10,10]).into(t);
 t.txt(" xyz",true);
 </pre>
             <div id="dv-02"></div>
-            <script>
-                var svg = DV.svg().size(700,100).into("dv-02");
+            <script type="module">
+				import { DV } from "../../js/dv.js";
+                let svg = DV.svg().size(700,100).into("dv-02");
                 DV.line().bound(0,50,"100%",50).stroke("#03A9F4",1).into(svg);
                 DV.text().txt("base-line").xys(0,48).attr("font-size","0.65em").fill("#03A9F4").into(svg);
-                var t = DV.text().txt("ABC ").xys(50,50).attr("font-size","3em").into(svg);
+                let t = DV.text().txt("ABC ").xys(50,50).attr("font-size","3em").into(svg);
                 DV.tspan().txt("1234567890").dxys([0,10,0],[10,10,10]).into(t);
                 t.txt(" xyz",true);
             </script>
@@ -208,19 +208,20 @@ t.txt(" xyz",true);
                 </svg>
             </div>
             <pre class="prettyprint">
-var svg = DV.svg().size(700,100).into("dv-03");
+let svg = DV.svg().size(700,100).into("dv-03");
 DV.line().bound(0,50,"100%",50).stroke("#03A9F4",1).into(svg);
 DV.text().txt("base-line").xys(0,48).attr("font-size","0.65em").fill("#03A9F4").into(svg);
-var t = DV.text().txt("ABC ").xys(50,50).attr("font-size","2em").attr("letter-spacing",10).trotate([90,45,90,25]).into(svg);
+let t = DV.text().txt("ABC ").xys(50,50).attr("font-size","2em").attr("letter-spacing",10).trotate([90,45,90,25]).into(svg);
 DV.tspan().txt("1234567890").dxys(0,20).trotate([45,90]).into(t);
 t.txt(" xyz",true);
 </pre>
             <div id="dv-03"></div>
-            <script>
-                var svg = DV.svg().size(700,100).into("dv-03");
+            <script type="module">
+				import { DV } from "../../js/dv.js";
+                let svg = DV.svg().size(700,100).into("dv-03");
                 DV.line().bound(0,50,"100%",50).stroke("#03A9F4",1).into(svg);
                 DV.text().txt("base-line").xys(0,48).attr("font-size","0.65em").fill("#03A9F4").into(svg);
-                var t = DV.text().txt("ABC ").xys(50,50).attr("font-size","2em").attr("letter-spacing",10).trotate([90,45,90,25]).into(svg);
+                let t = DV.text().txt("ABC ").xys(50,50).attr("font-size","2em").attr("letter-spacing",10).trotate([90,45,90,25]).into(svg);
                 DV.tspan().txt("1234567890").dxys(0,20).trotate([45,90]).into(t);
                 t.txt(" xyz",true);
             </script>
@@ -249,7 +250,7 @@ t.txt(" xyz",true);
                 </svg>
             </div>
             <pre class="prettyprint">
-var svg = DV.svg().size(400,200).into("dv-04");
+let svg = DV.svg().size(400,200).into("dv-04");
 DV.path().stroke("#03A9F4",1).mto(20,10).lto(20,120).mto(220,10).lto(220,120).into(svg);
 DV.text().txt("width: 200").xys(120,20).attr("font-size","0.65em").fill("#03A9F4").attr("text-anchor","middle").into(svg);
 DV.text().txt("I am your father. No!!!!").xys(20,50).attr("font-size","2em").tlength(200).into(svg);
@@ -257,8 +258,9 @@ DV.text().txt("I am your father. No!!!!").xys(20,100).attr("font-size","2em").tl
 DV.text().txt("I am your father. No!!!!").xys(20,150).attr("font-size", "2em").into(svg);
 </pre>
             <div id="dv-04"></div>
-            <script>
-                var svg = DV.svg().size(400,200).into("dv-04");
+            <script type="module">
+				import { DV } from "../../js/dv.js";
+                let svg = DV.svg().size(400,200).into("dv-04");
                 DV.path().stroke("#03A9F4",1).mto(20,10).lto(20,120).mto(220,10).lto(220,120).into(svg);
                 DV.text().txt("width: 200").xys(120,20).attr("font-size","0.65em").fill("#03A9F4").attr("text-anchor","middle").into(svg);
                 DV.text().txt("I am your father. No!!!!").xys(20,50).attr("font-size","2em").tlength(200).into(svg);

@@ -5,26 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
     <title></title>
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
-    <link rel="stylesheet" href="../../../css/style.css"/>           
-    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
-    <script src="../../../js/dv.core.js"></script>
-    <script src="../../../js/dv.shape.js"></script>
+    <link rel="stylesheet" href="../css/style.css"/>           
+    <link rel="stylesheet" href="../css/tomorrow.css"/>
 </head>
 <body>
     <section>
         <nav class="nav-structure">
             <ul>
-                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../index.html">Home</a></li>
                 <li><a href="index.html">References</a></li>
                 <li>path</li>
             </ul>
         </nav>
     </section>
     <section>
-        <h1>DV.prototype.path()</h1>
+        <h1>DV.path()</h1>
         <section>
             <h2>문법</h2>
-            <pre class="prettyprint">var ret = DV.path(props);</pre>
+            <pre class="prettyprint">let ret = DV.path(props);</pre>
             </section><section><h2>파라미터</h2>
             <p>'props' 파라미터의 속성은 다음과 같습니다.</p>
             <table class="parameters">
@@ -72,12 +70,13 @@
                 </svg>
             </div>
             <pre class="prettyprint">
-var svg = DV.svg().size("5cm","4cm").viewbox(0,0,500,400).into("dv-01");
+let svg = DV.svg().size("5cm","4cm").viewbox(0,0,500,400).into("dv-01");
 DV.path().d("M100,100 L400,100 L400,300 L100,300 v-100 h100 v-50 h-100 z").fill("none").stroke("blue", 5).into(svg);
 </pre>
             <div id="dv-01"></div>
-            <script>
-                var svg = DV.svg().size("5cm","4cm").viewbox(0,0,500,400).into("dv-01");
+            <script type="module">
+				import { DV } from "../../js/dv.js";
+                let svg = DV.svg().size("5cm","4cm").viewbox(0,0,500,400).into("dv-01");
                 DV.path().d("M100,100 L400,100 L400,300 L100,300 v-100 h100 v-50 h-100 z").fill("none").stroke("blue", 5).into(svg);
             </script>
             <p>'d' 메소드를 사용하여 패스를 그릴 수도 있지만, 다른 메소드를 함께 사용하여 패스를 그리를 것을 권장합니다.</p>
