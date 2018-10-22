@@ -5,16 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
     <title></title>
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
-    <link rel="stylesheet" href="../../../css/style.css"/>           
-    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
-    <script src="../../../js/dv.core.js"></script>
-    <script src="../../../js/dv.shape.js"></script>
+    <link rel="stylesheet" href="../css/style.css"/>           
+    <link rel="stylesheet" href="../css/tomorrow.css"/>
 </head>
 <body>
     <section>
         <nav class="nav-structure">
             <ul>
-                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../index.html">Home</a></li>
                 <li><a href="index.html">References</a></li>
                 <li>arcf</li>
             </ul>
@@ -24,7 +22,7 @@
         <h1>DVE.prototype.arcf()</h1>
         <section>
             <h2>문법</h2>
-            <pre class="prettyprint">var ret = dve.arcf(rx[, ry[, xar]]);</pre>
+            <pre class="prettyprint">let ret = object.arcf(rx[, ry[, xar]]);</pre>
             </section><section><h2>파라미터</h2>
             <table class="parameters">
                 <thead>
@@ -73,13 +71,14 @@
                 </svg>
             </div>
             <pre class="prettyprint">
-var svg = DV.svg().size("6.5cm","3cm").viewbox(0,0,650,300).into("dv-01");
+let svg = DV.svg().size("6.5cm","3cm").viewbox(0,0,650,300).into("dv-01");
 DV.path().fill("none").stroke("red",5).mto(250,50).arc(100,100,0,1,0,0,200,true).arc(100,100,0,1,0,0,-200,true).into(svg);
 DV.path().fill("none").stroke("green",5).mto(500,50).arcf(100,100,0).into(svg);
 </pre>
             <div id="dv-01"></div>
-            <script>
-                var svg = DV.svg().size("6.5cm","3cm").viewbox(0,0,650,300).into("dv-01");
+            <script type="module">
+				import { DV } from "../../js/dv.js";
+                let svg = DV.svg().size("6.5cm","3cm").viewbox(0,0,650,300).into("dv-01");
                 DV.path().fill("none").stroke("red",5).mto(250,50).arc(100,100,0,1,0,0,200,true).arc(100,100,0,1,0,0,-200,true).into(svg);
                 DV.path().fill("none").stroke("green",5).mto(500,50).arcf(100,100,0).into(svg);
             </script>

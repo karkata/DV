@@ -5,16 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
     <title></title>
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
-    <link rel="stylesheet" href="../../../css/style.css"/>           
-    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
-    <script src="../../../js/dv.core.js"></script>
-    <script src="../../../js/dv.shape.js"></script>
+    <link rel="stylesheet" href="../css/style.css"/>           
+    <link rel="stylesheet" href="../css/tomorrow.css"/>
 </head>
 <body>
     <section>
         <nav class="nav-structure">
             <ul>
-                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../index.html">Home</a></li>
                 <li><a href="index.html">References</a></li>
                 <li>aspectRatio</li>
             </ul>
@@ -24,7 +22,7 @@
         <h1>DVE.prototype.aspectRatio()</h1>
         <section>
             <h2>문법</h2>
-            <pre class="prettyprint">var ret = dve.aspectRatio(align[, mos]);</pre>
+            <pre class="prettyprint">let ret = object.aspectRatio(align[, mos]);</pre>
             </section><section><h2>파라미터</h2>
             <table class="parameters">
                 <thead>
@@ -74,18 +72,18 @@
             <p>일반적으로 viewBox 속성을 갖는 요소는 preserveAspectRatio 속성이 따라옵니다. preserverAspectRatio 속성을 설정하지 않으면, 그래픽 요소들이 가로/세로 비율을 유지한 상태로 viewBox 로 결정된 영역에 렌더링이 됩니다.</p>
             <p>정렬 값은 uniform 스케일링(가로/세로 비율 유지)할 때, 기준 위치를 말하며, meet, slice는 대상이 스케일링 될 때, viewport로 투영하는 과정에서 발생하는 공백을 유지할 지, 아니면 공백이 없도록 최대한 영역을 채울지를 결정합니다. 만약 정렬 값이 none이면, 가로/세로 비율을 유지하지 않으므로 자동으로 두 번째 값도 무시됩니다.</p>
             <pre class="prettyprint">
-var svg = DV.svg().size(600,300).into("dv-01");
-var def = DV.defs().into(svg);
+let svg = DV.svg().size(600,300).into("dv-01");
+let def = DV.defs().into(svg);
 
-var smile = DV.symbol().id("smile").into(def);
+let smile = DV.symbol().id("smile").into(def);
 DV.rect().dim(0.5,0.5,29,39).fill("black").stroke(1,"red").into(smile);
 DV.circle().center(15,20).radius(10).fill("yellow").into(smile);
 DV.circle().center(10,17).radius(2).fill("black").into(smile);
 DV.circle().center(20,17).radius(2).fill("black").into(smile);
 DV.path().mto(10,22).arc(5,3,0,1,0,10,0,true).pz().fill("black").into(smile);
-var vp1 = DV.symbol().id("D01VP01").into(def);
+let vp1 = DV.symbol().id("D01VP01").into(def);
 DV.rect().dim(0.5,0.5,49,29).fill("none").attr("stroke","blue").into(vp1);
-var vp2 = DV.symbol().id("D01VP02").into(def);
+let vp2 = DV.symbol().id("D01VP02").into(def);
 DV.rect().dim(0.5,0.5,29,49).fill("none").attr("stroke","blue").into(vp2);
 
 DV.use().xhref(vp1).point(50,20).into(svg);
@@ -122,19 +120,21 @@ DV.use().xhref(vp2).point(110,200).into(svg);
 DV.svg().dim(110,200,30,50).viewbox(0,0,30,40).aspectRatio("none").into(svg).append(DV.use().xhref(smile).point(0,0));
 </pre>
             <div id="dv-01"></div>
-            <script>
-                var svg = DV.svg().size(600,300).into("dv-01");
-                var def = DV.defs().into(svg);
+            <script type="module">
+				import { DV } from "../../js/dv.js";
 
-                var smile = DV.symbol().id("smile").into(def);
+                let svg = DV.svg().size(600,300).into("dv-01");
+                let def = DV.defs().into(svg);
+
+                let smile = DV.symbol().id("smile").into(def);
                 DV.rect().dim(0.5,0.5,29,39).fill("black").stroke(1,"red").into(smile);
                 DV.circle().center(15,20).radius(10).fill("yellow").into(smile);
                 DV.circle().center(10,17).radius(2).fill("black").into(smile);
                 DV.circle().center(20,17).radius(2).fill("black").into(smile);
                 DV.path().mto(10,22).arc(5,3,0,1,0,10,0,true).pz().fill("black").into(smile);
-                var vp1 = DV.symbol().id("D01VP01").into(def);
+                let vp1 = DV.symbol().id("D01VP01").into(def);
                 DV.rect().dim(0.5,0.5,49,29).fill("none").attr("stroke","blue").into(vp1);
-                var vp2 = DV.symbol().id("D01VP02").into(def);
+                let vp2 = DV.symbol().id("D01VP02").into(def);
                 DV.rect().dim(0.5,0.5,29,49).fill("none").attr("stroke","blue").into(vp2);
                 DV.use().xhref(vp1).point(50,20).into(svg);
                 DV.svg().dim(50,20,50,30).viewbox(0,0,30,40).aspectRatio("xMinYMin").into(svg).append(DV.use().xhref(smile).point(0,0));

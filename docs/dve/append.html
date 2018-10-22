@@ -5,16 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
     <title></title>
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
-    <link rel="stylesheet" href="../../../css/style.css"/>           
-    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
-    <script src="../../../js/dv.core.js"></script>
-    <script src="../../../js/dv.shape.js"></script>
+    <link rel="stylesheet" href="../css/style.css"/>           
+    <link rel="stylesheet" href="../css/tomorrow.css"/>
 </head>
 <body>
     <section>
         <nav class="nav-structure">
             <ul>
-                <li><a href="../../index.html">Home</a></li>
+                <li><a href="../index.html">Home</a></li>
                 <li><a href="index.html">References</a></li>
                 <li>append</li>
             </ul>
@@ -24,7 +22,7 @@
         <h1>DVE.prototype.append()</h1>
         <section>
             <h2>문법</h2>
-            <pre class="prettyprint">var ret = dve.append(arguments);</pre>
+            <pre class="prettyprint">let ret = object.append(arguments);</pre>
             </section><section><h2>파라미터</h2>
             <table class="parameters">
                 <thead>
@@ -50,10 +48,10 @@
             <p>into 메소드와 정반대 역할을 담당하며, into 메소드와 달리 append 메소드는 오로지 DVE 객체만 받습니다.</p>
             <section>
             <pre class="prettyprint">
-var svg = DV.svg().size(400,100).into("dv-01");
+let svg = DV.svg().size(400,100).into("dv-01");
 // svg 요소 하위에 rect 요소가 생성됩니다.
-var r = DV.rect().dim(10,10,100,30).fill("#7c4dff").into(svg);
-var g = DV.g().into(svg);
+let r = DV.rect().dim(10,10,100,30).fill("#7c4dff").into(svg);
+let g = DV.g().into(svg);
 // rect 요소를 svg 요소에서 제거한 후, g 요소 하위로 추가합니다. 
 g.append(r);
 </pre>

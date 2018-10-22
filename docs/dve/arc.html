@@ -5,16 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
     <title></title>
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
-    <link rel="stylesheet" href="../../../css/style.css"/>           
-    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
-    <script src="../../../js/dv.core.js"></script>
-    <script src="../../../js/dv.shape.js"></script>
+    <link rel="stylesheet" href="../css/style.css"/>           
+    <link rel="stylesheet" href="../css/tomorrow.css"/>
 </head>
 <body>
     <section>
         <nav class="nav-structure">
             <ul>
-                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../index.html">Home</a></li>
                 <li><a href="index.html">References</a></li>
                 <li>arc</li>
             </ul>
@@ -24,7 +22,7 @@
         <h1>DVE.prototype.arc()</h1>
         <section>
             <h2>문법</h2>
-            <pre class="prettyprint">var ret = dve.arc(rx, ry, xar, laf, swf, x, y[, rel]);</pre>
+            <pre class="prettyprint">let ret = object.arc(rx, ry, xar, laf, swf, x, y[, rel]);</pre>
             </section><section><h2>파라미터</h2>
             <table class="parameters">
                 <thead>
@@ -132,7 +130,7 @@
                 </svg>
             </div>
             <pre class="prettyprint">
-var svg = DV.svg().size("18cm","4.5cm").viewbox(0,0,1800,450).into("dv-01");
+let svg = DV.svg().size("18cm","4.5cm").viewbox(0,0,1800,450).into("dv-01");
 
 DV.path().fill("none").stroke("red",5).mto(250,300).arc(100,100,0,1,0,100,-100,true).into(svg).into(svg);
 DV.path().fill("none").stroke("green",5).mto(250,300).arc(100,100,0,0,0,100,-100,true).into(svg);
@@ -145,8 +143,9 @@ DV.path().fill("none").stroke("orange",5).mto(1050,300).arc(125,75,45,0,1,100,-1
 DV.path().fill("none").stroke("blue",5).mto(1050,300).arc(125,75,45,1,1,100,-100,true).into(svg);
 </pre>
             <div id="dv-01"></div>
-            <script>
-                var svg = DV.svg().size("18cm","4.5cm").viewbox(0,0,1800,450).into("dv-01");
+            <script type="module">
+				import { DV } from "../../js/dv.js";
+                let svg = DV.svg().size("18cm","4.5cm").viewbox(0,0,1800,450).into("dv-01");
                 DV.path().fill("none").stroke("red",5).mto(250,300).arc(100,100,0,1,0,100,-100,true).into(svg).into(svg);
                 DV.path().fill("none").stroke("green",5).mto(250,300).arc(100,100,0,0,0,100,-100,true).into(svg);
                 DV.path().fill("none").stroke("orange",5).mto(250,300).arc(100,100,0,0,1,100,-100,true).into(svg);
@@ -155,10 +154,10 @@ DV.path().fill("none").stroke("blue",5).mto(1050,300).arc(125,75,45,1,1,100,-100
                 DV.circle().center(250,300).radius(10).fill("red").into(svg);
                 DV.circle().center(350,200).radius(10).fill("purple").into(svg);
 
-                DV.text().txt("red: a100,100 0 1,0 100,-100").points(500,150).css("font-size",30).into(svg);
-                DV.text().txt("green: a100,100 0 0,0 100,-100").points(500,200).css("font-size",30).into(svg);
-                DV.text().txt("orange: a100,100 0 0,1 100,-100").points(500,250).css("font-size",30).into(svg);
-                DV.text().txt("blue: a100,100 0 1,1 100,-100").points(500,300).css("font-size",30).into(svg);
+                DV.text().txt("red: a100,100 0 1,0 100,-100").xys(500,150).css("font-size",30).into(svg);
+                DV.text().txt("green: a100,100 0 0,0 100,-100").xys(500,200).css("font-size",30).into(svg);
+                DV.text().txt("orange: a100,100 0 0,1 100,-100").xys(500,250).css("font-size",30).into(svg);
+                DV.text().txt("blue: a100,100 0 1,1 100,-100").xys(500,300).css("font-size",30).into(svg);
 
                 DV.path().fill("none").stroke("red",5).mto(1050,300).arc(125,75,45,1,0,100,-100,true).into(svg);
                 DV.path().fill("none").stroke("green",5).mto(1050,300).arc(125,75,45,0,0,100,-100,true).into(svg);
@@ -168,10 +167,10 @@ DV.path().fill("none").stroke("blue",5).mto(1050,300).arc(125,75,45,1,1,100,-100
                 DV.circle().center(1050,300).radius(10).fill("red").into(svg);
                 DV.circle().center(1150,200).radius(10).fill("purple").into(svg);
 
-                DV.text().txt("red: a125,75 45 1,0 100,-100").points(1300,150).css("font-size",30).into(svg);
-                DV.text().txt("green: a125,75 45 0,0 100,-100").points(1300,200).css("font-size",30).into(svg);
-                DV.text().txt("orange: a125,75 45 0,1 100,-100").points(1300,250).css("font-size",30).into(svg);
-                DV.text().txt("blue: a125,75 45 1,1 100,-100").points(1300,300).css("font-size",30).into(svg);
+                DV.text().txt("red: a125,75 45 1,0 100,-100").xys(1300,150).css("font-size",30).into(svg);
+                DV.text().txt("green: a125,75 45 0,0 100,-100").xys(1300,200).css("font-size",30).into(svg);
+                DV.text().txt("orange: a125,75 45 0,1 100,-100").xys(1300,250).css("font-size",30).into(svg);
+                DV.text().txt("blue: a125,75 45 1,1 100,-100").xys(1300,300).css("font-size",30).into(svg);
             </script>
         </section>
         <section>
@@ -190,7 +189,7 @@ DV.path().fill("none").stroke("blue",5).mto(1050,300).arc(125,75,45,1,1,100,-100
                 <li><a href="into.html">into</a></li>
                 <li><a href="lto.html">lto</a></li>
                 <li><a href="mto.html">mto</a></li>
-                <li><a href="points.html">points</a></li>
+                <li><a href="xys.html">xys</a></li>
                 <li><a href="pz.html">pz</a></li>
                 <li><a href="qsto.html">qsto</a></li>
                 <li><a href="qto.html">qto</a></li>

@@ -5,16 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
     <title></title>
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
-    <link rel="stylesheet" href="../../../css/style.css"/>           
-    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
-    <script src="../../../js/dv.core.js"></script>
-    <script src="../../../js/dv.shape.js"></script>
+    <link rel="stylesheet" href="../css/style.css"/>           
+    <link rel="stylesheet" href="../css/tomorrow.css"/>
 </head>
 <body>
     <section>
         <nav class="nav-structure">
             <ul>
-                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../index.html">Home</a></li>
                 <li><a href="index.html">References</a></li>
                 <li>attr</li>
             </ul>
@@ -24,7 +22,7 @@
         <h1>DVE.prototype.attr()</h1>
         <section>
             <h2>문법</h2>
-            <pre class="prettyprint">var ret = dve.attr(name, value[, appending]);</pre>   
+            <pre class="prettyprint">let ret = object.attr(name, value[, appending]);</pre>   
             </section><section><h2>파라미터</h2>
             <table class="parameters">
                 <thead>
@@ -62,15 +60,16 @@
             <p>name 파라미터만  주어지면 현재 대상 속성값이 반환되고, value 파라미터까지 주어진다면 대상 속성값을 주어진 value로 설정합니다.</p>
             <p>속성값이 반환될 때와 달리, 속성값을 설정할 때에는 속성을 가지고 있는 요소의 dv 래퍼 객체가 반환됩니다.</p>
             <pre class="prettyprint">
-var svg = new dv().svg(400, 70).into("dv-01");
-var rect1 = svg.rect(10, 10, 200, 20).into(svg).attr("fill", "blue");
+let svg = new dv().svg(400, 70).into("dv-01");
+let rect1 = svg.rect(10, 10, 200, 20).into(svg).attr("fill", "blue");
 // rect1의 fill 속성값을 두 번째 사각형의 fill 속성값으로 설정합니다.
 svg.rect(10, 40, 200, 20).fill(rect1.attr("fill")).into(svg);
 </pre>
             <div id="dv-01"></div>
-            <script>
-                var svg = DV.svg().size(400,70).into("dv-01");
-                var rect1 = DV.rect().dim(10,10,200,20).into(svg).attr("fill","blue");
+            <script type="module">
+				import { DV } from "../../js/dv.js";
+                let svg = DV.svg().size(400,70).into("dv-01");
+                let rect1 = DV.rect().dim(10,10,200,20).into(svg).attr("fill","blue");
                 DV.rect().dim(10,40,200,20).fill(rect1.attr("fill")).into(svg);
             </script>
         </section>
