@@ -7,7 +7,7 @@
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
     <link rel="stylesheet" href="../css/style.css"/>           
     <link rel="stylesheet" href="../css/tomorrow.css"/>
-</head>
+<script src="../../js/dv.js"></script></head>
 <body>
     <section>
         <nav class="nav-structure">
@@ -87,8 +87,8 @@ DV.text().txt("A: http://www.w3.org/TR/SVG11/feature#Script").xys(10,75).require
 DV.text().txt("B: http://www.w3.org/TR/SVG11/feature#Script").xys(10,75).fill("#ccc").into(sw3);
 </pre>
             <div id="dv-01"></div>
-            <script type="module">
-				import { DV } from "../../js/dv.js";
+            <script>
+				
                 let svg = DV.svg().size(400,100).into("dv-01");
                 let sw1 = DV.switchblock().into(svg);
                 DV.text().txt("A: http://www.w3.org/TR/SVG11/feature#ColorProfile").xys(10,25).requiredFeatures("http://www.w3.org/TR/SVG11/feature#ColorProfile").into(sw1);

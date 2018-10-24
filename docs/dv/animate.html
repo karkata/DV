@@ -7,6 +7,7 @@
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
     <link rel="stylesheet" href="../css/style.css"/>           
     <link rel="stylesheet" href="../css/tomorrow.css"/>
+	<script src="../../js/dv.js"></script>
 </head>
 <body>
     <section>
@@ -53,8 +54,7 @@ let rect = DV.rect().dim(75,25,50,50).fill("red").into(svg);
 DV.animate().toWhat("opacity").fromToBy(1,0).time("0s","3s").freeze().into(rect);
 </pre>
             <div id="dv-01"></div>
-            <script type="module">
-				import { DV } from "../../js/dv.js";
+            <script>
                 let svg = DV.svg().size(200,100).into("dv-01");
                 let rect = DV.rect().dim(75,25,50,50).fill("red").into(svg);
                 DV.animate().toWhat("opacity").fromToBy(1,0).time("0s","3s").freeze().into(rect);
@@ -79,11 +79,10 @@ DV.rect().dim(75,25,50,50).fill("red").id("D02R01").into(svg);
 DV.animate().toWhat("opacity").xhref("#D02R01").fromToBy(1,0).time("0s","3s").freeze().into(svg);
 </pre>
             <div id="dv-02"></div>
-            <script type="module">
-				import { DV } from "../../js/dv.js";
-                let svg = DV.svg().size(200,100).into("dv-02");
-                DV.rect().dim(75,25,50,50).fill("red").id("D02R01").into(svg);
-                DV.animate().toWhat("opacity").xhref("#D02R01").fromToBy(1,0).time("0s","3s").freeze().into(svg);
+            <script>
+                let svg2 = DV.svg().size(200,100).into("dv-02");
+                DV.rect().dim(75,25,50,50).fill("red").id("D02R01").into(svg2);
+                DV.animate().toWhat("opacity").xhref("#D02R01").fromToBy(1,0).time("0s","3s").freeze().into(svg2);
             </script>
         </section>
         <section>

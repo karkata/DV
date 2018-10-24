@@ -7,7 +7,7 @@
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
     <link rel="stylesheet" href="../css/style.css"/>           
     <link rel="stylesheet" href="../css/tomorrow.css"/>
-</head>
+<script src="../../js/dv.js"></script></head>
 <body>
     <section>
         <nav class="nav-structure">
@@ -100,8 +100,8 @@ DV.path().mto(30,30).hto(10,true).vto(10,true).hto(-10,true).pz().into(cp);
 DV.rect().dim(0,0,50,50).fill("blue").clipPath("#D01CP01").into(svg);
 </pre>
             <div id="dv-01"></div>
-            <script type="module">
-				import { DV } from "../../js/dv.js";
+            <script>
+				
                 let svg = DV.svg().size(200,60).into("dv-01");
                 let defs = DV.defs().into(svg);
                 let cp = DV.clipper().id("D01CP01").into(defs);
@@ -134,22 +134,22 @@ DV.rect().dim(0,0,50,50).fill("blue").clipPath("#D01CP01").into(svg);
             </div>
             <p>dv를 사용한 예제는 다음과 같습니다.</p>
             <pre class="prettyprint">
-let svg = DV.svg().size(200,100).into("dv-02");
-let def = DV.defs().into(svg);
-let cp = DV.clipper().clipPathUnits("objectBoundingBox").id("D02CP01").into(def);
-DV.path().mto(0.2,0.2).hto(0.2,true).vto(0.2,true).hto(-0.2,true).pz().into(cp);
-DV.path().mto(0.6,0.6).hto(0.2,true).vto(0.2,true).hto(-0.2,true).pz().into(cp);
-DV.rect().dim(50,25,50,50).fill("blue").clipPath(cp).into(svg);
+let svg2 = DV.svg().size(200,100).into("dv-02");
+let def = DV.defs().into(svg2);
+let cp2 = DV.clipper().clipPathUnits("objectBoundingBox").id("D02CP01").into(def);
+DV.path().mto(0.2,0.2).hto(0.2,true).vto(0.2,true).hto(-0.2,true).pz().into(cp2);
+DV.path().mto(0.6,0.6).hto(0.2,true).vto(0.2,true).hto(-0.2,true).pz().into(cp2);
+DV.rect().dim(50,25,50,50).fill("blue").clipPath(cp2).into(svg2);
 </pre>
             <div id="dv-02"></div>
-            <script type="module">
-				import { DV } from "../../js/dv.js";
-                let svg = DV.svg().size(200,100).into("dv-02");
-                let def = DV.defs().into(svg);
-                let cp = DV.clipper().clipPathUnits("objectBoundingBox").id("D02CP01").into(def);
-                DV.path().mto(0.2,0.2).hto(0.2,true).vto(0.2,true).hto(-0.2,true).pz().into(cp);
-                DV.path().mto(0.6,0.6).hto(0.2,true).vto(0.2,true).hto(-0.2,true).pz().into(cp);
-                DV.rect().dim(50,25,50,50).fill("blue").clipPath(cp).into(svg);
+            <script>
+				
+                let svg2 = DV.svg().size(200,100).into("dv-02");
+                let def = DV.defs().into(svg2);
+                let cp2 = DV.clipper().clipPathUnits("objectBoundingBox").id("D02CP01").into(def);
+                DV.path().mto(0.2,0.2).hto(0.2,true).vto(0.2,true).hto(-0.2,true).pz().into(cp2);
+                DV.path().mto(0.6,0.6).hto(0.2,true).vto(0.2,true).hto(-0.2,true).pz().into(cp2);
+                DV.rect().dim(50,25,50,50).fill("blue").clipPath(cp2).into(svg2);
             </script>
         </section>
         <section>

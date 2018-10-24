@@ -7,7 +7,7 @@
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
     <link rel="stylesheet" href="../css/style.css"/>           
     <link rel="stylesheet" href="../css/tomorrow.css"/>
-</head>
+<script src="../../js/dv.js"></script></head>
 <body>
     <section>
         <nav class="nav-structure">
@@ -109,8 +109,8 @@ DV.stop().oco(0.9,"#d7ccc8").into(grad2);
 DV.rect().dim(0,25,100,100).fill(grad1).into(svg);
 DV.rect().dim(150,25,100,100).fill(grad2).into(svg);
             <div id="dv-01"></div>
-            <script type="module">
-				import { DV } from "../../js/dv.js";
+            <script>
+				
                 let svg = DV.svg().size(300,150).into("dv-01");
                 let def = DV.defs().into(svg);
                 let grad1 = DV.gradl().id("D01GD01").into(def);

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../css/style.css"/>           
     <link rel="stylesheet" href="../css/tomorrow.css"/>
     <script></script>
-</head>
+<script src="../../js/dv.js"></script></head>
 <body>
     <section>
         <nav class="nav-structure">
@@ -65,8 +65,8 @@ DV.styleblock().txt("#D01R01.common-border-style { stroke: red; stroke-width: 5p
 DV.rect().dim(10,10,100,50).fill("orange").id("D01R01").class("common-border-style").into(svg);
 </pre>
             <div id="dv-01"></div>
-            <script type="module">
-				import { DV } from "../../js/dv.js";
+            <script>
+				
                 let svg = DV.svg().size(400,100).into("dv-01");
                 DV.styleblock().txt("#D01R01.common-border-style { stroke: red; stroke-width: 5px; }").into(svg);
                 DV.rect().dim(10,10,100,50).fill("orange").id("D01R01").setClass("common-border-style").into(svg);

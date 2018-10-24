@@ -7,7 +7,7 @@
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
     <link rel="stylesheet" href="../css/style.css"/>           
     <link rel="stylesheet" href="../css/tomorrow.css"/>
-</head>
+<script src="../../js/dv.js"></script></head>
 <body>
     <section>
         <nav class="nav-structure">
@@ -76,8 +76,8 @@ let r = DV.rect().dim(15,35,170,30).round(15).fill("red").into(a);
 DV.text().xys(100,55).text("SVG 1.1").tanchor("middle").fill("white").into(a);
 </pre>
             <div id="svg-01"></div>
-            <script type="module">
-				import { DV } from "../../js/dv.js";
+            <script>
+				
                 let svg = DV.svg().size(200,100).into("svg-01");
                 let a = DV.link().xhref("https://www.w3.org/TR/SVG11").into(svg);
                 let r = DV.rect().dim(15,35,170,30).round(15).fill("red").into(a);

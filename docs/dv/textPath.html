@@ -7,7 +7,7 @@
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
     <link rel="stylesheet" href="../css/style.css"/>           
     <link rel="stylesheet" href="../css/tomorrow.css"/>
-</head>
+<script src="../../js/dv.js"></script></head>
 <body>
     <section>
         <nav class="nav-structure">
@@ -117,8 +117,7 @@ DV.tspan().txt("Center").xys(150,105).tanchor("middle").into(t);
 DV.textPath().txt("In addition to text drawn in a straight line, SVG also includes the ability to place text along the shape of a ‘path’ element.").xhref("#D01P01").into(t);
 </pre>
             <div id="dv-01"></div>
-            <script type="module">
-				import { DV } from "../../js/dv.js";
+            <script>
                 let svg = DV.svg().size(300,200).into("dv-01");
                 DV.defs().into(svg).append(
                     DV.path().mto(150,50).arc(50,50,0,0,1,0,100,true).arc(50,50,0,0,1,0,-100,true).id("D01P01")
@@ -170,8 +169,8 @@ DV.textPath().xhref("#D02P01").startOffset("50%").append(
 ).into(t);
 </pre>
             <div id="dv-02"></div>
-            <script type="module">
-				import { DV } from "../../js/dv.js";
+            <script>
+			{	
                 let svg = DV.svg().size(300,200).into("dv-02");
                 DV.defs().into(svg).append(
                     DV.path().mto(150,50).arc(50,50,0,0,1,0,100,true).arc(50,50,0,0,1,0,-100,true).id("D02P01")
@@ -184,6 +183,7 @@ DV.textPath().xhref("#D02P01").startOffset("50%").append(
                 DV.textPath().xhref("#D02P01").startOffset("50%").append(
                     DV.tspan().txt("Offset from the start of the ‘path’").dxys(undefined, 20)
                 ).into(t);
+			}
             </script>
         </section>
         <section>

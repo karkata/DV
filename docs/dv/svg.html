@@ -7,7 +7,7 @@
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
     <link rel="stylesheet" href="../css/style.css"/>           
     <link rel="stylesheet" href="../css/tomorrow.css"/>
-</head>
+<script src="../../js/dv.js"></script></head>
 <body>
     <section>
         <nav class="nav-structure">
@@ -101,8 +101,8 @@ DV.rect().dim(0,0,1,1).fill("red").appendTo(svg);
 DV.rect().dim(19,9,2,2).fill("blue").appendTo(svg);
 </pre>
             <div id="dv-01"></div>
-            <script type="module">
-				import { DV } from "../../js/dv.js";
+            <script>
+				
                 let svg = DV.svg().size(200,100).viewbox(0,0,20,10).into("dv-01");
                 DV.rect().dim(0,0,1,1).fill("red").into(svg);
                 DV.rect().dim(19,9,2,2).fill("blue").into(svg);

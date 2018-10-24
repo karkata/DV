@@ -7,7 +7,7 @@
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
     <link rel="stylesheet" href="../css/style.css"/>           
     <link rel="stylesheet" href="../css/tomorrow.css"/>
-</head>
+<script src="../../js/dv.js"></script></head>
 <body>
     <section>
         <nav class="nav-structure">
@@ -59,8 +59,7 @@ let rect = DV.rect().dim(-5,-5,10,10).fill("red").into(svg);
 DV.animateMotion().motionPath(d).time("0s","5s").motionRotate("auto").freeze().into(rect);
 </pre>
             <div id="dv-01"></div>
-            <script type="module">
-				import { DV } from "../../js/dv.js";
+            <script>
                 let svg = DV.svg().size(500,150).into("dv-01");
                 let d = DV.path().mto(50,50).csto([
                         [[50,-25],[50,-25],[100,0]],

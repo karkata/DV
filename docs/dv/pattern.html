@@ -7,7 +7,7 @@
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
     <link rel="stylesheet" href="../css/style.css"/>           
     <link rel="stylesheet" href="../css/tomorrow.css"/>
-</head>
+<script src="../../js/dv.js"></script></head>
 <body>
     <section>
         <nav class="nav-structure">
@@ -168,8 +168,8 @@ DV.text().txt("patternContentUnits = objectBoundingBox").xys(150,170).attr("text
 DV.ellipse().center(150,200).round(100,25).fill(DV.getFuncIRI("D01PT04")).stroke("blue").into(g2);
 </pre>
             <div id="dv-01"></div>
-            <script type="module">
-				import { DV } from "../../js/dv.js";
+            <script>
+				
                 let svg = DV.svg().size(600,250).into("dv-01");
                 let def = DV.defs().into(svg);
                 DV.pattern().dim(0,0,0.5,0.5).viewbox(0,0,10,10).id("D01PT01").into(def);

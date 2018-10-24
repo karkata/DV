@@ -7,7 +7,7 @@
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
     <link rel="stylesheet" href="../css/style.css"/>           
     <link rel="stylesheet" href="../css/tomorrow.css"/>
-</head>
+<script src="../../js/dv.js"></script></head>
 <body>
     <section>
         <nav class="nav-structure">
@@ -81,8 +81,7 @@ DV.defs().into(svg).append(
 DV.use().xhref("#D01R01").dim(50,25,200,100).into(svg);
 </pre>
             <div id="dv-01"></div>
-            <script type="module">
-				import { DV } from "../../js/dv.js";
+            <script>
                 let svg = DV.svg().size(300,100).into("dv-01");
                 DV.defs().into(svg).append(
                     DV.rect().size(50,20).fill("blue").id("D01R01")
@@ -131,8 +130,8 @@ DV.use().xhref(sim).dim(10,10,20,20).into(svg);
 DV.use().xhref(sim).dim(50,25,50,50).into(svg);
 </pre>
             <div id="dv-02"></div>
-            <script type="module">
-				import { DV } from "../../js/dv.js";
+            <script>
+			{	
                 let svg = DV.svg().size(300,100).into("dv-02");
                 let def = DV.defs().into(svg);
                 let sim = DV.symbol().viewbox(0,0,20,20).id("D02S01").into(def);
@@ -142,6 +141,7 @@ DV.use().xhref(sim).dim(50,25,50,50).into(svg);
                 DV.rect().dim(11,11,9,9).fill("magenta").into(sim);
                 DV.use().xhref(sim).dim(10,10,20,20).into(svg);
                 DV.use().xhref(sim).dim(50,25,50,50).into(svg);
+			}
             </script>
             <p>참조할 대상을 변환할 수 있습니다.</p>
             <pre class="prettyprint">
@@ -185,8 +185,8 @@ DV.use().xhref(sim).dim(10,10,20,20).into(svg);
 DV.use().xhref(sim).size(30,30).translate(50,25).rotate(10).into(svg);
 </pre>
             <div id="dv-03"></div>
-            <script type="module">
-				import { DV } from "../../js/dv.js";
+            <script>
+			{	
                 let svg = DV.svg().size(300,100).into("dv-03");
                 let def = DV.defs().into(svg);
                 let sim = DV.symbol().viewbox(0,0,20,20).id("D03S01").into(def).append(
@@ -197,6 +197,7 @@ DV.use().xhref(sim).size(30,30).translate(50,25).rotate(10).into(svg);
                 );
                 DV.use().xhref(sim).dim(10,10,20,20).into(svg);
                 DV.use().xhref(sim).size(30,30).translate(50,25).rotate(10).into(svg);
+			}
             </script>
         </section>
         <section>

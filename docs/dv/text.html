@@ -7,7 +7,7 @@
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
     <link rel="stylesheet" href="../css/style.css"/>           
     <link rel="stylesheet" href="../css/tomorrow.css"/>
-</head>
+<script src="../../js/dv.js"></script></head>
 <body>
     <section>
         <nav class="nav-structure">
@@ -141,8 +141,8 @@ DV.tspan().txt("xyz").xys([50,80,110],[50,50,40]).into(t);
 t.txt(" 12345%@!*", true);
 </pre>
             <div id="dv-01"></div>
-            <script type="module">
-				import { DV } from "../../js/dv.js";
+            <script>
+				
                 let svg = DV.svg().size(700,120).into("dv-01");
                 let g = DV.g().attr("font-size","0.65em").fill("#03A9F4").into(svg);
                 DV.line().bound(50,0,50,"100%").stroke("#03A9F4",1).into(g);
@@ -183,14 +183,15 @@ DV.tspan().txt("1234567890").dxys([0,10,0],[10,10,10]).into(t);
 t.txt(" xyz",true);
 </pre>
             <div id="dv-02"></div>
-            <script type="module">
-				import { DV } from "../../js/dv.js";
+            <script>
+			{	
                 let svg = DV.svg().size(700,100).into("dv-02");
                 DV.line().bound(0,50,"100%",50).stroke("#03A9F4",1).into(svg);
                 DV.text().txt("base-line").xys(0,48).attr("font-size","0.65em").fill("#03A9F4").into(svg);
                 let t = DV.text().txt("ABC ").xys(50,50).attr("font-size","3em").into(svg);
                 DV.tspan().txt("1234567890").dxys([0,10,0],[10,10,10]).into(t);
                 t.txt(" xyz",true);
+			}
             </script>
             <p>rotate 속성은 문자를 회전(개별)하여 렌더링합니다. 리스트 형식을 사용하면 개별 문자의 회전 각도를 지정할 수 있습니다.</p>
             <pre class="prettyprint">
@@ -216,14 +217,15 @@ DV.tspan().txt("1234567890").dxys(0,20).trotate([45,90]).into(t);
 t.txt(" xyz",true);
 </pre>
             <div id="dv-03"></div>
-            <script type="module">
-				import { DV } from "../../js/dv.js";
+            <script>
+			{	
                 let svg = DV.svg().size(700,100).into("dv-03");
                 DV.line().bound(0,50,"100%",50).stroke("#03A9F4",1).into(svg);
                 DV.text().txt("base-line").xys(0,48).attr("font-size","0.65em").fill("#03A9F4").into(svg);
                 let t = DV.text().txt("ABC ").xys(50,50).attr("font-size","2em").attr("letter-spacing",10).trotate([90,45,90,25]).into(svg);
                 DV.tspan().txt("1234567890").dxys(0,20).trotate([45,90]).into(t);
                 t.txt(" xyz",true);
+			}
             </script>
             <p>rotate 속성은 text, tspan 모두 사용가능하며, text 정의된 rotate 속성 값은 하위 tspan의 rotate 속성에 의해 재정의 될 수 있습니다.</p>
             <p>다음은 rotate 속성값에 따라 문자의 회전이 어떻게 영향 받지에 대한 그림 설명입니다.</p>
@@ -258,14 +260,15 @@ DV.text().txt("I am your father. No!!!!").xys(20,100).attr("font-size","2em").tl
 DV.text().txt("I am your father. No!!!!").xys(20,150).attr("font-size", "2em").into(svg);
 </pre>
             <div id="dv-04"></div>
-            <script type="module">
-				import { DV } from "../../js/dv.js";
+            <script>
+			{	
                 let svg = DV.svg().size(400,200).into("dv-04");
                 DV.path().stroke("#03A9F4",1).mto(20,10).lto(20,120).mto(220,10).lto(220,120).into(svg);
                 DV.text().txt("width: 200").xys(120,20).attr("font-size","0.65em").fill("#03A9F4").attr("text-anchor","middle").into(svg);
                 DV.text().txt("I am your father. No!!!!").xys(20,50).attr("font-size","2em").tlength(200).into(svg);
                 DV.text().txt("I am your father. No!!!!").xys(20,100).attr("font-size","2em").tlength(200,"spacingAndGlyphs").into(svg);
                 DV.text().txt("I am your father. No!!!!").xys(20,150).attr("font-size", "2em").into(svg);
+			}
             </script>
         </section>
         <section>

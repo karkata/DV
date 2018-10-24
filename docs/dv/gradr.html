@@ -7,7 +7,7 @@
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
     <link rel="stylesheet" href="../css/style.css"/>           
     <link rel="stylesheet" href="../css/tomorrow.css"/>
-</head>
+<script src="../../js/dv.js"></script></head>
 <body>
     <section>
         <nav class="nav-structure">
@@ -179,8 +179,8 @@ DV.text().txt("spreadMethod = repeat").xys(0,102).into(g2);
 DV.rect().dim(0,110,200,50).fill(grad4).into(g2);
 </pre>
             <div id="dv-01"></div>
-            <script type="module">
-				import { DV } from "../../js/dv.js";
+            <script>
+				
                 let svg = DV.svg().size(600,250).into("dv-01");
                 let def = DV.defs().into(svg);
                 let grad1 = DV.gradr().radius("25%").id("D01RG01").into(def);
@@ -307,8 +307,8 @@ DV.text().txt("fx = 75%, fy = 75%, r = 0.5").xys(0,102).into(g2);
 DV.rect().dim(0,110,200,50).fill(grad4).into(g2);
 </pre>
             <div id="dv-02"></div>
-            <script type="module">
-				import { DV } from "../../js/dv.js";
+            <script>
+			{		
                 let svg = DV.svg().size(600,250).into("dv-02");
                 let def = DV.defs().into(svg);
                 let stops = [{ "offset": "0%", "color": "red" }, { "offset": "100%", "color": "blue"}];
@@ -336,6 +336,7 @@ DV.rect().dim(0,110,200,50).fill(grad4).into(g2);
                 DV.rect().dim(0,25,200,50).fill(grad3).into(g2);
                 DV.text().txt("fx = 75%, fy = 75%, r = 0.5").xys(0,102).into(g2);
                 DV.rect().dim(0,110,200,50).fill(grad4).into(g2);
+			}
             </script>
         </section>
         <section>
