@@ -5,16 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
     <title></title>
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
-    <link rel="stylesheet" href="../../../css/style.css"/>           
-    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
-    <script src="../../../js/dv.core.js"></script>
-    <script src="../../../js/dv.shape.js"></script>
+    <link rel="stylesheet" href="../css/style.css"/>           
+    <link rel="stylesheet" href="../css/tomorrow.css"/>
+    <script src="../../js/dv.js"></script>
 </head>
 <body>
     <section>
         <nav class="nav-structure">
             <ul>
-                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../index.html">Home</a></li>
                 <li><a href="index.html">References</a></li>
                 <li>css</li>
             </ul>
@@ -24,7 +23,7 @@
         <h1>DVE.prototype.css()</h1>
         <section>
             <h2>문법</h2>
-            <pre class="prettyprint">var ret = dve.css(sname[, svalue]);</pre>
+            <pre class="prettyprint">let ret = object.css(sname[, svalue]);</pre>
             </section><section><h2>파라미터</h2>
             <table class="parameters">
                 <thead>
@@ -57,14 +56,14 @@
             <p>속성값이 반환될 때와 달리, 속성값을 설정할 때에는 속성을 가지고 있는 요소의 DVE 객체가 반환됩니다.</p>
             <p>css 메소드는 HTML 요소에 인라인 스타일을 지정하는 것처러럼 사용합니다.</p>
             <pre class="prettyprint">
-var svg = DV.svg().size(400,100).into("dv-01");
+let svg = DV.svg().size(400,100).into("dv-01");
 DV.rect().dim(10,10,200,20).css("fill","red").into(svg);
 DV.rect().dim(10,40,200,20).attr("fill","green").into(svg);
 DV.rect().dim(10,70,200,20).fill("blue").into(svg);
 </pre>
             <div id="dv-01"></div>
             <script>
-                var svg = DV.svg().size(400,100).into("dv-01");
+                let svg = DV.svg().size(400,100).into("dv-01");
                 DV.rect().dim(10,10,200,20).css("fill","red").into(svg);
                 DV.rect().dim(10,40,200,20).attr("fill","green").into(svg);
                 DV.rect().dim(10,70,200,20).fill("blue").into(svg);

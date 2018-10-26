@@ -7,6 +7,7 @@
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
     <link rel="stylesheet" href="../css/style.css"/>           
     <link rel="stylesheet" href="../css/tomorrow.css"/>
+	<script src="../../js/dv.js"></script>
 </head>
 <body>
     <section>
@@ -91,8 +92,7 @@ DV.rect().dim(10,50,200,20).fill("red").into(svg).bind("click", function () {
 });
 </pre>
             <div id="dv-01"></div>
-            <script type="module">
-				import { DV } from "../../js/dv.js";
+            <script>
                 let svg = DV.svg().size(400,100).into("dv-01");
                 DV.text().txt("Click the below box").xys(10,20).into(svg);
                 DV.rect().dim(10,50,200,20).fill("red").into(svg).bind("click", function () {

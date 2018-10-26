@@ -7,6 +7,7 @@
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
     <link rel="stylesheet" href="../css/style.css"/>           
     <link rel="stylesheet" href="../css/tomorrow.css"/>
+	<script src="../../js/dv.js"></script>
 </head>
 <body>
     <section>
@@ -72,8 +73,7 @@ DV.line().bound(100,10,150,100).stroke("green",10).into(svg);
 DV.line().bound(150,10,200,100).stroke("green",15).strokeDash("5 5").into(svg);
 </pre>
             <div id="dv-01"></div>
-            <script type="module">
-				import { DV } from "../../js/dv.js";
+            <script>
                 let svg = DV.svg().size(300,150).into("dv-01");
                 DV.line().point1(0,10).point2(50,100).stroke("green").into(svg);
                 DV.line().bound(50,10,100,100).stroke("green",5).into(svg);

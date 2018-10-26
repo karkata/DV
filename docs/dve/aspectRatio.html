@@ -7,6 +7,7 @@
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
     <link rel="stylesheet" href="../css/style.css"/>           
     <link rel="stylesheet" href="../css/tomorrow.css"/>
+	<script src="../../js/dv.js"></script>
 </head>
 <body>
     <section>
@@ -120,12 +121,9 @@ DV.use().xhref(vp2).point(110,200).into(svg);
 DV.svg().dim(110,200,30,50).viewbox(0,0,30,40).aspectRatio("none").into(svg).append(DV.use().xhref(smile).point(0,0));
 </pre>
             <div id="dv-01"></div>
-            <script type="module">
-				import { DV } from "../../js/dv.js";
-
+            <script >
                 let svg = DV.svg().size(600,300).into("dv-01");
                 let def = DV.defs().into(svg);
-
                 let smile = DV.symbol().id("smile").into(def);
                 DV.rect().dim(0.5,0.5,29,39).fill("black").stroke(1,"red").into(smile);
                 DV.circle().center(15,20).radius(10).fill("yellow").into(smile);

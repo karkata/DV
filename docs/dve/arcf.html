@@ -7,6 +7,7 @@
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
     <link rel="stylesheet" href="../css/style.css"/>           
     <link rel="stylesheet" href="../css/tomorrow.css"/>
+	<script src="../../js/dv.js"></script>
 </head>
 <body>
     <section>
@@ -76,8 +77,7 @@ DV.path().fill("none").stroke("red",5).mto(250,50).arc(100,100,0,1,0,0,200,true)
 DV.path().fill("none").stroke("green",5).mto(500,50).arcf(100,100,0).into(svg);
 </pre>
             <div id="dv-01"></div>
-            <script type="module">
-				import { DV } from "../../js/dv.js";
+            <script>
                 let svg = DV.svg().size("6.5cm","3cm").viewbox(0,0,650,300).into("dv-01");
                 DV.path().fill("none").stroke("red",5).mto(250,50).arc(100,100,0,1,0,0,200,true).arc(100,100,0,1,0,0,-200,true).into(svg);
                 DV.path().fill("none").stroke("green",5).mto(500,50).arcf(100,100,0).into(svg);

@@ -5,17 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
     <title></title>
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
-    <link rel="stylesheet" href="../../../css/style.css"/>           
-    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
-    <script src="../../../js/dv.core.js"></script>
-    <script src="../../../js/dv.shape.js"></script>
-    <script src="../../../js/dv.animation.js"></script>
+    <link rel="stylesheet" href="../css/style.css"/>           
+    <link rel="stylesheet" href="../css/tomorrow.css"/>
+    <script src="../../js/dv.js"></script>
 </head>
 <body>
     <section>
         <nav class="nav-structure">
             <ul>
-                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../index.html">Home</a></li>
                 <li><a href="index.html">References</a></li>
                 <li>calcMode</li>
             </ul>
@@ -25,7 +23,7 @@
         <h1>DVE.prototype.calcMode()</h1>
         <section>
             <h2>문법</h2>
-            <pre class="prettyprint">var ret = dve.calcMode(value);</pre>
+            <pre class="prettyprint">let ret = object.calcMode(value);</pre>
             </section><section><h2>파라미터</h2>
             <table class="parameters">
                 <thead>
@@ -76,8 +74,8 @@
                 </svg>
             </div>
             <pre class="prettyprint">
-var svg = DV.svg().size(500,150).into("dv-01");
-var d = DV.path().mto(50,50).csto([
+let svg = DV.svg().size(500,150).into("dv-01");
+let d = DV.path().mto(50,50).csto([
         [[50,-25],[50,-25],[100,0]],
         [[50,25],[100,0]],
         [[50,-25],[100,0]],
@@ -89,8 +87,9 @@ DV.rect().dim(-5,-5,10,10).fill("red").append(
 </pre>
             <div id="dv-01"></div>
             <script>
-                var svg = DV.svg().size(500,150).into("dv-01");
-                var d = DV.path().mto(50,50).csto([
+			{
+                let svg = DV.svg().size(500,150).into("dv-01");
+                let d = DV.path().mto(50,50).csto([
                         [[50,-25],[50,-25],[100,0]],
                         [[50,25],[100,0]],
                         [[50,-25],[100,0]],
@@ -99,6 +98,7 @@ DV.rect().dim(-5,-5,10,10).fill("red").append(
                 DV.rect().dim(-5,-5,10,10).fill("red").append(
                     DV.animateMotion().motionPath(d).time("0s","5s").motionRotate("auto").freeze()
                 ).into(svg);
+			}
             </script>
             <p>animateMotion를 가지고 애니메이션을 할 때, calcMode 기본값은 paced이므로 대상이 움직이는 속도(시간당 이동 거리)를 일정합니다. 만일 linear로 지정을 하면 대상의 속도를 가변적으로 변경할 수 있으며, 이를 위해서는 keyTimes, keyPoints를 사용하여 진행된 시간에 따른 이동 거리 비율을 바꿔줘야 합니다.</p>
             <pre class="prettyprint">
@@ -119,8 +119,8 @@ DV.rect().dim(-5,-5,10,10).fill("red").append(
                 </svg>
             </div>
             <pre class="prettyprint">
-var svg = DV.svg().size(500,150).into("dv-02");
-var d = DV.path().mto(50,50).csto([
+let svg = DV.svg().size(500,150).into("dv-02");
+let d = DV.path().mto(50,50).csto([
         [[50,-25],[50,-25],[100,0]],
         [[50,25],[100,0]],
         [[50,-25],[100,0]],
@@ -132,8 +132,9 @@ DV.rect().dim(-5,-5,10,10).fill("red").append(
 </pre>
             <div id="dv-02"></div>
             <script>
-                var svg = DV.svg().size(500,150).into("dv-02");
-                var d = DV.path().mto(50,50).csto([
+			{
+                let svg = DV.svg().size(500,150).into("dv-02");
+                let d = DV.path().mto(50,50).csto([
                         [[50,-25],[50,-25],[100,0]],
                         [[50,25],[100,0]],
                         [[50,-25],[100,0]],
@@ -142,6 +143,7 @@ DV.rect().dim(-5,-5,10,10).fill("red").append(
                 DV.rect().dim(-5,-5,10,10).fill("red").append(
                     DV.animateMotion().motionPath(d).calcMode("linear").keyTimes([0,0.5,1]).keyPoints([0,0.2,1]).time("0s","5s").motionRotate("auto").freeze()
                 ).into(svg);
+			}
             </script>
             <p>discrete는 애니메이션 대상이 되는 속성의 값을 보간없이 바로 건너 뛰게 됩니다.</p>
             <pre class="prettyprint">
@@ -165,7 +167,7 @@ DV.rect().dim(-5,-5,10,10).fill("red").append(
                 </svg>
             </div>
             <pre class="prettyprint">
-var svg = DV.svg().size(500,50).into("dv-03");
+let svg = DV.svg().size(500,50).into("dv-03");
 DV.rect().dim(0,10,10,10).fill("red").append(
     DV.animate().toWhat("x").fromToBy(0,100).time("0s","2s").freeze()
 ).into(svg);
@@ -175,13 +177,15 @@ DV.rect().dim(0,30,10,10).fill("red").append(
 </pre>
             <div id="dv-03"></div>
             <script>
-                var svg = DV.svg().size(500,50).into("dv-03");
+			{
+                let svg = DV.svg().size(500,50).into("dv-03");
                 DV.rect().dim(0,10,10,10).fill("red").append(
                     DV.animate().toWhat("x").fromToBy(0,100).time("0s","2s").freeze()
                 ).into(svg);
                 DV.rect().dim(0,30,10,10).fill("red").append(
                     DV.animate().toWhat("x").fromToBy(0,100).time("0s","2s").calcMode("discrete").freeze()
                 ).into(svg);
+			}
             </script>
             <p>spline은 애니메이션 구간을 cubic Bezier 스플라인을 이용한 시간 함수를 사용하여 보간을 합니다. 스플라인은 keyTimes, keySplines 속성을 사용하여 정의됩니다.</p>
             <pre class="prettyprint">
@@ -210,7 +214,7 @@ DV.rect().dim(0,30,10,10).fill("red").append(
             </div>
             <p>DV를 사용하여 동일한 효과를 보여줄 수 있습니다.</p>
             <pre class="prettyprint">
-var svg = DV.svg().size(200,150).into("dv-04");
+let svg = DV.svg().size(200,150).into("dv-04");
 DV.path().id("D01P01").mto(50, 125).cto([[0, -75], [25, -100], [100, -100]], true).stroke("gray", 1.5).fill("none").into(svg);
 DV.rect().dim(-5,-5,10,10).fill("red").append(
     DV.animateMotion().calcMode("spline").time("0s","2s").keyTimes([0, 1]).keySplines([0,.75,.25,1]).motionRotate("auto").freeze().append(
@@ -220,13 +224,15 @@ DV.rect().dim(-5,-5,10,10).fill("red").append(
 </pre>
             <div id="dv-04"></div>
             <script>
-                var svg = DV.svg().size(200,150).into("dv-04");
+			{
+                let svg = DV.svg().size(200,150).into("dv-04");
                 DV.path().id("D01P01").mto(50, 125).cto([[0, -75], [25, -100], [100, -100]], true).stroke("gray", 1.5).fill("none").into(svg);
                 DV.rect().dim(-5,-5,10,10).fill("red").append(
                     DV.animateMotion().calcMode("spline").time("0s","2s").keyTimes([0, 1]).keySplines([0,.75,.25,1]).motionRotate("auto").freeze().append(
                         DV.mpath().xhref("#D01P01")
                     )
                 ).into(svg);
+			}
             </script>
         </section>
         <section>

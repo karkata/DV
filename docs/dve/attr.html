@@ -7,6 +7,7 @@
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
     <link rel="stylesheet" href="../css/style.css"/>           
     <link rel="stylesheet" href="../css/tomorrow.css"/>
+	<script src="../../js/dv.js"></script>
 </head>
 <body>
     <section>
@@ -66,8 +67,7 @@ let rect1 = svg.rect(10, 10, 200, 20).into(svg).attr("fill", "blue");
 svg.rect(10, 40, 200, 20).fill(rect1.attr("fill")).into(svg);
 </pre>
             <div id="dv-01"></div>
-            <script type="module">
-				import { DV } from "../../js/dv.js";
+            <script >
                 let svg = DV.svg().size(400,70).into("dv-01");
                 let rect1 = DV.rect().dim(10,10,200,20).into(svg).attr("fill","blue");
                 DV.rect().dim(10,40,200,20).fill(rect1.attr("fill")).into(svg);

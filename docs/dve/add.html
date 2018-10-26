@@ -7,6 +7,7 @@
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
     <link rel="stylesheet" href="../css/style.css"/>           
     <link rel="stylesheet" href="../css/tomorrow.css"/>
+	<script src="../../js/dv.js"></script>
 </head>
 <body>
     <section>
@@ -84,8 +85,7 @@ let rect2 = DV.rect().dim(0,40,10,10).fill("red").into(svg);
 DV.animate().toWhat("width").keyFrom(30).keyTo(50).time("0s","5s").add("sum").acc("sum").repeatCount(3).freeze().into(rect2);
 </pre>
             <div id="dv-01"></div>
-            <script type="module">
-				import { DV } from "../../js/dv.js";
+            <script >
                 let svg = DV.svg().size(400,100).into("dv-01");
                 DV.rect().dim(0,0,60,10).fill("red").into(svg);
                 let rect1 = DV.rect().dim(0,20,10,10).fill("red").into(svg);
