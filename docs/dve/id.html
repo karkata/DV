@@ -5,16 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
     <title></title>
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
-    <link rel="stylesheet" href="../../../css/style.css"/>           
-    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
-    <script src="../../../js/dv.core.js"></script>
-    <script src="../../../js/dv.shape.js"></script>
+    <link rel="stylesheet" href="../css/style.css"/>           
+    <link rel="stylesheet" href="../css/tomorrow.css"/>
+    <script src="../../js/dv.js"></script>
 </head>
 <body>
     <section>
         <nav class="nav-structure">
             <ul>
-                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../index.html">Home</a></li>
                 <li><a href="index.html">References</a></li>
                 <li>id</li>
             </ul>
@@ -24,7 +23,7 @@
         <h1>DVE.prototype.id()</h1>
         <section>
             <h2>문법</h2>
-            <pre class="prettyprint">var ret = dve.id(id);</pre>
+            <pre class="prettyprint">let ret = object.id(id);</pre>
             </section><section><h2>파라미터</h2>
             <table class="parameters">
                 <thead>
@@ -49,14 +48,14 @@
             <p>'id' 메소드는 요소가 갖는 고유 이름을 설정할 때 사용합니다.</p>
             <p>파라미터가 주어지면 현재 요소가 반환되고, 만일 주어지지 않는다면 요소에 설정된 고유 이름을 반환합니다.</p>
             <pre class="prettyprint">
-var svg = new dv().svg(400, 50).into("dv-01");
-var rect = svg.rect(10, 10, 200, 20).fill("blue").id("rect1");
+let svg = new dv().svg(400, 50).into("dv-01");
+let rect = svg.rect(10, 10, 200, 20).fill("blue").id("rect1");
 alert(rect.id());
 </pre>
             <div id="dv-01"></div>
             <script>
-                var svg = DV.svg().size(300,50).into("dv-01");
-                var rect = DV.rect().dim(10,10,200,20).fill("blue").id("rect1").into(svg);
+                let svg = DV.svg().size(300,50).into("dv-01");
+                let rect = DV.rect().dim(10,10,200,20).fill("blue").id("rect1").into(svg);
                 alert(rect.id());
             </script>
         </section>

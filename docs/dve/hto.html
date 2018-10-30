@@ -5,16 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
     <title></title>
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
-    <link rel="stylesheet" href="../../../css/style.css"/>           
-    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
-    <script src="../../../js/dv.core.js"></script>
-    <script src="../../../js/dv.shape.js"></script>
+    <link rel="stylesheet" href="../css/style.css"/>           
+    <link rel="stylesheet" href="../css/tomorrow.css"/>
+    <script src="../../js/dv.js"></script>
 </head>
 <body>
     <section>
         <nav class="nav-structure">
             <ul>
-                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../index.html">Home</a></li>
                 <li><a href="index.html">References</a></li>
                 <li>hto</li>
             </ul>
@@ -24,7 +23,7 @@
         <h1>DVE.prototype.hto()</h1>
         <section>
             <h2>문법</h2>
-            <pre class="prettyprint">var ret = dve.hto(x[, rel]);</pre>
+            <pre class="prettyprint">let ret = object.hto(x[, rel]);</pre>
             </section><section><h2>파라미터</h2>
             <table class="parameters">
                 <thead>
@@ -69,39 +68,45 @@
                 </svg>
             </div>
             <pre class="prettyprint">
-var svg = DV.svg().size("5cm","4cm").viewbox(0,0,500,400).into("dv-01");
+let svg = DV.svg().size("5cm","4cm").viewbox(0,0,500,400).into("dv-01");
 DV.path().d("M100,100 H400 M400,300 H100").nofill().stroke("blue",5).into(svg);
 </pre>
             <div id="dv-01"></div>
             <script>
-                var svg = DV.svg().size("5cm","4cm").viewbox(0,0,500,400).into("dv-01");
+			{
+                let svg = DV.svg().size("5cm","4cm").viewbox(0,0,500,400).into("dv-01");
                 DV.path().d("M100,100 H400 M400,300 H100").nofill().stroke("blue",5).into(svg);
+			}
             </script>
             <pre class="prettyprint">
-var svg = DV.svg().size("5cm","4cm").viewbox(0,0,500,400).into("dv-02");
+let svg = DV.svg().size("5cm","4cm").viewbox(0,0,500,400).into("dv-02");
 DV.path().nofill().stroke("blue",5)
     .mto(100,100).hto(400)
     .mto(400,300).hto(100).into(svg);
 </pre>
             <div id="dv-02"></div>
             <script>
-                var svg = DV.svg().size("5cm","4cm").viewbox(0,0,500,400).into("dv-02");
+			{
+                let svg = DV.svg().size("5cm","4cm").viewbox(0,0,500,400).into("dv-02");
                 DV.path().nofill().stroke("blue",5)
                     .mto(100,100).hto(400)
                     .mto(400,300).hto(100).into(svg);
+			}
             </script>
             <pre class="prettyprint">
-var svg = DV.svg().size("5cm","4cm").viewbox(0,0,500,400).into("dv-03");
+let svg = DV.svg().size("5cm","4cm").viewbox(0,0,500,400).into("dv-03");
 DV.path().nofill().stroke("blue",5)
     .mto(100,100).hto(300,true)
     .mto(400,300).hto(-300,true).into(svg);
 </pre>
             <div id="dv-03"></div>
             <script>
-                var svg = DV.svg().size("5cm","4cm").viewbox(0,0,500,400).into("dv-03");
+			{
+                let svg = DV.svg().size("5cm","4cm").viewbox(0,0,500,400).into("dv-03");
                 DV.path().nofill().stroke("blue",5)
                     .mto(100,100).hto(300,true)
                     .mto(400,300).hto(-300,true).into(svg);
+			}
             </script>
         </section>
         <section>

@@ -5,16 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
     <title></title>
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
-    <link rel="stylesheet" href="../../../css/style.css"/>           
-    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
-    <script src="../../../js/dv.core.js"></script>
-    <script src="../../../js/dv.shape.js"></script>
+    <link rel="stylesheet" href="../css/style.css"/>           
+    <link rel="stylesheet" href="../css/tomorrow.css"/>
+    <script src="../../js/dv.js"></script>
 </head>
 <body>
     <section>
         <nav class="nav-structure">
             <ul>
-                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../index.html">Home</a></li>
                 <li><a href="index.html">References</a></li>
                 <li>dim</li>
             </ul>
@@ -24,7 +23,7 @@
         <h1>DVE.prototype.dim()</h1>
         <section>
             <h2>문법</h2>
-            <pre class="prettyprint">var ret = dve.dim(x[, y[, width[, height]]]);</pre>
+            <pre class="prettyprint">let ret = object.dim(x[, y[, width[, height]]]);</pre>
             </section><section><h2>파라미터</h2>
             <table class="parameters">
                 <thead>
@@ -60,15 +59,15 @@
             <p>'dim' 메소드는 user space 영역에 SVG 요소가 렌더링되는 위치를
             변경할 때 사용합니다.</p>
             <pre class="prettyprint">
-var svg = new dv().svg(200, 100).into("dv-01");
-var rect = svg.rect(0, 0, 100, 20).fill("red");
+let svg = new dv().svg(200, 100).into("dv-01");
+let rect = svg.rect(0, 0, 100, 20).fill("red");
 // from {0, 0, 100, 20} to {50, 35, 100, 30}
 rect.dim(50,35,100,30);
 </pre>
             <div id="dv-01"></div>
             <script>
-                var svg = DV.svg().size(200,100).into("dv-01");
-                var rect = DV.rect().point(0,0).size(100,20).fill("red").into(svg);
+                let svg = DV.svg().size(200,100).into("dv-01");
+                let rect = DV.rect().point(0,0).size(100,20).fill("red").into(svg);
                 rect.dim(50,35,100,30);
             </script>
         </section>

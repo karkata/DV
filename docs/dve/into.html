@@ -5,16 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
     <title></title>
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
-    <link rel="stylesheet" href="../../../css/style.css"/>           
-    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
-    <script src="../../../js/dv.core.js"></script>
-    <script src="../../../js/dv.shape.js"></script>
+    <link rel="stylesheet" href="../css/style.css"/>           
+    <link rel="stylesheet" href="../css/tomorrow.css"/>
+    <script src="../../js/dv.js"></script>
 </head>
 <body>
     <section>
         <nav class="nav-structure">
             <ul>
-                <li><a href="../../index.html">Home</a></li>
+                <li><a href="../index.html">Home</a></li>
                 <li><a href="index.html">References</a></li>
                 <li>into</li>
             </ul>
@@ -24,7 +23,7 @@
         <h1>DVE.prototype.into()</h1>
         <section>
             <h2>문법</h2>
-            <pre class="prettyprint">var ret = dve.into(container);</pre>
+            <pre class="prettyprint">let ret = object.into(container);</pre>
             </section><section><h2>파라미터</h2>
             <table class="parameters">
                 <thead>
@@ -50,10 +49,10 @@
             <p>DVE 객체를 자식 또는 부모 객체로 등록하면 SVG 요소들도 동일하게 부모, 자식 구조를 빌딩합니다.
             <section>
             <pre class="prettyprint">
-var svg = DV.svg().size(400,100).into("dv-01");
+let svg = DV.svg().size(400,100).into("dv-01");
 // svg 요소 하위에 rect 요소가 생성됩니다.
-var r = DV.rect().dim(10,10,100,30).fill("#7c4dff").into(svg);
-var g = DV.g().into(svg);
+let r = DV.rect().dim(10,10,100,30).fill("#7c4dff").into(svg);
+let g = DV.g().into(svg);
 // rect 요소를 svg 요소에서 제거한 후, g 요소 하위로 이동시킵니다.
 r.into(g);
 </pre>

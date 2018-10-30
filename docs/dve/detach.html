@@ -5,16 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
     <title></title>
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
-    <link rel="stylesheet" href="../../../css/style.css"/>           
-    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
-    <script src="../../../js/dv.core.js"></script>
-    <script src="../../../js/dv.shape.js"></script>
+    <link rel="stylesheet" href="../css/style.css"/>           
+    <link rel="stylesheet" href="../css/tomorrow.css"/>
+    <script src="../../js/dv.js"></script>
 </head>
 <body>
     <section>
         <nav class="nav-structure">
             <ul>
-                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../index.html">Home</a></li>
                 <li><a href="index.html">References</a></li>
                 <li>detach</li>
             </ul>
@@ -24,7 +23,7 @@
         <h1>DVE.prototype.detach()</h1>
         <section>
             <h2>문법</h2>
-            <pre class="prettyprint">var ret = dve.detach();</pre>
+            <pre class="prettyprint">let ret = object.detach();</pre>
             </section><section><h2>파라미터</h2>
             </section><section><h2>반환</h2>
             <p>DVE 객체를 반혼합니다.</p>
@@ -37,12 +36,12 @@
             <p>detach 함수는 현 래퍼 객체와 부모 래퍼 객체와의 관계를 끊고, 각 래퍼가 갖는 SVG 엘리먼트 DOM 관계도 끊습니다.</p>
             <p>이 함수는 다른 래퍼 객체로 추가하거나 추가되기 위해서 사용할 수 있습니다.</p>
             <pre class="prettyprint">
-var svg = DV.svg().size(400,100).into("dv-01");
-var button = DV.g().css("cursor","pointer").into(svg);
+let svg = DV.svg().size(400,100).into("dv-01");
+let button = DV.g().css("cursor","pointer").into(svg);
 DV.rect().dim(10,10,100,30).fill("#7c4dff").into(button);
 DV.text().txt("Toggle").xys(40,30).fill("white").into(button);
 
-var target = DV.rect().dim(10,50,100,30).fill("#7b1fa2").into(svg);
+let target = DV.rect().dim(10,50,100,30).fill("#7b1fa2").into(svg);
 
 button.bind("click", function (evt) {
     if (target.parent)
@@ -53,12 +52,12 @@ button.bind("click", function (evt) {
 </pre>
             <div id="dv-01"></div>
             <script>
-                var svg = DV.svg().size(400,100).into("dv-01");
-                var button = DV.g().css("cursor","pointer").into(svg);
+                let svg = DV.svg().size(400,100).into("dv-01");
+                let button = DV.g().css("cursor","pointer").into(svg);
                 DV.rect().dim(10,10,100,30).fill("#7c4dff").into(button);
                 DV.text().txt("Toggle").xys(40,30).fill("white").into(button);
 
-                var target = DV.rect().dim(10,50,100,30).fill("#7b1fa2").into(svg);
+                let target = DV.rect().dim(10,50,100,30).fill("#7b1fa2").into(svg);
 
                 button.bind("click", function (evt) {
                     if (target.parent)

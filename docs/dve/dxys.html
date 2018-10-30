@@ -5,16 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
     <title></title>
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
-    <link rel="stylesheet" href="../../../css/style.css"/>           
-    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
-    <script src="../../../js/dv.core.js"></script>
-    <script src="../../../js/dv.shape.js"></script>
+    <link rel="stylesheet" href="../css/style.css"/>           
+    <link rel="stylesheet" href="../css/tomorrow.css"/>
+    <script src="../../js/dv.js"></script>
 </head>
 <body>
     <section>
         <nav class="nav-structure">
             <ul>
-                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../index.html">Home</a></li>
                 <li><a href="index.html">References</a></li>
                 <li>dxys</li>
             </ul>
@@ -24,7 +23,7 @@
         <h1>DVE.prototype.dxys()</h1>
         <section>
             <h2>문법</h2>
-            <pre class="prettyprint">var ret = dve.dxys(dx[, dy])</pre>
+            <pre class="prettyprint">let ret = object.dxys(dx[, dy])</pre>
             </section><section><h2>파라미터</h2>
             <table class="parameters">
                 <thead>
@@ -70,19 +69,19 @@
                 </svg>
             </div>
             <pre class="prettyprint">
-var svg = DV.svg().size(700,100).into("dv-01");
+let svg = DV.svg().size(700,100).into("dv-01");
 DV.line().point1(0,50).point2("100%",50).stroke("#03A9F4",1).into(svg);
 DV.text().txt("base-line").xys(0,48).fsize("0.65em").fill("#03A9F4").into(svg);
-var t = DV.text().txt("ABC ").xys(50,50).fsize("3em").into(svg);
+let t = DV.text().txt("ABC ").xys(50,50).fsize("3em").into(svg);
 DV.tspan().txt("1234567890").dxys([0,10,0],[10,10,10]).into(t);
 t.txt(" xyz",true);
 </pre>
             <div id="dv-01"></div>
             <script>
-                var svg = DV.svg().size(700,100).into("dv-01");
+                let svg = DV.svg().size(700,100).into("dv-01");
                 DV.line().point1(0,50).point2("100%",50).stroke("#03A9F4",1).into(svg);
                 DV.text().txt("base-line").xys(0,48).fsize("0.65em").fill("#03A9F4").into(svg);
-                var t = DV.text().txt("ABC ").xys(50,50).fsize("3em").into(svg);
+                let t = DV.text().txt("ABC ").xys(50,50).fsize("3em").into(svg);
                 DV.tspan().txt("1234567890").dxys([0,10,0],[10,10,10]).into(t);
                 t.txt(" xyz",true);
             </script>

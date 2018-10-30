@@ -5,17 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
     <title></title>
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
-    <link rel="stylesheet" href="../../../css/style.css"/>           
-    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
-    <script src="../../../js/dv.core.js"></script>
-    <script src="../../../js/dv.shape.js"></script>
-    <script src="../../../js/dv.animation.js"></script>
+    <link rel="stylesheet" href="../css/style.css"/>           
+    <link rel="stylesheet" href="../css/tomorrow.css"/>
+    <script src="../../js/dv.js"></script>
 </head>
 <body>
     <section>
         <nav class="nav-structure">
             <ul>
-                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../index.html">Home</a></li>
                 <li><a href="index.html">References</a></li>
                 <li>freeze</li>
             </ul>
@@ -25,7 +23,7 @@
         <h1>DVE.prototype.freeze()</h1>
         <section>
             <h2>문법</h2>
-            <pre class="prettyprint">var ret = dve.freeze();</pre>
+            <pre class="prettyprint">let ret = object.freeze();</pre>
             </section><section><h2>파라미터</h2>
             </section><section><h2>반환</h2>
             <p>DVE 객체를 반환합니다.</p>
@@ -58,7 +56,7 @@
             </div>
             <p>DV를 사용하여 동일한 애니메이션을 수행할 수 있습니다.</p>
             <pre class="prettyprint">
-var svg = DV.svg().size(200,100).into("dv-01");
+let svg = DV.svg().size(200,100).into("dv-01");
 DV.rect().dim(25,25,50,50).fill("red").append(
     DV.animate().toWhat("opacity").fromToBy(1,0).time("0s","3s")
 ).into(svg);
@@ -68,7 +66,7 @@ DV.rect().dim(125,25,50,50).fill("red").append(
 </pre>
             <div id="dv-01"></div>
             <script>
-                var svg = DV.svg().size(200,100).into("dv-01");
+                let svg = DV.svg().size(200,100).into("dv-01");
                 DV.rect().dim(25,25,50,50).fill("red").append(
                     DV.animate().toWhat("opacity").fromToBy(1,0).time("0s","3s")
                 ).into(svg);

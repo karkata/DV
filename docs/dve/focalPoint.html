@@ -5,16 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
     <title></title>
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
-    <link rel="stylesheet" href="../../../css/style.css"/>           
-    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
-    <script src="../../../js/dv.core.js"></script>
-    <script src="../../../js/dv.shape.js"></script>
+    <link rel="stylesheet" href="../css/style.css"/>           
+    <link rel="stylesheet" href="../css/tomorrow.css"/>
+    <script src="../../js/dv.js"></script>
 </head>
 <body>
     <section>
         <nav class="nav-structure">
             <ul>
-                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../index.html">Home</a></li>
                 <li><a href="index.html">References</a></li>
                 <li>focalPoint</li>
             </ul>
@@ -24,7 +23,7 @@
         <h1>DVE.prototype.focalPoint()</h1>
         <section>
             <h2>문법</h2>
-            <pre class="prettyprint">var ret = dve.focalPoint(fx[, fy]);</pre>
+            <pre class="prettyprint">let ret = object.focalPoint(fx[, fy]);</pre>
             </section><section><h2>파라미터</h2>
             <table class="parameters">
                 <thead>
@@ -114,51 +113,51 @@
                 </svg>
             </div>
             <pre class="prettyprint">
-var svg = DV.svg().size(600,250).into("dv-01");
-var def = DV.defs().into(svg);
-var grad1 = DV.gradr().center("25%","25%").radius(0.5).id("D01RG01").into(def);
+let svg = DV.svg().size(600,250).into("dv-01");
+let def = DV.defs().into(svg);
+let grad1 = DV.gradr().center("25%","25%").radius(0.5).id("D01RG01").into(def);
 DV.stop().oco("0%","red").into(grad1);
 DV.stop().oco("100%","blue").into(grad1);
 
-var grad2 = DV.gradr().center("25%","25%").radius(0.5).focalPoint("50%","50%").id("D01RG02").into(def);
+let grad2 = DV.gradr().center("25%","25%").radius(0.5).focalPoint("50%","50%").id("D01RG02").into(def);
 DV.stop().oco("0%","red").into(grad2);
 DV.stop().oco("100%","blue").into(grad2);
 
-var g1 = DV.g().fsize("0.80em").translate(50,50).into(svg);
+let g1 = DV.g().fsize("0.80em").translate(50,50).into(svg);
 DV.text().txt("cx = 25%, cy = 25%, r = 0.5").xys(0,17).into(g1);
 DV.rect().dim(0,25,200,100).fill(grad1).into(g1);
-var svg1 = DV.svg().dim(0,25,200,100).into(g1);
+let svg1 = DV.svg().dim(0,25,200,100).into(g1);
 DV.ellipse().center("25%","25%").round("50%","50%").stroke("white",1).nofill().into(svg1);
 DV.circle().center("25%","25%").radius("1%").fill("white").into(svg1);
-var g2 = DV.g().fsize("0.80em").translate(300,50).into(svg);
+let g2 = DV.g().fsize("0.80em").translate(300,50).into(svg);
 DV.text().txt("cx = 25%, cy = 25%, r = 0.5, fx = 50%, fy = 50%").xys(0,17).into(g2);
 DV.rect().dim(0,25,200,100).fill(grad2).into(g2);
-var svg2 = DV.svg().dim(0,25,200,100).into(g2);
+let svg2 = DV.svg().dim(0,25,200,100).into(g2);
 DV.ellipse().center("25%","25%").round("50%","50%").stroke("white",1).nofill().into(svg2);
 DV.circle().center("50%","50%").radius("1%").fill("white").into(svg2);
 </pre>
             <div id="dv-01"></div>
             <script>
-                var svg = DV.svg().size(600,250).into("dv-01");
-                var def = DV.defs().into(svg);
-                var grad1 = DV.gradr().center("25%","25%").radius(0.5).id("D01RG01").into(def);
+                let svg = DV.svg().size(600,250).into("dv-01");
+                let def = DV.defs().into(svg);
+                let grad1 = DV.gradr().center("25%","25%").radius(0.5).id("D01RG01").into(def);
                 DV.stop().oco("0%","red").into(grad1);
                 DV.stop().oco("100%","blue").into(grad1);
 
-                var grad2 = DV.gradr().center("25%","25%").radius(0.5).focalPoint("50%","50%").id("D01RG02").into(def);
+                let grad2 = DV.gradr().center("25%","25%").radius(0.5).focalPoint("50%","50%").id("D01RG02").into(def);
                 DV.stop().oco("0%","red").into(grad2);
                 DV.stop().oco("100%","blue").into(grad2);
 
-                var g1 = DV.g().fsize("0.80em").translate(50,50).into(svg);
+                let g1 = DV.g().fsize("0.80em").translate(50,50).into(svg);
                 DV.text().txt("cx = 25%, cy = 25%, r = 0.5").xys(0,17).into(g1);
                 DV.rect().dim(0,25,200,100).fill(grad1).into(g1);
-                var svg1 = DV.svg().dim(0,25,200,100).into(g1);
+                let svg1 = DV.svg().dim(0,25,200,100).into(g1);
                 DV.ellipse().center("25%","25%").round("50%","50%").stroke("white",1).nofill().into(svg1);
                 DV.circle().center("25%","25%").radius("1%").fill("white").into(svg1);
-                var g2 = DV.g().fsize("0.80em").translate(300,50).into(svg);
+                let g2 = DV.g().fsize("0.80em").translate(300,50).into(svg);
                 DV.text().txt("cx = 25%, cy = 25%, r = 0.5, fx = 50%, fy = 50%").xys(0,17).into(g2);
                 DV.rect().dim(0,25,200,100).fill(grad2).into(g2);
-                var svg2 = DV.svg().dim(0,25,200,100).into(g2);
+                let svg2 = DV.svg().dim(0,25,200,100).into(g2);
                 DV.ellipse().center("25%","25%").round("50%","50%").stroke("white",1).nofill().into(svg2);
                 DV.circle().center("50%","50%").radius("1%").fill("white").into(svg2);
             </script>
@@ -169,9 +168,7 @@ DV.circle().center("50%","50%").radius("1%").fill("white").into(svg2);
                 <li><a href="../dv/circle.html">circle</a></li>
                 <li><a href="../dv/defs.html">defs</a></li>
                 <li><a href="../dv/ellipse.html">ellipse</a></li>
-                <li><a href="../dv/ellipse.html">ellipse</a></li>
                 <li><a href="../dv/g.html">g</a></li>
-                <li><a href="../dv/getFuncIRI.html">getFuncIRI</a></li>
                 <li><a href="../dv/gradr.html">gradr</a></li>
                 <li><a href="../dv/rect.html">rect</a></li>
                 <li><a href="../dv/stop.html">stop</a></li>

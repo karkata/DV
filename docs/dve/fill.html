@@ -5,16 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
     <title></title>
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
-    <link rel="stylesheet" href="../../../css/style.css"/>           
-    <link rel="stylesheet" href="../../../css/tomorrow.css"/>
-    <script src="../../../js/dv.core.js"></script>
-    <script src="../../../js/dv.shape.js"></script>
+    <link rel="stylesheet" href="../css/style.css"/>           
+    <link rel="stylesheet" href="../css/tomorrow.css"/>
+    <script src="../../js/dv.js"></script>
 </head>
 <body>
     <section>
         <nav class="nav-structure">
             <ul>
-                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../index.html">Home</a></li>
                 <li><a href="index.html">References</a></li>
                 <li>fill</li>
             </ul>
@@ -24,7 +23,7 @@
         <h1>DVE.prototype.fill()</h1>
         <section>
             <h2>문법</h2>
-            <pre class="prettyprint">var ret = dve.fill(paint[, opacity[, rule]]);</pre>
+            <pre class="prettyprint">let ret = object.fill(paint[, opacity[, rule]]);</pre>
             </section><section><h2>파라미터</h2>
             <table class="parameters">
                 <thead>
@@ -70,7 +69,7 @@
             <p>'fill' 메소드는 'fill', 'fill-opacity', 'fill-rule' 속성을 가지고 렌더링이 되는 SVG  요소의 내부 색상을 설정합니다.</p>
             <p>일반적인 'fill' 메소드는 사용법은 다음과 같습니다.</p>
             <pre class="prettyprint">
-var svg = DV.svg().size(200,50).into("dv-01");
+let svg = DV.svg().size(200,50).into("dv-01");
 DV.g().stroke("#b6b6b6",3).into(svg).append(
     DV.rect().dim(5,5,20,20).fill("none"),
     DV.rect().dim(30,5,20,20).fill("red"),
@@ -81,7 +80,8 @@ DV.g().stroke("#b6b6b6",3).into(svg).append(
 </pre>
             <div id="dv-01"></div>
             <script>
-                var svg = DV.svg().size(200,50).into("dv-01");
+			{
+                let svg = DV.svg().size(200,50).into("dv-01");
                 DV.g().stroke("#b6b6b6",3).into(svg).append(
                     DV.rect().dim(5,5,20,20).fill("none"),
                     DV.rect().dim(30,5,20,20).fill("red"),
@@ -89,11 +89,12 @@ DV.g().stroke("#b6b6b6",3).into(svg).append(
                     DV.rect().dim(80,5,20,20).fill("blue"),
                     DV.rect().dim(105,5,20,20).fill("blue",0.25)
                 );
+			}
             </script>
             <p>'fill-rule'을 사용하면, 단일 shape이 아닌 path를 사용하여 복잡한 shape을 만드는 경우, 내부를 채우는 효과를 다르게 처리할 수 있습니다</p>
             <p>'fill-rule'의 값이 'evenodd'인 경우 다음과 같이 계산합니다. 도형 내부의 임의의 점이 "내부(insideness)"점인지 결정을 합니다. 여기서 "내부"란 채우기 영역 안에 점이 있는 경우를 말합니다. 임의의 점을 P라고 할 때, P에서 도형 바깥으로 직선(무한한)을 그립니다. 이때 도형의 선분들과 교차되는 점의 수가 홀수이면 "내부"에 있는 것이고, 짝수이면 밖에 있는 것입니다. 점 P가 "내부"인 경우에 그 점은 채우기 영역에 포함되는 것입니다.</p>
             <pre class="prettyprint">
-var svg = DV.svg().size(200,100).viewbox(0,0,1200,600).into("dv-02");
+let svg = DV.svg().size(200,100).viewbox(0,0,1200,600).into("dv-02");
 DV.path().fill("#ccf",1.0,"evenodd").stroke("#000",3)
     .mto(500,50).arc(250,250,0,0,1,500,550).arc(250,250,0,0,1,500,50).pz()
     .mto(500,100).arc(200,200,0,0,1,500,500).arc(200,200,0,0,1,500,100).pz()
@@ -102,14 +103,15 @@ DV.path().fill("#ccf",1.0,"evenodd").stroke("#000",3)
 </pre>
             <div id="dv-02"></div>
             <script>
-                var svg = DV.svg().size(200,100).viewbox(0,0,1200,600).into("dv-02");
+			{
+                let svg = DV.svg().size(200,100).viewbox(0,0,1200,600).into("dv-02");
                 DV.path().fill("#ccf",1.0,"evenodd").stroke("#000",3)
                     .mto(500,50).arc(250,250,0,0,1,500,550).arc(250,250,0,0,1,500,50).pz()
                     .mto(500,100).arc(200,200,0,0,1,500,500).arc(200,200,0,0,1,500,100).pz()
                     .mto(500,150).arc(150,150,0,0,1,500,450).arc(150,150,0,0,1,500,150).pz()
                     .mto(500,200).arc(100,100,0,0,1,500,400).arc(100,100,0,0,1,500,200).pz().into(svg);
-                var d = DV.defs().into(svg);
-                var m = DV.marker().markerDim(0,5,5,5,"auto").viewbox(0,0,10,11).id("D02MK-END").into(d).append(
+                let d = DV.defs().into(svg);
+                let m = DV.marker().markerDim(0,5,5,5,"auto").viewbox(0,0,10,11).id("D02MK-END").into(d).append(
                     DV.path().fill("#000").mto(0,0).lto(10,5).lto(0,10).pz()
                 );
                 DV.path().stroke("#000",5).mto(600,160).lto(800,50).mark(m,"e").into(svg);
@@ -119,10 +121,11 @@ DV.path().fill("#ccf",1.0,"evenodd").stroke("#000",3)
                 DV.path().stroke("#000",5).mto(570,400).lto(800,400).mark(m,"e").into(svg);
                 DV.path().stroke("#000",5).mto(570,400).lto(220,100).mark(m,"e").into(svg);
                 DV.circle().center(570,400).radius(10).fill("#f00").into(svg);
+			}
             </script>
             <p>'fill-rule'의 값이 'nonezero'이면 다음과 같이 계산합니다. 임의의 점을 P라고 할 때, P에서 도형 바깥으로 직선(무한한)을 그립니다. 이 직선이 왼쪽에서 오른쪽으로 그려지는 도형의 세그먼트와 만날 때마다 1을 더하고, 이와 반대로 오른쪽에서 왼쪽으로 그려지는 도형의 세그먼트와 만날 때마다 1을 뺍니다. 이 교차점마다 계산된 결과가 최종적으로 0이면 임의의 점 P는 "내부" 점이 아니며, 그렇지 않으면 "내부" 점입니다. 점 P가 "내부"인 경우에 그 점은 채우기 영역에 포함되는 것입니다.</p>
             <pre class="prettyprint">
-var svg = DV.svg().size(200,100).viewbox(0,0,1200,600).into("dv-03");
+let svg = DV.svg().size(200,100).viewbox(0,0,1200,600).into("dv-03");
 DV.path().fill("#ccf",1.0,"nonezero").stroke("#000",3)
     .mto(500,50).arc(250,250,0,0,1,500,550).arc(250,250,0,0,1,500,50).pz()
     .mto(500,100).arc(200,200,0,0,0,500,500).arc(200,200,0,0,0,500,100).pz()
@@ -131,17 +134,18 @@ DV.path().fill("#ccf",1.0,"nonezero").stroke("#000",3)
 </pre>
             <div id="dv-03"></div>
             <script>
-                var svg = DV.svg().size(200,100).viewbox(0,0,1200,600).into("dv-03");
+			{
+                let svg = DV.svg().size(200,100).viewbox(0,0,1200,600).into("dv-03");
                 DV.path().fill("#ccf",1.0,"nonezero").stroke("#000",3)
                     .mto(500,50).arc(250,250,0,0,1,500,550).arc(250,250,0,0,1,500,50).pz()
                     .mto(500,100).arc(200,200,0,0,0,500,500).arc(200,200,0,0,0,500,100).pz()
                     .mto(500,150).arc(150,150,0,0,1,500,450).arc(150,150,0,0,1,500,150).pz()
                     .mto(500,200).arc(100,100,0,0,0,500,400).arc(100,100,0,0,0,500,200).pz().into(svg);
-                var d = DV.defs().into(svg);
-                var m1 = DV.marker().markerDim(0,5,5,5,"auto").viewbox(0,0,10,11).id("D03MK-END").into(d).append(
+                let d = DV.defs().into(svg);
+                let m1 = DV.marker().markerDim(0,5,5,5,"auto").viewbox(0,0,10,11).id("D03MK-END").into(d).append(
                     DV.path().fill("#000").mto(0,0).lto(10,5).lto(0,10).pz()
                 );
-                var m2 = DV.marker().markerDim(0,5,5,5,"auto").viewbox(0,0,10,11).id("D03MK-DIR").into(d).append(
+                let m2 = DV.marker().markerDim(0,5,5,5,"auto").viewbox(0,0,10,11).id("D03MK-DIR").into(d).append(
                     DV.path().fill("#f00").mto(0,0).lto(10,5).lto(0,10).pz()
                 );
                 DV.path().stroke("#f00",10).mto(500,50).lto(550,50).mark(m2,"e").into(svg);
@@ -156,6 +160,7 @@ DV.path().fill("#ccf",1.0,"nonezero").stroke("#000",3)
                 DV.path().stroke("#000",5).mto(570,400).lto(800,400).mark(m1,"e").into(svg);
                 DV.path().stroke("#000",5).mto(570,400).lto(220,100).mark(m1,"e").into(svg);
                 DV.circle().center(570,400).radius(10).fill("#f00").into(svg);
+			}
             </script>
         </section>
         <section>
