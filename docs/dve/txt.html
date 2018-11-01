@@ -24,7 +24,7 @@
         <h1>DVE.prototype.txt()</h1>
         <section>
             <h2>문법</h2>
-            <pre class="prettyprint">var ret = object.txt(text[, append])</pre>
+            <pre class="prettyprint">let ret = object.txt(text[, append])</pre>
             </section><section><h2>파라미터</h2>
             <table class="parameters">
                 <thead>
@@ -56,22 +56,22 @@
             <h2>설명</h2>
             <p>문자 노드를 갖는 요소의 내용(텍스트)를 변경할 때 사용합니다.</p>
             <pre class="prettyprint">
-var svg = DV.svg().size(300,150).into("dv-01");
+let svg = DV.svg().size(300,150).into("dv-01");
 
-var t1 = DV.text().txt("Original Content - 1").xys(10,50).into(svg);
+let t1 = DV.text().txt("Original Content - 1").xys(10,50).into(svg);
 t1.txt("Replaced Content");
 
-var t2 = DV.text().txt("Original Content - 2").xys(10,100).into(svg);
+let t2 = DV.text().txt("Original Content - 2").xys(10,100).into(svg);
 t2.txt(" Appended Content", true);
 </pre>
             <div id="dv-01"></div>
             <script>
-                var svg = DV.svg().size(300,150).into("dv-01");
+                let svg = DV.svg().size(300,150).into("dv-01");
 
-                var t1 = DV.text().txt("Original Content - 1").xys(10,50).into(svg);
+                let t1 = DV.text().txt("Original Content - 1").xys(10,50).into(svg);
                 t1.txt("Replaced Content");
 
-                var t2 = DV.text().txt("Original Content - 2").xys(10,100).into(svg);
+                let t2 = DV.text().txt("Original Content - 2").xys(10,100).into(svg);
                 t2.txt(" Appended Content", true);
             </script>
         </section>

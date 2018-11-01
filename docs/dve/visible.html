@@ -24,7 +24,7 @@
         <h1>DVE.prototype.visible()</h1>
         <section>
             <h2>문법</h2>
-            <pre class="prettyprint">var ret = object.visible(torf);</pre>
+            <pre class="prettyprint">let ret = object.visible(torf);</pre>
             </section><section><h2>파라미터</h2>
             <table class="parameters">
                 <thead>
@@ -54,14 +54,14 @@
             <h2>설명</h2>
             <p>visible 메소드는 화면에 렌더링이 되는 요소에 visibility CSS 속성을 인라인으로 적용할 때 사용합니다.</p>
             <pre class="prettyprint">
-var svg = new DV().svg(400, 100).into("DV-01");
+let svg = new DV().svg(400, 100).into("DV-01");
 svg.rect(10, 10, 200, 20).fill("red");
 svg.rect(10, 40, 200, 20).fill("green").visible("hidden");
 svg.rect(10, 70, 200, 20).fill("blue");
 </pre>
             <div id="dv-01"></div>
             <script>
-                var svg = DV.svg().size(400,100).into("dv-01");
+                let svg = DV.svg().size(400,100).into("dv-01");
                 DV.rect().dim(10, 10, 200, 20).fill("red").into(svg);
                 DV.rect().dim(10, 40, 200, 20).fill("green").visible(false).into(svg);
                 DV.rect().dim(10, 70, 200, 20).fill("blue").into(svg);

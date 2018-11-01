@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="../css/style.css"/>           
     <link rel="stylesheet" href="../css/tomorrow.css"/>
     <script src="../../js/dv.js"></script>
-    <script src="../../js/dv.shape.js"></script>
 </head>
 <body>
     <section>
@@ -24,7 +23,7 @@
         <h1>DV.prototype.markerUnits()</h1>
         <section>
             <h2>문법</h2>
-            <pre class="prettyprint">var ret = DV.markerUnits(unit);</pre>
+            <pre class="prettyprint">let ret = object.markerUnits(unit);</pre>
             </section><section><h2>파라미터</h2>
             <table class="parameters">
                 <thead>
@@ -90,26 +89,26 @@
                 </svg>
             </div>
             <pre class="prettyprint">
-var svg = DV.svg().size(300,100).into("dv-01");
-var def = DV.defs().into(svg);
-var mk1 = DV.marker().markerDim(5,5,10,10).viewbox(0,0,10,10).id("D01S01").into(def);
+let svg = DV.svg().size(300,100).into("dv-01");
+let def = DV.defs().into(svg);
+let mk1 = DV.marker().markerDim(5,5,10,10).viewbox(0,0,10,10).id("D01S01").into(def);
 DV.ellipse().center(5,5).round(5,5).fill("red").into(mk1);
-var mk2 = DV.marker().markerDim(5,5,10,10,"auto").viewbox(0,0,10,10).id("D01M01").into(def);
+let mk2 = DV.marker().markerDim(5,5,10,10,"auto").viewbox(0,0,10,10).id("D01M01").into(def);
 DV.rect().dim(0,0,10,10).fill("blue").into(mk2);
-var mk3 = DV.marker().markerDim(5,5,10,10,"auto").markerUnits("userSpaceOnUse").viewbox(0,0,10,10).id("D01E01").into(def);
+let mk3 = DV.marker().markerDim(5,5,10,10,"auto").markerUnits("userSpaceOnUse").viewbox(0,0,10,10).id("D01E01").into(def);
 DV.path().d("M1,1 L9,5 L1,9 z").fill("orange").into(mk3);
 
 DV.path().d("M50,25 L100,25 L150,50").fill("none").stroke("black",3).mark("#D01S01","s").mark("#D01M02","m").mark("#D01E01","e").into(svg);
 </pre>
             <div id="dv-01"></div>
             <script>
-                var svg = DV.svg().size(300,100).into("dv-01");
-                var def = DV.defs().into(svg);
-                var mk1 = DV.marker().markerDim(5,5,10,10).viewbox(0,0,10,10).id("D01S01").into(def);
+                let svg = DV.svg().size(300,100).into("dv-01");
+                let def = DV.defs().into(svg);
+                let mk1 = DV.marker().markerDim(5,5,10,10).viewbox(0,0,10,10).id("D01S01").into(def);
                 DV.ellipse().center(5,5).round(5,5).fill("red").into(mk1);
-                var mk2 = DV.marker().markerDim(5,5,10,10,"auto").viewbox(0,0,10,10).id("D01M01").into(def);
+                let mk2 = DV.marker().markerDim(5,5,10,10,"auto").viewbox(0,0,10,10).id("D01M01").into(def);
                 DV.rect().dim(0,0,10,10).fill("blue").into(mk2);
-                var mk3 = DV.marker().markerDim(5,5,10,10,"auto").markerUnits("userSpaceOnUse").viewbox(0,0,10,10).id("D01E01").into(def);
+                let mk3 = DV.marker().markerDim(5,5,10,10,"auto").markerUnits("userSpaceOnUse").viewbox(0,0,10,10).id("D01E01").into(def);
                 DV.path().d("M1,1 L9,5 L1,9 z").fill("orange").into(mk3);
 
                 DV.path().d("M50,25 L100,25 L150,50").fill("none").stroke("black",3).mark("#D01S01","s").mark("#D01M01","m").mark("#D01E01","e").into(svg);

@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="../css/style.css"/>           
     <link rel="stylesheet" href="../css/tomorrow.css"/>
     <script src="../../js/dv.js"></script>
-    <script src="../../js/dv.shape.js"></script>
 </head>
 <body>
     <section>
@@ -24,7 +23,7 @@
         <h1>DVE.prototype.patternContentUnits()</h1>
         <section>
             <h2>문법</h2>
-            <pre class="prettyprint">var ret = object.patternContentUnits(unit);</pre>
+            <pre class="prettyprint">let ret = object.patternContentUnits(unit);</pre>
             </section><section><h2>파라미터</h2>
             <table class="parameters">
                 <thead>
@@ -87,33 +86,33 @@
                 </svg>
             </div>
             <pre class="prettyprint">
-var svg = DV.svg().size(600,250).into("dv-01");
-var def = DV.defs().into(svg);
+let svg = DV.svg().size(600,250).into("dv-01");
+let def = DV.defs().into(svg);
 DV.pattern().dim(0,0,0.2,0.2).patternContentUnits("objectBoundingBox").id("D01PT01").into(def);
 DV.rect().dim(0.01,0.01,0.1,0.1).fill("red").stroke("blue",0.01).into("D01PT01");
 DV.pattern().dim(0,0,100,100).patternUnits("userSpaceOnUse").patternContentUnits("objectBoundingBox").id("D01PT02").into(def);
 DV.rect().dim(0.01,0.01,0.1,0.1).fill("red").stroke("blue",0.01).into("D01PT02");
 
 DV.text().txt("patternContentUnits = objectBoudningBox").xys(150,25).attr("text-anchor","middle").into(svg);
-DV.rect().dim(50,50,200,50).fill(DVC.getFuncIRI("D01PT01")).stroke("blue").into(svg);
+DV.rect().dim(50,50,200,50).fill(DV.getFuncIRI("D01PT01")).stroke("blue").into(svg);
 DV.text().txt("patternUnits = useSpaceOnUse").xys(150,125).attr("text-anchor","middle").into(svg);
 DV.text().txt("patternContentUnits = objectBoundingBox").xys(150,150).attr("text-anchor","middle").into(svg);
-DV.rect().dim(50,175,200,50).fill(DVC.getFuncIRI("D01PT02")).stroke("blue").into(svg);
+DV.rect().dim(50,175,200,50).fill(DV.getFuncIRI("D01PT02")).stroke("blue").into(svg);
 </pre>
             <div id="dv-01"></div>
             <script>
-                var svg = DV.svg().size(600,250).into("dv-01");
-                var def = DV.defs().into(svg);
+                let svg = DV.svg().size(600,250).into("dv-01");
+                let def = DV.defs().into(svg);
                 DV.pattern().dim(0,0,0.2,0.2).patternContentUnits("objectBoundingBox").id("D01PT01").into(def);
                 DV.rect().dim(0.01,0.01,0.1,0.1).fill("red").stroke("blue",0.01).into("D01PT01");
                 DV.pattern().dim(0,0,100,100).patternUnits("userSpaceOnUse").patternContentUnits("objectBoundingBox").id("D01PT02").into(def);
                 DV.rect().dim(0.01,0.01,0.1,0.1).fill("red").stroke("blue",0.01).into("D01PT02");
 
                 DV.text().txt("patternContentUnits = objectBoudningBox").xys(150,25).attr("text-anchor","middle").into(svg);
-                DV.rect().dim(50,50,200,50).fill(DVC.getFuncIRI("D01PT01")).stroke("blue").into(svg);
+                DV.rect().dim(50,50,200,50).fill(DV.getFuncIRI("D01PT01")).stroke("blue").into(svg);
                 DV.text().txt("patternUnits = useSpaceOnUse").xys(150,125).attr("text-anchor","middle").into(svg);
                 DV.text().txt("patternContentUnits = objectBoundingBox").xys(150,150).attr("text-anchor","middle").into(svg);
-                DV.rect().dim(50,175,200,50).fill(DVC.getFuncIRI("D01PT02")).stroke("blue").into(svg);
+                DV.rect().dim(50,175,200,50).fill(DV.getFuncIRI("D01PT02")).stroke("blue").into(svg);
             </script>
         </section>
         <section>

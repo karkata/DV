@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="../css/style.css"/>           
     <link rel="stylesheet" href="../css/tomorrow.css"/>
     <script src="../../js/dv.js"></script>
-    <script src="../../js/dv.shape.js"></script>
 </head>
 <body>
     <section>
@@ -24,7 +23,7 @@
         <h1>dve.prototype.oco()</h1>
         <section>
             <h2>문법</h2>
-            <pre class="prettytext">var ret = object.oco(offset[, color[, opacity]]);</pre>
+            <pre class="prettytext">let ret = object.oco(offset[, color[, opacity]]);</pre>
             </section><section><h2>파라미터</h2>
             <table class="parameters">
                 <thead>
@@ -101,12 +100,12 @@
                 </svg>
             </div>
             <pre class="prettyprint">
-var svg = DV.svg().size(600,150).into("dv-01");
-var def = DV.defs().into(svg);
-var grad1 = DV.gradl().point2("50%").id("D01GRL01").into(def);
+let svg = DV.svg().size(600,150).into("dv-01");
+let def = DV.defs().into(svg);
+let grad1 = DV.gradl().point2("50%").id("D01GRL01").into(def);
 DV.stop().oco("30%","#F60").into(grad1);
 DV.stop().oco("70%","#FF6").into(grad1);
-var grad2 = DV.gradr().center(.25,.25).radius(1).id("D01GRL02").into(def);
+let grad2 = DV.gradr().center(.25,.25).radius(1).id("D01GRL02").into(def);
 DV.stop().oco("0%","red").into(grad2);
 DV.stop().oco("100%","blue").into(grad2);
 
@@ -115,12 +114,12 @@ DV.rect().dim(0,85,200,25).fill(grad2).into(svg);
 </pre>
             <div id="dv-01"></div>
             <script>
-                var svg = DV.svg().size(600,150).into("dv-01");
-                var def = DV.defs().into(svg);
-                var grad1 = DV.gradl().point2("50%").id("D01GRL01").into(def);
+                let svg = DV.svg().size(600,150).into("dv-01");
+                let def = DV.defs().into(svg);
+                let grad1 = DV.gradl().point2("50%").id("D01GRL01").into(def);
                 DV.stop().oco("30%","#F60").into(grad1);
                 DV.stop().oco("70%","#FF6").into(grad1);
-                var grad2 = DV.gradr().center(.25,.25).radius(1).id("D01GRL02").into(def);
+                let grad2 = DV.gradr().center(.25,.25).radius(1).id("D01GRL02").into(def);
                 DV.stop().oco("0%","red").into(grad2);
                 DV.stop().oco("100%","blue").into(grad2);
 

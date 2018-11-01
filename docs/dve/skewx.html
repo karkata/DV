@@ -24,7 +24,7 @@
         <h1>DVE.prototype.skewx()</h1>
         <section>
             <h2>문법</h2>
-            <pre class="prettyprint">var ret = object.skewx(angle);</pre>
+            <pre class="prettyprint">let ret = object.skewx(angle);</pre>
             </section><section><h2>파라미터</h2>
             <table class="parameters">
                 <thead>
@@ -80,7 +80,7 @@
                 </svg>
             </div>
             <pre class="prettyprint">
-var svg = DV.svg().size(400,150).into("dv-01");
+let svg = DV.svg().size(400,150).into("dv-01");
 DV.g().into(svg).append(
     DV.line().bound(1,1,100,1).stroke("gray",1),
     DV.line().bound(1,1,1,50).stroke("gray",1),
@@ -94,7 +94,7 @@ DV.g().translate(50,50).skewx(30).into(svg).append(
 </pre>
             <div id="dv-01"></div>
             <script>
-                var svg = DV.svg().size(400,150).into("dv-01");
+                let svg = DV.svg().size(400,150).into("dv-01");
                 DV.g().into(svg).append(
                     DV.line().bound(1,1,100,1).stroke("gray",1),
                     DV.line().bound(1,1,1,50).stroke("gray",1),

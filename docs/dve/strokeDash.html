@@ -24,7 +24,7 @@
         <h1>DVE.prototype.strokeDash()</h1>
         <section>
             <h2>문법</h2>
-            <pre class="prettyprint">var ret = object.strokeDash(array[, offset])</pre>
+            <pre class="prettyprint">let ret = object.strokeDash(array[, offset])</pre>
             </section><section><h2>파라미터</h2>
             <table class="parameters">
                 <thead>
@@ -84,7 +84,7 @@
                 </svg>
             </div>
             <pre class="prettyprint">
-var svg = DV.svg().size(200,150).into("dv-01");
+let svg = DV.svg().size(200,150).into("dv-01");
 DV.path().d("M10,30 l100,0").fill("none").stroke("#212121",13,undefined,undefined,"10 5 5 5").into(svg)
 DV.path().d("M10,30 l100,0").fill("none").stroke("#448aff",1).into(svg)
 
@@ -99,7 +99,7 @@ DV.path().d("M10,120 l100,0").fill("none").stroke("#448aff",1).into(svg)
 </pre>
             <div id="dv-01"></div>
             <script>
-                var svg = DV.svg().size(200,150).into("dv-01");
+                let svg = DV.svg().size(200,150).into("dv-01");
                 DV.path().d("M10,30 l100,0").fill("none").stroke("#212121",13,undefined,undefined,"10 5 5 5").into(svg)
                 DV.path().d("M10,30 l100,0").fill("none").stroke("#448aff",1).into(svg)
 

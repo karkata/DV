@@ -25,7 +25,7 @@
         <h1>DVE.prototype.tlength()</h1>
         <section>
             <h2>문법</h2>
-            <pre class="prettyprint">var ret = object.tlength(length, adjust)</pre>
+            <pre class="prettyprint">let ret = object.tlength(length, adjust)</pre>
             </section><section><h2>파라미터</h2>
             <table class="parameters">
                 <thead>
@@ -83,7 +83,7 @@
                 </svg>
             </div>
             <pre class="prettyprint">
-var svg = DV.svg().size(400,200).into("dv-01");
+let svg = DV.svg().size(400,200).into("dv-01");
 DV.path().stroke("#03A9F4",1).mto(20,10).lto(20,120).mto(220,10).lto(220,120).into(svg);
 DV.text().txt("width: 200").xys(120,20).fsize("0.65em").fill("#03A9F4").tanchor("middle").into(svg);
 DV.text().txt("I am your father. No!!!!").xys(20,50).fsize("2em").tlength(200).into(svg);
@@ -92,7 +92,7 @@ DV.text().txt("I am your father. No!!!!").xys(20,150).fsize("2em").into(svg);
 </pre>
             <div id="dv-01"></div>
             <script>
-                var svg = DV.svg().size(400,200).into("dv-01");
+                let svg = DV.svg().size(400,200).into("dv-01");
                 DV.path().stroke("#03A9F4",1).mto(20,10).lto(20,120).mto(220,10).lto(220,120).into(svg);
                 DV.text().txt("width: 200").xys(120,20).fsize("0.65em").fill("#03A9F4").tanchor("middle").into(svg);
                 DV.text().txt("I am your father. No!!!!").xys(20,50).fsize("2em").tlength(200).into(svg);

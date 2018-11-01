@@ -24,7 +24,7 @@
         <h1>DVE.prototype.xys()</h1>
         <section>
             <h2>문법</h2>
-            <pre class="prettyprint">var ret = object.xys(x[, y]);</pre>
+            <pre class="prettyprint">let ret = object.xys(x[, y]);</pre>
             </section><section><h2>파라미터</h2>
             <table class="parameters">
                 <thead>
@@ -58,13 +58,13 @@
             <h2>설명</h2>
             <p>'xys' 메소드는 SVG 요소 바운딩 영역의 좌측 상단 좌표 목록을 'x, y' 속성을 가지고 설정합니다.</p>
             <pre class="prettyprint">
-var svg = DV.svg().size(300,100).into("dv-01");
+let svg = DV.svg().size(300,100).into("dv-01");
 DV.text().txt("I am your father.").xys(10, 25).fill("purple").into(svg);
 DV.text().txt("I am your father.").xys("10 50 100 150", "50 50 75 50").fill("purple").into(svg);
 </pre>
             <div id="dv-01"></div>
             <script>
-                var svg = DV.svg().size(300,100).into("dv-01");
+                let svg = DV.svg().size(300,100).into("dv-01");
                 DV.text().txt("I am your father.").xys(10, 25).fill("purple").into(svg);
                 DV.text().txt("I am your father.").xys("10 50 100 150", "50 50 75 50").fill("purple").into(svg);
 

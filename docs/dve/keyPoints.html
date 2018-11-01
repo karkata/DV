@@ -23,7 +23,7 @@
         <h1>DVE.prototype.keyPoints()</h1>
         <section>
             <h2>문법</h2>
-            <pre class="prettyprint">var ret = object.keyPoints(points);</pre>
+            <pre class="prettyprint">let ret = object.keyPoints(points);</pre>
             </section><section><h2>파라미터</h2>
             <table class="parameters">
                 <thead>
@@ -88,7 +88,7 @@
             <p class="notice">animateMotion 요소에서 calcMode는 기본값이 paced입니다. keyPoints 속성은 paced의 경우에는 동작하지 않음이 확인되었습니다.</p> 
             <p>DV를 사용한 keyPoints 애니메이션은 다음과 같습니다.</p>
             <pre class="prettyprint">
-var svg = DV.svg().size(500,150).into("dv-01");
+let svg = DV.svg().size(500,150).into("dv-01");
 DV.path().id("D01P01").mto(50,50).csto([
         [[50,-25],[50,-25],[100,0]],
         [[50,25],[100,0]],
@@ -115,7 +115,7 @@ DV.rect().dim(-5,-5,10,10).fill("red").append(
 </pre>
             <div id="dv-01"></div>
             <script>
-                var svg = DV.svg().size(500,150).into("dv-01");
+                let svg = DV.svg().size(500,150).into("dv-01");
                 DV.path().id("D01P01").mto(50,50).csto([
                         [[50,-25],[50,-25],[100,0]],
                         [[50,25],[100,0]],

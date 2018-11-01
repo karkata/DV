@@ -24,7 +24,7 @@
         <h1>DVE.prorotype.updateLayout</h1>
         <section>
             <h2>문법</h2>
-            <pre class="prettyprint">var ret = object.updateLayout(dic);</pre>
+            <pre class="prettyprint">let ret = object.updateLayout(dic);</pre>
             </section><section><h2>파라미터</h2>
             <table class="parameters">
                 <thead>
@@ -55,7 +55,7 @@
             <p>updateLayout 함수는 updateLayout을 수행하는 요소의 하위 요소 크기를 재조정할 수 있습니다.</p>
             <p>setAutoLayout 함수를 사용하여 선언된 바운딩 항목에 대해서는 다시 연산을 하여 레이아웃을 정합니다.</p>
             <pre class="prettyprint">
-var svg = DV.svg().size(200,100).into("dv-01");
+let svg = DV.svg().size(200,100).into("dv-01");
 
 // 가로 0, 세로 100%(100)인 사각형을 만듭니다.
 // 이 사각형은 부모 컨테이너의 전체 크기에서 20 픽셀 작은 크기로 설정되도록 선언합니다.
@@ -70,7 +70,7 @@ svg.updateLayout();
 </pre>
             <div id="dv-01"></div>
             <script>
-                var svg = DV.svg().size(200,100).into("dv-01");
+                let svg = DV.svg().size(200,100).into("dv-01");
                 DV.rect().dim(0,0,0,"100%").fill("red",0.25).setAutoLayout("width:100%-20").into(svg);
                 DV.rect().dim(0,0,20,"100%").fill("blue",0.25).setAutoLayout("x:100%-20").into(svg);
                 svg.updateLayout();
@@ -78,8 +78,8 @@ svg.updateLayout();
             <p>변수를 선언하여 사용하는 방법은 다음과 같습니다.</p>
             <pre class="prettyprint">
 // 속성 이름에는 '+', '-'를 포함하면 안됩니다.
-var dic = { "gapY": 10 };
-var svg = DV.svg().size(200,100).into("dv-02");
+let dic = { "gapY": 10 };
+let svg = DV.svg().size(200,100).into("dv-02");
 
 // 가로 100%, 세로 0인 사각형을 만듭니다.
 // 이 사각형은 부모 컨테이너의 전체 크기에서 높이가 20 + gapY 픽셀 만큼 작도록 선언합니다.
@@ -94,8 +94,8 @@ svg.updateLayout(dic);
 </pre>
             <div id="dv-02"></div>
             <script>
-                var dic = { "gapY": 10 };
-                var svg = DV.svg().size(200,100).into("dv-02");
+                let dic = { "gapY": 10 };
+                let svg = DV.svg().size(200,100).into("dv-02");
                 DV.rect().dim(0,0,"100%",0).fill("yellow",0.25).setAutoLayout("height:100%-20-{gapY}").into(svg);
                 DV.rect().dim(0,0,"100%",50).fill("purple",0.25).setAutoLayout("y:100%-20").into(svg);
                 svg.updateLayout(dic);

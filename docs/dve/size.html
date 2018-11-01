@@ -24,7 +24,7 @@
         <h1>DVE.prototype.size()</h1>
         <section>
             <h2>문법</h2>
-            <pre class="prettyprint">var ret = object.size(width[, height]);</pre>
+            <pre class="prettyprint">let ret = object.size(width[, height]);</pre>
             </section><section><h2>파라미터</h2>
             <table class="parameters">
                 <thead>
@@ -66,13 +66,13 @@
                 </svg>
             </div>
             <pre class="prettyprint">
-var svg = DV.svg().size(300,60).into("dv-01");
+let svg = DV.svg().size(300,60).into("dv-01");
 DV.rect().dim(10,10,50,20).fill("red").into(svg);
 DV.rect().point(10,40).size(50,20).fill("blue").into(svg);
 </pre>
             <div id="dv-01"></div>
             <script>
-                var svg = DV.svg().size(300,60).into("dv-01");
+                let svg = DV.svg().size(300,60).into("dv-01");
                 DV.rect().dim(10,10,50,20).fill("red").into(svg);
                 DV.rect().point(10,40).size(50,20).fill("blue").into(svg);
             </script>

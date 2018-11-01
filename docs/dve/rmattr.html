@@ -24,7 +24,7 @@
         <h1>DVE.prototype.rmattr()</h1>
         <section>
             <h2>문법</h2>
-            <pre class="prettyprint">var ret = object.rmattr(name[, value]);</pre>
+            <pre class="prettyprint">let ret = object.rmattr(name[, value]);</pre>
             </section><section><h2>파라미터</h2>
             <table class="parameters">
                 <thead>
@@ -55,14 +55,14 @@
             <p>rmattr 메소드는 요소가 갖는 속성을 삭제하거나, 속성 값만 삭제할 때 사용합니다.</p>
             <p>name 파라미터만 주어지면 현재 대상 속성이 삭제되고, value 파라미터까지 주어진다면 대상 속성 값 중에서 value를 찾아 삭제합니다.</p>
             <pre class="prettyprint">
-var svg = DV.svg().size(400,70).into("dv-01");
-var rect = DV.rect().dim(10,10,200,20).fill("blue").stroke("red",5).into(svg);
+let svg = DV.svg().size(400,70).into("dv-01");
+let rect = DV.rect().dim(10,10,200,20).fill("blue").stroke("red",5).into(svg);
 rect.rmattr("stroke");
 </pre>
             <div id="dv-01"></div>
             <script>
-                var svg = DV.svg().size(400,70).into("dv-01");
-                var rect = DV.rect().dim(10,10,200,20).fill("blue").stroke("red",5).into(svg);
+                let svg = DV.svg().size(400,70).into("dv-01");
+                let rect = DV.rect().dim(10,10,200,20).fill("blue").stroke("red",5).into(svg);
                 rect.rmattr("stroke");
             </script>
         </section>

@@ -8,8 +8,6 @@
     <link rel="stylesheet" href="../css/style.css"/>           
     <link rel="stylesheet" href="../css/tomorrow.css"/>
     <script src="../../js/dv.js"></script>
-    <script src="../../js/dv.shape.js"></script>
-    <script src="../../js/dv.animation.js"></script>
 </head>
 <body>
     <section>
@@ -25,7 +23,7 @@
         <h1>DVE.prototype.motionRotate()</h1>
         <section>
             <h2>문법</h2>
-            <pre class="prettyprint">var ret = object.motionRotate(value);</pre>
+            <pre class="prettyprint">let ret = object.motionRotate(value);</pre>
             </section><section><h2>파라미터</h2>
             <table class="parameters">
                 <thead>
@@ -103,10 +101,10 @@
             </div>
             <p class="notice">크롬 브라우저에서는 auto, auto-reverse만 사용 가능합니다.</p>
             <pre class="prettyprint">
-var d = "M50,50 c50,-25 50,-25 100,0 s50,25 100,0 s50,-25 100,0 s50,25 100,0";
-var svg = DV.svg().size(500,200).into("dv-01");
+let d = "M50,50 c50,-25 50,-25 100,0 s50,25 100,0 s50,-25 100,0 s50,25 100,0";
+let svg = DV.svg().size(500,200).into("dv-01");
 
-var g = DV.g().into(svg);
+let g = DV.g().into(svg);
 DV.path().d(d).nofill().stroke("gray",1.5).into(g);
 DV.path({"d":"M-5,5 L0,-5 L5,5 z"}).fill("red").append(
     DV.animateMotion().motionPath(d).time("0s","5s").motionRotate("auto").freeze()
@@ -126,10 +124,10 @@ DV.path({"d": "M-5,5 L0,-5 L5,5 z"}).fill("red").append(
 </pre>
             <div id="dv-01"></div>
             <script>
-                var d = "M50,50 c50,-25 50,-25 100,0 s50,25 100,0 s50,-25 100,0 s50,25 100,0";
-                var svg = DV.svg().size(500,200).into("dv-01");
+                let d = "M50,50 c50,-25 50,-25 100,0 s50,25 100,0 s50,-25 100,0 s50,25 100,0";
+                let svg = DV.svg().size(500,200).into("dv-01");
 
-                var g = DV.g().into(svg);
+                let g = DV.g().into(svg);
                 DV.path().d(d).nofill().stroke("gray",1.5).into(g);
                 DV.path({"d":"M-5,5 L0,-5 L5,5 z"}).fill("red").append(
                     DV.animateMotion().motionPath(d).time("0s","5s").motionRotate("auto").freeze()

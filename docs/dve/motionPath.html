@@ -8,8 +8,6 @@
     <link rel="stylesheet" href="../css/style.css"/>           
     <link rel="stylesheet" href="../css/tomorrow.css"/>
     <script src="../../js/dv.js"></script>
-    <script src="../../js/dv.shape.js"></script>
-    <script src="../../js/dv.animation.js"></script>
 </head>
 <body>
     <section>
@@ -25,7 +23,7 @@
         <h1>DVE.prototype.motionPath()</h1>
         <section>
             <h2>문법</h2>
-            <pre class="prettyprint">var ret = object.motionPath(value);</pre>
+            <pre class="prettyprint">let ret = object.motionPath(value);</pre>
             </section><section><h2>파라미터</h2>
             <table class="parameters">
                 <thead>
@@ -70,8 +68,8 @@
                 </svg>
             </div>
             <pre class="prettyprint">
-var svg = DV.svg().size(500,150).into("dv-01");
-var d = DV.path().mto(50,50).csto([
+let svg = DV.svg().size(500,150).into("dv-01");
+let d = DV.path().mto(50,50).csto([
         [[50,-25],[50,-25],[100,0]],
         [[50,25],[100,0]],
         [[50,-25],[100,0]],
@@ -83,8 +81,8 @@ DV.rect().dim(-5,-5,10,10).fill("red").append(
 </pre>
             <div id="dv-01"></div>
             <script>
-                var svg = DV.svg().size(500,150).into("dv-01");
-                var d = DV.path().mto(50,50).csto([
+                let svg = DV.svg().size(500,150).into("dv-01");
+                let d = DV.path().mto(50,50).csto([
                         [[50,-25],[50,-25],[100,0]],
                         [[50,25],[100,0]],
                         [[50,-25],[100,0]],

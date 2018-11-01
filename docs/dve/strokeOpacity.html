@@ -24,7 +24,7 @@
         <h1>DVE.prototype.strokeOpacity()</h1>
         <section>
             <h2>문법</h2>
-            <pre class="prettyprint">var ret = object.strokeOpacity(opacity)</pre>
+            <pre class="prettyprint">let ret = object.strokeOpacity(opacity)</pre>
             </section><section><h2>파라미터</h2>
             <table class="parameters">
                 <thead>
@@ -73,7 +73,7 @@
                 </svg>
             </div>
             <pre class="prettyprint">
-var svg = DV.svg().size(200,150).into("dv-01");
+let svg = DV.svg().size(200,150).into("dv-01");
 DV.path().d("M10,30 l100,0").fill("none").stroke("#212121",23,undefined,undefined,undefined,undefined,1.0).into(svg);
 DV.path().d("M10,30 l100,0").fill("none").stroke("#448AFF",1).into(svg);
 DV.path().d("M10,60 l100,0").fill("none").stroke("#212121",23).attr("stroke-opacity",0.5).into(svg);
@@ -83,7 +83,7 @@ DV.path().d("M10,90 l100,0").fill("none").stroke("#448AFF",1).into(svg);
 </pre>
             <div id="dv-01"></div>
             <script>
-                var svg = DV.svg().size(200,150).into("dv-01");
+                let svg = DV.svg().size(200,150).into("dv-01");
                 DV.path().d("M10,30 l100,0").fill("none").stroke("#212121",23,undefined,undefined,undefined,undefined,1.0).into(svg);
                 DV.path().d("M10,30 l100,0").fill("none").stroke("#448AFF",1).into(svg);
                 DV.path().d("M10,60 l100,0").fill("none").stroke("#212121",23).attr("stroke-opacity",0.5).into(svg);

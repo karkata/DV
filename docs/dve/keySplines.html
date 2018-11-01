@@ -23,7 +23,7 @@
         <h1>DVE.prototype.keySplines()</h1>
         <section>
             <h2>문법</h2>
-            <pre class="prettyprint">var ret = object.keySplines(splines);</pre>
+            <pre class="prettyprint">let ret = object.keySplines(splines);</pre>
             </section><section><h2>파라미터</h2>
             <table class="parameters">
                 <thead>
@@ -90,7 +90,7 @@
             </div>
             <p>DV를 사용하여 동일한 효과를 보여줄 수 있습니다.</p>
             <pre class="prettyprint">
-var svg = DV.svg().size(200,150).into("dv-01");
+let svg = DV.svg().size(200,150).into("dv-01");
 DV.path().id("D01P01").mto(50,125).cto([[0,-75],[25,-100],[100,-100]],true).stroke("gray",1.5).fill("none").into(svg);
 DV.rect().dim(-5,-5,10,10).fill("red").append(
     DV.animateMotion().calcMode("spline").time("0s","2s").keyTimes([0,1]).keySplines([0,.75,.25,1]).motionRotate("auto").freeze().append(
@@ -100,7 +100,7 @@ DV.rect().dim(-5,-5,10,10).fill("red").append(
 </pre>
             <div id="dv-01"></div>
             <script>
-                var svg = DV.svg().size(200,150).into("dv-01");
+                let svg = DV.svg().size(200,150).into("dv-01");
                 DV.path().id("D01P01").mto(50,125).cto([[0,-75],[25,-100],[100,-100]],true).stroke("gray",1.5).fill("none").into(svg);
                 DV.rect().dim(-5,-5,10,10).fill("red").append(
                     DV.animateMotion().calcMode("spline").time("0s","2s").keyTimes([0,1]).keySplines([0,.75,.25,1]).motionRotate("auto").freeze().append(

@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="../css/style.css"/>           
     <link rel="stylesheet" href="../css/tomorrow.css"/>
     <script src="../../js/dv.js"></script>
-    <script src="../../js/dv.shape.js"></script>
 </head>
 <body>
     <section>
@@ -24,7 +23,7 @@
         <h1>DVE.prototype.nofill()</h1>
         <section>
             <h2>문법</h2>
-            <pre class="prettyprint">var ret = object.nofill();</pre>
+            <pre class="prettyprint">let ret = object.nofill();</pre>
             </section><section><h2>파라미터</h2>
             </section><section><h2>반환</h2>
             <p>DVE 객체를 반환합니다.</p>
@@ -34,15 +33,15 @@
             <p>그래픽 도형 내부를 fill 속성을 none 값으로 설정할 때 사용하는 메소드입니다.</p>
             <p>nofill 메소드는 fill("none") 메소드 호출과 동일합니다.</p>
             <pre class="prettyprint">
-var svg = DV.svg().size(200,50).into("dv-01");
-var g = DV.g().stroke("#b6b6b6", 3).into(svg);
+let svg = DV.svg().size(200,50).into("dv-01");
+let g = DV.g().stroke("#b6b6b6", 3).into(svg);
 DV.rect().dim(5,5,20,20).fill("none").into(g);
 DV.rect().dim(30,5,20,20).nofill().into(g);
 </pre>
             <div id="dv-01"></div>
             <script>
-                var svg = DV.svg().size(200,50).into("dv-01");
-                var g = DV.g().stroke("#b6b6b6", 3).into(svg);
+                let svg = DV.svg().size(200,50).into("dv-01");
+                let g = DV.g().stroke("#b6b6b6", 3).into(svg);
                 DV.rect().dim(5,5,20,20).fill("none").into(g);
                 DV.rect().dim(30,5,20,20).nofill().into(g);
             </script>

@@ -24,7 +24,7 @@
         <h1>DVE.prototype.class()</h1>
         <section>
             <h2>문법</h2>
-            <pre class="prettyprint">var ret = object.class([className[, append]]);</pre>
+            <pre class="prettyprint">let ret = object.class([className[, append]]);</pre>
             </section><section><h2>파라미터</h2>
             <table class="parameters">
                 <thead>
@@ -57,20 +57,20 @@
             <h2>설명</h2>
             <p>'class' 메소드는 요소마다 가지고 있는 'class' 속성값을 가져오거나 설정할 때 사용합니다.</p>
             <pre class="prettyprint">
-var svg = DV.svg().size(275,150).into("dv-01");
+let svg = DV.svg().size(275,150).into("dv-01");
 
 // 테두리 두께가 5이고 안을 채우지 않는 스타일을 클래스로 선언합니다.
 DV.styleblock().txt(".circle-ui-default { stroke-width: 5; fill: none; }").into(svg);
 
-var c1 = DV.circle().center(75,75).radius(50).class("circle-ui-default").stroke("red").into(svg);
+let c1 = DV.circle().center(75,75).radius(50).class("circle-ui-default").stroke("red").into(svg);
 // 같은 클래스를 갖도록 합니다.
 DV.circle().center(200,75).radius(50).class(c1.class()).stroke("orange").into(svg);
 </pre>
             <div id="dv-01"></div>
             <script>
-                var svg = DV.svg().size(275,150).into("dv-01");
+                let svg = DV.svg().size(275,150).into("dv-01");
                 DV.styleblock().txt(".circle-ui-default { stroke-width: 5; fill: none; }").into(svg);
-                var c1 = DV.circle().center(75,75).radius(50).class("circle-ui-default").stroke("red").into(svg);
+                let c1 = DV.circle().center(75,75).radius(50).class("circle-ui-default").stroke("red").into(svg);
                 DV.circle().center(200,75).radius(50).class(c1.class()).stroke("orange").into(svg);
             </script>
         </section>

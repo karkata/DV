@@ -25,7 +25,7 @@
         <h1>DVE.prototype.trotate()</h1>
         <section>
             <h2>문법</h2>
-            <pre class="prettyprint">var ret = object.trotate(angles)</pre>
+            <pre class="prettyprint">let ret = object.trotate(angles)</pre>
             </section><section><h2>파라미터</h2>
             <table class="parameters">
                 <thead>
@@ -68,19 +68,19 @@
                 </svg>
             </div>
            <pre class="prettyprint">
-var svg = DV.svg().size(700,100).into("dv-01");
+let svg = DV.svg().size(700,100).into("dv-01");
 DV.line().point1(0,50).point2("100%",50).stroke("#03A9F4",1).into(svg);
 DV.text().txt("base-line").xys(0,48).fsize("0.65em").fill("#03A9F4").into(svg);
-var t = DV.text().txt("ABC ").xys(50,50).fsize("2em").attr("letter-spacing",10).trotate([90,45,90,25]).into(svg);
+let t = DV.text().txt("ABC ").xys(50,50).fsize("2em").attr("letter-spacing",10).trotate([90,45,90,25]).into(svg);
 DV.tspan().txt("1234567890").dxys(0,20).trotate([45,90]).into(t);
 t.txt(" xyz",true);
 </pre>
             <div id="dv-01"></div>
             <script>
-                var svg = DV.svg().size(700,100).into("dv-01");
+                let svg = DV.svg().size(700,100).into("dv-01");
                 DV.line().point1(0,50).point2("100%",50).stroke("#03A9F4",1).into(svg);
                 DV.text().txt("base-line").xys(0,48).fsize("0.65em").fill("#03A9F4").into(svg);
-                var t = DV.text().txt("ABC ").xys(50,50).fsize("2em").attr("letter-spacing",10).trotate([90,45,90,25]).into(svg);
+                let t = DV.text().txt("ABC ").xys(50,50).fsize("2em").attr("letter-spacing",10).trotate([90,45,90,25]).into(svg);
                 DV.tspan().txt("1234567890").dxys(0,20).trotate([45,90]).into(t);
                 t.txt(" xyz",true);
             </script>

@@ -24,7 +24,7 @@
         <h1>DVE.prototype.ref()</h1>
         <section>
             <h2>문법</h2>
-            <pre class="prettyprint">var ret = object.ref();</pre>
+            <pre class="prettyprint">let ret = object.ref();</pre>
             </section><section><h2>파라미터</h2>
             </section><section><h2>반환</h2>
             <p>'#' 문자가 붙은 아이디를 반환합니다.</p>
@@ -52,18 +52,18 @@
                 </svg>
             </div>
             <pre class="prettyprint">
-var svg = DV.svg().size(300,100).into("dv-01");
-var def = DV.defs().into(svg);
-var rect = DV.rect().size(50,20).fill("blue").id("D01R01").into(def);
+let svg = DV.svg().size(300,100).into("dv-01");
+let def = DV.defs().into(svg);
+let rect = DV.rect().size(50,20).fill("blue").id("D01R01").into(def);
 DV.use().xhref(rect.ref()).point(50,25).into(svg);
 // xhref 메소드는 ref 메소드를 사용하지 않고 DVE 객체만 파라미터로 받을 수도 있습니다.
 // DV.use().xhref(rect).size(.........
 </pre>
             <div id="dv-01"></div>
             <script>
-                var svg = DV.svg().size(300,100).into("dv-01");
-                var def = DV.defs().into(svg);
-                var rect = DV.rect().size(50,20).fill("blue").id("D01R01").into(def);
+                let svg = DV.svg().size(300,100).into("dv-01");
+                let def = DV.defs().into(svg);
+                let rect = DV.rect().size(50,20).fill("blue").id("D01R01").into(def);
                 DV.use().xhref(rect.ref()).point(50,25).into(svg);
             </script>
         </section>

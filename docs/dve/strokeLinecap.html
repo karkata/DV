@@ -24,7 +24,7 @@
         <h1>DVE.prototype.strokeLinecap()</h1>
         <section>
             <h2>문법</h2>
-            <pre class="prettyprint">var ret = object.strokeLinecap(linecap)</pre>
+            <pre class="prettyprint">let ret = object.strokeLinecap(linecap)</pre>
             </section><section><h2>파라미터</h2>
             <table class="parameters">
                 <thead>
@@ -74,7 +74,7 @@
                 </svg>
             </div>
             <pre class="prettyprint">
-var svg = DV.svg().size(350,220).into("dv-01");
+let svg = DV.svg().size(350,220).into("dv-01");
 DV.path().d("M60,60 l50,-20 l50,20 l50,-20 l50,20 l50,-20").fill("none").stroke("#212121",23,"butt").into(svg);
 DV.path().d("M60,60 l50,-20 l50,20 l50,-20 l50,20 l50,-20").fill("none").stroke("#448aff",3).into(svg);
 
@@ -86,7 +86,7 @@ DV.path().d("M60,180 l50,-20 l50,20 l50,-20 l50,20 l50,-20").fill("none").stroke
 </pre>
             <div id="dv-01"></div>
             <script>
-                var svg = DV.svg().size(350,220).into("dv-01");
+                let svg = DV.svg().size(350,220).into("dv-01");
                 DV.path().d("M60,60 l50,-20 l50,20 l50,-20 l50,20 l50,-20").fill("none").stroke("#212121",23,"butt").into(svg);
                 DV.path().d("M60,60 l50,-20 l50,20 l50,-20 l50,20 l50,-20").fill("none").stroke("#448aff",3).into(svg);
 

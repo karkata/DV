@@ -24,7 +24,7 @@
         <h1>DVE.prototype.stroke()</h1>
         <section>
             <h2>문법</h2>
-            <pre class="prettyprint">var ret = object.stroke(paint[, width[, linecap[, linejoin[, dasharry[, dashoffset[, opacity]]]]]])</pre>
+            <pre class="prettyprint">let ret = object.stroke(paint[, width[, linecap[, linejoin[, dasharry[, dashoffset[, opacity]]]]]])</pre>
             </section><section><h2>파라미터</h2>
             <table class="parameters">
                 <thead>
@@ -126,7 +126,7 @@
                 </svg>
             </div>
             <pre class="prettyprint">
-var svg = DV.svg().size(350,220).into("dv-01");
+let svg = DV.svg().size(350,220).into("dv-01");
 
 DV.path().d("M60,60 l50,-20 l50,20 l50,-20 l50,20 l50,-20").fill("none").stroke("#212121",23, "butt").into(svg);
 DV.path().d("M60,60 l50,-20 l50,20 l50,-20 l50,20 l50,-20").fill("none").stroke("#448aff",3).into(svg);
@@ -139,7 +139,7 @@ DV.path().d("M60,180 l50,-20 l50,20 l50,-20 l50,20 l50,-20").fill("none").stroke
 </pre>
             <div id="dv-01"></div>
             <script>
-                var svg = DV.svg().size(350,220).into("dv-01");
+                let svg = DV.svg().size(350,220).into("dv-01");
 
                 DV.path().d("M60,60 l50,-20 l50,20 l50,-20 l50,20 l50,-20").fill("none").stroke("#212121",23, "butt").into(svg);
                 DV.path().d("M60,60 l50,-20 l50,20 l50,-20 l50,20 l50,-20").fill("none").stroke("#448aff",3).into(svg);
@@ -172,7 +172,7 @@ DV.path().d("M60,180 l50,-20 l50,20 l50,-20 l50,20 l50,-20").fill("none").stroke
                 </svg>
             </div>
             <pre class="prettyprint">
-var svg = DV.svg().size(420,150).into("dv-02");
+let svg = DV.svg().size(420,150).into("dv-02");
 
 DV.path().d("M30,60 l100,30 l-100,30").fill("none").stroke("#212121",25,undefined,"miter").into(svg);
 DV.path().d("M30,60 l100,30 l-100,30").fill("none").stroke("#448aff",3).into(svg);
@@ -185,7 +185,7 @@ DV.path().d("M270,60 l100,30 l-100,30").fill("none").stroke("#448aff",3).into(sv
 </pre>
            <div id="dv-02"></div>
            <script>
-            var svg = DV.svg().size(420,150).into("dv-02");
+            let svg = DV.svg().size(420,150).into("dv-02");
 
             DV.path().d("M30,60 l100,30 l-100,30").fill("none").stroke("#212121",25,undefined,"miter").into(svg);
             DV.path().d("M30,60 l100,30 l-100,30").fill("none").stroke("#448aff",3).into(svg);
@@ -230,7 +230,7 @@ DV.path().d("M270,60 l100,30 l-100,30").fill("none").stroke("#448aff",3).into(sv
                 </svg>
             </div>
             <pre class="prettyprint">
-var svg = DV.svg().size(420,170).into("dv-03");
+let svg = DV.svg().size(420,170).into("dv-03");
 DV.path().d("M30,120 l30,-80 l30,80").fill("none").stroke("#212121",25,undefined,"miter").attr("stroke-miterlimit",1.0).into(svg);
 DV.path().d("M30,120 l30,-80 l30,80").fill("none").stroke("#448aff",3).into(svg);
 DV.text().txt("1.0").xys(60,150).attr("text-anchor","middle").into(svg);
@@ -246,7 +246,7 @@ DV.text().txt("4.0").xys(240,150).attr("text-anchor","middle").into(svg);
 </pre>
             <div id="dv-03"></div>
             <script>
-                var svg = DV.svg().size(420,170).into("dv-03");
+                let svg = DV.svg().size(420,170).into("dv-03");
                 DV.path().d("M30,120 l30,-80 l30,80").fill("none").stroke("#212121",25,undefined,"miter").attr("stroke-miterlimit",1.0).into(svg);
                 DV.path().d("M30,120 l30,-80 l30,80").fill("none").stroke("#448aff",3).into(svg);
                 DV.text().txt("1.0").xys(60,150).attr("text-anchor","middle").into(svg);
@@ -286,7 +286,7 @@ DV.text().txt("4.0").xys(240,150).attr("text-anchor","middle").into(svg);
                 </svg>
             </div>
             <pre class="prettyprint">
-var svg = DV.svg().size(200,150).into("dv-04");
+let svg = DV.svg().size(200,150).into("dv-04");
 DV.path().d("M10,30 l100,0").fill("none").stroke("#212121",13,undefined,undefined,"10 5 5 5").into(svg);
 DV.path().d("M10,30 l100,0").fill("none").stroke("#448aff",1).into(svg);
 
@@ -301,7 +301,7 @@ DV.path().d("M10,120 l100,0").fill("none").stroke("#448aff",1).into(svg);
 </pre>
             <div id="dv-04"></div>
                <script>
-                var svg = DV.svg().size(200,150).into("dv-04");
+                let svg = DV.svg().size(200,150).into("dv-04");
                 DV.path().d("M10,30 l100,0").fill("none").stroke("#212121",13,undefined,undefined,"10 5 5 5").into(svg);
                 DV.path().d("M10,30 l100,0").fill("none").stroke("#448aff",1).into(svg);
 
@@ -336,7 +336,7 @@ DV.path().d("M10,120 l100,0").fill("none").stroke("#448aff",1).into(svg);
                 </svg>
             </div>
             <pre class="prettyprint">
-var svg = DV.svg().size(200,150).into("dv-05");
+let svg = DV.svg().size(200,150).into("dv-05");
 DV.path().d("M10,30 l100,0").fill("none").stroke("#212121",23,undefined,undefined,undefined,undefined,1.0).into(svg);
 DV.path().d("M10,30 l100,0").fill("none").stroke("#448aff",1).into(svg);
 
@@ -348,7 +348,7 @@ DV.path().d("M10,90 l100,0").fill("none").stroke("#448aff",1).into(svg);
 </pre>
             <div id="dv-05"></div>
                <script>
-                var svg = DV.svg().size(200,150).into("dv-05");
+                let svg = DV.svg().size(200,150).into("dv-05");
                 DV.path().d("M10,30 l100,0").fill("none").stroke("#212121",23,undefined,undefined,undefined,undefined,1.0).into(svg);
                 DV.path().d("M10,30 l100,0").fill("none").stroke("#448aff",1).into(svg);
 

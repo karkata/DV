@@ -24,7 +24,7 @@
         <h1>DVE.prototype.unbind()</h1>
         <section>
             <h2>문법</h2>
-            <pre class="prettyprint">var ret = object.unbind(type, listener);</pre>
+            <pre class="prettyprint">let ret = object.unbind(type, listener);</pre>
             </section><section><h2>파라미터</h2>
             <table class="parameters">
                 <thead>
@@ -54,9 +54,9 @@
             <h2>설명</h2>
             <p>unbind 메소드는 요소가 특정 이벤트가 발생할 때 불려질 리스너를 삭제하고자할 때 사용됩니다.</p>
             <pre class="prettyprint">
-var svg = new DV().svg(400, 100).into("DV-01");
+let svg = new DV().svg(400, 100).into("DV-01");
 svg.text("Click the below box", 10, 20);
-var shape = svg.rect(10, 50, 200, 20).fill("red");
+let shape = svg.rect(10, 50, 200, 20).fill("red");
 shape.bind("click", function (evt) {
     alert("I am clicked! Only once!");
     shape.unbind("click", arguments.callee);
@@ -66,9 +66,9 @@ shape.bind("click", function (evt) {
 </pre>
             <div id="dv-01"></div>
             <script>
-                var svg = DV.svg().size(400,100).into("dv-01");
+                let svg = DV.svg().size(400,100).into("dv-01");
                 DV.text().txt("Click the below box").xys(10,20).into(svg);
-                var shape = DV.rect().dim(10,50,200,20).fill("red").into(svg);
+                let shape = DV.rect().dim(10,50,200,20).fill("red").into(svg);
                 shape.bind("click", function () {
                     alert("I am clicked! Only once!");
                     shape.unbind("click", arguments.callee);

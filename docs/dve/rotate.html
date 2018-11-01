@@ -25,7 +25,7 @@
         <h1>DVE.prototype.rotate()</h1>
         <section>
             <h2>문법</h2>
-            <pre class="prettyprint">var ret = object.rotate(angle[, cx, cy]);</pre>
+            <pre class="prettyprint">let ret = object.rotate(angle[, cx, cy]);</pre>
             </section><section><h2>파라미터</h2>
             <table class="parameters">
                 <thead>
@@ -101,7 +101,7 @@
                 </svg>
             </div>
             <pre class="prettyprint">
-var svg = DV.svg().size(400,150).into("dv-01");
+let svg = DV.svg().size(400,150).into("dv-01");
 DV.g().into(svg).append(
     DV.line().bound(1,1,100,1).stroke("gray",1),
     DV.line().bound(1,1,1,50).stroke("gray",1),
@@ -121,7 +121,7 @@ DV.circle().center(120,50).radius(5).fill("red").into(svg);
 </pre>
             <div id="dv-01"></div>
             <script>
-                var svg = DV.svg().size(400,150).into("dv-01");
+                let svg = DV.svg().size(400,150).into("dv-01");
                 DV.g().into(svg).append(
                     DV.line().bound(1,1,100,1).stroke("gray",1),
                     DV.line().bound(1,1,1,50).stroke("gray",1),

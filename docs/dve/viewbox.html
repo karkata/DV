@@ -24,7 +24,7 @@
         <h1>DVE.prototype.viewbox()</h1>
         <section>
             <h2>문법</h2>
-            <pre class="prettyprint">var ret = object.viewbox(minx, miny, width, height);</pre>
+            <pre class="prettyprint">let ret = object.viewbox(minx, miny, width, height);</pre>
             </section><section><h2>파라미터</h2>
             <table class="parameters">
                 <thead>
@@ -101,16 +101,16 @@
             </div>
             <p>두 SVG 문서 조각은 동일한 크기(0, 0, 1500, 1000)의 user space 영역을 갖습니다. 그러나 두 조각은 서로 다른 크기의 viewport로 구성되었기 때문에 path, text 요소들이 서로 다르게 스케일링되었습니다.</p>
             <pre class="prettyprint">
-var svg = DV.svg().size(600,250).into("dv-01");
+let svg = DV.svg().size(600,250).into("dv-01");
 DV.desc().txt("SVG content를 viewport에 맞도록 늘립니다.(여기선 줄여 맞추는 효과)").into(svg);
 
-var frag1 = DV.svg().dim(10,10,300,200).viewbox(0,0,1500,1000).aspectRatio("none").into(svg);
+let frag1 = DV.svg().dim(10,10,300,200).viewbox(0,0,1500,1000).aspectRatio("none").into(svg);
 DV.rect().dim(0,0,1500,1000).fill("yellow").into(frag1);
 DV.path().d("M 750,100 L 250,900 L 1250,900 z").fill("red").into(frag1);
 DV.text().txt("Rendered into viewort").xys(100,100).css("font-size",75).into(frag1);
 DV.text().txt("with width=300px and height=200px").xys(100,300).css("font-size",75).into(frag1);
 
-var frag2 = DV.svg().dim(320,10,150,200).viewbox(0,0,1500,1000).aspectRatio("none").into(svg);
+let frag2 = DV.svg().dim(320,10,150,200).viewbox(0,0,1500,1000).aspectRatio("none").into(svg);
 DV.rect().dim(0,0,1500,1000).fill("yellow").into(frag2);
 DV.path().d("M 750,100 L 250,900 L 1250,900 z").fill("red").into(frag2);
 DV.text().txt("Rendered into viewort").xys(100,100).css("font-size", 75).into(frag2);
@@ -118,16 +118,16 @@ DV.text().txt("with width=150px and height=200px").xys(100,300).css("font-size",
 </pre>
             <div id="dv-01"></div>
             <script>
-                var svg = DV.svg().size(600,250).into("dv-01");
+                let svg = DV.svg().size(600,250).into("dv-01");
                 DV.desc().txt("SVG content를 viewport에 맞도록 늘립니다.(여기선 줄여 맞추는 효과)").into(svg);
                 
-                var frag1 = DV.svg().dim(10,10,300,200).viewbox(0,0,1500,1000).aspectRatio("none").into(svg);
+                let frag1 = DV.svg().dim(10,10,300,200).viewbox(0,0,1500,1000).aspectRatio("none").into(svg);
                 DV.rect().dim(0,0,1500,1000).fill("yellow").into(frag1);
                 DV.path().d("M 750,100 L 250,900 L 1250,900 z").fill("red").into(frag1);
                 DV.text().txt("Rendered into viewort").xys(100,100).css("font-size",75).into(frag1);
                 DV.text().txt("with width=300px and height=200px").xys(100,300).css("font-size",75).into(frag1);
 
-                var frag2 = DV.svg().dim(320,10,150,200).viewbox(0,0,1500,1000).aspectRatio("none").into(svg);
+                let frag2 = DV.svg().dim(320,10,150,200).viewbox(0,0,1500,1000).aspectRatio("none").into(svg);
                 DV.rect().dim(0,0,1500,1000).fill("yellow").into(frag2);
                 DV.path().d("M 750,100 L 250,900 L 1250,900 z").fill("red").into(frag2);
                 DV.text().txt("Rendered into viewort").xys(100,100).css("font-size", 75).into(frag2);

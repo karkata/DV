@@ -24,7 +24,7 @@
         <h1>DVE.prototype.round()</h1>
         <section>
             <h2>문법</h2>
-            <pre class="prettyprint">var ret = object.round(rx[, ry]);</pre>
+            <pre class="prettyprint">let ret = object.round(rx[, ry]);</pre>
             </section><section><h2>파라미터</h2>
             <table class="parameters">
                 <thead>
@@ -67,13 +67,13 @@
                 </svg>
             </div>
             <pre class="prettyprint">
-var svg = DV.svg().size(200,60).into("dv-01");
+let svg = DV.svg().size(200,60).into("dv-01");
 DV.rect().dim(10,10,50,20).round(5,5).fill("red").into(svg);
 DV.ellipse().center(100,20).round(20,20).fill("purple").into(svg);
 </pre>
             <div id="dv-01"></div>
             <script>
-                var svg = DV.svg().size(200,60).into("dv-01");
+                let svg = DV.svg().size(200,60).into("dv-01");
                 DV.rect().dim(10,10,50,20).round(5,5).fill("red").into(svg);
                 DV.ellipse().center(100,20).round(20,20).fill("purple").into(svg);
             </script>

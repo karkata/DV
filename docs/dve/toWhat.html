@@ -25,7 +25,7 @@
         <h1>DVE.prototype.toWhat()</h1>
         <section>
             <h2>문법</h2>
-            <pre class="prettyprint">var ret = object.toWhat(target);</pre>
+            <pre class="prettyprint">let ret = object.toWhat(target);</pre>
             </section><section><h2>파라미터</h2>
             <table class="parameters">
                 <thead>
@@ -69,14 +69,14 @@
             </div>
             <p>DV를 사용하여 동일한 애니메이션을 수행할 수 있습니다.</p>
             <pre class="prettyprint">
-var svg = DV.svg().size(200,100).into("dv-01");
-var rect = DV.rect().dim(75,25,50,50).fill("red").into(svg);
+let svg = DV.svg().size(200,100).into("dv-01");
+let rect = DV.rect().dim(75,25,50,50).fill("red").into(svg);
 DV.animate().toWhat("opacity").fromToBy(1,0).time("0s","3s").freeze().into(rect);
 </pre>
             <div id="dv-01"></div>
             <script>
-                var svg = DV.svg().size(200,100).into("dv-01");
-                var rect = DV.rect().dim(75,25,50,50).fill("red").into(svg);
+                let svg = DV.svg().size(200,100).into("dv-01");
+                let rect = DV.rect().dim(75,25,50,50).fill("red").into(svg);
                 DV.animate().toWhat("opacity").fromToBy(1,0).time("0s","3s").freeze().into(rect);
             </script>
             <pre class="prettyprint">
@@ -97,14 +97,14 @@ DV.animate().toWhat("opacity").fromToBy(1,0).time("0s","3s").freeze().into(rect)
                 </svg>
             </div>
             <pre class="prettyprint">
-var svg = DV.svg().size(500,150).into("dv-02");
-var rect = DV.rect().dim(75,25,50,50).fill("red").skewx(10).into(svg);
+let svg = DV.svg().size(500,150).into("dv-02");
+let rect = DV.rect().dim(75,25,50,50).fill("red").skewx(10).into(svg);
 DV.animateTransform().toWhat("rotate").fromToBy("0,100,50","360,100,50").time("0s","3s").add("sum").freeze().into(rect);
 </pre>
             <div id="dv-02"></div>
             <script>
-                var svg = DV.svg().size(500,150).into("dv-02");
-                var rect = DV.rect().dim(75,25,50,50).fill("red").skewx(10).into(svg);
+                let svg = DV.svg().size(500,150).into("dv-02");
+                let rect = DV.rect().dim(75,25,50,50).fill("red").skewx(10).into(svg);
                 DV.animateTransform().toWhat("rotate").fromToBy("0,100,50","360,100,50").time("0s","3s").add("sum").freeze().into(rect);
             </script>
             <pre class="prettyprint">
@@ -124,26 +124,26 @@ DV.animateTransform().toWhat("rotate").fromToBy("0,100,50","360,100,50").time("0
                 </svg>
             </div>
             <pre class="prettyprint">
-var svg = DV.svg().size(500,150).into("dv-03");
-var d = DV.path().mto(50,50).csto([
+let svg = DV.svg().size(500,150).into("dv-03");
+let d = DV.path().mto(50,50).csto([
         [[50,-25],[50,-25],[100,0]],
         [[50,25],[100,0]],
         [[50,-25],[100,0]],
         [[50,25],[100,0]]
     ],true).nofill().stroke("gray",1.5).into(svg).attr("d");
-var rect = DV.rect().dim(-5,-5,10,10).fill("red").into(svg);
+let rect = DV.rect().dim(-5,-5,10,10).fill("red").into(svg);
 DV.animateMotion().toWhat(d).time("0s","5s").motionRotate("auto").freeze().into(rect);
 </pre>
             <div id="dv-03"></div>
             <script>
-                var svg = DV.svg().size(500,150).into("dv-03");
-                var d = DV.path().mto(50,50).csto([
+                let svg = DV.svg().size(500,150).into("dv-03");
+                let d = DV.path().mto(50,50).csto([
                         [[50,-25],[50,-25],[100,0]],
                         [[50,25],[100,0]],
                         [[50,-25],[100,0]],
                         [[50,25],[100,0]]
                     ],true).nofill().stroke("gray",1.5).into(svg).attr("d");
-                var rect = DV.rect().dim(-5,-5,10,10).fill("red").into(svg);
+                let rect = DV.rect().dim(-5,-5,10,10).fill("red").into(svg);
                 DV.animateMotion().toWhat(d).time("0s","5s").motionRotate("auto").freeze().into(rect);
             </script>
             <p class="notice">animateMotion 요소에서 toWhat 메소드를 사용하는 것은 motionPath 메소드를 사용하는 것과 동일합니다.</p>

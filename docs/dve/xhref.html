@@ -24,7 +24,7 @@
         <h1>DVE.prototype.xhref()</h1>
         <section>
             <h2>문법</h2>
-            <pre class="prettytext">var ret = object.xhref(value);</pre>
+            <pre class="prettytext">let ret = object.xhref(value);</pre>
             </section><section><h2>파라미터</h2>
             <table class="parameters">
                 <thead>
@@ -67,16 +67,16 @@
                 </svg>
             </div>
             <pre class="prettyprint">
-var svg = DV.svg().size(200,100).into("svg-01");
-var a = DV.link().xhref("https://www.w3.org/TR/SVG11").into(svg);
-var r = DV.rect().dim(15,35,170,30).round(15).fill("red").into(a);
+let svg = DV.svg().size(200,100).into("svg-01");
+let a = DV.link().xhref("https://www.w3.org/TR/SVG11").into(svg);
+let r = DV.rect().dim(15,35,170,30).round(15).fill("red").into(a);
 DV.text().xys(100,55).txt("SVG 1.1").tanchor("middle").fill("white").into(a);
 </pre>
             <div id="svg-01"></div>
             <script>
-                var svg = DV.svg().size(200,100).into("svg-01");
-                var a = DV.link().xhref("https://www.w3.org/TR/SVG11").into(svg);
-                var r = DV.rect().dim(15,35,170,30).round(15).fill("red").into(a);
+                let svg = DV.svg().size(200,100).into("svg-01");
+                let a = DV.link().xhref("https://www.w3.org/TR/SVG11").into(svg);
+                let r = DV.rect().dim(15,35,170,30).round(15).fill("red").into(a);
                 DV.text().xys(100,55).txt("SVG 1.1").tanchor("middle").fill("white").into(a);
             </script>
         </section>

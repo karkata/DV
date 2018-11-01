@@ -24,7 +24,7 @@
         <h1>dve.prototype.stopColor()</h1>
         <section>
             <h2>문법</h2>
-            <pre class="prettytext">var ret = object.stopColor(color);</pre>
+            <pre class="prettytext">let ret = object.stopColor(color);</pre>
             </section><section><h2>파라미터</h2>
             <table class="parameters">
                 <thead>
@@ -86,12 +86,12 @@
                 </svg>
             </div>
             <pre class="prettyprint">
-var svg = DV.svg().size(600,150).into("dv-01");
-var def = DV.defs().into(svg);
-var grad1 = DV.gradl().point2("50%").id("D01GRL01").into(def);
+let svg = DV.svg().size(600,150).into("dv-01");
+let def = DV.defs().into(svg);
+let grad1 = DV.gradl().point2("50%").id("D01GRL01").into(def);
 DV.stop().stopOffset("30%").stopColor("#F60").into(grad1);
 DV.stop().stopOffset("70%").stopColor("#FF6").into(grad1);
-var grad2 = DV.gradr().center(.25,.25).radius(1).id("D01GRL02").into(def);
+let grad2 = DV.gradr().center(.25,.25).radius(1).id("D01GRL02").into(def);
 DV.stop().stopOffset("0%").stopColor("red").into(grad2);
 DV.stop().stopOffset("100%").stopColor("blue").into(grad2);
 
@@ -100,12 +100,12 @@ DV.rect().dim(0,85,200,25).fill(grad2).into(svg);
 </pre>
             <div id="dv-01"></div>
             <script>
-                var svg = DV.svg().size(600,150).into("dv-01");
-                var def = DV.defs().into(svg);
-                var grad1 = DV.gradl().point2("50%").id("D01GRL01").into(def);
+                let svg = DV.svg().size(600,150).into("dv-01");
+                let def = DV.defs().into(svg);
+                let grad1 = DV.gradl().point2("50%").id("D01GRL01").into(def);
                 DV.stop().stopOffset("30%").stopColor("#F60").into(grad1);
                 DV.stop().stopOffset("70%").stopColor("#FF6").into(grad1);
-                var grad2 = DV.gradr().center(.25,.25).radius(1).id("D01GRL02").into(def);
+                let grad2 = DV.gradr().center(.25,.25).radius(1).id("D01GRL02").into(def);
                 DV.stop().stopOffset("0%").stopColor("red").into(grad2);
                 DV.stop().stopOffset("100%").stopColor("blue").into(grad2);
 

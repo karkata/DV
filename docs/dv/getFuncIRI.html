@@ -24,7 +24,7 @@
         <h1>DV.prototype.getFuncIRI()</h1>
         <section>
             <h2>문법</h2>
-            <pre class="prettyprint">var ret = DV.getFuncIRI(value);</pre>
+            <pre class="prettyprint">let ret = DV.getFuncIRI(value);</pre>
             </section><section><h2>파라미터</h2>
             <table class="parameters">
                 <thead>
@@ -73,17 +73,17 @@
                 </svg>
             </div>
             <pre class="prettyprint">
-var svg = DV.svg().size(300,150).into("svg-01");
-var def = DV.defs().into(svg);
-var grad1 = DV.gradl().id("D01GD01").into(def);
+let svg = DV.svg().size(300,150).into("svg-01");
+let def = DV.defs().into(svg);
+let grad1 = DV.gradl().id("D01GD01").into(def);
 DV.stop().oco(0.1,"#5d4037").into(grad1);
 DV.stop().oco(0.9,"#d7ccc8").into(grad1);
 DV.rect().dim(0,25,100,100).fill(DV.getFuncIRI(grad1)).into(svg);
             <div id="svg-01"></div>
             <script>
-                var svg = DV.svg().size(300,150).into("svg-01");
-                var def = DV.defs().into(svg);
-                var grad1 = DV.gradl().id("D01GD01").into(def);
+                let svg = DV.svg().size(300,150).into("svg-01");
+                let def = DV.defs().into(svg);
+                let grad1 = DV.gradl().id("D01GD01").into(def);
                 DV.stop().oco(0.1,"#5d4037").into(grad1);
                 DV.stop().oco(0.9,"#d7ccc8").into(grad1);
                 DV.rect().dim(0,25,100,100).fill(DV.getFuncIRI(grad1)).into(svg);
