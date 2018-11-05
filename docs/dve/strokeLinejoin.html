@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="../css/style.css"/>           
     <link rel="stylesheet" href="../css/tomorrow.css"/>
     <script src="../../js/dv.js"></script>
-    <script src="../../js/dv.shape.js"></script>
 </head>
 <body>
     <section>
@@ -89,6 +88,7 @@ DV.path().d("M270,60 l100,30 l-100,30").fill("none").stroke("#448aff",3).into(sv
 </pre>
             <div id="dv-01"></div>
             <script>
+			{
                 let svg = DV.svg().size(420,150).into("dv-01");
                 DV.path().d("M30,60 l100,30 l-100,30").fill("none").stroke("#212121",25,undefined,"miter").into(svg);
                 DV.path().d("M30,60 l100,30 l-100,30").fill("none").stroke("#448aff",3).into(svg);
@@ -96,6 +96,7 @@ DV.path().d("M270,60 l100,30 l-100,30").fill("none").stroke("#448aff",3).into(sv
                 DV.path().d("M150,60 l100,30 l-100,30").fill("none").stroke("#448aff",3).into(svg);
                 DV.path().d("M270,60 l100,30 l-100,30").fill("none").stroke("#212121",23).strokeLinejoin("bevel").into(svg);
                 DV.path().d("M270,60 l100,30 l-100,30").fill("none").stroke("#448aff",3).into(svg);
+			}
             </script>
             <p>경로상 두 세그먼트가 만날 때, linejoin 속성이 miter로 설정되어 있다면, 선의 두께만큼의 연장선을 이은 모습을 띄게 됩니다.</p>
             <p>이 때, 아래처럼 오른쪽에 표족한 모서리를 갖는 형태가 그려지는데, 안쪽 모서리에서 바깥 모서리까지의 길이(빨간색 선과 동일)를 miter length라고 합니다.</p>
@@ -146,6 +147,7 @@ DV.text().txt("4.0", 240, 150).attr("text-anchor","middle").into(svg);
 </pre>
             <div id="dv-02"></div>
             <script>
+			{
                 let svg = DV.svg().size(420,170).into("dv-02");
                 DV.path().d("M30,120 l30,-80 l30,80").fill("none").stroke("#212121",25,undefined,"miter").attr("stroke-miterlimit",1.0).into(svg);
                 DV.path().d("M30,120 l30,-80 l30,80").fill("none").stroke("#448aff",3).into(svg);
@@ -159,6 +161,7 @@ DV.text().txt("4.0", 240, 150).attr("text-anchor","middle").into(svg);
                 DV.path().d("M210,120 l30,-80 l30,80").fill("none").stroke("#448aff",3).into(svg);
                 DV.path().d("M280,73 l0,-65").fill("none").stroke("#f00",5).into(svg);
                 DV.text().txt("4.0").xys(240,150).attr("text-anchor","middle").into(svg);
+			}
             </script>
         </section>
         <section>

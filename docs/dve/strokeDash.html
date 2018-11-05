@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="../css/style.css"/>           
     <link rel="stylesheet" href="../css/tomorrow.css"/>
     <script src="../../js/dv.js"></script>
-    <script src="../../js/dv.shape.js"></script>
 </head>
 <body>
     <section>
@@ -99,6 +98,7 @@ DV.path().d("M10,120 l100,0").fill("none").stroke("#448aff",1).into(svg)
 </pre>
             <div id="dv-01"></div>
             <script>
+			{
                 let svg = DV.svg().size(200,150).into("dv-01");
                 DV.path().d("M10,30 l100,0").fill("none").stroke("#212121",13,undefined,undefined,"10 5 5 5").into(svg)
                 DV.path().d("M10,30 l100,0").fill("none").stroke("#448aff",1).into(svg)
@@ -111,6 +111,7 @@ DV.path().d("M10,120 l100,0").fill("none").stroke("#448aff",1).into(svg)
 
                 DV.path().d("M10,120 l100,0").fill("none").stroke("#212121",13).strokeDash("10 5",5).into(svg)
                 DV.path().d("M10,120 l100,0").fill("none").stroke("#448aff",1).into(svg)
+			}
             </script>
         </section>
         <section>

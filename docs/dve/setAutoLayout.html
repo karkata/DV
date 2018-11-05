@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="../css/style.css"/>           
     <link rel="stylesheet" href="../css/tomorrow.css"/>
     <script src="../../js/dv.js"></script>
-    <script src="../../js/dv.shape.js"></script>
 </head>
 <body>
     <section>
@@ -67,10 +66,12 @@ svg.updateLayout();
 </pre>
             <div id="dv-01"></div>
             <script>
+			{
                 let svg = DV.svg().size(200,100).into("dv-01");
                 DV.rect().dim(0,0,0,"100%").fill("red",0.25).setAutoLayout("width:100%-20").into(svg);
                 DV.rect().dim(0,0,20,"100%").fill("blue",0.25).setAutoLayout("x:100%-20").into(svg);
                 svg.updateLayout();
+			}
             </script>
             <p>연산식에 특정 스크립트 변수 값을 사용할 수 있습니다.</p>
             <p>연산식에 대괄호를 사용하여 변수명을 지정하면 'updateLayout' 메소드의 파라미터로 전달되는 JSON 객체의 속성 이름과 비교하여 연산식을 계산할 때, 그 값을 사용하도록 할 수 있습니다.</p>
@@ -94,11 +95,13 @@ svg.updateLayout(dic);
 </pre>
             <div id="dv-02"></div>
             <script>
+			{
                 let dic = { "gapY": 10 };
                 let svg = DV.svg().size(200,100).into("dv-02");
                 DV.rect().dim(0,0,"100%",0).fill("yellow",0.25).setAutoLayout("height:100%-20-{gapY}").into(svg);
                 DV.rect().dim(0,0,"100%",50).fill("purple",0.25).setAutoLayout("y:100%-20").into(svg);
                 svg.updateLayout(dic);
+			}
             </script>
             <p class="notice">연산식은 픽셀 단위 계산만 지원합니다.</p>
         </section>

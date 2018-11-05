@@ -73,8 +73,10 @@ DV.path().d("M100,100 L400,100 M400,300 L100,300").fill("none").stroke("blue",5)
 </pre>
             <div id="dv-01"></div>
             <script>
+			{
                 let svg = DV.svg().size("5cm","4cm").viewbox(0,0,500,400).into("dv-01");
                 DV.path().d("M100,100 L400,100 M400,300 L100,300").fill("none").stroke("blue",5).into(svg);
+			}
             </script>
             <pre class="prettyprint">
 let svg = DV.svg().size("5cm","4cm").viewbox(0,0,500,400).into("dv-02");
@@ -84,10 +86,12 @@ DV.path().fill("none").stroke("blue",5)
 </pre>
             <div id="dv-02"></div>
             <script>
+			{
                 let svg = DV.svg().size("5cm","4cm").viewbox(0,0,500,400).into("dv-02");
                 DV.path().fill("none").stroke("blue",5)
                     .mto(100,100).lto(400,100)
                     .mto(400,300).lto(100,300).into(svg);
+			}
             </script>
             <p>세번째 파라미터가 true이면 상대좌표로 인식합니다.</p>
             <pre class="prettyprint">
@@ -98,10 +102,12 @@ DV.path().fill("none").stroke("blue",5)
 </pre>
             <div id="dv-03"></div>
             <script>
+			{
                 let svg = DV.svg().size("5cm","4cm").viewbox(0,0,500,400).into("dv-03");
                 DV.path().fill("none").stroke("blue",5)
                     .mto(100,100).lto(400,100)
                     .mto(0,200,true).lto(100,300).into(svg);
+			}
             </script>
         </section>
         <section>

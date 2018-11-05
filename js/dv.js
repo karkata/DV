@@ -154,7 +154,7 @@ class DVC {
 		let tokens = layoutString.split(/\s*;\s*/);
 		for (let i = 0, len = tokens.length; i < len; i++) {
 			let kv = tokens[i].split(/\s*:\s*/);
-			if (kv.length == 2) layout[trim(kv[0])] = DVC.trim(kv[1]);
+			if (kv.length == 2) layout[DVC.trim(kv[0])] = DVC.trim(kv[1]);
 		}
 		return layout;
 	}
