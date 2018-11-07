@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="../css/style.css"/>           
     <link rel="stylesheet" href="../css/tomorrow.css"/>
     <script src="../../js/dv.js"></script>
-    <script src="../../js/dv.shape.js"></script>
 </head>
 <body>
     <section>
@@ -70,10 +69,12 @@ svg.updateLayout();
 </pre>
             <div id="dv-01"></div>
             <script>
+			{
                 let svg = DV.svg().size(200,100).into("dv-01");
                 DV.rect().dim(0,0,0,"100%").fill("red",0.25).setAutoLayout("width:100%-20").into(svg);
                 DV.rect().dim(0,0,20,"100%").fill("blue",0.25).setAutoLayout("x:100%-20").into(svg);
                 svg.updateLayout();
+			}
             </script>
             <p>변수를 선언하여 사용하는 방법은 다음과 같습니다.</p>
             <pre class="prettyprint">
@@ -94,11 +95,13 @@ svg.updateLayout(dic);
 </pre>
             <div id="dv-02"></div>
             <script>
+			{
                 let dic = { "gapY": 10 };
                 let svg = DV.svg().size(200,100).into("dv-02");
                 DV.rect().dim(0,0,"100%",0).fill("yellow",0.25).setAutoLayout("height:100%-20-{gapY}").into(svg);
                 DV.rect().dim(0,0,"100%",50).fill("purple",0.25).setAutoLayout("y:100%-20").into(svg);
                 svg.updateLayout(dic);
+			}
             </script>
         </section>
         <section>

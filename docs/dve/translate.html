@@ -8,8 +8,6 @@
     <link rel="stylesheet" href="../css/style.css"/>           
     <link rel="stylesheet" href="../css/tomorrow.css"/>
     <script src="../../js/dv.js"></script>
-    <script src="../../js/dv.shape.js"></script>
-    <script src="../../js/dv.animation.js"></script>
 </head>
 <body>
     <section>
@@ -99,6 +97,7 @@ DV.g().translate(50,50).into(svg).append(
 </pre>
             <div id="dv-01"></div>
             <script>
+			{
                 let svg = DV.svg().size(400,150).into("dv-01");
                 DV.g().into(svg).append(
                     DV.line().bound(1,1,100,1).stroke("gray",1),
@@ -110,6 +109,7 @@ DV.g().translate(50,50).into(svg).append(
                     DV.line().bound(1,1,1,50).stroke("gray",1),
                     DV.text().txt("New coordinate system").xys(10,25)
                 );
+			}
             </script>
         </section>
         <section>

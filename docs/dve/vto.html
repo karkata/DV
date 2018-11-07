@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="../css/style.css"/>           
     <link rel="stylesheet" href="../css/tomorrow.css"/>
     <script src="../../js/dv.js"></script>
-    <script src="../../js/dv.shape.js"></script>
 </head>
 <body>
     <section>
@@ -74,8 +73,10 @@ DV.path("M100,100 V300 M400,300 V100").fill("none").stroke("blue",5).into(svg);
 </pre>
             <div id="dv-01"></div>
             <script>
+			{
                 let svg = DV.svg().size("5cm","4cm").viewbox(0,0,500,400).into("dv-01");
                 DV.path().d("M100,100 V300 M400,300 V100").fill("none").stroke("blue",5).into(svg);
+			}
             </script>
             <pre class="prettyprint">
 let svg = DV.svg().size("5cm","4cm").viewbox(0,0,500,400).into("dv-02");
@@ -85,10 +86,12 @@ DV.path().fill("none").stroke("blue",5)
 </pre>
             <div id="dv-02"></div>
             <script>
+			{
                 let svg = DV.svg().size("5cm","4cm").viewbox(0,0,500,400).into("dv-02");
                 DV.path().fill("none").stroke("blue",5)
                     .mto(100,100).vto(300)
                     .mto(400,300).vto(100).into(svg);
+			}
             </script>
             <pre class="prettyprint">
 let svg = DV.svg().size("5cm","4cm").viewbox(0,0,500,400).into("dv-03");
@@ -98,10 +101,12 @@ DV.path().fill("none").stroke("blue",5)
 </pre>
             <div id="dv-03"></div>
             <script>
+			{
                 let svg = DV.svg().size("5cm","4cm").viewbox(0,0,500,400).into("dv-03");
                 DV.path().fill("none").stroke("blue",5)
                     .mto(100,100).vto(200,true)
                     .mto(400,300).vto(-200,true).into(svg);
+			}
             </script>
         </section>
         <section>

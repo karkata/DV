@@ -8,8 +8,6 @@
     <link rel="stylesheet" href="../css/style.css"/>           
     <link rel="stylesheet" href="../css/tomorrow.css"/>
     <script src="../../js/dv.js"></script>
-    <script src="../../js/dv.shape.js"></script>
-    <script src="../../js/dv.animation.js"></script>
 </head>
 <body>
     <section>
@@ -77,12 +75,14 @@ t.txt(" xyz",true);
 </pre>
             <div id="dv-01"></div>
             <script>
+			{
                 let svg = DV.svg().size(700,100).into("dv-01");
                 DV.line().point1(0,50).point2("100%",50).stroke("#03A9F4",1).into(svg);
                 DV.text().txt("base-line").xys(0,48).fsize("0.65em").fill("#03A9F4").into(svg);
                 let t = DV.text().txt("ABC ").xys(50,50).fsize("2em").attr("letter-spacing",10).trotate([90,45,90,25]).into(svg);
                 DV.tspan().txt("1234567890").dxys(0,20).trotate([45,90]).into(t);
                 t.txt(" xyz",true);
+			}
             </script>
             <p>다음은 text, tspan 엘리먼터의 rotate 속성값에 따라 문자의 회전이 어떻게 영향 받지에 대한 그림 설명입니다.</p>
             <p><img src="https://www.w3.org/TR/SVG11/images/text/tspan05-diagram.png" alt="rotation description"/></p>

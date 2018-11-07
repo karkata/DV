@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="../css/style.css"/>           
     <link rel="stylesheet" href="../css/tomorrow.css"/>
     <script src="../../js/dv.js"></script>
-    <script src="../../js/dv.shape.js"></script>
 </head>
 <body>
     <section>
@@ -66,6 +65,7 @@ t2.txt(" Appended Content", true);
 </pre>
             <div id="dv-01"></div>
             <script>
+			{
                 let svg = DV.svg().size(300,150).into("dv-01");
 
                 let t1 = DV.text().txt("Original Content - 1").xys(10,50).into(svg);
@@ -73,6 +73,7 @@ t2.txt(" Appended Content", true);
 
                 let t2 = DV.text().txt("Original Content - 2").xys(10,100).into(svg);
                 t2.txt(" Appended Content", true);
+			}
             </script>
         </section>
         <section>

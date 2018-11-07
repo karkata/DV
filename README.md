@@ -6,15 +6,13 @@ HTML5의 등장으로 인하여 Canvas를 이용하여 그래픽 시각 효과�
 개발은 상당히 오래전부터 시작되었고, 1차 완성이 되기 전에 이미 d3.js, Raphael.js, Snap.svg 처럼 유명한 라이브러리들이 존재하다보니, 이 프로젝트는 개인적 공부 외에 큰 가치(배포를 하겠다거나~)가 없게 되었다.
 
 ## 설치 방법
-특별한 설치 방법은 없으며, 현재 프로젝트의 js 디렉터리에 있는 DV 관련 js 파일을 복사해서 사용하는 것이 전부이다.
+특별한 설치 방법은 없으며, 현재 프로젝트의 js 디렉터리에 있는 dv.js 파일을 참조하는 것이 전부다.
 
 ## 개발 환경 설정
-dv.core.js 파일은 핵심적으로 사용되는 함수와 SVG 요소를 나타내는 DVE 객체의 기본 메소드만 담고 있는데, SVG 요소들을 쉽게 다루기 위해서는 dv.shape.js 파일을 함께 사용해야 한다.
-
-두 파일을 순차적으로 참조한다.
+DV는 ES6 기준으로 만들어졌기 때문에, ES6를 지원하지 않는 브라우저에서는 사용하기 어렵다.
+DV를 사용하려면 DV를 사용할 웹페이지 상단에 dv.js 스크립트 파일을 참조하면 된다.
 <pre>
-&lt;script src=".../dv.core.js"&gt;&lt;/script&gt;
-&lt;script src=".../dv.shape.js"&gt;&lt;/script&gt;
+&lt;script src=".../dv.js"&gt;&lt;/script&gt;
 </pre>
 
 ## 사용 방법
@@ -23,13 +21,16 @@ dv.core.js 파일은 핵심적으로 사용되는 함수와 SVG 요소를 나타
 일반적인 사용법은 다음과 같다.
 <pre>
 // 가로, 세로 200x200 크기의 svg 요소를 "container-id" 아이디를 갖는 요소에 넣는다.
-var svg = DV.svg().size(200, 200).appendTo("container-id");
+let svg = DV.svg().size(200, 200).appendTo("container-id");
 // x, y 좌표가 9, 9에 가로, 세로 100x100 크기의 빨간색 사각형을 svg 문서에 렌더링한다.
 DV.rect().dim(9, 9, 100, 100).fill("red").into(svg);
 </pre>
-
+더 많은 내용은 전체를 다운로드 받은 후에 doc 디렉터리의 index.html 페이지를 열어 확인할 수 있다.
 
 ## 업데이트 내역
+### 2.0.0 (2018-11-07)
+- 분리되었던 js 파일을 하나로 재통합하고, ES6 문법으로 재작성
+
 ### 1.2.0 (2018-10-01)
 - DVE.fitToParent 메소드 추가
 - getElmSize 메소드를 getElementSize로 변경하고, 내부적으로 getBBox를 사용하여 보완

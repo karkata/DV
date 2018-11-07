@@ -8,8 +8,6 @@
     <link rel="stylesheet" href="../css/style.css"/>           
     <link rel="stylesheet" href="../css/tomorrow.css"/>
     <script src="../../js/dv.js"></script>
-    <script src="../../js/dv.shape.js"></script>
-    <script src="../../js/dv.animation.js"></script>
 </head>
 <body>
     <section>
@@ -75,9 +73,11 @@ DV.animate().toWhat("opacity").fromToBy(1,0).time("0s","3s").freeze().into(rect)
 </pre>
             <div id="dv-01"></div>
             <script>
+			{
                 let svg = DV.svg().size(200,100).into("dv-01");
                 let rect = DV.rect().dim(75,25,50,50).fill("red").into(svg);
                 DV.animate().toWhat("opacity").fromToBy(1,0).time("0s","3s").freeze().into(rect);
+			}
             </script>
             <pre class="prettyprint">
 &lt;svg width="200" height="100"&gt;
@@ -103,9 +103,11 @@ DV.animateTransform().toWhat("rotate").fromToBy("0,100,50","360,100,50").time("0
 </pre>
             <div id="dv-02"></div>
             <script>
+			{
                 let svg = DV.svg().size(500,150).into("dv-02");
                 let rect = DV.rect().dim(75,25,50,50).fill("red").skewx(10).into(svg);
                 DV.animateTransform().toWhat("rotate").fromToBy("0,100,50","360,100,50").time("0s","3s").add("sum").freeze().into(rect);
+			}
             </script>
             <pre class="prettyprint">
 &lt;svg width="500" height="150"&gt;
@@ -136,6 +138,7 @@ DV.animateMotion().toWhat(d).time("0s","5s").motionRotate("auto").freeze().into(
 </pre>
             <div id="dv-03"></div>
             <script>
+			{
                 let svg = DV.svg().size(500,150).into("dv-03");
                 let d = DV.path().mto(50,50).csto([
                         [[50,-25],[50,-25],[100,0]],
@@ -145,6 +148,7 @@ DV.animateMotion().toWhat(d).time("0s","5s").motionRotate("auto").freeze().into(
                     ],true).nofill().stroke("gray",1.5).into(svg).attr("d");
                 let rect = DV.rect().dim(-5,-5,10,10).fill("red").into(svg);
                 DV.animateMotion().toWhat(d).time("0s","5s").motionRotate("auto").freeze().into(rect);
+			}
             </script>
             <p class="notice">animateMotion 요소에서 toWhat 메소드를 사용하는 것은 motionPath 메소드를 사용하는 것과 동일합니다.</p>
         </section>
