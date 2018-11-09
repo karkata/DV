@@ -30,6 +30,9 @@ body {
 
 section {
     margin-bottom: 2rem;
+}
+
+body > section {
 	width: 50%;
 	min-width: 500px;
 }
