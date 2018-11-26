@@ -27,7 +27,7 @@ if (!Array.isArray) {
 
 class DVC {
 	// 정적 필드는 static getter를 이용하여 만들수 있다.
-	static get VERSION() { return "1.3.0"; }
+	static get VERSION() { return "1.4.0"; }
 	static get NS_SVG() { return "http://www.w3.org/2000/svg"; }
 	static get NS_XLNK() { return "http://www.w3.org/1999/xlink"; }
 	static get E_NAME_ANI() { return ["animate", "animateColor", "animateMotion", "animateTransform", "mpath", "set"]; }
@@ -428,6 +428,25 @@ class DVE {
 	
 	setClass(className, append) {
 		return this.attr("class", className, append === true);
+	}
+
+	// 1.4.0 버전에서 추가
+	getSize() {
+		let t = this.element;
+		let s = getComputedStyle(t), size = { w: 0, h: 0 };
+		if (s) {
+			if (s.width === "auto" || s.height === "auto") {
+				let box = t.getBBox();
+				size.w = box.width;
+				size.h = box.height;
+			} else {
+				size.w = parseFloat(s.width) - parseFloat(s.paddingLeft) - parseFloat(s.paddingRight);
+				size.h = parseFloat(s.height) - parseFloat(s.paddingTop) - parseFloat(s.paddingBottom);
+			}
+		} else {
+			console.log("[DV] It won't get a computed style from " + target);
+		}
+		return size;
 	}
 
 	css(sname, svalue) {
